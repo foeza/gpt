@@ -1,0 +1,145 @@
+$font_type_import
+
+body {
+  color: $font_color;
+  background-color: $bg_color;
+  font-size: $font_size;
+  font-family: $font_type;
+}
+.btn-lg,
+.btn-group-lg > .btn,
+.testimonials .item .text,
+.testimonials .item .author div span,
+.agent-detail .info .contact-us li,
+.sort ul > li i,
+.property-list ul li,
+.property-list dl {
+  font-size: $font_size;
+}
+#wrapper,
+#nav-section,
+.contacts .main,
+.contacts:before {
+  background-color: $bg_color;
+}
+.action-box,
+.sidebar.colored,
+.carousel-style1 .item .price,
+#home-search-buttons .input-group .btn-default,
+.section-title:before,
+.section-highlight:before,
+.section-title:after,
+.section-highlight:after,
+.grid-style1 .item .price, 
+.grid-style2 .item .price, 
+.list-style .item .price,
+.grid-style1 .item .tag, 
+.grid-style2 .item .tag, 
+.list-style .item .tag,
+#property-detail-wrapper.style1 .price,
+.pattern-bg.colored-bg:before,
+.owl-controls .owl-buttons {
+  background-color: $main_content_color;
+}
+#top-bar,
+#footer #copyright,
+#footer #powered-by,
+.sidebar.gray,
+.content.gray:before {
+  background-color: $sub_content_color;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font_type;
+  color: $main_content_color;
+}
+.feature i {
+  color: $main_content_color;
+  border: 4px solid $main_content_color;
+}
+.properties__bank{
+  background-color: $main_content_color !important;
+}
+.owl-controls .owl-page.active span,
+.owl-controls.clickable .owl-page:hover span,
+.feature i:after {
+  background: $main_content_color;
+}
+#footer-top a:hover,
+.feature:hover h3,
+.grid-style1 .item > .info h3 a:hover,
+.grid-style2 .item > .info h3 a:hover,
+.list-style .item > .info h3 a:hover,
+.grid-style1 .item > .info-blog h3 a:hover,
+.grid-style2 .item > .info-blog h3 a:hover,
+.list-style .item > .info-blog h3 a:hover,
+.nav .open > a, .nav .open > a:hover,
+.nav .open > a:focus, .nav > li > a:hover,
+.nav > li > a:focus, .navbar-nav > li > a.active,
+.title-header-banner a:hover,
+.panel-group .panel .panel-heading .panel-title > a:hover {
+  color: $main_content_color;
+}
+.btn-default-color:hover,
+.btn-default-color:active,
+.btn-default-color.active,
+.open .dropdown-toggle.btn-default-color,
+.panel-group .panel .panel-heading .panel-title > a:hover:after {
+  border-color: $main_content_color;
+  color: $main_content_color;
+}
+.btn-default-color,
+.btn-default-color:focus,
+.btn-fullcolor,
+.btn-fullcolor:focus,
+.btn-default,
+.btn-default:focus {
+  border-color: $button_color !important;
+  color: $button_color !important;
+}
+
+.navbar-nav > li > a {
+  $font_menu
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  $font_heading_color
+}
+
+.footer-links a, .info-blog a, #top-info a,
+.sidebar .footer-listings a, .sidebar .latest-news h3 > a {
+  color: $font_link_color !important;
+}
+
+.nav.navbar-nav li a, .nav.navbar-nav li a:hover{
+	$font_menu_color
+}
+
+#footer-top h3 {
+  $font_heading_footer_color
+}
+
+#footer {
+  background-color: $bg_footer;
+}
+
+/*Warna Font Umum*/
+.sidebar .footer-listings li small, .sidebar #contacts-home .footer-contacts li, .footer-contacts a,
+.sidebar .agents-list .contact-us li, .property-list dt, .property-list dd, .property-list span, .property-list strong {
+  color: $font_color !important;
+}
+
+/*---- Custom Ukuran Font ----*/
+#list-product p, .developer-list .project-short-promo {
+  font-size: $font_size;
+}
+
+/*Top header*/
+  .topBar{
+    background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+    border-bottom: 2px solid $bg_color_top_header !important;
+  }
+  .topBar ul li.border a{
+    border-left: solid 1px $bg_color_border_header;
+  }
+/**/

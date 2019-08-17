@@ -1,0 +1,135 @@
+$font_type_import
+
+body {
+	background-color: $bg_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+.nav a, .team-member .team-name h4 {
+	font-size: $font_size;
+}
+
+/*---- Custom Ukuran Font ----*/
+.developer-section p, .detail-unit-developer p {
+	font-size: $font_size;
+}
+
+/*---- Warna Background ----*/
+	.section-light, .section-dark, .section-row {
+		background: $bg_color;
+	}
+
+
+/*---- Warna Utama ----*/
+	.site__panel, .section-color,
+	.top-dark, .top-dark .top-icon-circle:hover,
+	header.header2 .top-dark .top-icon-circle:hover, header.header3 .top-dark .top-icon-circle:hover,
+	header.header2 .special-color, header.header3 .special-color,
+	.navbar-toggle span.icon-bar, .gallery-filter, .navbar-nav .active,
+	.navbar-nav > li > a:hover, .navbar-nav > li > a:active, .navbar-nav > li > a:focus,
+	.nav .open > a, .nav .open > a:focus, .nav .open > a:hover,.dropdown-menu > li > a:hover,
+	.dropdown-menu > li > a:active, .dropdown-menu > li > a:focus, .hover-menu, header.header2 .dropdown-menu .hover-menu,
+	header.header3 .dropdown-menu .hover-menu, .slide-desc-price, .change-photo:hover, #adv-search-hide, .ui-slider-range,
+	.button-primary, .button-primary:active, .button-primary:focus, .navigation-box, .title-separator,
+	.title-separator-secondary::after,.title-separator-secondary2::after, .title-separator-primary::after,
+	.title-separator-primary2::after, .featured-price, .big-icon-second-color, .list-price, .blog-grid1-separator::after,
+	.footer-title-separator::after, .footer-newsletter button, .gallery-slide-estate, .gallery-slide-desc-price, #slide-more-cont,
+	.short-title-separator, .blog-grid2-separator::after, section.contact-page-1, section.contact-map2,
+	.panel-apartment a[aria-expanded="true"], .apartment-tabs .nav-tabs li.active a, .price-table-header,
+	.price-table-secondary .price-table-body, .price-table-secondary .price-table-footer, .upload-gallery, .file-input .btn,
+	.file-input, .file-input .file-preview, html.no-pointerevents.no-touchevents .feature:hover .feature-text {
+	    background: $main_content_color !important;
+	}
+
+	.offer-pagination .active{
+		border: 1px solid $main_content_color;
+	}
+
+	.blue-ul .custom-ul-bullet{
+		border: 2px solid $main_content_color;
+	}
+
+	.blog-grid1-topline i.fa, .blog-grid1-button span, address.contact-info i.fa, .details-agency-address i.fa
+	.sidebar-featured-price, .details-image i.fa, .blog-top-icon i.fa, .button-icon, .button-primary:hover {
+		color: $main_content_color;
+	}
+
+	.blog-grid1-button .blog-grid1-triangle, .button-triangle2 {
+		border-color: transparent transparent $main_content_color transparent;
+	}
+	.blog-grid1-button span:hover {
+	    color: #ffffff;
+	}
+
+	#carousel-gallery .carousel-caption, .content-title {
+		background-image: linear-gradient(to right, $main_content_color, #404040) !important;
+	}
+
+/*---- Background footer ----*/
+	.footer-top {
+		background-color:$bg_footer !important;
+	}
+
+/*---- Warna Tombol ----*/
+	.btn-primary {
+		background-color:$button_color !important;
+		border-color:$button_color !important;
+	}
+
+	.btn-primary:hover{ background-color:$button_color; }
+
+/*---- Warna Font Umum ----*/
+	.footer-p, 
+	.post-content p,
+	.listing-box-content dt, .listing-box-content dd,
+	.listing-row-attributes li strong {
+		color: $font_color;
+	}
+
+/*---- Warna Font Menu Utama ----*/
+	.nav a {
+		$font_menu_color;
+	}
+
+/*---- Warna Font Heading ----*/
+	h2, h3, h4, h5, h6 {
+		$font_heading_color
+	}
+
+/*---- Warna Font Heading Footer ----*/
+	h4.second-color {
+	    $font_heading_footer_color
+	}
+
+/*---- Warna Font Link ----*/
+	footer a:hover, .sidebar-featured-title:hover, .sidebar a:hover,
+	.team-member .team-name a:hover, .top-bar a:hover {
+		color: $font_link_color !important;
+	}
+
+/*---- Background Image ----*/
+	section.featured-offers {
+    	background: #183263 $bg_image no-repeat fixed 50% 0;
+	}
+
+	.bg-image-footer, .bg-image-header {
+	    background: #151F2B $bg_image no-repeat center 0px;
+	    background-position: center;
+    	background-size: cover;
+	}
+
+	/*KPR*/
+	.properties__bank{
+		background-color: $main_content_color !important;
+	}
+
+/*Top header*/
+	.topBar{
+		background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+		border-bottom: 2px solid $bg_color_top_header !important;
+	}
+	.topBar ul li.border a{
+		border-left: solid 1px $bg_color_border_header;
+	}
+/**/

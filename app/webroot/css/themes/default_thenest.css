@@ -1,0 +1,124 @@
+$font_type_import
+
+body {
+	color: $font_color;
+	background-color: $bg_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	$font_heading_color;
+}
+
+a, 
+.kpr-item a.more, 
+.property-content .title a, 
+.property-content .facilities-list li i, 
+.property-2 .content .title a, 
+.property-2 .facilities-list li i, 
+.popular-posts .media-heading a, 
+.category-posts ul li a:hover {
+	color: $font_link_color;
+}
+
+.kpr-item li > a {
+	color: $font_link_color !important;
+}
+
+.top-header {
+	background-color:$bg_color_top_header !important;
+}
+
+.top-header .list-inline a, 
+.top-header ul li a, 
+.copy-right a {
+	color: $font_link_color;
+}
+
+header.main-header {
+	$bg_header;
+}
+
+header .socials .link:hover, 
+.inblock:hover > a {
+	color: $font_link_color !important;
+}
+
+.main-header .navbar-default .nav > li.active > a, 
+.main-header .navbar-default .nav > li > a:hover, 
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+	$font_menu_color !important;
+	border-top-$font_menu_color !important;
+}
+
+.dropdown-menu > li > a:hover {
+	$font_menu_color !important;
+	border-left-$font_menu_color !important;
+}
+
+footer .main-footer {
+	background-color:$bg_footer !important;
+}
+
+.footer-info .links li a, 
+.footer-info .personal-info li, 
+.footer-info .personal-info li a {
+	color: $font_link_color;
+}
+
+.our-service a, 
+.our-service .content i {
+	color:$button_color;
+}
+
+.our-service .content:hover {
+	background: initial;
+}
+
+.search-button, 
+.search-button:hover, 
+#page_scroller {
+	color:#FFFFFF;
+	background-color:$button_color;
+}
+
+.button-theme, 
+.button-theme:hover, 
+.list-inline-listing .btn:hover, 
+.list-inline-listing .btn.active {
+	border-color:$button_color;
+	background-color:$button_color;
+}
+
+img, 
+.content p, 
+.panel-box p, 
+.kpr-item li, 
+.properties-condition ul li, 
+.property-2 .property-address a, 
+.footer-info p, 
+.additional-details-list li, 
+.additional-details-list li span {
+	color: $main_content_color;
+}
+
+footer {
+	background-color:$bg_footer;
+}
+
+footer h1, 
+footer h2, 
+footer h3, 
+footer h4, 
+footer h5, 
+footer h6{
+	$font_heading_footer_color;
+}
+
+
+ul.contact-list li i {
+	color:#535353;
+}

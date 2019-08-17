@@ -1,0 +1,1190 @@
+/*
+- KPR
+- WIDGET KPR BTN
+- KPR BTN LANDING PAGE
+- KPR PROMO CONTENT
+- LEFT SIDEBAR KPR
+- RIGHT SIDEBAR CONTACT INFO KPR BTN
+*/
+
+/* WIDGET KPR BTN */
+.header-kpr-btn {
+	background-color: #214798;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	height:40px;
+	color:white;
+	margin-bottom: 5px;
+}
+.header-kpr-btn .left-side {
+    background-color: #214798;
+    width:60%;
+    height:35px;
+    float:left;
+}
+.header-kpr-btn .left-side .title {
+    margin: 7px 0px 0px 15px;
+    font-weight: bold;
+}
+.header-kpr-btn .right-side {
+    background-color: #FFDE03;
+    width:40%;
+    height:40px;
+    float:right;
+    padding: 5px;
+    text-align: center;
+    line-height: 30px;
+}
+.header-kpr-btn .right-side img {
+    width: 80%;
+    max-height: 30px;
+}
+.header-kpr-btn .side-separator {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right:275px;
+    border-style: solid;
+    border-width: 0 25px 40px 25px;
+    border-color: transparent transparent #214798 transparent;
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.kpr-wrapper div#title-header-kpr-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: yellow;
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+}
+.kpr-wrapper div#title-header-kpr-btn .left-side {
+    width:100px;
+}
+.kpr-wrapper div#title-header-kpr-btn .right-side {
+    width:100px;   
+} 
+.kpr-wrapper .content ul.editable span#pay-btn {
+    font-size: 14px;
+    font-weight: 700;
+    font-style: normal;
+    top: 0;
+    color: #214798;
+}
+.btn-darkred {
+    background-color: #C71023;
+    color: #fff;
+    border-color: #C71023;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+    border: none !important;
+}
+.btn-darkred:hover {
+    background: #E01026;
+}
+.btn-darkred:focus {
+    -moz-box-shadow: 0 -1px 0 #E01026;
+    -webkit-box-shadow: 0 -1px 0 #E01026;
+    box-shadow: 0 -1px 0 #E01026;
+}
+.btn-darkred:hover,
+.btn-darkred:focus {
+  color: #fff;
+}
+/* END OF WIDGET KPR BTN */
+
+/* KPR BTN LANDING PAGE */
+#wrapper-kpr {
+  padding-bottom: 20px;
+}
+#wrapper-kpr h2 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+#wrapper-kpr label.title {
+  margin-bottom: 30px;
+  display: block;
+}
+
+.kpr-wrapper {
+  background-color: #FAFAFA;
+  -moz-box-shadow: 0 0 5px #cacaca;
+  -webkit-box-shadow: 0 0 5px #cacaca;
+  box-shadow: 0 0 5px #cacaca;
+  padding: 0;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.kpr-wrapper div#title-header-kpr {
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #00aa4e;
+}
+
+.kpr-wrapper .content {
+  padding: 5px 10px;
+}
+.kpr-wrapper .content .bank-brand {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+.kpr-wrapper .content .bank-brand label {
+  font-size: 12px;
+  font-style: italic;
+  font-weight: normal;
+}
+.kpr-wrapper .content .bank-logo {
+  width: 100%;
+}
+
+.kpr-wrapper .content .bank-logo img {
+  height: 23px;
+  padding: 3px;
+}
+
+.kpr-wrapper .content .detail-kpr ul {
+  padding: 0;
+  margin: 0;
+}
+
+.kpr-wrapper .content .detail-kpr li {
+  margin-bottom: 10px;
+  list-style-type: none;
+  padding-right: 0;
+}
+.kpr-wrapper .content .detail-kpr label {
+  font-weight: 400;
+  width: 100%;
+  font-size: 12px;
+}
+.kpr-wrapper .content .detail-kpr span#prop-price:before {
+  content: ':';
+  font-weight: 700;
+  float: left;
+  margin-right: 5px;
+}
+.kpr-wrapper .content .detail-kpr span {
+  display: block;
+  font-weight: 700;
+  color: #000;
+  padding-left: 5px;
+  font-size: 12px;
+}
+.kpr-wrapper .content .detail-kpr .disclaimer {
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.kpr-wrapper .content .detail-kpr .disclaimer p {
+  font-size: 12px;
+  font-style: italic;
+  color: #cccccc;
+}
+.kpr-wrapper .content ul.editable li {
+    padding-top: 5px;
+}
+.kpr-wrapper .content ul.editable select,
+.kpr-wrapper .content ul.editable input {
+  width: 55%;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 5px;
+  position: relative;
+  top: -3px;
+  border: 1px solid #cccccc;
+}
+.kpr-wrapper .content ul.editable select:hover {
+  border-color: #ababab;
+}
+.kpr-wrapper .content ul.editable select:focus {
+  outline: none;
+  border-color: #5e5e5e;
+}
+.kpr-wrapper .content ul.editable span {
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  position: relative;
+  top: -3px;
+  display: inline-block;
+}
+.kpr-wrapper .content ul.editable span#pay {
+  font-size: 18px;
+  font-weight: 700;
+  font-style: normal;
+  top: 0;
+  color: #5eab1f;
+}
+#kpr-content .title-limited {
+    padding-bottom: 10px;
+}
+
+#appDetail .dp-slider{
+	margin-top: 25px;
+}
+/* END KPR BTN LANDING PAGE */
+
+/* KPR PROMO CONTENT */
+.promo-content {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin: 10px 0 15px;
+  -moz-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.promo-content .kpr-icon-title,
+.promo-content .kpr-note-description {
+  display: inline-block;
+  vertical-align: middle;
+}
+.promo-content .kpr-icon-title {
+  width: 5%;
+  font-weight: bold;
+  font-size: 28px;
+  color: #1b3f93;
+  margin-right: 5px;
+}
+.promo-content .kpr-note-description {
+  width: 93%;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 13px;
+  text-align: justify;
+}
+/* END KPR PROMO CONTENT */
+
+/* LEFT SIDEBAR KPR */
+.percent-indent {
+  position: absolute;
+}
+.percent-indent.kpr-percent {
+  top: 10px;
+  right: 9px;
+  font-size: 16px;
+  z-index: 2;
+}
+.input_price.form-control.kpr-down-payment {
+  width: 65%;
+}
+
+.input_number.form-control.kpr-persen-loan {
+  width: 35%;
+}
+
+#kpr-content .kpr-label {
+    padding-right: 8px;
+}
+/* END LEFT SIDEBAR KPR */
+
+/* RIGHT SIDEBAR CONTACT INFO KPR BTN */
+#bank-contact {
+  border: 1px solid #CCCCCC;
+  padding: 10px;
+}
+#bank-contact .header-bank {
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 10px;
+}
+#bank-contact .header-bank .title {
+  font-size: 18px;
+}
+#bank-contact .header-bank .logo img {
+  max-width: 100%;
+}
+#bank-contact .content {
+  padding: 0 10px;
+}
+#bank-contact .content label {
+  margin-top: 10px;
+}
+#bank-contact .content ul {
+  list-style-type: none;
+  padding: 0;
+}
+#bank-contact .content > ul > li {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 5px;
+}
+#bank-contact .content > ul > li:last-child {
+  margin-bottom: 0;
+}
+#bank-contact .content > ul > li > i {
+  position: absolute;
+  left: 0;
+  top: 3px;
+}
+.sidebar-right-kpr #bank-contact {
+  margin-bottom: 20px;
+}
+/* END RIGHT SIDEBAR CONTACT INFO KPR BTN */
+
+
+
+/*LIST BANK KPR DETAIL PROPERTY*/
+
+.prime-mortgage {
+  margin-bottom: 15px;
+  background-color: #fff;
+  border: 1px solid #f5f5f5;
+}
+
+.prime-mortgage.type-1 {
+  position: relative;
+  padding: 0 50px;
+}
+
+.prime-mortgage.type-2 {
+  padding: 15px;
+}
+
+.bank-list {
+  padding: 0;
+  margin: 0;
+}
+.bank-list li {
+  display: inline-block;
+  height: 280px;
+  margin: 10px 10px 10px 0;
+  white-space: normal;
+}
+.bank-list a {
+  position: relative;
+  display: block;
+  width: 174px;
+  height: 100%;
+  background-color: #fff;
+  text-decoration: none;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+  color: #000 !important;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+.bank-list img, .carousel img {
+  max-width: 100%;
+  max-height: 70px;
+  padding: 10px;
+  text-align: center;
+}
+.bank-list  p, .carousel p {
+  padding: 5px;
+  margin-bottom: 0;
+  display: block;
+  font-size: 13px;
+  text-align: center;
+}
+.bank-list span {
+  display: block;
+  text-align: center;
+}
+.bank-list .total-promo {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: block;
+  margin-bottom: 0;
+  border-top: 1px solid #f0f0f0;
+}
+.bank-list .total-promo p, .carousel .total-promo p {
+  margin-bottom: 0;
+}
+.bank-list .total-promo p.installment, .carousel .total-promo p.installment {
+  background-color: #fafafa;
+}
+.bank-list .total-promo p.promo, .carousel .total-promo p.promo {
+  border-top: 1px solid #e5e5e5;
+  background-color: #f0f0f0;
+}
+.bank-list .total-promo p:last-child, .carousel .total-promo p:last-child {
+  border-top: 1px solid #3a443a;
+  background-color: #3a443a;
+  color: #fff;
+}
+.bank-list a:hover, .bank-list a:hover .total-promo, .carousel {
+  border-color: #dcdcdc;
+}
+.bank-list .promo-text {
+  margin: 0 15px;
+  padding-bottom: 10px;
+}
+
+.type-1 .bank-list {
+  padding: 15px 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.type-1 .bank-list li {
+  margin: 0 5px;
+}
+.type-1 .bank-control {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.type-1 .bank-control .control {
+  position: absolute;
+  top: 140px;
+  width: 26px;
+  height: 26px;
+  margin-left: 3px;
+  background-color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'FontAwesome';
+  color: #acacac;
+  border: 1px solid #a9a9a9;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-transition: 0.1s linear;
+     -moz-transition: 0.1s linear;
+          transition: 0.1s linear;
+}
+.type-1 .bank-control .control:hover {
+  border-color: #333;
+  color: #333;
+}
+.type-1 .bank-control .prev {
+  padding: 5px 7px 5px 5px;
+  left: 12px;
+}
+.type-1 .bank-control .next {
+  padding: 5px 9px;
+  right: 12px;
+}
+.type-1 .bank-control .prev:before {
+  content: '\f053';
+}
+.type-1 .bank-control .next:before {
+  content: '\f054';
+}
+
+.type-2.prime-mortgage h5 {
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+.type-2 .bank-list li a {
+  width: 100%;
+  -webkit-transition: 0.1s linear;
+     -moz-transition: 0.1s linear;
+          transition: 0.1s linear;
+}
+
+.app-setup {
+  counter-reset: number;
+}
+.app-setup h2 {
+  margin: 30px 0 15px;
+}
+
+.app-setup .nav-control {
+  margin-top: 30px;
+}
+.app-setup .nav-control ul {
+  padding: 0;
+}
+.app-setup label span {
+  margin-left: 0;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.app-setup .nav-tabs, 
+.app-setup .nav-tabs li, 
+.app-setup .nav-tabs li.active a, 
+.app-setup .nav-tabs a, 
+.app-setup .nav-tabs a:hover {
+  border: none;
+}
+
+.app-setup .nav-tabs li {
+  margin-right: 60px;
+  display: inline-block;
+  float: none;
+  border: 2px solid transparent;
+}
+.app-setup li.active {
+  border: none;
+}
+.app-setup li.active a {
+  border: none;
+  color: #555 !important;
+} 
+.app-setup li.active span.numbering {
+  background-color: #FFF; /* green */
+  color: #069d54;
+  border: 2px solid #069d54;
+  -webkit-transition: .1s linear;
+     -moz-transition: .1s linear;
+          transition: .1s linear;
+}
+.app-setup li.done span.numbering {
+  background-color: #069d54;
+  padding: 4px 0;
+  color: #fff;
+}
+.app-setup li.done a {
+  color: #069d54 !important;
+}
+
+.app-setup span.numbering {
+  padding: 2px 0;
+  margin-right: 10px;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: #dcdcdc;
+  text-align: center;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+.app-setup span.numbering:before {
+  counter-increment: number;
+  content: counter(number);
+}
+.app-setup li.done span.numbering:before {
+  content: '\f00c';
+  font-family: 'FontAwesome';
+}
+.app-setup .nav-tabs a, 
+.app-setup .nav-tabs a:hover {
+  font-weight: 700;
+  background-color: transparent;
+}
+.app-setup .nav-tabs a {
+  display: inline-block;
+  padding: 15px 0;
+  color: #ababab !important;
+  background-color: #fff;
+}
+
+
+.app-setup li:not(.active) a:hover span:not(.numbering) {
+  color: #555 !important;
+}
+
+
+.app-setup .tab-content {
+  margin-top: 30px;
+}
+
+.app-setup .tab-content > .active {
+  border: none;
+  padding: 0;
+}
+.app-setup .btn {
+  border-radius: 4px !important; 
+  /*width: 100%;*/
+  height: 41px;
+  border: 2px solid #069d54;
+  background-color: transparent;
+  text-transform: uppercase;
+  line-height: normal;
+  -webkit-transition: .1s linear;
+     -moz-transition: .1s linear;
+          transition: .1s linear;
+}
+.app-setup .btn:hover {
+  color: #fff;
+  background-color: #069d54;
+}
+
+.app-setup .app-control {
+  margin: 45px 0 15px;
+}
+.app-setup .app-control h5 {
+  padding: 0 0 5px;
+  text-transform: uppercase;
+}
+.app-setup .app-control .btn {
+  width: auto;
+  min-width: 120px;
+  display: inline-block;
+}
+.app-setup .app-control .button-group {
+  text-align: right;
+}
+.app-setup .app-control .compare {
+  border-color: #aaa;
+}
+.app-setup .app-control .compare:hover {
+  background-color: #aaa;
+}
+
+.app-control h5 {
+  padding: 15px 0;
+  color: #464646 !important;
+  font-weight: 400;
+}
+
+.appSettings {
+  border: 1px solid #f0f0f0;
+  -webkit-box-shadow: 0 3px 0 #e5e5e5;
+     -mox-box-shadow: 0 3px 0 #e5e5e5;
+          box-shadow: 0 3px 0 #e5e5e5;
+  -webkit-border-radius: 4px 4px 0 0;
+     -moz-border-radius: 4px 4px 0 0;
+          border-radius: 4px 4px 0 0;
+}
+.appSettings h5 {
+  padding: 15px;
+  background: #f8f8f8;
+  color: #464646 !important;
+  font-weight: 400;
+  border-bottom: 1px solid #f0f0f0;
+}
+.appSettings .setting {
+  padding: 15px 15px 30px;
+}
+/*.appSettings .setting .form-control {
+  /*margin-top: 3px;*/
+}*/
+
+.app-setup .submit-app {
+  margin-top: 28px;
+}
+
+.mountSlider .slider-label:after, 
+.bank-stack .head:after, 
+.bank-stack li:after, 
+.bank-table .short-info:after, 
+.app-setup .nav-control:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.mountSlider {
+  position: relative;
+  margin-top: 20px;
+}
+
+.mountSlider .slider-bg {
+  width: 100%;
+  height: 5px;
+  background: #e5e5e5;
+  display: block;
+  overflow: hidden;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.mountSlider .slider-control {
+  position: absolute;
+  top: -30%;
+  margin-left: -5px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  cursor: pointer;
+  border: 2px solid #069d54;
+  z-index: 1;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 12px;
+     -moz-border-radius: 12px;
+          border-radius: 12px;
+}
+
+.mountSlider .slider-set-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #069d54;
+  height: 5px;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.mountSlider .slider-label {
+  position: relative;
+  font-size: 12px;
+  color: #a8a8a8;
+  margin-top: 10px;
+}
+.mountSlider .slider-label .left {
+  float: left;
+}
+.mountSlider .slider-label .right {
+  float: right;
+}
+
+.bank-stack {
+  margin-top: 30px;
+}
+
+.bank-table {
+  position: relative;
+  border: 1px solid #f0f0f0;
+  -webkit-border-radius: 0 0 5px 5px;
+     -moz-border-radius: 0 0 5px 5px;
+          border-radius: 0 0 5px 5px;
+}
+
+.bank-table input[type="checkbox"] {
+  margin: 0;
+  width: 15px;
+  height: 15px;
+  float: none;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.bank-table .head {
+  padding: 5px 15px;
+  height: 60px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #fafafa;
+  border-bottom: 2px solid #dcdcdc;
+}
+
+.bank-table .checkbox, 
+.bank-table .bank-name, 
+.bank-table .installment, 
+.bank-table .fix-in, 
+.bank-table .cap-in, 
+.bank-table .detail {
+  position: relative;
+  top: 50%;
+  padding: 0 15px;
+  text-align: center;
+  float: left;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.bank-table .checkbox {
+  width: 5%;
+  margin: 0;
+}
+
+.bank-table .bank-name {
+  width: 20%;
+}
+
+.bank-table .installment, 
+.bank-table .fix-in, 
+.bank-table .cap-in {
+  width: 22%;
+}
+
+.bank-table .detail, 
+.bank-table .detail:hover {
+  color: #22A7F0;
+  text-decoration: none;
+}
+
+.bank-table ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.bank-table ol {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+.bank-table ol li {
+  font-size: 12px;
+}
+
+.bank-table ul > li:hover, 
+.bank-table ul > li.open {
+  background-color: #fcfcfc;
+}
+.bank-table ul > li.open {
+  background-color: #f8f8f8;
+}
+/*.bank-table ul > li:not(:last-child) {
+  border-bottom: 1px solid #f0f0f0;
+}*/
+
+.bank-table .short-info div {
+  vertical-align: middle;
+}
+
+.bank-table img {
+  max-width: 100px;
+  margin: auto;
+}
+
+.bank-table .detail-ins {
+  padding-bottom: 2px;
+  color: #22A7F0;
+  font-size: 13px;
+  border-bottom: 1px dashed #22A7F0;
+  text-decoration: none;
+}
+
+.bank-table .mortgageBank.open {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.bank-table .short-info {
+  padding: 15px;
+  height: 65px;
+  cursor: pointer;
+  position: relative;
+}
+
+.bank-table .detail-info {
+  margin: 0 15px;
+  border-top: 1px solid #f0f0f0;
+  height: auto;
+  overflow: visible;
+  padding: 15px 0 30px;
+  /*overflow: hidden;*/
+  -webkit-transition: 0.1s linear;
+     -moz-transition: 0.1s linear;
+          transition: 0.1s linear;
+}
+/*.bank-table .detail-info.open {
+  height: auto;
+  overflow: visible;
+  padding: 15px 0 30px;
+}*/
+#appDetail .bank-stack a#btn-submit-comparison {
+  color: #040404;
+}
+.bank-table .detail-info h5 {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #666 !important;
+}
+.bank-table .detail-info .col-sm-5 {
+  padding-right: 0;
+}
+.bank-table .detail-info .col-sm-7 { 
+  padding-left: 0;
+}
+.bank-table .detail-group, 
+.bank-table .detail-promo {
+  padding: 0 15px ;
+}
+.bank-table .detail-group {
+  border-right: 1px solid #e5e5e5;
+}
+.bank-table .detail-group label, 
+.bank-table .detail-group span > span, 
+.bank-table .detail-group span.desc {
+  font-weight: 400;
+}
+.bank-table .detail-group span {
+  font-weight: 700;
+}
+.bank-table .detail-group span.desc {
+  display: block;
+  font-size: 12px;
+}
+.bank-table .detail-group > div {
+  margin-bottom: 5px;
+}
+.bank-table .detail-group > div:last-child {
+  margin-top: 15px;
+}
+.bank-table .detail-group > div:last-child strong, 
+.bank-table #totalPayment {
+  color: #000;
+}
+
+.bank-table .detail-promo h5 {
+  font-size: 13px;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+}
+
+
+.bank-body .disabled, 
+.bank-body .disabled:hover, 
+.bank-table .disabled.open {
+  background-color: #e5e5e5;
+}
+.bank-body .disabled {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  background-color: #e5e5e5;
+}
+
+.compare-table {
+  margin: 30px 0;
+}
+
+.compare-table table {
+  width: 100%;
+}
+.compare-table th, 
+.compare-table td {
+  padding: 15px 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.compare-table tr:last-child td {
+  border-bottom: none;
+}
+.compare-table th:not(:last-child), 
+.compare-table td:not(:last-child) {
+  border-right: 1px solid #f0f0f0;
+}
+.compare-table th:not(:first-child), 
+.compare-table td:not(:first-child) {
+  text-align: center;
+}
+.compare-table th {
+  height: 50px;
+}
+.compare-table th:first-child, 
+.compare-table td:first-child {
+  width: 20%;
+}
+
+.compare-table .on-mobile {
+  display: none;
+}
+
+.compare-table .short-info {
+  cursor: default;
+}
+.compare-table .bank-name {
+  width: auto;
+  float: none;
+}
+
+.back-to {
+  display: inline-block;
+  margin: 0 0 15px;
+}
+.back-to.on-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .compare-table th {
+    height: 30px;
+  }
+  .compare-table tr.on-mobile {
+    display: table-row;
+    width: 100%;
+    background-color: #dcdcdc;
+  }
+  .compare-table tr.on-mobile td {
+    padding: 5px;
+  }
+  .compare-table th:first-child, 
+  .compare-table td:first-child {
+    display: none;
+  }
+  .compare-table.bank-table img {
+    max-width: 60px;
+    margin: auto;
+  }
+  .compare-table.bank-table .short-info {
+    margin: 0;
+    padding: 5px 0;
+  }
+  .compare-table.bank-table .short-info > div {
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .back-to.on-mobile {
+    display: inline-block;
+  }
+}
+@media screen and (max-width: 768px) {
+  .bank-table .head {
+    display: none;
+  }
+  .bank-table img {
+    margin: 0;
+  }
+  .bank-table .short-info {
+    height: auto;
+    padding: 15px 0;
+    margin: 0 15px;
+  }
+  .bank-table .short-info.active {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .bank-table .short-info > div {
+    top: 0;
+    transform: translateY(0);
+    display: block;
+    margin: 0 0 15px;
+    width: 100%;
+    text-align: left;
+  }
+  .bank-table .short-info > div {
+    padding-left: 185px;
+  }
+  .bank-table .short-info > div.checkbox, 
+  .bank-table .short-info > div.detail {
+    padding-left: 0;
+  }
+  .bank-table .short-info > div.detail {
+    margin: 5px 0 0;
+  }
+
+  .bank-table .detail-group {
+    padding: 0 0 15px;
+    margin: 0 15px 0 0;
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .bank-table .detail-group > div {
+    margin-bottom: 15px;
+  }
+  .bank-table .detail-promo {
+    padding: 0;
+    margin: 0 0 15px 15px;
+    border-top: 1px solid #fff;
+  }
+  .bank-table .detail-info {
+    border-top: 0;
+  }
+  .bank-table .detail-info.open {
+    border-top: 1px solid #fff;
+  }
+  .bank-table .short-info > div:before {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    color: #aaa !important;
+  }
+  .bank-table .short-info > div:nth-of-type(2):before {
+    content: 'Bank';
+    top: 10px;
+  }
+  .bank-table .short-info > div:nth-of-type(3):before {
+    content: 'Angsuran per bulan';
+  }
+  .bank-table .short-info > div:nth-of-type(4):before {
+    content: 'Bunga Fix';
+  }
+  .bank-table .short-info > div:nth-of-type(5):before {
+    content: 'Bunga Cap';
+  }
+  .app-setup .app-control .button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+    z-index: 10;
+    text-align: left;
+    border-top: 1px solid #e5e5e5;
+  }
+  .app-setup .app-control .button-group .btn {
+    width: 50%;
+    float: left;
+  }
+  .app-setup .app-control .button-group button:first-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .bank-table .short-info {
+    padding: 15px 0;
+  }
+  .bank-table .short-info > div {
+    padding-left: 0;
+  }
+  .bank-table .short-info > div:before {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0;
+    margin-bottom: 5px;
+    color: #aaa !important;
+  }
+  .bank-table .short-info > div:nth-of-type(2):before {
+    top: 0;
+  }
+}
+/*---------------------------------------------*/
+/*view success*/
+.bank-kalkulator {
+    position: relative;
+    z-index: 2;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.margin-top-2 {
+    margin-top: 10px;
+}
+
+.bank-kalkulator .mortgage-form {
+    background-color: #ffffff;
+    padding: 5px 15px;
+}
+
+.padding-vert-30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.padding-side-30 {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.bank-kalkulator .success h3 {
+    color: #009634;
+    text-align: center;
+    font-family: "hind_bold", Helvetica, Arial, sans-serif;
+}
+
+.bank-kalkulator .margin-top-6, .bank-kalkulator .margin-vert-30 {
+    margin-top: 30px;
+}
+
+.bank-kalkulator .success img {
+    margin: 15px auto;
+    display: block;
+}
+
+.bank-kalkulator img {
+    vertical-align: middle;
+}
+
+.bank-kalkulator .btn.with-bg.green {
+    background-color: #009634;
+    color: #ffffff;
+}
+.bank-kalkulator .btn{
+  -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      border-radius: 3px;
+      -webkit-transition: 0.2s, ease-in;
+  
+}
+
+.btn.disabled {
+    background-color: #e9e9ef !important;
+    color: #9d9db4 !important;
+}

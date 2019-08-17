@@ -1,0 +1,113 @@
+$font_type_import
+
+body {
+	color: $font_color;
+	background-color: $bg_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+.new-letter-wrapper { 
+	background-color:$bg_color;
+}
+
+h1, h2, h3, h4, h5, h6, .underline.media-heading {
+	$font_heading_color;
+}
+
+.underline:after{
+	background-$font_heading_color;
+}
+
+.header-topbar {
+	background-color:$bg_color_top_header !important;
+}
+
+header .bg-white .header-main {
+	$bg_header;
+}
+
+footer .bg-dark .hyperlink {
+	background-color:$bg_footer !important;
+}
+
+a, 
+.kpr-item a.more, 
+.hyperlink .hyper-left .link:hover, 
+.hyperlink .hyper-right .link:hover, 
+.sunhouse-item .about-house .title:hover, 
+.header-topbar .topbar-left > li:hover i, 
+.header-topbar .topbar-left > li:hover span, 
+.agency-list-content .agency-item .agency-info .agency-pos .link:hover, 
+.agency-list-content .agency-item .agency-info .agency-skype .link:hover, 
+.agent-statistics .statistic-items .number,
+.agency-list-content .agency-item .agency-info .agency-pos > a {
+	color: $font_link_color;
+}
+
+header .socials .link:hover, 
+.inblock:hover > a {
+	color: $font_link_color !important;
+}
+
+.btn.btn-blue {
+	background-color:$button_color;
+}
+
+.btn.btn-blue:hover, 
+.btn.btn-transparent.white:hover, 
+.nav-bar .detail-nav .nav-item.active .icon, 
+.our-service-items .icon-wrapper .icon-our-service, 
+.contact-info-item .icon {
+	color:$button_color;
+}
+
+#back-top a, 
+#back-top a i, 
+.btn.btn-transparent.blue {
+	color:$button_color;
+	border-color:$button_color;
+}
+
+#back-top a:hover, 
+.btn.btn-transparent.blue:hover, 
+.our-service-items .icon-wrapper:after {
+	color:#FFFFFF;
+	background-color:$button_color;
+}
+
+#back-top a:hover i {
+	color:#FFFFFF;
+}
+
+img, 
+.sunhouse-item .more-info-house .price, 
+.sunhouse-item .more-info-house .place-house:hover i, 
+.sunhouse-item .more-info-house .place-house:hover p, 
+.sunhouse-item .more-info-house .place-house:hover a, 
+.property-detail .detail-wrapper .detail-content .des-text, 
+.agency-list-content p {
+	color: $main_content_color;
+}
+
+.header-main .navigation .nav-links li.active .main-menu, 
+.header-main .navigation .nav-links li:hover .main-menu {
+	$font_menu_color;
+}
+
+.header-main .dropdown-menu-1, .header-main .dropdown-menu-2 {
+	border-$font_menu_color;
+}
+
+footer {
+	background-color:$bg_footer;
+}
+
+footer h1, 
+footer h2, 
+footer h3, 
+footer h4, 
+footer h5, 
+footer h6{
+	$font_heading_footer_color;
+}

@@ -1,0 +1,39 @@
+#property-action-container.dijual{
+  background: url($url_sell);
+}
+#property-action-container.disewakan{
+  background: url($url_rent);
+}
+#custom-ebrosur .body .foot-content {
+  color: $color_content_font;
+}
+#custom-ebrosur .body .property-desc{
+  color: $color_content_font;
+}
+#custom-ebrosur .darkbrown .body .property-desc,
+#custom-ebrosur .darkblack .body .property-desc,
+#custom-ebrosur .darkblue .body .property-desc,
+#custom-ebrosur .darkgreen .body .property-desc,
+#custom-ebrosur .darkred .body .property-desc,
+#custom-ebrosur .darkbrown .body .foot-content,
+#custom-ebrosur .darkblack .body .foot-content,
+#custom-ebrosur .darkblue .body .foot-content,
+#custom-ebrosur .darkgreen .body .foot-content,
+#custom-ebrosur .darkred .body .foot-content {
+    color: $color_content_font;
+}
+#custom-ebrosur .live.ebanner.potrait-bg.darkbrown .body .property-desc,
+#custom-ebrosur .live.ebanner.potrait-bg.darkblack .body .property-desc,
+#custom-ebrosur .live.ebanner.potrait-bg.darkblue .body .property-desc,
+#custom-ebrosur .live.ebanner.potrait-bg.darkgreen .body .property-desc,
+#custom-ebrosur .live.ebanner.potrait-bg.darkred .body .property-desc,
+#custom-ebrosur .live.ebanner.potrait-bg.darkbrown .body .foot-content,
+#custom-ebrosur .live.ebanner.potrait-bg.darkblack .body .foot-content,
+#custom-ebrosur .live.ebanner.potrait-bg.darkblue .body .foot-content,
+#custom-ebrosur .live.ebanner.potrait-bg.darkgreen .body .foot-content,
+#custom-ebrosur .live.ebanner.potrait-bg.darkred .body .foot-content {
+    color: $color_content_font;
+}
+#custom-ebrosur .live.potrait-bg .body .agent-info{
+  color: $color_content_font;
+}

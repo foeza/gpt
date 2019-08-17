@@ -1,0 +1,168 @@
+$font_type_import
+
+body {
+	color: $font_color;
+	background-color: $bg_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+.ct-iconBox .ct-iconBox--description .ct-title,
+.ct-iconBox .ct-iconBox--description .ct-text {
+	font-size: $font_size;
+}
+
+h1, h2, h3, h4, h5, h6, { $font_heading_color; }
+
+a, .ct-articleComments a {
+	color: $font_link_color;
+}
+
+a.btn.btn-primary.btn-transparent--border{
+	color:$button_color;
+	border-color:$button_color;
+}
+
+a.btn.btn-primary.btn-transparent--border:hover{ background-color:$button_color; }
+
+img, 
+label, 
+ul.pagination > li > a, 
+.ct-articleBox-titleBox p, 
+.ct-articleBox-description p, 
+.ct-articleBox-description ul.list-unstyled, 
+.ct-product--description, 
+.panel-body, 
+.nav.nav-tabs > li > a,
+.navbar .navbar-nav .active > a::after{ color: $main_content_color; }
+
+.nav.nav-tabs > li.active > a, 
+.nav.nav-tabs > li:hover > a,
+.navbar .navbar-nav .active > a::after, 
+.navbar .navbar-nav a:hover::after, 
+.navbar .navbar-nav ul li:hover > a, 
+ul.pagination > li.active > a, 
+ul.pagination > li > a:hover, 
+ul.ct-showPages > li.is-active, 
+.select2-drop .select2-highlighted, 
+.ct-sectioButton--square, 
+section#contact-section, 
+.ct-form--label--type1, 
+.ct-form--label--type2, 
+.ct-form--label--type3, 
+.ct-form--label--type1 button.btn.btn-primary, 
+.ct-form--label--type2 button.btn.btn-primary, 
+.ct-form--label--type3 button.btn.btn-primary,
+.ct-socials--circle { 
+	border-color:$main_content_color;
+	background-color:$main_content_color;
+}
+
+.ct-footer--extended .ct-phoneNumbers i,
+.ct-phoneNumbers i {
+	color:$main_content_color;
+}
+
+label.premium, 
+.slider.slider-horizontal .slider-handle, 
+.slider.slider-horizontal .slider-track .slider-selection{ background-color:$main_content_color; }
+
+.caret{ border-top-color:$main_content_color; }
+
+.ct-topBar, .ct-navbarMobile, .navbar{ background: $bg_header;}
+
+.ct-topBar .ct-panel--item > i, 
+.ct-topBar .ct-panel--item > a, 
+.nav.navbar-nav > li a{ $font_menu_color; }
+
+div.ct-pageWrapper{
+	color: $font_color;
+	background-color:$bg_color;
+}
+
+footer > div.ct-footer--extended,
+.ct-formSearch--extended, .ct-searchFormMobile,
+.ct-formContact--map, .ct-formSearch--fullWidth,
+.ct-postFooter,
+.form-control,
+.ct-form--darkStyle,
+.ct-site--map,
+.ct-itemProducts .ct-product--meta,
+.ct-hover:hover .ct-imageBox {
+	background-color:$bg_footer;
+}
+
+footer > div.ct-footer--extended h1, 
+footer > div.ct-footer--extended h2, 
+footer > div.ct-footer--extended h3, 
+footer > div.ct-footer--extended h4, 
+footer > div.ct-footer--extended h5, 
+footer > div.ct-footer--extended h6{ $font_heading_footer_color; }
+
+/* fix value */
+label.premium::before{ border-color:transparent #666666 transparent transparent; }
+
+a:hover, 
+a:hover > i, 
+.ct-topBar a:hover, 
+.ct-topBar a:hover > i, 
+.nav.navbar-nav > li > a:hover{ color:$main_content_color; }
+
+label.premium, 
+.ct-site--map a, 
+ul.nav.nav-tabs > li.active > a, 
+.nav.nav-tabs > li:hover > a,
+ul.pagination > li.active > a, 
+ul.pagination > li > a:hover, 
+ul.pagination > li > a:hover > i, 
+ul.ct-showPages > li.is-active > a > i, 
+.select2-drop .select2-highlighted, 
+.ct-sectioButton--square > i, 
+.ct-form--label--type1 i, 
+.ct-form--label--type2 i, 
+.ct-form--label--type3 i, 
+.ct-u-text--white, 
+.ct-u-text--white i,
+.ct-form--darkStyle label, 
+.nav.navbar-nav > li ul a:hover, 
+.btn.btn-primary.btn-transparent--border:hover{ color:#FFFFFF; }
+
+.navbar .navbar-nav .active > a { background-color: rgba(150, 150, 150, 0.1); }
+
+.ct-navbar--noDecoration .navbar-nav > li.active > a::after, 
+.ct-navbar--noDecoration .navbar-nav > li a:hover::after { background-color: transparent; }
+
+.rku-header {
+	background-image: $header_image;
+	background-position: 0;
+}
+
+/*Warna Font Umum*/
+.ct-formSearch--extended label, .ct-form--label--type1 span, .ct-product--meta span,
+.ct-widget--calculator form label, .ct-widget--calculator span, .ct-widget--calculator .fa-search,
+.ct-form--label--type1 i, .ct-product--meta span i {
+	color: $font_color;
+}
+.ct-personBox .ct-personContent .ct-contactPerson li a {
+	color: $font_color !important;
+}
+
+/*KPR*/
+.properties__bank{
+	background-color: $main_content_color !important;
+}
+
+/*---- Custom Ukuran Font ----*/
+.developer-request p, .list-product p, .detail-product-unit p, .detail-unit p{
+	font-size: $font_size;
+}
+
+/*Top header*/
+	.topBar{
+		background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+		border-bottom: 2px solid $bg_color_top_header !important;
+	}
+	.topBar ul li.border a{
+		border-left: solid 1px $bg_color_border_header;
+	}
+/**/

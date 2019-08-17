@@ -1,0 +1,98 @@
+$font_type_import
+
+body {
+  background-color: $bg_color;
+  color: $font_color;
+  font-size: $font_size;
+  font-family: $font_type;
+}
+
+h5,
+output,
+.form-control,
+.btn,
+.btn-secondary,
+.dropdown-menu,
+.input-group-addon,
+.popover,
+.popover-title,
+.block p,
+.btn-simple,
+.post-read-more,
+.pricing-content ul li,
+.header-call-to-action h2,
+.note span,
+.infobox-content-price,
+.property-spec ul li,
+.property-box-price,
+.property-box-view,
+.property-list dl,
+.view-mode span {
+  font-size: $font_size;
+}
+
+.btn:not(.dropdown-toggle), .btn-secondary:not(.dropdown-toggle) {
+  background-color: $button_color;
+}
+.footer {
+  background-color: $main_content_color;
+}
+.properties__bank{
+  background-color: $main_content_color !important;
+}
+.header,
+.header-background-inner, .properties__bank {
+  background-color: $main_content_color;
+}
+.feature p {
+  color: $font_color;
+  font-size: $font_size;
+}
+ul {
+  color: $font_color;
+  list-style-position: inside;
+  padding: 0px;
+}
+.widget-title h2 {
+  color: $font_color;
+}
+p,
+p.text,
+h1.page-header,
+.property-list dd {
+  color: $font_color;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  $font_heading_color
+}
+
+.header-call-to-action-wrapper .header-navigation .nav li a,
+.header-navigation .nav li.active > a,
+.header-navigation .nav li > a {
+  $font_menu
+}
+
+a {
+  color: $font_link_color;
+}
+
+.header-call-to-action-wrapper .header-navigation .nav li a, .header-navigation .nav li.active > a, .header-navigation .nav li > a{
+	$font_menu_color
+}
+
+/*---- Custom Ukuran Font ----*/
+#developers p, .detail-unit p {
+  font-size: $font_size;
+}
+
+/*Top header*/
+  .topBar{
+    background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+    border-bottom: 2px solid $bg_color_top_header !important;
+  }
+  .topBar ul li.border a{
+    border-left: solid 1px $bg_color_border_header;
+  }
+/**/

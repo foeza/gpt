@@ -1,0 +1,109 @@
+$font_type_import
+
+body {
+	color: $font_color;
+	background-color: $bg_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+.nav-primary .nav-link, .listing-box-title h2 {
+	font-size: $font_size;
+}
+
+/*---- Custom Ukuran Font ----*/
+.developer-request p, .developer-request p, .list-product p, .detail-product-unit p, .detail-unit p {
+	font-size: $font_size;
+}
+
+/*---- Warna Utama ----*/
+	.site__panel,
+	.listing-box:hover .listing-box-title, .listing-box-image-link::after,
+	.listing-box-image-links a:first-child,
+	.listing-row-image-links a:first-child,
+	.listing-row-content h4,
+	.listing-small-image a:before,
+	.post-date strong, .post-image:after,
+	.nav-primary .nav-link.active::before,
+	.faq-item::before {
+	    background: $main_content_color !important;
+	}
+
+	.listing-user-social ul li a:hover,
+	.listing-box-social li a:hover {
+		border-color: $main_content_color !important;
+	    color: $main_content_color !important;
+	}
+
+	.listing-row-attributes li .fa,
+	.amenities li.yes::before {
+	    color: $main_content_color !important;
+	}
+
+	#carousel-gallery .carousel-caption, .content-title {
+		background-image: linear-gradient(to right, $main_content_color, #404040) !important;
+	}
+
+/*---- Background footer ----*/
+	.footer-top {
+		background-color:$bg_footer !important;
+	}
+
+/*---- Warna Tombol ----*/
+	.btn-primary {
+		background-color:$button_color !important;
+		border-color:$button_color !important;
+	}
+
+	.btn-primary:hover{ background-color:$button_color; }
+
+	.reset-wrapper-home, .reset-wrapper {
+    	border: solid 1px $button_color;
+	}
+	.reset-wrapper-home a#resetfilter, .reset-wrapper a#resetfilter {
+	    color: $button_color;
+	}
+
+/*---- Warna Font Umum ----*/
+	.post-content p,
+	.listing-box-content dt, .listing-box-content dd,
+	.listing-row-attributes li strong {
+		color: $font_color;
+	}
+
+/*---- Warna Font Menu Utama ----*/
+	.nav-primary .nav-link {
+		$font_menu_color;
+	}
+
+/*---- Warna Font Heading ----*/
+	.page-header h1, .page-header h2, .page-header h3,
+	.page-header h4, .page-header h5, .page-header h6 {
+		$font_heading_color
+	}
+
+/*---- Warna Font Heading Footer ----*/
+	.footer-top-left h2, .footer-top-right h2 {
+	    $font_heading_footer_color
+	}
+
+/*---- Warna Font Link ----*/
+	.post-read-more a, .post-title a,
+	.footer-wrapper .footer-inner .footer-top .footer-top-right a {
+		color: $font_link_color !important;
+	}
+
+/*KPR*/
+	.properties__bank{
+		background-color: $main_content_color !important;
+	}
+
+/*Top header*/
+	.topBar{
+		background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+		border-bottom: 2px solid $bg_color_top_header !important;
+	}
+	.topBar ul li.border a{
+		border-left: solid 1px $bg_color_border_header;
+	}
+/**/

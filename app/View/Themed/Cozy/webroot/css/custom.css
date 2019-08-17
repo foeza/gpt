@@ -1,0 +1,295 @@
+/* ====== CUSTOM CSS FOR COZY ======
+- home property
+- detail property
+- berita
+- new developer page
+- header
+- About
+
+==================================*/
+
+html {
+	height: unset !important;
+}
+
+/*home property*/
+.status-property {
+	opacity: 1;
+}
+
+.status-listing {
+    right: 10px;
+    left: initial;
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    border-radius: 2px;
+}
+
+/*detail property*/
+#similar-properties.grid-style1 .item {
+    margin-bottom: 20px !important;
+}
+
+.link-another-property {
+    padding: 0 16px;
+}
+
+#property-detail-wrapper.style1 .price.detail-status-listing {
+    top: 70px;
+    padding: 10px;
+}
+
+.carousel-style1 .item .image .info h3.title-default {
+    color: #fff !important;
+}
+
+.button-group.additional-button{
+	margin-bottom:20px;
+}
+.carousel.slide.prime-mortgage.type-1{
+	margin-bottom: 10px;	
+}
+
+#appDetail .btn.compare{
+	padding: 10px;
+}
+
+#mortgage-bank-list li.mortgageBank .cb-custom{
+	margin-top: 0;
+}
+
+#result-calculator .nav-tabs > li > a{
+	border:transparent;
+}
+
+#property-mortgage-app .mortgage-form .input-group .input-group-addon.at-right, 
+#property-mortgage-app .mortgage-form .input-group .input-group-addon.at-left {
+    padding: 14px 15px;
+}
+div.pp_default .pp_content_container .pp_details {
+	margin-top: 0;
+	padding-top: 5px;
+}
+a.pp_close {
+	top: 5px;
+}
+
+/*berita*/
+.post-content p {
+    margin-bottom: 10px;
+}
+
+/* new developer page */
+.grid-style1.developer-list .item .image img {
+    max-height: 195px;
+}
+
+.grid-style1 .item .image, .grid-style2 .item .image, .list-style .item .image {
+	max-height: none;
+}
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.margin-top-10 {
+	margin-top: 50px;
+}
+
+.developer-opening {
+	margin-bottom: 15px;
+}
+.developer-opening:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+.developer-desc p {
+    margin: 10px 0;
+}
+
+.developer-logo,
+.developer-text {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.developer-logo {
+	width: 170px;
+	height: 80px;
+	padding: 2px;
+	margin-right: 15px;
+	border: 1px solid #dcdcdc;
+}
+
+.developer-logo, .project-image {
+	position: relative;
+	overflow: hidden;
+}
+.developer-logo img, .project-image img {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	max-width: calc(100% - 4px);
+	max-height: calc(100% - 4px);
+}
+
+.project-list ul {
+	padding: 0;
+	margin-bottom: 0;
+}
+
+.project-list li {
+	padding: 15px 0;
+	border-bottom: 1px solid #f0f0f0;
+	list-style: none;
+}
+.project-list li:last-child {
+	border-bottom: 0;
+}
+
+.project-image a {
+	width: 100%;
+	display: block;
+	background-size: cover;
+	overflow: hidden;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
+.project-image a:before {
+	content: "";
+	display: block;
+	padding-top: 75%;
+}
+
+.project-name, .project-short-promo p {
+	margin-bottom: 5px;
+}
+
+.project-name a {
+	color: inherit;
+}
+
+.project-location {
+	font-size: 13px;
+	color: #868686;
+	margin-bottom: 15px;
+}
+
+.project-short-spec, .project-short-promo {
+	font-size: 14px;
+}
+
+.project-short-spec {
+	margin-bottom: 10px;
+}
+.project-short-spec label {
+	margin-bottom: 5px;
+	margin-right: 5px;
+	color: #868686;
+}
+.project-short-spec span {
+	font-weight: 700;
+}
+.project-list .short-spec-unit li {
+    padding-right: 15px;
+    display: inline-block;
+    border-bottom: none;
+}
+.project-short-promo p.promo {
+    font-style: italic;
+}
+
+.pagination.developer-advance {
+    margin: 0;
+}
+.unit-price span {
+    padding: 5px;
+}
+
+
+/* --- MEDIA QUERIES AREA --- */
+
+@media(max-width: 480px){
+	#result-calculator ul.nav.nav-tabs li{
+	    width: 50%;
+	}
+	#result-calculator .nav{
+		display: block;
+	}
+	.app-setup .nav-tabs > li{
+		width: 50%;
+		margin-right: 0 !important;
+	}
+}
+@media (max-width: 992px){
+	.nav.nav-tabs{
+		display:block;
+	}
+}
+
+/* - header */
+.topBarText{
+    font-size: 12px;
+}
+.contact-info-top{
+	margin-top: 5px;
+}
+.topBar a:hover, .topBar a:focus{
+	text-decoration: none;
+}
+@media (max-width: 425px) {
+	.topBar .socialIcons{
+		padding: 0;
+	}
+}
+/**/
+
+@media (max-width: 768px) {
+	ul.career {
+	    -webkit-padding-start: initial;
+	}
+}
+
+/* About */
+.about-description img, .career img {
+    max-width: 100%;
+    height: auto !important;
+}
+/**/
+
+/*Agent*/
+.agency-detail .info .contact-us li i.rv4-wa,
+.agent-detail .info .contact-us li i.rv4-wa {
+	text-align: left;
+}
+
+.wrapper-bg-white {
+	background-color: #fff;
+}
+
+.mobile-search {
+  z-index: 100 !important;
+}
+
+@media (max-width: 768px) {
+  .mobile-search-trigger {
+    z-index: 99 !important;
+  }
+}
+
+.dropdown-group > .dropdown-menu > li.dropdown-text-input {
+  padding: 0 0 5px !important;
+}
+
+.dropdown-group a.dropdown-toggle span.icon > i:before {
+  font-size: 6px !important;
+}

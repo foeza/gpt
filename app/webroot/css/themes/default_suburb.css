@@ -1,0 +1,183 @@
+$font_type_import
+
+body {
+  color: $font_color;
+  background-color: $bg_color;
+  font-size: $font_size;
+  font-family: $font_type;
+}
+
+.navigation .navbar-nav > li, .wide-3 h3 {
+  font-size: $font_size;
+}
+
+.btn,
+.wide-2 .item-price .btn-small,
+p,
+li,
+.form-group .selectize-input,
+.blog-nv .back a,
+.blog-sm p, .blog-sm li,
+.blog-post p, .blog-post li,
+.blog-post .gallery .gallery-caption,
+.nav-previous a, .nav-next a, .pagination > li > a, .pagination > li > span,
+.price-box.promoted .popular p, .promoted.submit-pricing .popular p, .submit-pricing .promoted.title .popular p, .price-box.promoted .popular li, .promoted.submit-pricing .popular li, .submit-pricing .promoted.title .popular li,
+.contact-form h6,
+.contact-us p, .contact-us li,
+.navigation .selectize-dropdown [data-selectable], .navigation .selectize-dropdown .optgroup-header,
+.home_1 .search #rent-sale,
+.explore h5,
+.wide-1 .ex-block p, .wide-1 .ex-block li,
+.wide-2 .wht-cont .btm-part p, .wide-2 .wht-cont .btm-part li,
+.wide-3 p, .wide-3 li,
+#page-property-content h5,
+#page-property-content .pr-summary p, #page-property-content .pr-summary li,
+#page-content-search .container .wide_container_2 header .options-overlay label,
+#page-content-agent .content .agent-info p, #page-content-agent .content .agent-info li,
+#page-content-agent .content .agent-info .btn-large,
+#page-content-agent .wide_container_2 .agency h6,
+#page-content-agent .wide_container_2 .agency p, #page-content-agent .wide_container_2 .agency li,
+.form-inline span,
+.btn,
+.checkbox label,
+#page-footer .inner #footer-copyright a,
+#page-footer .inner #footer-copyright a:hover {
+  font-size: $font_size;
+}
+
+.blog-styles .wide-1,
+.contact-form,
+.home_2,
+.property-search .location-map button,
+#page-content-search .container,
+#page-content-search .container .wide_container_2,
+#page-content-search .container .wide_container_2 .content,
+#page-content-search .container .wide_container_2 .content_2,
+#page-content-search .container .wide_container_2 .tabs .tab-content{
+  background-color: $bg_color;
+}
+
+.blog-styles,
+.blog-post,
+.nav-previous a, .nav-next a, .pagination > li > a, .pagination > li > span,
+.nav-next a, .nav-next a:visited, .nav-next a:focus, .nav-next a:active, .nav-next a:hover,
+.nav-previous a, .nav-previous a:visited, .nav-previous a:focus, .nav-previous a:active, .nav-previous a:hover,
+.menu-wht .navigation .navbar .icon-bar, .menu-wht .navigation .navbar .cross:before, .menu-wht .navigation .navbar .cross:after,
+.menu-wht .navigation .dropdown-menu,
+.wide-3,
+.wide-2 .white,
+#page-property-content .pr-summary,
+#page-property-content .wide_container_3,
+#page-content-search .container .wide_container_2 header,
+#page-content-search .container .wide_container_2 header .options-overlay,
+#page-content-search .container .wide_container_2 .tabs .tab-links,
+#page-content-agent .wide_container_2,
+.navigation,
+.navigation .navbar .navbar-nav > li .child-navigation,
+.navigation .navbar .site-header .mob-menu,
+.tabs .tab-content,
+.selectize-dropdown,
+.selectize-dropdown .optgroup-header,
+.dropdown-menu,
+#page-content-search .container .wide_container_2 .form-control,
+.property-search select {
+  background-color: $main_content_color;
+}
+
+.exp-img-2:hover .btn,
+.wide-1 .ab-us .btn:hover,
+.wide-2 .bottom .btn:hover,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary,
+#page-property-content .wide_container_3 .btn-default,
+.btn-default,
+.wide-3 .ffs-bs a,
+.exp-img-2:hover .btn,
+.btn,
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary,
+#page-property-content .wide_container_3 .btn-default {
+  border-color: $button_color;
+  color: $button_color;
+}
+.btn-default:hover,
+.exp-img-2:hover .btn,
+#page-content.career .btn.btn-small,
+#page-content.career .btn.btn-small:focus,
+#page-content.career .btn.btn-small:active {
+  background-color: $button_color;
+  color: $main_content_color;
+}
+
+.navigation .navbar .navbar-nav > li a,
+.navigation .navbar .navbar-nav > li .child-navigation li a,
+.navigation .navbar .navbar-nav > li.active .child-navigation a,
+.navigation .navbar .navbar-nav > li.has-child:after,
+.navigation .navbar .site-header .mob-menu .navbar-nav > li > a {
+  $font_menu_color
+}
+
+h1, h2, h3, h4, h5, h6,
+.header-text a, .header-text a:visited, .header-text a:hover,
+ul.social li a,
+.contact-us h3,
+.wide-2 .wht-cont h4 a,
+.wide-2 .item-info h4 a,
+#page-content-agent .wide-5 h3,
+.contact-us h4 {
+  $font_heading_color
+}
+
+a,
+.nav-previous a, .nav-next a, .pagination > li > a, .pagination > li > span,
+.nav-next a, .nav-next a:visited, .nav-next a:focus, .nav-next a:active, .nav-next a:hover,
+.nav-previous a, .nav-previous a:visited, .nav-previous a:focus, .nav-previous a:active, .nav-previous a:hover,
+#page-property-content .pr-info .error-block a,
+#page-property-content .property-block-small a,
+#page-content-search .container .wide_container_2 .pagination li > .active,
+#page-content-agent .content .agent-info a,
+.team-info .fa-skype,
+.team-info a,
+#fun-facts,
+.fun-facts .underline:before,
+#page-property-content .hl-bl .fa-star,
+#page-content-agent .content .agent-info .contact .skype-contact a,
+#page-content-agent .content .agent-info .fa-skype,
+#page-content-agent .content .agent-info .agency-contact .skype-contact a,
+footer p a,
+#page-footer .inner a.mailto,
+#page-footer .inner a:hover, #page-footer .inner a:focus,
+#page-footer .inner #footer-copyright a:hover {
+  color: $font_link_color;
+}
+
+#page-footer .inner h3 {
+  $font_heading_footer_color
+}
+
+#page-footer .inner #footer-main {
+  background-color: $bg_footer;
+}
+#property-mortgage-app .properties__bank{
+  background-color: $bg_color;
+}
+
+#property-mortgage-app .welcome-message h6, 
+#result-calculator a, #content-wrapper h6.title.properties__bank{
+  $font_heading_color;
+}
+
+#result-calculator.properties__bank{
+  background-color: $main_content_color;
+}
+.bank-contact .title.properties__bank{
+  background-color: $main_content_color;
+}
+
+/*Top header*/
+  .topBar{
+    background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+    border-bottom: 2px solid $bg_color_top_header !important;
+  }
+  .topBar ul li.border a{
+    border-left: solid 1px $bg_color_border_header;
+  }
+/**/

@@ -1,0 +1,90 @@
+$font_type_import
+
+body {
+	color: $font_color;
+	font-size: $font_size;
+	font-family: $font_type;
+}
+
+.widget__content .worker__info, .widget__content .worker__name,
+.worker--index .worker__tel, .widget__content .detail_worker {
+	font-size: $font_size;
+}
+
+.widget--gray {
+	background-color: $bg_color;
+}
+
+/*---- Custom Ukuran Font ----*/
+.list-product-request p, .detail-product-unit-request p,
+.detail-unit p {
+	font-size: $font_size;
+}
+
+/*---- Warna Utama ----*/
+	.site__panel, .header, .article__time,
+	.properties--grid:hover .properties__info, .properties__bank,
+	.navbar__dropdown {
+	    background: $main_content_color !important;
+	}
+
+	#carousel-gallery .carousel-caption, .content-title {
+		background-color: $main_content_color !important;
+	}
+
+	.property__params-list--options li:before {
+		border: 2px solid $main_content_color !important;
+	}
+
+	.property__price-value, .social--footer .social__item {
+	    color: $main_content_color !important;
+	}
+
+/*---- Background footer ----*/
+	.footer {
+		background-color:$bg_footer !important;
+	}
+
+/*---- Warna Tombol ----*/
+	.form__submit, .btn-warning {
+		background:$button_color !important;
+		border-bottom: 4px solid #000000 !important;
+	}
+
+	.form__submit:hover{ background:$button_color; }
+
+/*---- Warna Font Umum ----*/
+	p {
+		color: $font_color;
+	}
+
+/*---- Warna Font Menu Utama ----*/
+	.navbar--header .navbar__link {
+		$font_menu_color;
+	}
+
+/*---- Warna Font Heading ----*/
+	.widget__title {
+		$font_heading_color
+	}
+
+/*---- Warna Font Heading Footer ----*/
+	.widget--footer .widget__title {
+	    $font_heading_footer_color
+	}
+
+/*---- Warna Font Link ----*/
+	.footer__col .address__main a,
+	a.detail_worker {
+		color: $font_link_color !important;
+	}
+
+/*Top header*/
+	.topBar{
+		background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+		border-bottom: 2px solid $bg_color_top_header !important;
+	}
+	.topBar ul li.border a{
+		border-left: solid 1px $bg_color_border_header;
+	}
+/**/

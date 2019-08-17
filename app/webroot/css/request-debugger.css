@@ -1,0 +1,19 @@
+* {
+	font-size: 12px;
+	font-family: verdana;
+}
+
+.debug-content {
+	padding: 10px;
+	margin: 10px auto;
+	background: #F6F6F6;
+	border: 1px solid #CCCCCC;
+}
+
+.debug-content .content-header {
+	color: red;
+	padding: 0 0 5px;
+	font-weight: bold;
+	border-bottom: 1px solid #CCCCCC;
+	margin-bottom: 10px;
+}

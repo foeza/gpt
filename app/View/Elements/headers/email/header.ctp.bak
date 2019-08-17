@@ -1,0 +1,70 @@
+<?php
+
+	$params			= empty($params) ? null : $params;
+	$header			= $this->Rumahku->filterEmptyField($params, 'headerDomain', null, 'PRIMESYSTEM');
+	$logoDefault	= $this->Rumahku->filterEmptyField($params, 'logoDefault');
+	$bankLogo		= $this->Rumahku->filterEmptyField($params, 'BankDomain', 'logo');
+
+	$options = empty($options) ? array() : $options;
+	$options = array_replace_recursive(array(
+		'width'		=> 150,
+		'fullBase'	=> true, 
+	), $options);
+
+	$imageURL	= Configure::read('__Site.prime_site');
+	$image		= $this->Html->image('prime-logo.png', $options);
+
+	if($header == 'PRIMESYSTEM'){
+		$imageURL	= Configure::read('__Site.prime_site');
+		$image		= $this->Html->image('prime-logo.png', $options);
+	}
+	else if($header == 'RKU'){
+		$imageURL	= Configure::read('__Site.main_website');
+		$image		= $this->Html->image('rumahku.com.png', $options);
+	}
+	else if(empty($logoDefault)){
+		if($bankLogo){
+			$imageURL	= Configure::read('__Site.main_website');
+			$imagePath	= Configure::read('__Site.logo_photo_folder');
+
+			$domain		= $this->Rumahku->filterEmptyField($params, 'BankDomain', 'sub_domain', $logoURL);
+			$bankName	= $this->Rumahku->filterEmptyField($params, 'BankDomain', 'name');
+			$image		= $this->Rumahku->photo_thumbnail(array(
+				'save_path'	=> $imagePath, 
+				'src'		=> $bankLogo, 
+				'size'		=> 'xxsm',
+				'fullbase'	=> $domain,
+			), array(
+				'style'	=> 'max-height: 60px;',
+				'alt'	=> $bankName,
+				'name'	=> $bankName,
+			));
+		}
+		else{
+			$logoCompany = Configure::read('Config.image.logo_company');
+			$dataCompany = $this->Rumahku->filterEmptyField($params, 'dataCompany');
+
+			if($dataCompany){
+				$logoCompany = $this->Rumahku->filterEmptyField($dataCompany, 'UserCompany', 'logo');
+			}
+
+			if($logoCompany){
+				$logoPath	= Configure::read('__Site.logo_photo_folder');
+				$logo		= $this->Rumahku->photo_thumbnail(array(
+					'save_path'		=> $logoPath, 
+					'src'			=> $logoCompany, 
+					'size'			=> 'xxsm',
+					'fullbase'		=> true,
+				), array(
+					'width' => 'max-height: 60px;', 
+				));
+			}
+		}
+	}
+
+?>
+<tr>
+	<td style="padding-bottom: 30px; text-align: center;">
+		<?php echo($this->Html->link($image, $imageURL, array('escape' => false))); ?>
+	</td>
+</tr>

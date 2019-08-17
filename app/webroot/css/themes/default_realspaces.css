@@ -1,0 +1,191 @@
+/*	B:OVERIDE GLOBAL VALUE ====================================================================*/
+	$font_type_import
+
+	body{
+		font-family:$font_type;
+		font-size:$font_size;
+		color:$font_color;
+	}
+
+	h1, h2, h3, h4, h5, h6,
+	.location {
+		font-family:$font_type !important;
+	}
+
+	.navigation > ul > li > a,
+	.navigation > ul > li > ul li > a {
+		$font_menu_color;
+	}
+
+	p.drop-caps.secondary:first-child::first-letter, 
+	.accent-bg, 
+	.fa.accent-color, 
+	.btn-primary, 
+	.btn-primary.disabled, 
+	.btn-primary[disabled], 
+	fieldset[disabled] .btn-primary, 
+	.btn-primary.disabled:hover, 
+	.btn-primary[disabled]:hover, 
+	fieldset[disabled] .btn-primary:hover, 
+	.btn-primary.disabled:focus, 
+	.btn-primary[disabled]:focus, 
+	fieldset[disabled] .btn-primary:focus, 
+	.btn-primary.disabled:active, 
+	.btn-primary[disabled]:active, 
+	fieldset[disabled] .btn-primary:active, 
+	.btn-primary.disabled.active, 
+	.btn-primary.active[disabled], 
+	fieldset[disabled] .btn-primary.active, 
+	.dropdown-menu > .active > a, 
+	.dropdown-menu > .active > a:hover, 
+	.dropdown-menu > .active > a:focus, 
+	.nav-pills > li.active > a, 
+	.nav-pills > li.active > a:hover, 
+	.nav-pills > li.active > a:focus, 
+	.pagination > .active > a, 
+	.pagination > .active > span, 
+	.pagination > .active > a:hover, 
+	.pagination > .active > span:hover, 
+	.pagination > .active > a:focus, 
+	.pagination > .active > span:focus, 
+	.label-primary, 
+	.progress-bar, 
+	a.list-group-item.active, 
+	a.list-group-item.active:hover, 
+	a.list-group-item.active:focus, 
+	.panel-primary > .panel-heading, 
+	.carousel-indicators .active, 
+	.owl-theme .owl-controls .owl-page.active span, 
+	.owl-theme .owl-controls.clickable .owl-page:hover span, 
+	hr.sm, 
+	.flex-control-nav a:hover, 
+	.flex-control-nav a.flex-active, 
+	.accordion-heading .accordion-toggle.active, 
+	.accordion-heading:hover .accordion-toggle, 
+	.accordion-heading:hover .accordion-toggle.inactive, 
+	.nav-tabs li a:hover, 
+	.nav-tabs li a:active, 
+	.nav-tabs li.active a, 
+	.fc-event, 
+	.site-header .social-icons a, 
+	.navigation > ul > li > ul > li:hover > a, 
+	.navigation > ul > li > ul > li > ul > li:hover a, 
+	.top-header, 
+	.block-heading h4, 
+	.single-property .price, 
+	.timeline > li > .timeline-badge, 
+	.pricing-column.highlight h3, 
+	.site-footer-bottom .social-icons a:hover{
+		background-color: $main_content_color !important;
+	}
+
+	a {
+  		color: $font_link_color;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.widgettitle,
+	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+	.pricing-column h4,
+	a.list-group-item .list-group-item-heading {
+		$font_heading_color;
+	}
+
+	.text-primary, 
+	.btn-primary .badge, 
+	.btn-link, 
+	a.list-group-item.active > .badge, 
+	.nav-pills > .active > a > .badge, 
+	p.drop-caps:first-child::first-letter, 
+	.accent-color, 
+	.post-more, 
+	ul.nav-list-primary > li a:hover, 
+	.widget_recent_comments a, 
+	.navigation > ul > li:hover > a, 
+	.flex-caption .hero-agent-contact, 
+	.features-list li .icon, 
+	.property-listing h3 a, 
+	.agents-listing h3 a, 
+	.nav-tabs li.active > i, 
+	.nav-tabs li:hover > i, 
+	.location > i, 
+	.contact-info-blocks > div > i, 
+	.additional-amenities > span.available i, 
+	.error-404 h2 > i, 
+	.properties-table .action-button i, 
+	.pricing-column h3, 
+	a:hover, 
+	.testimonials > li cite a:hover, 
+	.property-listing h3 a:hover, 
+	.agents-listing h3 a:hover {
+		color: $main_content_color;
+	}
+
+	.properties__bank{
+		background-color: $main_content_color !important;
+	}
+
+	.panel-primary > .panel-footer + .panel-collapse .panel-body, .widget .widgettitle {
+		border-bottom-color: $main_content_color;
+	}
+
+	.panel-primary > .panel-heading + .panel-collapse .panel-body, .navigation ul > li:hover > a, .navigation ul > li.current_menu_item > a {
+		border-top-color: $main_content_color;
+	}
+
+	.nav .open > a, .nav .open > a:hover, .nav .open > a:focus, .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus, a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active, a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.active:focus, .panel-primary, .panel-primary > .panel-heading, .fc-event {
+		border-color: $main_content_color;
+	}
+
+/*	E:OVERIDE GLOBAL VALUE ====================================================================*/
+
+/*	S:Ukuran Font ====================================================================*/
+	#agent-section a, #main-navigation a, p,
+	.contact-info-blocks a, .developer-request p {
+	    font-size: $font_size !important;
+	}
+/*	E:Ukuran Font ====================================================================*/
+
+/*	S:Custom Jenis Font ====================================================================*/
+	#agent-section h3 > a {
+	    font-family: $font_type;
+	}
+/*	E:Custom Jenis Font ====================================================================*/
+
+	div.body, div#content{ background-color:$bg_color; }
+
+	header.site-header, 
+	header.site-header > .is-sticky > .main-menu-wrapper{ background:$bg_header; }
+
+/*	div.main-menu-wrapper{ background:rgba(180, 180, 180, 0.1); } */
+
+	.navigation > ul > li > a{
+		color:$font_menu_color;
+	}
+
+	.btn-default {
+		background-color:$button_color !important;
+	}
+	footer.site-footer{ background-color:$bg_footer; }
+	footer.site-footer .widgettitle{ $font_heading_footer_color; }
+
+
+	.page-header {
+		background-image: $header_image;
+		background-position: 0;
+	}
+
+/*Top header*/
+	.topBar{
+		background: linear-gradient($bg_color_top_header, $bg_color_top_header) !important;
+		border-bottom: 2px solid $bg_color_top_header !important;
+	}
+	.topBar ul li.border a{
+		border-left: solid 1px $bg_color_border_header;
+	}
+/**/
