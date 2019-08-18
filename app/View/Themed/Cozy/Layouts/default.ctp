@@ -41,7 +41,6 @@
 				echo $this->Html->meta(array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1')) . PHP_EOL;
 
 				echo $this->Html->tag('title', $title_for_layout) . PHP_EOL;
-				echo $this->Html->meta('description', $description_for_layout) . PHP_EOL;
 				echo $this->element('js_init/og_meta');
 				echo $this->element('headers/canonical');
 

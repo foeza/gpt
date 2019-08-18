@@ -3,12 +3,6 @@ class UserCompanyConfig extends AppModel {
 	var $name = 'UserCompanyConfig';
 
 	var $validate = array(
-		'theme_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Mohon pilih tema website Anda.',
-			),
-		),
 		'principle_email' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -21,12 +15,6 @@ class UserCompanyConfig extends AppModel {
 			'validateEmailRole' => array(
 				'rule' => array('validateEmailRole'),
 				'message' => 'Email yang Anda masukkan tidak terdaftar.',
-			),
-		),
-		'pic_sales_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Mohon pilih PIC website Anda.',
 			),
 		),
 		'favicon' => array(
@@ -51,56 +39,6 @@ class UserCompanyConfig extends AppModel {
 				'message' => 'Harus berupa Angka.',
 			),
 		),
-		'premium_listing' => array(
-			'numeric' => array(
-				'allowEmpty' => true,
-				'rule' => array('numeric'),
-				'message' => 'Harus berupa Angka.',
-			),
-		),
-		'brochure_custom_sell' => array(
-			'imageupload' => array(
-	            'rule' => array('extension',array('jpeg','jpg','png','gif')),
-	            'allowEmpty' => true,
-	            'message' => 'Foto harap diisi dan berekstensi (jpeg, jpg, png, gif)'
-	        ),
-		),
-		'brochure_custom_rent' => array(
-			'imageupload' => array(
-	            'rule' => array('extension',array('jpeg','jpg','png','gif')),
-	            'allowEmpty' => true,
-	            'message' => 'Foto harap diisi dan berekstensi (jpeg, jpg, png, gif)'
-	        ),
-		),
-		'type_custom_ebrochure' => array(
-			'typeEbrosurVlidation' => array(
-				'rule' => array('typeEbrosurVlidation'),
-				'message' => 'Harap pilih tipe eBrosur.',
-			),
-		), 
-		'launcher_url' => array(
-			'validateLauncherUrl' => array(
-				'rule' => array('validateLauncherUrl'),
-				'message' => 'Mohon masukkan URL untuk Launcher',
-			),
-		),
-		'pph' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'allowEmpty'=> true,
-				'message' => 'PPH harus angka',
-			),
-			'validPercentageInput' => array(
-				'rule' => array('validPercentageInput'),
-				'message' => 'PPH tidak valid.',
-			),
-		),
-		'domain_zimbra' => array(
-			'validateURL' => array(
-				'rule' => array('validateURL'),
-				'message' => 'Format Domain Zimbra salah',
-			),
-		), 
 		'mt_property_type' => array(
 			'validateCountPropertyType' => array(
 				'rule'		=> array('validateCountPropertyType'),
@@ -133,68 +71,7 @@ class UserCompanyConfig extends AppModel {
 			'className' => 'Theme',
 			'foreignKey' => 'theme_id',
 		),
-		'Template' => array(
-			'className' => 'Template',
-			'foreignKey' => 'template_id',
-		),
-		'EbrochureTemplate' => array(
-			'foreignKey' => 'ebrochure_template_id',
-		),
-		'MembershipPackage' => array(
-			'className' => 'MembershipPackage',
-			'foreignKey' => 'membership_package_id',
-		),
 	);
-
-	var $hasOne = array(
-		'MailchimpConfig' => array(
-			'className' => 'MailchimpConfig',
-			'foreignKey' => 'user_company_config_id',
-		),
-	);
-
-	var $hasMany = array(
-		'MailchimpTemplate' => array(
-			'className' => 'MailchimpTemplate',
-			'foreignKey' => 'user_company_config_id',
-		),
-		'MailchimpList' => array(
-			'className' => 'MailchimpList',
-			'foreignKey' => 'user_company_config_id',
-		),
-	);
-
-	function validateCoBroke($data){
-		$field = key($data);
-
-		$result = true;
-		$global_data = $this->data;
-
-		$is_open_cobroke = Common::hashEmptyField($global_data, 'UserCompanyConfig.is_open_cobroke');
-		$default_type_price_co_broke_commision = Common::hashEmptyField($global_data, 'UserCompanyConfig.default_type_price_co_broke_commision');
-		$default_co_broke_commision = Common::hashEmptyField($global_data, 'UserCompanyConfig.default_co_broke_commision');
-		$default_type_co_broke_commission = Common::hashEmptyField($global_data, 'UserCompanyConfig.default_type_co_broke_commission');
-		$default_agent_commission = Common::hashEmptyField($global_data, 'UserCompanyConfig.default_agent_commission');
-
-		if(!empty($is_open_cobroke)){
-			if((empty($default_type_price_co_broke_commision) || empty($default_co_broke_commision)) && in_array($field, array('default_type_price_co_broke_commision', 'default_co_broke_commision'))){
-				$result = false;
-			}else if(empty($default_agent_commission) && $field == 'default_agent_commission'){
-				$result = false;
-			}else if(empty($default_type_co_broke_commission) && $field == 'default_type_co_broke_commission'){
-				$result = false;
-			}else if($default_type_co_broke_commission == 'percentage' && $default_co_broke_commision > 100){
-				$result = false;
-
-                $this->validator()
-                ->getField('default_co_broke_commision')
-                ->getRule('validateCoBroke')
-                ->message = __('Tidak boleh lebih dari 100%');
-			}
-		}
-
-		return $result;
-	}
 
 	function validateCountPropertyType($data){
 		$fieldName		= key($data);
@@ -229,13 +106,6 @@ class UserCompanyConfig extends AppModel {
 			return true;
 		}
 		return false;
-	}
-
-	function validateLauncherUrl(){
-		$isLauncher		= isset($this->data['UserCompanyConfig']['is_launcher']) && $this->data['UserCompanyConfig']['is_launcher'] == 1 ? TRUE : FALSE;
-		$launcherUrl	= isset($this->data['UserCompanyConfig']['launcher_url']) ? $this->data['UserCompanyConfig']['launcher_url'] : NULL;
-
-		return TRUE;
 	}
 
 	function validateEmailRole($data){
@@ -281,28 +151,12 @@ class UserCompanyConfig extends AppModel {
 	        );
 
 	        $uploadError = !empty($data['Upload']['error'])?$data['Upload']['error']:false;
-	        $uploadMsg = !empty($data['Upload']['message'])?$data['Upload']['message']:false;
-
-	        if(empty($data['UserCompanyConfig']['is_brochure'])){
-	        	$data['UserCompanyConfig']['auto_create_ebrochure'] = '';
-	        	$data['UserCompanyConfig']['type_custom_ebrochure'] = '';
-	        	$data['UserCompanyConfig']['brochure_custom_sell'] = '';
-	        	$data['UserCompanyConfig']['brochure_custom_rent'] = '';
-	        	$data['UserCompanyConfig']['brochure_custom_sell'] = '';
-	        	$data['UserCompanyConfig']['delta_x_code'] = $data['UserCompanyConfig']['delta_y_code'] = '';
-	        	$data['UserCompanyConfig']['delta_x_created'] = $data['UserCompanyConfig']['delta_y_created'] = '';
-	        	$data['UserCompanyConfig']['delta_x_mlsid'] = $data['UserCompanyConfig']['delta_y_mlsid'] = '';
-	        	$data['UserCompanyConfig']['with_mls_id'] = '';
-	        }else{
-	        	if(empty($data['UserCompanyConfig']['type_custom_ebrochure'])){
-	        		$data['UserCompanyConfig']['type_custom_ebrochure'] = 'landscape';
-	        	}
-	        }
+	        $uploadMsg   = !empty($data['Upload']['message'])?$data['Upload']['message']:false;
 
 	        if( empty($uploadError) ) {
 
 				$data['UserCompanyConfig']['user_id'] = $user_id;
-				$data['UserCompanyConfig']['domain'] = $url;
+				$data['UserCompanyConfig']['domain']  = $url;
 
 				if(!empty($id)){
 					$this->id = $id;
@@ -310,28 +164,14 @@ class UserCompanyConfig extends AppModel {
 					$this->create();
 				}
 
-				// unset package bundling if not configure
-				$data_unset = array();
-				if ( empty($data['UserCompanyConfig']['is_block_premium_listing']) ) {
-					$data_unset = $this->_unsetPackageBundling($this->id);
-					$unset_company_config = Common::hashEmptyField($data_unset, 'UserCompanyConfig', array());
-					$company_config = Common::hashEmptyField($data, 'UserCompanyConfig', array());
-
-					$data['UserCompanyConfig'] = array_merge($company_config, $unset_company_config);
-				}
-
 				$this->set($data);
 
 				$usercompany_validation = $this->validates($data);
-				$mailchimp_validation = $this->MailchimpConfig->doSave($data, false, true);
 
-				if($usercompany_validation && $mailchimp_validation){
+				if( $usercompany_validation ) {
 					$data['UserCompanyConfig']['process_delete'] = true;
 
-					if($this->save($data)){
-
-						$this->MailchimpConfig->doSave($data, $this->id);
-						
+					if($this->save($data)){						
 						$result = array(
 				            'msg' => __('Berhasil menyimpan data pengaturan Anda.'),
 				            'status' => 'success',
@@ -344,9 +184,10 @@ class UserCompanyConfig extends AppModel {
 							),
 				        );
 					}
-				}else{
+				} else {
 					$result['data'] = $data;
 				}
+
 			} else {
 				$validationErrors = array();
 
@@ -362,21 +203,11 @@ class UserCompanyConfig extends AppModel {
 		        );
 			}
 		}  else if( !empty($value) ) {
-			$email = !empty($value['User']['email'])?$value['User']['email']:false;
+			$email   = !empty($value['User']['email'])?$value['User']['email']:false;
 			$favicon = !empty($value['UserCompanyConfig']['favicon'])?$value['UserCompanyConfig']['favicon']:false;
-			$brochure_custom_sell = !empty($value['UserCompanyConfig']['brochure_custom_sell'])?$value['UserCompanyConfig']['brochure_custom_sell']:false;
-			$brochure_custom_rent = !empty($value['UserCompanyConfig']['brochure_custom_rent'])?$value['UserCompanyConfig']['brochure_custom_rent']:false;
-			$about_bg = !empty($value['UserCompanyConfig']['about_bg'])?$value['UserCompanyConfig']['about_bg']:false;
-			$is_ebrosur_frontend = Common::hashEmptyField($value, 'UserCompanyConfig.is_ebrosur_frontend', true, array(
-				'isset' => true,
-			));
 
 			$value['UserCompanyConfig']['principle_email'] = $email;
-			$value['UserCompanyConfig']['favicon_hide'] = $favicon;
-			$value['UserCompanyConfig']['brochure_custom_sell_hide'] = $brochure_custom_sell;
-			$value['UserCompanyConfig']['brochure_custom_rent_hide'] = $brochure_custom_rent;
-			$value['UserCompanyConfig']['about_bg_hide'] = $about_bg;
-            $value['UserCompanyConfig']['is_ebrosur_frontend'] = $is_ebrosur_frontend;
+			$value['UserCompanyConfig']['favicon_hide']    = $favicon;
 
 			$result['data'] = $value;
 		}

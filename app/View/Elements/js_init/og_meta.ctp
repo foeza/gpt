@@ -101,7 +101,9 @@
 
 		$_curr_url = $this->Html->url($curr_url, true);
 ?>
-<meta name="robots" content="index,follow" />
+<meta content="grosirpasartasik.com adalah situs jual beli berbagai busana dan atau keperluan fashion. Pusat Grosir Pasar Tasik. Toko Online Termurah dan Terpercaya. Cari barang grosiran? grosirpasartasik.com" name="description" />
+
+<meta content="follow, index" name="robots" />
 <link rel="canonical" href="<?php echo $_curr_url;?>" />
 <?php
 		$pageCount = $this->Paginator->counter(array('format' => '%count%'));

@@ -167,7 +167,7 @@
                 )).PHP_EOL;
             }
 
-            echo $this->element('js_init/script');
+            // echo $this->element('js_init/script');
             echo $this->element('blocks/common/modal').PHP_EOL;
     ?>
     <?php

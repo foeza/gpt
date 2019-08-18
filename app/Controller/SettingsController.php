@@ -282,18 +282,15 @@ class SettingsController extends AppController {
 		$value = $this->User->UserCompanyConfig->getData('first', array(
 			'conditions' => array(
 				'UserCompanyConfig.domain' => $this->_base_url,
-			),
-			'contain' => array(
-				'MailchimpConfig'
 			)
 		));
 
-		$id			= Common::hashEmptyField($value, 'UserCompanyConfig.id');
-		$user_id	= Common::hashEmptyField($value, 'UserCompanyConfig.user_id');
+		$id 	 = Common::hashEmptyField($value, 'UserCompanyConfig.id');
+		$user_id = Common::hashEmptyField($value, 'UserCompanyConfig.user_id');
 
-		$value		= $this->User->getmerge($value, $user_id);
-		$data		= $this->request->data;
-		$data		= $this->RmSetting->_callBeforeCompanyConfigSave($data);
+		$value 	 = $this->User->getmerge($value, $user_id);
+		$data  	 = $this->request->data;
+		$data 	 = $this->RmSetting->_callBeforeCompanyConfigSave($data);
 
 		$watermarkType = Common::hashEmptyField($value, 'UserCompanyConfig.watermark_type');
 
@@ -304,14 +301,10 @@ class SettingsController extends AppController {
 		$result = $this->User->UserCompanyConfig->doSave($data, $value, $id, $this->parent_id, $this->_base_url);
 
 		if($value && $this->request->data){
-			$savePathGeneral	= Configure::read('__Site.general_folder');
-			$savePathEbrosur	= Configure::read('__Site.ebrosurs_photo');
-			$oldPhotos			= array();
+			$savePathGeneral 	= Configure::read('__Site.general_folder');
+			$oldPhotos 			= array();
 			$photoPaths			= array(
-				'favicon'				=> $savePathGeneral, 
-				'about_bg'				=> $savePathGeneral, 
-				'brochure_custom_sell'	=> $savePathEbrosur, 
-				'brochure_custom_rent'	=> $savePathEbrosur
+				'favicon'		=> $savePathGeneral
 			);
 
 			$permanent	= FALSE;
@@ -342,38 +335,22 @@ class SettingsController extends AppController {
 			'cache' => 'Theme.List',
 		));
 
-		$templates = $this->User->UserCompanyConfig->Template->getData('list', array(
-			'cache' => 'Template.List',
-		));
+		// $templates = $this->User->UserCompanyConfig->Template->getData('list', array(
+		// 	'cache' => 'Template.List',
+		// ));
 
-		$ebrochureTemplates = $this->requestAction(array(
-			'admin'			=> false, 
-			'controller'	=> 'ajax', 
-			'action'		=> 'get_ebrochure_template', 
-			'type'			=> 'company', 
-		));
+		// $ebrochureTemplates = $this->requestAction(array(
+		// 	'admin'			=> false, 
+		// 	'controller'	=> 'ajax', 
+		// 	'action'		=> 'get_ebrochure_template', 
+		// 	'type'			=> 'company', 
+		// ));
 
-		$list_sales = $this->User->getListSales();
+		// $list_sales = $this->User->getListSales();
 		$this->RmCommon->_layout_file(array(
 			'ckeditor',
 			'color-picker'
 		));
-
-		/* ===============================================================================
-		   this is custom, can be called in setting page, properti admin_index, info agent
-		   depending on needs
-		=============================================================================== */
-		// configure membership in page setting admin_general
-		$is_config  = Common::hashEmptyField($value, 'UserCompanyConfig.is_block_premium_listing');
-		$path_link = sprintf('api/memberships/list_package/get_package:%s/package_id:0/status:active', $is_config);
-
-		$opsi_link = array(
-			'custom_link' 	=> true,
-			'path_link' 	=> $path_link,
-			'user_own'    	=> false,
-			'do_cache'      => true,
-		);
-		$packages = $this->RmSetting->callDataMembershipRKU($opsi_link);
 
 		$propertyTypes = $this->User->Property->PropertyType->getData('all');
 
@@ -381,20 +358,17 @@ class SettingsController extends AppController {
 		$this->set('module_title', __('Umum (Admin)'));
 		$this->set(compact(
 			'themes', 
-			'list_sales', 
-			'templates', 
-			'propertyTypes', 
-			'packages', 
-			'ebrochureTemplates'
+			'propertyTypes'
+			// 'list_sales', 
+			// 'templates', 
+			// 'packages', 
+			// 'ebrochureTemplates'
 		));
 
 		if($this->Rest->isActive() && !empty($result['status']) && $result['status'] == 'success'){
 			$value = $this->User->UserCompanyConfig->getData('first', array(
 				'conditions' => array(
 					'UserCompanyConfig.domain' => $this->_base_url,
-				),
-				'contain' => array(
-					'MailchimpConfig'
 				)
 			));
 		}
@@ -403,9 +377,9 @@ class SettingsController extends AppController {
 
 		$data_val = array(
 			'config_data' => $value,
-			'themes' => $themes,
-			'list_sales' => $list_sales, 
-			'templates' => $templates
+			'themes' => $themes
+			// 'list_sales' => $list_sales, 
+			// 'templates' => $templates
 		);
 
 		$this->RmCommon->_callRequestSubarea('UserCompanyConfig');
@@ -525,9 +499,6 @@ class SettingsController extends AppController {
 			$value = $this->User->UserCompanyConfig->getData('first', array(
 				'conditions' => array(
 					'UserCompanyConfig.domain' => $this->_base_url,
-				),
-				'contain' => array(
-					'MailchimpConfig'
 				)
 			));
 
@@ -595,9 +566,6 @@ class SettingsController extends AppController {
 				$value = $this->User->UserCompanyConfig->getData('first', array(
 					'conditions' => array(
 						'UserCompanyConfig.domain' => $this->_base_url,
-					),
-					'contain' => array(
-						'MailchimpConfig'
 					)
 				));
 			}

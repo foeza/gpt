@@ -11,23 +11,9 @@ class RmSettingComponent extends Component {
 
     function _callBeforeCompanyConfigSave ( $data, $old_data = false ) {
         if( !empty($data) ) {
-        	$type_custom_ebrochure = $this->RmCommon->filterEmptyField($data, 'UserCompanyConfig', 'type_custom_ebrochure', 'landscape');
-        	
-			$save_path_logo = Configure::read('__Site.logo_photo_folder');
 	        $save_path_general = Configure::read('__Site.general_folder');
-	        $save_path_ebrosur = Configure::read('__Site.ebrosurs_photo');
 
 			$data = $this->RmImage->_uploadPhoto( $data, 'UserCompanyConfig', 'favicon', $save_path_general, true );
-			// $data = $this->RmImage->_uploadPhoto( $data, 'UserCompanyConfig', 'logo_company', $save_path_logo, true );
-			$data = $this->RmImage->_uploadPhoto( $data, 'UserCompanyConfig', 'brochure_custom_sell', $save_path_ebrosur, true, array(
-				'type_image' => $type_custom_ebrochure,
-                'keep_file_name' => true,
-			));
-			$data = $this->RmImage->_uploadPhoto( $data, 'UserCompanyConfig', 'brochure_custom_rent', $save_path_ebrosur, true, array(
-				'type_image' => $type_custom_ebrochure,
-                'keep_file_name' => true,
-			));
-			$data = $this->RmImage->_uploadPhoto( $data, 'UserCompanyConfig', 'about_bg', $save_path_general, true );
 
 			if( isset($data['UserCompanyConfig']['date']) ) {
 				$date = $this->RmCommon->filterEmptyField( $data, 'UserCompanyConfig', 'date' );
@@ -44,29 +30,9 @@ class RmSettingComponent extends Component {
 				$data['UserCompanyConfig']['live_date']	= $this->RmCommon->filterEmptyField( $params, 'date_from' );
 				$data['UserCompanyConfig']['end_date']	= $this->RmCommon->filterEmptyField( $params, 'date_to' );
 			}
-
+            
             $mtLocation = Common::hashEmptyField($data, 'UserCompanyConfig.mt_location_name');
 
-            $data = Common::dataConverter($data, array(
-                'price' => array(
-                    'UserCompanyConfig' => array(
-                        'default_co_broke_commision',
-                    ),
-                )
-            ));
-
-			$isLauncher		= $this->RmCommon->filterEmptyField($data, 'UserCompanyConfig', 'is_launcher');
-			$launcherUrl	= $this->RmCommon->filterEmptyField($data, 'UserCompanyConfig', 'launcher_url');
-			$data['UserCompanyConfig']['launcher_url'] = $isLauncher && $launcherUrl ? $this->RmCommon->wrapWithHttpLink($launcherUrl) : NULL;
-
-			$domainZimbra	= $this->RmCommon->filterEmptyField($data, 'UserCompanyConfig', 'domain_zimbra');
-			$data['UserCompanyConfig']['domain_zimbra'] = $domainZimbra ? $this->RmCommon->wrapWithHttpLink($domainZimbra) : NULL;
-            
-            $is_approval_property = Common::hashEmptyField($data, 'UserCompanyConfig.is_approval_property');
-
-            if(empty($is_approval_property)){
-                $data = Hash::insert($data, 'UserCompanyConfig.is_restrict_approval_property', 0);
-            }
         }
 
         return $data;

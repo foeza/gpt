@@ -1609,11 +1609,6 @@ class User extends AppModel {
 					'name' => __('Theme.%s', $theme_id),
 				),
 			));
-			$user = $this->UserCompanyConfig->Template->getMerge($user, $template_id, array(
-				'cache' => array(
-					'name' => __('Template.%s', $template_id),
-				),
-			));
 
 			$user = $this->UserCompanyConfig->getMergeList($user, array(
 				'contain' => array(
@@ -1672,7 +1667,6 @@ class User extends AppModel {
 			$user['UserCompanyConfig'] = Common::hashEmptyField($user, 'UserCompanyConfig', array());
 			$user['UserCompanySetting'] = Common::hashEmptyField($user, 'UserCompanySetting', array());
 			$user['Theme'] = Common::hashEmptyField($user, 'Theme', array());
-			$user['Template'] = Common::hashEmptyField($user, 'Template', array());
 			$user['User'] = Common::hashEmptyField($user, 'User', array());
 			$user['UserCompany'] = Common::hashEmptyField($user, 'UserCompany', array());
 		}
