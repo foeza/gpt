@@ -1,2 +1,0 @@
-1566113772
-a:5:{s:6:"paging";a:1:{s:6:"Advice";a:10:{s:4:"page";i:1;s:7:"current";i:0;s:5:"count";i:0;s:8:"prevPage";b:0;s:8:"nextPage";b:0;s:9:"pageCount";i:0;s:5:"order";a:4:{s:9:"null_last";s:3:"ASC";s:12:"Advice.order";s:3:"ASC";s:15:"Advice.modified";s:4:"DESC";s:9:"Advice.id";s:4:"DESC";}s:5:"limit";i:20;s:7:"options";a:0:{}s:9:"paramType";s:5:"named";}}s:5:"named";a:0:{}s:4:"pass";a:0:{}s:5:"query";a:0:{}s:6:"result";a:0:{}}
