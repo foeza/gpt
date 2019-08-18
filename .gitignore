@@ -1,6 +1,5 @@
 # User specific & automatically generated files #
 #################################################
-/app/Config/database.php
 /app/tmp
 /lib/Cake/Console/Templates/skel/tmp/
 /plugins
@@ -14,6 +13,9 @@
 #################################
 /nbproject
 .idea
+/.project
+/.buildpath
+/.settings/
 
 # OS generated files #
 ######################
@@ -25,3 +27,18 @@
 Icon?
 ehthumbs.db
 Thumbs.db
+app/Uploads
+app/webroot/img/view/
+app/Config/database.php
+database.php
+app/Config/database.php.bak
+app/Config/bootstrap.php.bak
+/c/Users/RR/databsae.php
+app/Config
+app/tmp
+app/Config/
+app/tmp/
+app/Uploads/
+app/webroot/img/view/
+/app/Config/database.php
+.htaccess

@@ -46,7 +46,7 @@
 				echo $this->element('headers/canonical');
 
 				$minify_css = array(
-					'http://fonts.googleapis.com/css?family=Raleway:300,500,900%7COpen+Sans:400,700,400italic', 
+					'https://fonts.googleapis.com/css?family=Titillium+Web&display=swap', 
 					'jquery',
 					'cozy-real-estate-font',
 					'style',
