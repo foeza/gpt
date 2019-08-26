@@ -1362,7 +1362,7 @@ class RumahkuHelper extends AppHelper {
 	function _callGreetingDate () {
 		$hour = date("H"); 
 
-		if ( $hour > 00 && $hour < 10 ){ 
+		if ( $hour > 00 && $hour < 10 || $hour == 00 ){ 
 			$lblDay = 'Pagi'; 
 		}else if ($hour >= 10  && $hour < 15 ){ 
 			$lblDay = 'Siang'; 

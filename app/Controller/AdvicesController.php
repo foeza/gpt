@@ -31,7 +31,8 @@ class AdvicesController extends AppController {
 			}
 		}
 		
-		$this->label_title = Configure::read('Global.Data.translates.id.blog');
+		// $this->label_title = Configure::read('Global.Data.translates.id.blog');
+		$this->label_title = __('Artikel');
 
 		$this->set('global_label_title', $this->label_title);
 	}

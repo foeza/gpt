@@ -100,11 +100,20 @@
 		}
 
 		$_curr_url = $this->Html->url($curr_url, true);
+
+
+		$meta_tag = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'meta_tag', false, false);
+
+        if( !empty($meta_tag) ) {
+        	echo $meta_tag;
+        }
+		
 ?>
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
 <meta content="grosirpasartasik.com adalah situs jual beli berbagai busana dan atau keperluan fashion. Pusat Grosir Pasar Tasik. Toko Online Termurah dan Terpercaya. Cari barang grosiran? grosirpasartasik.com" name="description" />
 
 <meta content="follow, index" name="robots" />
-<link rel="canonical" href="<?php echo $_curr_url;?>" />
+<link rel="canonical" href="https://grosirpasartasik.com" />
 <?php
 		$pageCount = $this->Paginator->counter(array('format' => '%count%'));
 		

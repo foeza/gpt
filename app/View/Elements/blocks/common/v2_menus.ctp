@@ -93,45 +93,46 @@
 				),
 			),
 			// Property
-			array(
-				'icon' => 'rv4-building',
-				'name' => 'Properti',
-				'url' => 'javaScript:void(0);',
-				'data_submenu' => 'Property',
-				'child' => array(
-					array(
-						'name' => __('Daftar Properti'),
-						'url' => array(
-							'plugin' => false, 
-							'controller' => 'properties',
-							'action' => 'index',
-							'admin' => true,
-						),
-						'active' => 'property_list',
-					),
-					array(
-						'name' => __('Kategori Properti'),
-						'url' => array(
-							'plugin' => false, 
-							'controller' => 'properties',
-							'action' => 'status_listing_categories',
-							'admin' => true,
-						),
-						'active' => 'property_category',
-					),
-					array(
-						'name' => __('Draft Properti'),
-						'url' => array(
-							'plugin' => false, 
-							'controller' => 'properties',
-							'action' => 'drafts',
-							'admin' => true,
-						),
-						'active' => 'property_draft',
-					),
+			// array(
+			// 	'icon' => 'rv4-building',
+			// 	'name' => 'Properti',
+			// 	'url' => 'javaScript:void(0);',
+			// 	'data_submenu' => 'Property',
+			// 	'child' => array(
+			// 		array(
+			// 			'name' => __('Daftar Properti'),
+			// 			'url' => array(
+			// 				'plugin' => false, 
+			// 				'controller' => 'properties',
+			// 				'action' => 'index',
+			// 				'admin' => true,
+			// 			),
+			// 			'active' => 'property_list',
+			// 		),
+			// 		array(
+			// 			'name' => __('Kategori Properti'),
+			// 			'url' => array(
+			// 				'plugin' => false, 
+			// 				'controller' => 'properties',
+			// 				'action' => 'status_listing_categories',
+			// 				'admin' => true,
+			// 			),
+			// 			'active' => 'property_category',
+			// 		),
+			// 		array(
+			// 			'name' => __('Draft Properti'),
+			// 			'url' => array(
+			// 				'plugin' => false, 
+			// 				'controller' => 'properties',
+			// 				'action' => 'drafts',
+			// 				'admin' => true,
+			// 			),
+			// 			'active' => 'property_draft',
+			// 		),
 
-				),
-			),
+			// 	),
+			// ),
+			
 			// Finance
 			// array(
 			// 	'icon' => 'rv4-cash',
@@ -180,12 +181,12 @@
 				'data_submenu' => 'ContentWeb',
 				'child' => array(
 					array(
-						'name' => __('Blog'),
+						'name' => __('Artikel'),
 						'url' => 'javaScript:void(0);',
 						'data_submenu' => 'Advice',
 						'child' => array(
 							array(
-								'name' => __('Daftar %s', Configure::read('Global.Data.translates.id.blog')),
+								'name' => __('Daftar Artikel'),
 								'url' => array(
 									'plugin' => false, 
 									'controller' => 'advices',
@@ -195,7 +196,7 @@
 								'active' => 'advice',
 							),
 							array(
-								'name' => __('Kategori %s', Configure::read('Global.Data.translates.id.blog')),
+								'name' => __('Kategori Artikel'),
 								'url' => array(
 									'plugin' => false, 
 									'controller' => 'advices',

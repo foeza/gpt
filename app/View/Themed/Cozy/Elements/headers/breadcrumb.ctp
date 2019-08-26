@@ -13,7 +13,7 @@
 	    				$breadcrumbTemp = '';
 
 						if($this->Html->getCrumbs()):
-					    	$home = 'Home ';
+					    	$home = 'Beranda ';
 
 					    	$breadcrumbTemp .= $this->Html->tag('li', $this->Html->getCrumbs('</li><li>', array(
 					    		'text' => $home,

@@ -83,121 +83,7 @@
 								));
 							}
 					?>
-					
-					<?php
-							if ( !empty($domainZimbra) ) {
-								$iconZimbra = $this->Html->image('/img/zimbra.ico', array(
-									'class' => 'mr15',
-								));
-								echo $this->Html->tag('li',
-									$this->Html->link($iconZimbra, $domainZimbra, array(
-										'escape' => false,
-										'target' => '_blank',
-										'title'  => 'Login Zimbra',
-									)), array(
-										'class' => 'logo-zimbra',
-									)
-								);
-							}
 
-							if($this->AclLink->aclCheck($urlMsg)){
-					?>
-					<li id="message" class="notif-message">
-						<div id="message-tour" class="btn-group">
-							<?php 
-									$contentMsg = $this->Rumahku->icon('rv4-chat');
-
-									if( !empty($cntMsg) ) {
-										$contentMsg .= $this->Html->tag('span', $cntMsg, array(
-											'class' => 'label total',
-										));
-									}
-
-									echo $this->Html->link($contentMsg, '#', array(
-										'escape' => false,
-										'class' => 'dropdown-toggle',
-										'data-toggle' => 'dropdown',
-										'aria-hashpopup' => 'true',
-										'aria-expanded' => 'false',
-									));
-							?>
-							<div class="dropdown-menu wow fadeIn">
-								<ul>
-									<?php 
-											$labelLi = sprintf(__('Anda memiliki %s pesan baru'), $this->Html->tag('strong', !empty($cntMsg) ? $cntMsg : 0));
-											echo $this->Html->tag('li', $labelLi, array(
-												'class' => 'first',
-											));
-
-                    						if( !empty($dataMsg) ) {
-                        						echo $this->element('blocks/messages/items', array(
-                        							'messages' => $dataMsg,
-                        							'data_style' => 'notif',
-                        							'data_unread_class' => 'new',
-                    							));
-                    						}
-
-											echo $this->Html->tag('li', $this->AclLink->link(__('Lihat Semua'), $urlMsg, array(
-												'escape' => false,
-												'class' => 'see-all',
-											)), array(
-												'class' => 'last',
-											));
-									?>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<?php
-							}
-					?>
-
-					<li id="message" class="notif">
-						<div id="notif-tour" class="btn-group">
-							<?php 
-									$contentNotif = $this->Rumahku->icon('rv4-ring');
-
-									if( !empty($cntNotif) ) {
-										$contentNotif .= $this->Html->tag('span', $cntNotif, array(
-											'class' => 'label total',
-										));
-									}
-
-									echo $this->Html->link($contentNotif, '#', array(
-										'escape' => false,
-										'class' => 'dropdown-toggle',
-										'data-toggle' => 'dropdown',
-										'aria-hashpopup' => 'true',
-										'aria-expanded' => 'false',
-									));
-							?>
-							<div class="dropdown-menu wow fadeIn">
-								<ul>
-									<?php 
-											$labelLi = sprintf(__('Anda memiliki %s notifikasi baru'), $this->Html->tag('strong', !empty($cntNotif)?$cntNotif:0));
-											echo $this->Html->tag('li', $labelLi, array(
-												'class' => 'first',
-											));
-
-                    						if( !empty($dataNotif) ) {
-                        						echo $this->element('blocks/users/notifications', array(
-                        							'values' => $dataNotif,
-                        							'data_style' => 'notif',
-                        							'data_unread_class' => 'new',
-                    							));
-                    						}
-
-											echo $this->Html->tag('li', $this->Html->link(__('Lihat Semua'), $urlNotif, array(
-												'escape' => false,
-												'class' => 'see-all',
-											)), array(
-												'class' => 'last',
-											));
-									?>
-								</ul>
-							</div>
-						</div>
-					</li>
 					<li id="user-action">
 						<div class="btn-group">
 							<a href="" class="dropdown-toggle" data-toggle="dropdown" aria-hashpopup="true" aria-expanded="false">
@@ -224,7 +110,7 @@
 							<div class="dropdown-menu wow fadeIn">
 								<div class="acc-managed">
 									<?php 
-								            echo $this->Html->tag('p', sprintf(__('Akun ini dikelola oleh %s'), $this->Html->tag('strong', $_site_name)));
+								            echo $this->Html->tag('p', sprintf(__('Akun ini dikelola oleh %s'), $this->Html->tag('strong', 'GPT')));
 									?>
 								</div>
 								<?php 
@@ -233,17 +119,7 @@
 					                    ));
 								?>
 								<div class="user-action">
-									<?php 
-											if ( !empty($domainZimbra) ) {
-												echo $this->Html->tag('div', $this->Html->tag('div', $this->Html->link(__('Login Zimbra'), $domainZimbra, array(
-													'escape' => false,
-													'target' => '_blank',
-													'class' => 'btn default fs085',
-												)), array(
-													'class' => 'floleft mobile-logo-zimbra',
-												)));
-											}
-
+									<?php
 											echo $this->Html->tag('div', $this->Html->tag('div', $this->Html->link(__('Edit Profil'), array(
 												'plugin' => false, 
 												'controller' => 'users',

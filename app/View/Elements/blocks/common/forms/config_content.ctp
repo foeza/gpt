@@ -50,21 +50,21 @@
             ),
         )));
 
-        echo $this->Rumahku->buildInputForm('google_analytic',  array_merge($options, array(
-            'label' => __('Google Analytic'),
-        )));
+        // echo $this->Rumahku->buildInputForm('google_analytic',  array_merge($options, array(
+        //     'label' => __('Google Analytic'),
+        // )));
 
         echo $this->Rumahku->buildInputForm('meta_tag',  array_merge($options, array(
             'label' => __('Script Code Header / Meta Tag'),
         )));
 
-        echo $this->Rumahku->buildInputForm('body_tag',  array_merge($options, array(
-            'label' => __('Body Tag'),
-        )));
+        // echo $this->Rumahku->buildInputForm('body_tag',  array_merge($options, array(
+        //     'label' => __('Body Tag'),
+        // )));
 
-        echo $this->Rumahku->buildInputForm('form_api_code',  array_merge($options, array(
-            'label' => __('Form API Code'),
-        )));
+        // echo $this->Rumahku->buildInputForm('form_api_code',  array_merge($options, array(
+        //     'label' => __('Form API Code'),
+        // )));
 
         echo $this->Rumahku->buildInputForm('facebook_appid',  array_merge($options, array(
             'label' => __('Facebook Appid'),
@@ -95,14 +95,14 @@
         //     ),
         // )));
 
-        echo $this->Rumahku->buildInputToggle('hide_powered',  array_merge($options, array(
-            'label' => __('Hide Powered By'),
-        )));
+        // echo $this->Rumahku->buildInputToggle('hide_powered',  array_merge($options, array(
+        //     'label' => __('Hide Powered By'),
+        // )));
 
-        echo $this->Rumahku->buildInputForm('text_powered',  array_merge($options, array(
-            'label' => __('Text Powered By'),
-            'class' => 'relative col-sm-3 col-xl-4',
-            'type' => 'text'
-        )));
+        // echo $this->Rumahku->buildInputForm('text_powered',  array_merge($options, array(
+        //     'label' => __('Text Powered By'),
+        //     'class' => 'relative col-sm-3 col-xl-4',
+        //     'type' => 'text'
+        // )));
 
 ?>

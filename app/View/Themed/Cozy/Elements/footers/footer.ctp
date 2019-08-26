@@ -102,17 +102,9 @@
 				?>
 				<ul class="footer-links">
 					<?php
-							echo $this->Html->tag('li', $this->Html->link(__('Semua Properti'), array(
-								'controller' => 'properties',
-								'action' => 'find'
-							)));
-							echo $this->Html->tag('li', $this->Html->link(__('Cari Agen'), array(
-								'controller' => 'users',
-								'action' => 'agents'
-							)));
-							echo $this->Html->tag('li', $this->Html->link(__('Kantor Kami'), array(
+							echo $this->Html->tag('li', $this->Html->link(__('Tentang GPT'), array(
 								'controller' => 'pages',
-								'action' => 'contact'
+								'action' => 'about'
 							)));
 					?>
 				</ul>
@@ -120,7 +112,6 @@
 			
 		</div>
 	</div>
-	<!-- BEGIN COPYRIGHT -->
 	<div id="copyright">
 		<div class="container">
 			<?php
@@ -140,66 +131,6 @@
 			<!-- END SOCIAL NETWORKS -->
 		</div>
 	</div>
-	<!-- END COPYRIGHT -->
-
-	<div id="powered-by">
-		<div class="container">
-			<div class="row">
-				<?php
-						if ( $powered == false ):
-							if( empty($text_powered) ) {
-								$text_powered = $this->Html->link(
-									$this->Html->image('/img/prime-system-black.png', array('width' => 80)), 
-									Configure::read('__Site.prime_site'), array('escape' => false, 'target' => 'blank')
-								);
-							} else {
-								$text_powered = $this->Html->link(
-									$text_powered, '/', array('escape' => false, 'target' => 'blank')
-								);
-							}
-				?>
-					<div class="col-sm-6">
-						<?php
-								echo $this->Html->tag('p', 'Powered by:');
-								echo $text_powered;
-						?>
-					</div>
-				<?php endif ?>
-
-				<?php 
-						if( !empty($_launcher_download) && !empty($googleplayLauncher) && !empty($launcherUrl) ) {
-							// $imgUrl = '/img/launchers/download-now.png';
-							$imgUrl = '/img/google-play-badge.png';
-
-							$logoLauncher = $this->Html->image($imgUrl, array(
-								'height' => 50
-							));
-							$launcherContent = $this->Html->link($logoLauncher, $launcherUrl, array(
-								'escape' => FALSE, 
-								'target' => 'blank'
-							));
-
-							if ($powered == TRUE) {
-								$addCSSLauncher = 'col-sm-12';
-							} else {
-								$addCSSLauncher = 'col-sm-6';
-							}
-							echo $this->Html->tag('div', $launcherContent, array(
-								'class' => $addCSSLauncher.' text-right',
-							));
-						}
-				?>
-			</div>
-		</div>
-	</div>
-	
-	<?php
-			// gtranslate block
-            $g_translate  = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'g_translate');
-            if ($g_translate) {
-                echo $this->element('widgets/element_gtranslate');
-            }
-	?>
 
 </footer>
 <!-- END FOOTER -->

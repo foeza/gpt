@@ -1,9 +1,9 @@
 <?php
-      $bodyTag = Common::hashEmptyField($_config, 'UserCompanyConfig.body_tag');
+    $bodyTag = Common::hashEmptyField($_config, 'UserCompanyConfig.body_tag');
 
-      if( !empty($bodyTag) ) {
+    if( !empty($bodyTag) ) {
         echo $bodyTag;
-      }
+    }
 ?>
 <div id="fb-root"></div>
 
@@ -12,47 +12,45 @@
     $app_id = Configure::read('Facebook.appId');
 ?>
 <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '<?php echo $app_id; ?>',
-      xfbml      : true,
-      version    : 'v2.6'
-    });
-  };
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '<?php echo $app_id; ?>',
+            xfbml      : true,
+            version    : 'v2.6'
+        });
+    };
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     js.async = true;
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        js.async = true;
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 </script>
 
 <!-- linkedin -->
-<script src="//platform.linkedin.com/in.js" type="text/javascript">
- lang: en_US
-</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
 
 <!-- pinterest -->
 <script type="text/javascript">
-(function(d){
-    var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
-    p.type = 'text/javascript';
-    p.async = true;
-    p.src = '//assets.pinterest.com/js/pinit.js';
-    f.parentNode.insertBefore(p, f);
-}(document));
+    (function(d){
+        var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+        p.type = 'text/javascript';
+        p.async = true;
+        p.src = '//assets.pinterest.com/js/pinit.js';
+        f.parentNode.insertBefore(p, f);
+    }(document));
 </script>
 
 <!-- google -->
 <script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
 </script>
 
 

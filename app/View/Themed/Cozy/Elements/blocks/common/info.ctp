@@ -19,19 +19,19 @@
 <ul class="<?php echo $_class; ?>">
     <?php
             
-            if(!empty($address)){
-                echo $this->Html->tag('li', $this->Rumahku->icon('fa fa-map-marker').$address, array(
-                    'class' => $_class_li,
-                    'title' => __('Alamat'),
-                ));
-            }
+            // if(!empty($address)){
+            //     echo $this->Html->tag('li', $this->Rumahku->icon('fa fa-map-marker').$address, array(
+            //         'class' => $_class_li,
+            //         'title' => __('Alamat'),
+            //     ));
+            // }
 
-            if(!empty($additional_address)){
-                echo $this->Html->tag('li', $this->Rumahku->icon('fa fa-map-marker').$additional_address, array(
-                    'class' => $_class_li,
-                    'title' => __('Alamat'),
-                ));
-            }
+            // if(!empty($additional_address)){
+            //     echo $this->Html->tag('li', $this->Rumahku->icon('fa fa-map-marker').$additional_address, array(
+            //         'class' => $_class_li,
+            //         'title' => __('Alamat'),
+            //     ));
+            // }
 
             if(!empty($phone)){
                 echo $this->Html->tag('li', $this->Rumahku->icon('fa fa-phone').$this->Html->link($phone, 'tel:'.$phone), array(

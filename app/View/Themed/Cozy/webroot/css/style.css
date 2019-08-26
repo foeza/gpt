@@ -43,7 +43,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Raleway', sans-serif;
   color: #df4a43;
   font-weight: 300;
   margin: 0;
@@ -81,7 +80,8 @@ body {
   overflow: hidden;
   background-color: #fff;
   font-size: 14px;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Google Sans",Roboto,Arial,Helvetica,sans-serif;
+
 }
 ::selection {
   background: #df4a43;
@@ -456,7 +456,6 @@ iframe[src="about:blank"] {
   padding: 20px 15px;
   font-size: 20pt;
   line-height: 22pt;
-  font-family: 'Raleway', sans-serif;
   font-weight: 300;
   margin-bottom: 30px;
 }
@@ -1345,7 +1344,6 @@ iframe[src="about:blank"] {
   border: 1px solid rgba(116, 119, 124, 0.5);
   background-color: #fff;
   font-size: 1em;
-  font-family: sans-serif;
   line-height: normal;
   border-radius: 0;
 }
@@ -1461,7 +1459,6 @@ iframe[src="about:blank"] {
   box-shadow: none;
   color: #74777c;
   font-size: 100%;
-  font-family: 'Open Sans', sans-serif;
   line-height: normal;
   border-radius: 0;
 }
@@ -3233,7 +3230,6 @@ iframe[src="about:blank"] {
 }
 .testimonials .item .text p:before,
 .testimonials .item .text p:after {
-  font-family: 'Raleway', sans-serif;
   font-size: 52pt;
   position: absolute;
 }
@@ -6047,7 +6043,6 @@ a.tp-caption.btn-lg {
   font-size: 21pt;
   color: #df4a43;
   line-height: 1.3;
-  font-family: 'Raleway', sans-serif;
   font-weight: 300;
   margin-bottom: 40px;
 }
@@ -6086,7 +6081,6 @@ a.tp-caption.btn-lg {
   position: relative;
   text-align: center;
   width: 100%;
-  font-family: 'Raleway', sans-serif;
 }
 .post-content .quote:before,
 .post-content .quote:after {
@@ -7138,25 +7132,6 @@ div.dark_square #pp_full_res .pp_inline {
 .pattern9_icon {
   background-image: url(../images/patterns/pattern9.jpg);
 }
-
-/* KPR BTN LANDING PAGE */
-.kpr-wrapper {
-  margin-top: 20px;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-#wrapper-kpr {
-  padding-bottom: 20px;
-}
-#wrapper-kpr h2 {
-  font-size: 24px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-#wrapper-kpr label.title {
-  margin-bottom: 30px;
-  display: block;
-}
-/* END KPR BTN LANDING PAGE */
 
 /* CENTER CONTENT */
 #kpr-btn-form .input-group {
@@ -8220,7 +8195,6 @@ div.dark_square #pp_full_res .pp_inline {
     background: #ccc;
     padding: 15px;
     font-size: 24px;
-    font-family: ''Open Sans', sans-serif';
     border-radius: 4px;
     font-weight: bold;
 }
@@ -10097,7 +10071,6 @@ div.sold-banner > img{
 	position:absolute;
 	color: #FFFFFF;
 	background: #5EAB1F;
-	font-family: 'Open Sans', sans-serif;
 	text-align: center;
 	text-transform: uppercase;
 	top:-15px;
@@ -10116,7 +10089,6 @@ div.sold-banner > img{
 	color:#666666;
 	font-size:16px;
 	font-weight:bold;
-	font-family:"Open Sans Condensed", sans-serif;
 	text-transform: uppercase;
 	padding:5px 0;
 }
@@ -10127,7 +10099,6 @@ div.sold-banner > img{
 
 #list-memberships .box > .membership-type > .membership-price > span.price{
 	color: #5EAB1F;
-	font-family: "Open Sans",sans-serif;
 	font-size: 36px;
 	font-weight: bold;
 	letter-spacing: -1px;
@@ -10137,7 +10108,6 @@ div.sold-banner > img{
 #list-memberships .box > .membership-type > .membership-price > span.currency, 
 #list-memberships .box > .membership-type > .membership-price > span.duration{
 	color: #666666;
-	font-family: "Open Sans",sans-serif;
 	font-size: 24px;
 }
 

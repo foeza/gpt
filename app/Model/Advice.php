@@ -188,16 +188,15 @@ class Advice extends AppModel {
 
 	public function doSave( $data, $user_id = false, $advice = false, $id = false, $is_api = false ) {
 		$result = false;
-		$default_msg = __('%s '.Configure::read('Global.Data.translates.id.blog'));
 
 		if ( !empty($data) ) {
 			if( !empty($id) ) {
 				$this->id = $id;
-				$default_msg = sprintf($default_msg, __('mengubah'));
+				$default_msg = __('mengubah artikel');
 			} else {
 				$this->create();
 				$data['Advice']['author_id'] = $user_id;
-				$default_msg = sprintf($default_msg, __('menambah'));
+				$default_msg = __('menambah artikel');
 			}
 
 			if(!$is_api){
@@ -262,7 +261,7 @@ class Advice extends AppModel {
 		if ( !empty($advice) ) {
 			$title = Set::extract('/Advice/title', $advice);
 			$title = implode(', ', $title);
-			$default_msg = sprintf(__('menghapus %s %s'), Configure::read('Global.Data.translates.id.blog'), $title);
+			$default_msg = sprintf(__('menghapus artikel %s'), $title);
 
 			$flag = $this->updateAll(array(
 				'Advice.status' => 0,
@@ -299,7 +298,7 @@ class Advice extends AppModel {
 			}
 		} else {
 			$result = array(
-				'msg' => __('Gagal menghapus %s. Data tidak ditemukan', Configure::read('Global.Data.translates.id.blog')),
+				'msg' => __('Gagal menghapus artikel. Data tidak ditemukan'),
 				'status' => 'error',
 			);
 		}
@@ -472,9 +471,9 @@ class Advice extends AppModel {
     		$title = $this->filterEmptyField($value, 'Advice', 'title');
 
 	    	if($status){
-	    		$msg = __('aktifkan %s "%s"', Configure::read('Global.Data.translates.id.blog'), $title);
+	    		$msg = __('aktifkan artikel "%s"', $title);
 	    	}else{
-	    		$msg = __('non aktifkan %s "%s"', Configure::read('Global.Data.translates.id.blog'), $title);
+	    		$msg = __('non aktifkan artikel "%s"', $title);
 	    	}
 
 	    	$this->id = $id;

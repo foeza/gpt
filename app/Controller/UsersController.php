@@ -440,7 +440,7 @@ class UsersController extends AppController {
 				);
 
 				if(empty($isPersonalPage)){
-					$total_kpr = $this->User->Kpr->getCountKpr($elements);	
+					$total_kpr = 0;	
 				}
 				else{
 					$elements = array_merge($elements, array(
@@ -490,7 +490,7 @@ class UsersController extends AppController {
 						'admin_mine' => (empty($is_admin) && $user_login_group_id > 20) ? true : false,
 					));
 
-					$list_unpaid_provision = $this->User->Kpr->KprBank->KprBankInstallment->KprBankCommission->get_total_unpaid($user);
+					$list_unpaid_provision = 0;
 
 					// for commission purpose
 					$chartCommission = $this->User->Property->_callChartProperties(false, 'commissions', false, false, array(
