@@ -15,7 +15,7 @@
 				<div class="row">
 					<div class="col-sm-12 col-xs-12 mb15">
 							<?php
-								echo $this->Html->tag('strong',__('LAPORAN APLIKASI KPR'));
+								echo $this->Html->tag('strong',__('Quick Review'));
 							?>
 					</div>
 				</div>
