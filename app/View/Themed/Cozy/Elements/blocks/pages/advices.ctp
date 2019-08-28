@@ -32,7 +32,7 @@
                 $customModified = $this->Rumahku->formatDate($modified, 'd M, Y');
 
                 $url = array(
-                    'controller' => 'advices',
+                    'controller' => 'blogs',
                     'action' => 'read',
                     $id,
                     $slug,

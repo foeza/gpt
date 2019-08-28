@@ -1404,6 +1404,11 @@ div#table-advice table tbody tr td:nth-child(3) {
 }
 
 /*Dashboard*/
+.dashbox .quick-data {
+    -webkit-box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+}
+
 .wrapper-selector .dashbox {
   display: block;
   overflow: hidden;

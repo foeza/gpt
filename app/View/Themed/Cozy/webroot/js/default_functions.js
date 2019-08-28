@@ -166,7 +166,7 @@
 
                 if (w <= 975 && !$tis.mobMenuFlag) {
 
-                    $('body').prepend('<nav class="nav-mobile"><i class="fa fa-times"></i><h2><i class="fa fa-bars"></i>' + $tis.mobileMenuTitle + '</h2><ul></ul></nav>');
+                    $('body').prepend('<nav class="nav-mobile"><h2><i class="fa fa-bars"></i>' + $tis.mobileMenuTitle + '</h2><ul></ul></nav>');
 
                     $('.nav-mobile > ul').html($('.nav').html());
 
@@ -916,9 +916,10 @@
                 }
 
                 if ($(".colored .sidebar").length || $(".gray .sidebar").length) {
-                    if (w >= 751) {
+                    if (w >= 768) {
                         $(".sidebar").each(function () {
                             var h = $(this).closest(".content").find(".main").height();
+                            console.log(h)
                             $(this).css({minHeight: (h + 135) + 'px'});
                         });
                     } else {

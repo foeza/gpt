@@ -46,7 +46,7 @@
 				'style',
 				'custom',
 				'global',
-				$cssTheme,
+				// $cssTheme,
 			);
 
 			if(isset($layout_css) && !empty($layout_css)) {

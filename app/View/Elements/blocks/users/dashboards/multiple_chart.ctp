@@ -3,7 +3,7 @@
 		$fromDate = !empty($chartProperties['fromDate'])?$chartProperties['fromDate']:date('01 M Y');
 		$toDate = !empty($chartProperties['toDate'])?$chartProperties['toDate']:date('d M Y');
 		$customDate = $this->Rumahku->getCombineDate($fromDate, $toDate);
-		$action_type = !empty($action_type)?$action_type : 'properties';
+		$action_type = !empty($action_type)?$action_type : 'visitors';
 		$point_tooltip = isset($point_tooltip)?$point_tooltip : false;
 
 		if( $action_type == 'properties' ) {
@@ -59,7 +59,7 @@
 			}
 
 		} else if( $action_type == 'visitors' ) {
-			$label = __('Laporan Pengunjung Properti');
+			$label = __('Laporan Pengunjung GPT');
 			$total = $this->Rumahku->filterEmptyField($chartProperties, 'total', false, 0);
 
 			if( !empty($total) ) {
@@ -86,19 +86,19 @@
 					<div class="col-sm-9 col-xs-10">
 						<ul class="tabs">
 							<?php 
-									$classActive = ( $action_type == 'properties' )?'active':false;
-									echo $this->Html->tag('li', $this->Html->link(__('Properti'), '#', array(
-	                                	'escape' => false,
-		                                'class' => 'kpr-chart '.$classActive,
-		                                'url' => $this->Html->url(array(
-		                                    'controller' => 'ajax',
-		                                    'action' => 'get_dashboard_report',
-		                                    'properties',
-		                                )),
-		                                'chart-for' => 'properties',
-		                            )), array(
-		                                'role' => 'presentation',
-		                            ));
+									// $classActive = ( $action_type == 'properties' )?'active':false;
+									// echo $this->Html->tag('li', $this->Html->link(__('Properti'), '#', array(
+	        //                         	'escape' => false,
+		       //                          'class' => 'kpr-chart '.$classActive,
+		       //                          'url' => $this->Html->url(array(
+		       //                              'controller' => 'ajax',
+		       //                              'action' => 'get_dashboard_report',
+		       //                              'properties',
+		       //                          )),
+		       //                          'chart-for' => 'properties',
+		       //                      )), array(
+		       //                          'role' => 'presentation',
+		       //                      ));
 								
 									$classActive = ( $action_type == 'visitors' )?'active':false;
 									echo $this->Html->tag('li', $this->Html->link(__('Pengunjung'), '#', array(

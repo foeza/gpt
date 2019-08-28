@@ -5,7 +5,7 @@
 
 		echo $this->Form->create('Search', array(
             'url' => array(
-                'controller' => 'advices',
+                'controller' => 'blogs',
                 'action' => 'search',
                 'index',
                 'admin' => false,
@@ -17,7 +17,7 @@
 	<div class="container">
 		<div class="row">
 			<!-- BEGIN MAIN CONTENT -->
-			<div class="main col-sm-12 col-md-8">
+			<div class="main col-sm-12 col-md-12">
                 <?php
                         echo $this->element('blocks/common/searchs/sorting', array(
                             'options' => array(
@@ -57,7 +57,7 @@
 										'alt'=> $title, 
 									));
 									$url = array(
-										'controller' => 'advices',
+										'controller' => 'blogs',
 										'action' => 'read',
 										$id,
 										$slug,
@@ -89,8 +89,6 @@
 								<ul class="top-info">
 									<?php 
 											echo $this->Html->tag('li', sprintf('%s %s', $this->Rumahku->icon('fa fa-calendar'), $customModified));
-
-											echo $this->Html->tag('li', sprintf(__('%s <fb:comments-count href="%s"></fb:comments-count>'), $this->Rumahku->icon('fa fa-comments-o'), Router::url($linkUrl)));
 											echo $this->Html->tag('li', sprintf('%s %s', $this->Rumahku->icon('fa fa-tags'), $category));
 									?>
 								</ul>
@@ -118,12 +116,7 @@
         				echo $this->element('custom_pagination');
 				?>
 				
-			</div>	
-            <div class="sidebar gray col-sm-12 col-md-4">
-                <?php 
-                    echo $this->Html->div('search-placeholder', $this->element('blocks/advices/forms/searchs'));
-                ?>
-            </div>
+			</div>
 		</div>
 	</div>
 </div>

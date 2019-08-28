@@ -53,7 +53,7 @@
 				// )));
 
 				echo $this->Html->tag('li', $this->Html->link(__('Artikel'), array(
-					'controller' => 'advices',
+					'controller' => 'blogs',
 					'action' => 'index'
 				), array(
 					'class' => ( $active_menu == 'advices' ) ? 'active': '',

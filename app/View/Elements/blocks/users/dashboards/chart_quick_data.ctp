@@ -14,7 +14,7 @@
 		$noRow = empty($noRow) ? 'row' : '';
 
 		$link_artikel = array(
-			'controller' => 'advices',
+			'controller' => 'blogs',
 			'action' => 'index',
 			'admin' => true,
 		);

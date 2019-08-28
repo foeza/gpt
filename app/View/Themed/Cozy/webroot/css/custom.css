@@ -75,9 +75,17 @@ a.pp_close {
 	top: 5px;
 }
 
-/*berita*/
+/*Artikel*/
 .post-content p {
-    margin-bottom: 10px;
+    margin-bottom: 0;
+}
+.post-content.read-article p {
+    text-indent: 50px;
+}
+.post-content.read-article p, .post-content.read-article h1, .post-content.read-article h2,
+.post-content.read-article h3, .post-content.read-article h4, .post-content.read-article h5,
+.post-content.read-article h6 {
+    line-height: 2;
 }
 
 /* new developer page */
@@ -257,6 +265,15 @@ a.pp_close {
 	ul.career {
 	    -webkit-padding-start: initial;
 	}
+
+	.section-title, .section-highlight {
+	    margin-top: 0;
+	}
+
+	.mobile-search-trigger {
+		z-index: 99 !important;
+	}
+
 }
 
 /* About */
@@ -278,12 +295,6 @@ a.pp_close {
 
 .mobile-search {
   z-index: 100 !important;
-}
-
-@media (max-width: 768px) {
-  .mobile-search-trigger {
-    z-index: 99 !important;
-  }
 }
 
 .dropdown-group > .dropdown-menu > li.dropdown-text-input {

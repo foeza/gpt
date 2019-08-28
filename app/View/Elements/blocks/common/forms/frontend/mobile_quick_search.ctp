@@ -29,11 +29,11 @@
 			), 
 		), 
 		'advices' => array(
-			'title'	=> 'Pencarian %s'.Configure::read('Global.Data.translates.id.blog'), 
+			'title'	=> 'Pencarian Artikel', 
 			'path'	=> 'search_advice',
 			'url'	=> array(
 				'admin'			=> false, 
-				'controller'	=> 'advices',
+				'controller'	=> 'blogs',
 				'action' 		=> 'search',
 				'index',
 			),  

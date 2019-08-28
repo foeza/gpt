@@ -465,8 +465,6 @@ class UsersController extends AppController {
 				$total_regular_listing = $total_regular_listing ? array_shift($total_regular_listing) : 0;
 				$total_premium_listing = $total_premium_listing ? array_shift($total_premium_listing) : 0;
 
-				$total_listing = $total_regular_listing + $total_premium_listing;
-
 				$this->RmCommon->_layout_file(array(
 					'gchart',
 					'dashboard',
@@ -504,6 +502,13 @@ class UsersController extends AppController {
 					));
 				}
 
+				$total_banner  = 6;
+				$total_artikel = 5;
+				$resume = array(
+					'total_artikel' => $total_artikel,
+					'total_banner'  => $total_banner
+				);
+
 				$this->set('module_title', __('Dashboard'));
 				$this->set('active_menu', 'dashboard');
 				$this->set(compact(
@@ -511,7 +516,8 @@ class UsersController extends AppController {
 					'chartProperties', 'chartCommission', 'percentage',
 					'total_ebrosur', 'user', 'total_premium_listing',
 					'total_listing', 'top_ebrosurs', 'total_kpr',
-					'list_unpaid_provision'
+					'list_unpaid_provision',
+					'resume'
 				));
 			} else {
 				$this->RmCommon->redirectReferer(__('Anda tidak memiliki akses terhadap konten tersebut.'));

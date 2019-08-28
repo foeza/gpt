@@ -111,17 +111,10 @@
 		'path'		=> CACHE
 	));
 
-	Cache::config('advices_find', array(
+	Cache::config('blogs_frontend', array(
 		'engine'	=> 'File',
 		'duration'	=> '+1 day',
-    	'groups'	=> array('Advices.Find'), 
-		'path'		=> CACHE
-	));
-
-	Cache::config('advices_detail', array(
-		'engine'	=> 'File',
-		'duration'	=> '+1 day',
-    	'groups'	=> array('Advices.Detail'), 
+    	'groups'	=> array('Blogs.Frontend'), 
 		'path'		=> CACHE
 	));
 	

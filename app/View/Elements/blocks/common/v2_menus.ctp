@@ -189,7 +189,7 @@
 								'name' => __('Daftar Artikel'),
 								'url' => array(
 									'plugin' => false, 
-									'controller' => 'advices',
+									'controller' => 'blogs',
 									'action' => 'index',
 									'admin' => true,
 								),
@@ -199,7 +199,7 @@
 								'name' => __('Kategori Artikel'),
 								'url' => array(
 									'plugin' => false, 
-									'controller' => 'advices',
+									'controller' => 'blogs',
 									'action' => 'advice_categories',
 									'admin' => true,
 								),
