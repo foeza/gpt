@@ -9,21 +9,14 @@
 <ul class="latest-news">
 	<?php 
 			foreach ($related as $key => $val) {
-				$id = $this->Rumahku->filterEmptyField($val, 'Advice', 'id');
-				$slug = $this->Rumahku->filterEmptyField($val, 'Advice', 'slug');
-				$title = $this->Rumahku->filterEmptyField($val, 'Advice', 'title');
-				$photo = $this->Rumahku->filterEmptyField($val, 'Advice', 'photo');
-				$modified = $this->Rumahku->filterEmptyField($val, 'Advice', 'modified');
+				$id			= Common::hashEmptyField($val, 'Advice.id');
+				$slug		= Common::hashEmptyField($val, 'Advice.slug');
+				$title		= Common::hashEmptyField($val, 'Advice.title');
+				$photo		= Common::hashEmptyField($val, 'Advice.photo');
+				$modified	= Common::hashEmptyField($val, 'Advice.modified');
 
 				$customModified = $this->Rumahku->formatDate($modified, 'M d, Y');
-				$customPhoto = $this->Rumahku->photo_thumbnail(array(
-					'save_path' => $save_path, 
-					'src'=> $photo, 
-					'size'=>'m',
-				), array(
-					'title'=> $title, 
-					'alt'=> $title, 
-				));
+				
 				$url = array(
 					'controller' => 'blogs',
 					'action' => 'read',
@@ -34,11 +27,14 @@
 	?>
 	<li>
 		<?php 
-				echo $this->Html->tag('div', sprintf('%s %s', $this->Rumahku->icon('fa fa-calendar'), $customModified));
+				echo $this->Html->tag('div', __('%s %s', $this->Rumahku->icon('fa fa-calendar'), $customModified));
 				echo $this->Html->tag('ul', '', array(
 					'class' => 'top-info',
 				));
-				echo $this->Html->tag('h3', $this->Html->link($title, $url));
+				echo $this->Html->tag('h3', $this->Html->link($title, $url, array(
+					'title'=> $title, 
+					'alt'=> $title, 
+				)));
 		?>
 	</li>
 	<?php 
