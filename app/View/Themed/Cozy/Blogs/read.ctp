@@ -1,5 +1,4 @@
 <?php 	
-		$author 	= __('@grosirpasartasik');
 		$save_path 	= Configure::read('__Site.advice_photo_folder');
 
 		$id			= Common::hashEmptyField($value, 'Advice.id');
@@ -18,6 +17,12 @@
 		));
 		$customModified = $this->Rumahku->formatDate($modified, 'M d, Y');
 
+		$author 	= __('@grosirpasartasik');
+		$ig 		= 'https://www.instagram.com/grosirpasartasik/';
+		$author 	= $this->Html->link($author, $ig, array(
+			'_target' => 'blank',
+		));
+
 		$url = array(
 			'controller' => 'blogs',
 			'action' => 'read',
@@ -31,22 +36,20 @@
 			'action' => 'index',
 		));
 		$this->Html->addCrumb($title);
+
 ?>
 <div class="content gray">
 	<div class="container">
 		<div class="row">
 			<!-- BEGIN MAIN CONTENT -->
 			<div class="main col-sm-12 col-md-8">
-				<?php 
-						echo $this->Html->tag('h1', $title, array(
-							'class' => 'blog-title',
-						));
-				?>
 				<div class="blog-main-image center">
 					<?php 
-							echo $this->Html->image($customPhoto, array(
+							echo $this->Html->image($repeated_img, array(
 								'title' => $title,
-								'alt' => $title,
+								'alt' 	=> $title,
+								'class' => 'lazy-image',
+								'data-original' => $customPhoto,
 							));
 							echo $this->Html->tag('div', $this->Rumahku->icon('fa fa-file-text'), array(
 								'class' => 'tag',
@@ -60,7 +63,7 @@
 								echo $this->Html->tag('li', sprintf('%s %s', $this->Rumahku->icon('fa fa-tags'), $category));
 						?>
 					</ul>
-					<?php 
+					<?php
 							echo $this->Html->tag('div', $this->Rumahku->icon('fa fa-pencil').$author, array(
 								'id' => 'post-author',
 							));

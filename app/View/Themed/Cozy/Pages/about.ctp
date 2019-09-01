@@ -60,7 +60,7 @@
             <div class="col-sm-12">
                 <?php
                         echo $this->Html->tag('h2', __('Apa yang Anda cari?'), array(
-                            'class' => 'section-title',
+                            'class' => 'section-title search-product-about',
                             'data-animation-direction' => 'from-bottom',
                             'data-animation-delay' => '50'
                         ));
@@ -84,28 +84,28 @@
                         <?php
                                 echo $this->Rumahku->icon('fa fa-tags').'<br>';
                                 echo $this->Html->tag('h4', __('Apartemen'));
-                                echo $this->Html->link('View All', array(
-                                    'controller' => 'properties',
-                                    'action' => 'find',
-                                    'property_action' => 1,
-                                    'typeid' => 3,
-                                ), array(
-                                    'class' => 'btn btn-default'
-                                ));
+                                // echo $this->Html->link('View All', array(
+                                //     'controller' => 'properties',
+                                //     'action' => 'find',
+                                //     'property_action' => 1,
+                                //     'typeid' => 3,
+                                // ), array(
+                                //     'class' => 'btn btn-default'
+                                // ));
                         ?>
                     </li>
                     <li data-animation-direction="from-bottom" data-animation-delay="650">
                         <?php
                                 echo $this->Rumahku->icon('fa fa-leaf').'<br>';
                                 echo $this->Html->tag('h4', __('Tanah'));
-                                echo $this->Html->link('View All', array(
-                                    'controller' => 'properties',
-                                    'action' => 'find',
-                                    'property_action' => 1,
-                                    'typeid' => 2,
-                                ), array(
-                                    'class' => 'btn btn-default'
-                                ));
+                                // echo $this->Html->link('View All', array(
+                                //     'controller' => 'properties',
+                                //     'action' => 'find',
+                                //     'property_action' => 1,
+                                //     'typeid' => 2,
+                                // ), array(
+                                //     'class' => 'btn btn-default'
+                                // ));
                         ?>
                     </li>
                 </ul>
@@ -119,7 +119,6 @@
             <div class="main col-sm-12">
                 <?php
                         echo $this->element('blocks/users/agents', array('_class' => 'col-xs-12 col-sm-12 col-md-4'));
-                        echo $this->element('blocks/common/company_map');
                 ?>
             </div>  
         </div>

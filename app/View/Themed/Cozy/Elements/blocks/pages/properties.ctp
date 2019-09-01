@@ -1,13 +1,13 @@
 <?php 
         if(!empty($properties)){
+        // BEGIN PROPERTIES SLIDER WRAPPER
 ?>
-<!-- BEGIN PROPERTIES SLIDER WRAPPER-->
 <div class="parallax pattern-bg" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <?php 
-                        echo $this->Html->tag('h1', __('Properti Terbaru'), array(
+                        echo $this->Html->tag('h1', __('Produk Terbaru'), array(
                             'class' => 'section-title',
                             'data-animation-direction' => 'from-bottom',
                             'data-animation-delay' => '50',
@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-<!-- END PROPERTIES SLIDER WRAPPER -->
 <?php
-    }
+        }
+        // END PROPERTIES SLIDER WRAPPER
 ?>

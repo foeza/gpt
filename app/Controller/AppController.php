@@ -199,13 +199,15 @@ class AppController extends Controller {
 
 		$this->RmUser->setPermission($authGroupID);
 
+		$repeated_img = '/images/repeated-image.jpg';
+
 		$this->set(compact(
 			'User', 'logged_group', 'logged_in', 
 			'_global_variable', '_site_name',
 			'_site_email', 'dataCompany',
 			'isAjax', 'notificationMessages',
 			'_config', 'theme_path',
-			'notifications', 'agent_company_id'
+			'notifications', 'agent_company_id', 'repeated_img'
 		));
 	}
 

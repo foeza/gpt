@@ -11,6 +11,28 @@
 (function ($) { "use strict";
 
     $(document).ready(function () {
+
+        // ==== lazy image ====
+        if(typeof $.fn.lazyload == 'function'){
+            var lazyImage = $('.lazy-image');
+
+            if(lazyImage.length){
+                lazyImage.lazyload({
+                    event       : "sporty",
+                    effect      : "fadeIn",
+                    threshold   : 200,
+                    placeholder : '', 
+                });
+            }
+        }
+
+        $(window).bind("load", function() {
+            var timeout = setTimeout(function() {
+                $(".lazy-image").trigger("sporty")
+            }, 1000);
+        });
+        // ====================
+
         var Cozy;
         var properties_cluster_marker = "/theme/Cozy/images/markers/coral-marker.png",       //The URL of the cluster icon image file
         properties_cluster_textcolor = "#ffffff",                           //The color of the label text shown on the cluster icon

@@ -61,7 +61,7 @@
 			echo $this->element('js_init/configure');
 		?>
 	</head>
-	<body class="">
+	<body class="gpt">
 		<?php 
 				// echo $this->element('blocks/common/sdkscript');
 		?>
@@ -90,6 +90,7 @@
 				echo $this->Html->script(array(
 					'admin/customs.library',
 					'functions',
+					'jquery.lazyimage.min',
 					'default_functions', 
 					// 'market_trend/custom.js', // market trend
 				));

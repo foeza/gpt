@@ -283,6 +283,11 @@ a.pp_close {
 }
 /**/
 
+/* Lazy Image */
+.lazy-image {
+	display: none;
+}
+
 /*Agent*/
 .agency-detail .info .contact-us li i.rv4-wa,
 .agent-detail .info .contact-us li i.rv4-wa {

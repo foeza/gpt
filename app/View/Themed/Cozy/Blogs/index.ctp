@@ -22,10 +22,10 @@
                         echo $this->element('blocks/common/searchs/sorting', array(
                             'options' => array(
                                 '' => __('Order by'),
-                                'Advice.modified-desc' => __('Baru ke Lama'),
-                                'Advice.modified-asc' => __('Lama ke Baru'),
-                                'Advice.title-asc' => __('Judul A - Z'),
-                                'Advice.title-desc' => __('Judul Z - A'),
+                                'Advice.modified-desc' 	=> __('Baru ke Lama'),
+                                'Advice.modified-asc' 	=> __('Lama ke Baru'),
+                                'Advice.title-asc' 		=> __('Judul A - Z'),
+                                'Advice.title-desc' 	=> __('Judul Z - A'),
                             ),
                             '_display' => false,
                         ));
@@ -39,23 +39,24 @@
 								$i = 0;
 
 								foreach ($values as $key => $value) {
-	                                $id = $this->Rumahku->filterEmptyField($value, 'Advice', 'id');
-	                                $slug = $this->Rumahku->filterEmptyField($value, 'Advice', 'slug');
-	                                $category = $this->Rumahku->filterEmptyField($value, 'AdviceCategory', 'name');
-	                                $title = $this->Rumahku->filterEmptyField($value, 'Advice', 'title');
-	                                $short_content = $this->Rumahku->filterEmptyField($value, 'Advice', 'short_content');
-	                                $photo = $this->Rumahku->filterEmptyField($value, 'Advice', 'photo');
-	                                $modified = $this->Rumahku->filterEmptyField($value, 'Advice', 'modified');
+									$category	= Common::hashEmptyField($value, 'AdviceCategory.name');
 
-	                                $customModified = $this->Rumahku->formatDate($modified, 'M d, Y');
-									$customPhoto = $this->Rumahku->photo_thumbnail(array(
+									$id			= Common::hashEmptyField($value, 'Advice.id');
+									$slug		= Common::hashEmptyField($value, 'Advice.slug');
+									$title		= Common::hashEmptyField($value, 'Advice.title');
+									$content	= Common::hashEmptyField($value, 'Advice.short_content', false);
+									$photo		= Common::hashEmptyField($value, 'Advice.photo');
+									$modified	= Common::hashEmptyField($value, 'Advice.modified');
+
+	                                $modified 	= $this->Rumahku->formatDate($modified, 'M d, Y');
+
+	                                $customPhoto = $this->Rumahku->photo_thumbnail(array(
 										'save_path' => $save_path, 
-										'src'=> $photo, 
-										'size'=>'m',
-									), array(
-										'title'=> $title, 
-										'alt'=> $title, 
+										'src'		=> $photo, 
+										'size' 		=> 'm',
+										'url' 		=> true,
 									));
+
 									$url = array(
 										'controller' => 'blogs',
 										'action' => 'read',
@@ -63,7 +64,6 @@
 										$slug,
 										'admin' => false,
 									);
-									$linkUrl = $this->Html->url($url, true);
 
 									if( !empty($i) && $i%2 == 0 ) {
 					                    echo $this->Rumahku->clearfix();
@@ -77,7 +77,13 @@
 										)), $url, array(
 											'escape' => false,
 										));
-										echo $customPhoto;
+
+										echo $this->Html->image($repeated_img, array(
+											'title' => $title,
+											'alt' 	=> $title,
+											'class' => 'lazy-image',
+											'data-original' => $customPhoto,
+										));
 								?>
 							</div>
 							<?php 
@@ -88,15 +94,19 @@
 							<div class="info-blog">
 								<ul class="top-info">
 									<?php 
-											echo $this->Html->tag('li', sprintf('%s %s', $this->Rumahku->icon('fa fa-calendar'), $customModified));
-											echo $this->Html->tag('li', sprintf('%s %s', $this->Rumahku->icon('fa fa-tags'), $category));
+											echo $this->Html->tag('li',
+												__('%s %s', $this->Rumahku->icon('fa fa-calendar'), $modified));
+											echo $this->Html->tag('li',
+												__('%s %s', $this->Rumahku->icon('fa fa-tags'), $category));
 									?>
 								</ul>
 								<?php 
-										echo $this->Html->tag('h3', $this->Html->link($title, $url, array(
-											'escape' => false,
-										)));
-										echo $this->Html->tag('p', $short_content);
+										echo $this->Html->tag('h3',
+											$this->Html->link($title, $url, array(
+												'escape' => false,
+											))
+										);
+										echo $this->Html->tag('p', $content);
 								?>
 							</div>
 						</div>
@@ -115,7 +125,6 @@
 
         				echo $this->element('custom_pagination');
 				?>
-				
 			</div>
 		</div>
 	</div>

@@ -2,12 +2,12 @@
         $data = $this->request->data;
         $_class = isset($_class) ? $_class : '';
 
-        $filter = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'is_home_right_filter_cozy');
+        $filter = true;
         $property_action = $this->Rumahku->filterEmptyField($data, 'Search', 'property_action', 1);
 
         if( !empty($filter) ){
 ?>
-<div id="find_agents" data-animation-direction="fade" data-animation-delay="250" class="<?php echo $_class; ?> locations-trigger">
+<div id="quick-search" data-animation-direction="fade" data-animation-delay="250" class="hidden-xs locations-trigger" >
     <?php 
             echo $this->Html->tag('h2', __('Pencarian Cepat'), array(
                 'class' => 'section-title'
@@ -58,15 +58,16 @@
                 'inputClass' => 'form-control subareaId',
             ));
 
-            echo $this->Html->tag('div', $this->Form->button(__('Cari'), array(
+            echo $this->Html->tag('div', $this->Form->button(__('Cari Produk'), array(
                 'type' => 'submit', 
-                'class' => 'btn btn-default',
+                'class' => 'btn btn-search',
             )), array(
-                'class' => 'form-actions',
+                'class' => 'form-actions center',
             ));
 
             echo $this->Rumahku->setFormAddress( 'PropertyAddress' );
             echo $this->Form->end();
+
     ?>
 </div>
 <?php

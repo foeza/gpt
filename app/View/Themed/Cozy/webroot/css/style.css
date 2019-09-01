@@ -1,17 +1,9 @@
-/*
-* Author: Wisely Themes
-* Author URI: http://themeforest.net/user/wiselythemes
-* Theme Name: Cozy
-* Version: 1.0.0
-*/
-
-
 /* Table of Content
 ==================================================
   #Variables
   #Mixins
   #Typography
-  #General
+  #Gengptl
   #Header
   #Navigation
   #Home
@@ -68,7 +60,7 @@ h5 {
   font-size: 15px;
   text-transform: none;
 }
-/* #General
+/* #Gengptl
 ================================================== */
 html {
   overflow: auto;
@@ -415,6 +407,9 @@ iframe[src="about:blank"] {
   display: inline-block;
   width: 100%;
 }
+.section-title.search-product-about {
+  background-color: transparent;
+}
 /*.section-title:before,
 .section-highlight:before,
 .section-title:after,
@@ -435,6 +430,10 @@ iframe[src="about:blank"] {
 .section-highlight:after {
   bottom: 0px;
 }*/
+.section-title.form-actions {
+  padding: 15px 25px;
+}
+
 .section-highlight {
   text-transform: none;
   font-size: 24pt;
@@ -2123,9 +2122,6 @@ iframe[src="about:blank"] {
   background-color: transparent;
   color: #df4a43;
 }
-.navbar-nav > li > a.active {
-  font-weight: bold;
-}
 .navbar-nav > li.dropdown > a .caret {
   border-right: 3px solid rgba(0, 0, 0, 0);
   border-top: 3px solid;
@@ -2354,6 +2350,33 @@ iframe[src="about:blank"] {
 }
 /* #Home
 ================================================== */
+#quick-search {
+  padding: 25px;
+}
+#quick-search form {
+  border: 1px dotted #eaeaea;
+  padding: 25px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#quick-search .form-actions {
+  margin-top: 25px;
+}
+#quick-search .section-title {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.btn-search {
+  border: 1px solid #e56b65;
+  background-color: transparent;
+  color: #e56b65;
+}
+.btn-search:hover {
+  background-color: #e56b65;
+  color: #fff;
+}
+
 #home-search-section {
   position: relative;
   text-align: center;
@@ -5258,9 +5281,7 @@ a.tp-caption.btn-lg {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-.grid-style1 .item .image img {
-  max-height:215px;
-}
+
 .list-style .item .propertyItem .propertyContent img,
 .grid-style1 .item .image img {
   display: block;
@@ -7143,30 +7164,6 @@ div.dark_square #pp_full_res .pp_inline {
   background-image: url(../images/patterns/pattern9.jpg);
 }
 
-/* CENTER CONTENT */
-#kpr-btn-form .input-group {
-  padding-bottom: 10px;
-}
-#kpr-btn-form .input-group input[type='text'] {
-  padding-bottom: 10px;
-  margin-bottom: 0px;
-}
-#kpr-btn-form .error {
-  background-color: transparent;
-}
-#kpr-btn-form .error-message {
-  font-size: 16px;
-  margin-top: 0px;
-}
-#kpr-btn-form .alert.alert-success {
-  position:static;
-}
-#kpr-btn-form input[type='text'], select, textarea {
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-/* END CENTER CONTENT */
-
 /* ADDITIONAL CSS BUTTON ORANGE */
 .btn-orange {
   background-color: #fb6330;
@@ -7190,11 +7187,6 @@ div.dark_square #pp_full_res .pp_inline {
   color: #fff;
 }
 /* END ADDITIONAL CSS BUTTON ORANGE */
-
-/* SHARE KPR */
-#main-share-kpr {
-  padding-top: 0px;
-}
 
 /* #Media Queries
 ================================================== */
@@ -7221,6 +7213,19 @@ div.dark_square #pp_full_res .pp_inline {
     padding: 0 10px;
   }
 }
+
+@media (max-width: 768px) {
+  .grid-style1 .item .image img {
+    max-height:215px;
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-style1 .item .image img {
+    max-height:290px;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 992px) {
   .sidebar #newsletter h2 span {
     font-size: 18pt;
@@ -7443,6 +7448,7 @@ div.dark_square #pp_full_res .pp_inline {
     width: 100%;
   }
 }
+
 /**********************************************************
  * Update 1.1 
  **********************************************************/
@@ -8199,18 +8205,18 @@ div.dark_square #pp_full_res .pp_inline {
 }
 
 .title-header-banner{
-    position: absolute;
-    top: 50px;
-    left: 20px;
-    background: #ccc;
-    padding: 15px;
-    font-size: 24px;
-    border-radius: 4px;
-    font-weight: bold;
+  position: absolute;
+  top: 50px;
+  left: 20px;
+  background: #ccc;
+  padding: 15px;
+  font-size: 24px;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
 .title-header-banner.trans {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .title-header-banner a{
@@ -8243,1232 +8249,170 @@ div.dark_square #pp_full_res .pp_inline {
   margin-right: 5px;
 }
 
-body.century .sidebar.colored .section-title,
-body.century .sidebar.colored a,
-body.century .sidebar.colored,
-body.ljhooker .sidebar.colored .section-title,
-body.ljhooker .sidebar.colored a,
-body.ljhooker .sidebar.colored {
-  color: #444;
-}
-
-body.century .sidebar.colored .section-title:before, 
-body.century .sidebar.colored .section-title:after,
-body.ljhooker .sidebar.colored .section-title:before, 
-body.ljhooker .sidebar.colored .section-title:after {
-  background-color: #444;
-}
-
-body.century .colored .form-control,
-body.ljhooker .colored .form-control {
-  color: #221b00;
-  background-color: rgba(255, 255, 255, 0.8); 
-}
-
-body.century .btn-default,
-body.century .btn-default:focus,
-body.century .btn-default:hover, 
-body.century .btn-default:active, 
-body.century .btn-default.active, 
-body.century .open .dropdown-toggle.btn-default,
-body.ljhooker .btn-default,
-body.ljhooker .btn-default:focus,
-body.ljhooker .btn-default:hover, 
-body.ljhooker .btn-default:active, 
-body.ljhooker .btn-default.active, 
-body.ljhooker .open .dropdown-toggle.btn-default {
-  border-color: #adb2b6;
-  color: #adb2b6;
-}
-
-body.century .content.colored:before,
-body.century .content.gray:before,
-body.ljhooker .content.colored:before,
-body.ljhooker .content.gray:before {
-  background-color: #f0f0f0;
-}
-
-/* CENTURY */
-body.century .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.century .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.century .btn-default-color:hover, 
-body.century .btn-default-color:active, 
-body.century .btn-default-color.active, 
-body.century .open .dropdown-toggle.btn-default-color {
-  color: inherit;
-}
-body.century .panel-group .panel .panel-heading .panel-title > a.collapsed:after,
-body.century .btn-default-color {
-  color: #adb2b6;
-  border-color: #adb2b6;
-}
-body.century ::selection, 
-body.century a, 
-body.century a:hover, 
-body.century #home-search-buttons .input-group .btn-default, 
-body.century .section-title, .section-highlight, 
-body.century .chzn-container-single .chzn-single-with-drop, 
-body.century .chzn-container .chzn-results li.highlighted, 
-body.century .property-large-buttons a:hover, 
-body.century .btn-fullcolor, 
-body.century .btn-fullcolor:focus, 
-body.century .colored-bg .page-title, 
-body.century .pagination ul li.active a, 
-body.century .pagination ul li.active a:hover, 
-body.century .share-wraper h5, 
-body.century .colored-bg .btn-default:hover, 
-body.century .breadcrumb > li:last-child > a, 
-body.century .colored-bg .breadcrumb > li:last-child, 
-body.century .breadcrumb > li > a:hover, 
-body.century .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.century .panel-group .panel .panel-heading .panel-title > a, 
-body.century .panel-group .panel .panel-heading .panel-title > a:hover {
-  color: #221b00;
-}
-body.century h1, 
-body.century h2, 
-body.century h3, 
-body.century h4, 
-body.century h5, 
-body.century h6, 
-body.century #top-bar a:hover, 
-body.century .language-switcher:hover, 
-body.century .nav .open > a, 
-body.century .nav .open > a:hover, 
-body.century .nav .open > a:focus, 
-body.century .nav > li > a:hover, 
-body.century .nav > li > a:focus, 
-body.century .nav-tabs > li.active > a,
-body.century .navbar-nav > li > a.active, 
-body.century .sb-icon-search:hover, 
-body.century .sb-search.sb-search-open .sb-icon-search, 
-body.century .no-js .sb-search .sb-icon-search, 
-body.century .navbar-nav .dropdown-menu > li > a:hover, 
-body.century .navbar-nav .dropdown-menu > li > a:focus, 
-body.century .navbar-nav .dropdown-menu > li > a.active, 
-body.century .fullwidthsingle2 .info h3 a:hover,
-body.century .fullwidthsingle .info h3 a:hover,
-body.century .latest-news-slider .info h3 a:hover, 
-body.century .grid-style1 .item > .info h3 a:hover, 
-body.century .grid-style2 .item > .info h3 a:hover, 
-body.century .list-style .item > .info h3 a:hover, 
-body.century .grid-style1 .item > .info-blog h3 a:hover, 
-body.century .grid-style2 .item > .info-blog h3 a:hover, 
-body.century .list-style .item > .info-blog h3 a:hover, 
-body.century .sidebar.gray .panel-group .panel .panel-heading .panel-title > a, 
-body.century .gray .sidebar .panel-group .panel .panel-heading .panel-title > a, 
-body.century .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.century .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.century .sidebar.gray .tab-content > .active h4, 
-body.century .gray .sidebar .tab-content > .active h4, 
-body.century .panel-group .panel .panel-heading .panel-title > a:after, 
-body.century .features-list li i, 
-body.century .latest-news-slider .item .info a:hover, 
-body.century .agency-detail-agents li:hover h3, 
-body.century .agency-detail-agents li a:hover, 
-body.century .home3-hero h2, 
-body.century .sidebar .latest-news > li h3 a:hover, 
-body.century .property-title, 
-body.century .property-amenities-list > li.enabled:before, 
-body.century .property-features > li i, 
-body.century .agents-grid .item .info .contact-us li a:hover, 
-body.century .agents-grid .item .info .contact-us li a:hover i, 
-body.century .assigned, 
-body.century .agent-detail .info .contact-us li a:hover, 
-body.century .blog-accordion.panel-group .panel .panel-body ul li:hover:before, 
-body.century .blog-accordion.panel-group .panel .panel-body ul li a:hover, 
-body.century .categories li:hover:before, 
-body.century .categories li a:hover span, 
-body.century .blog-title, 
-body.century .post-content .highlight-color, 
-body.century .tab-content h4, 
-body.century .breadcrumb > li > a, 
-body.century #footer-top a:hover, 
-body.century .post-content .quote span {
-  color: #cca300;
-}
-body.century .feature i {
-  color: #fc0;
-}
-body.century .advanced-search, 
-body.century .advanced-search:hover, 
-body.century .property-large-buttons a, 
-body.century .dark-bg .section-title, 
-body.century .caption:hover, 
-body.century .fullwidthsingle .info a, 
-body.century .colored-bg .btn-default {
-  color: #fff;
-}
-body.century .feature:hover h3, 
-body.century .feature:hover i, 
-body.century .owl-controls .owl-buttons div:before, 
-body.century .tag i:before, 
-body.century .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.century .text-highlight, 
-body.century .carousel-style1 .item .price, 
-body.century .fullwidthsingle2 .price, 
-body.century .fullwidthsingle .price, 
-body.century .latest-news-slider .price, 
-body.century .grid-style1 .item .price, 
-body.century .list-style .item .price {
-  color: #000;
-}
-body.century .action-box .btn-default, 
-body.century .dark-bg .btn-default {
-  color: rgba(255, 255, 255, 0.7);
-}
-body.century .panel-group .panel .panel-heading .panel-title > a.collapsed {
-  background-color: transparent;
-}
-body.century ::selection, 
-body.century #home-search-buttons .input-group .btn-default, 
-body.century .carousel-style1 .item .price, 
-body.century .owl-controls .owl-page.active span, 
-body.century .owl-controls.clickable .owl-page:hover span, 
-body.century .sidebar.colored .owl-controls .owl-page.active span, 
-body.century .sidebar.colored .owl-controls.clickable .owl-page:hover span, 
-body.century .chzn-container .chzn-results li.highlighted, 
-body.century .feature i:after, 
-body.century .owl-controls .owl-buttons, 
-body.century .grid-style1 .item .price, 
-body.century .grid-style2 .item .price, 
-body.century .fullwidthsingle2 .price,
-body.century .fullwidthsingle .price, 
-body.century .latest-news-slider .price, 
-body.century .list-style .item .price, 
-body.century .grid-style1 .item .tag, 
-body.century .grid-style2 .item .tag, 
-body.century .list-style .item .tag, 
-body.century .latest-news-slider .item .tag,
-body.century .agents-grid .item .tag, 
-body.century .blog-main-image .tag, 
-body.century .text-highlight, 
-body.century .btn-fullcolor, 
-body.century .btn-fullcolor:focus, 
-body.century .tp-leftarrow:hover, 
-body.century .tp-rightarrow:hover, 
-body.century .pagination ul li.active, 
-body.century .pagination ul li.active:hover, 
-body.century #contacts-overlay ul li i, 
-body.century #property-detail-wrapper.style1 .price {
-  background-color: #fc0;
-}
-body.century .property-large-buttons li:hover:before, 
-body.century .colored-bg:before, 
-body.century .action-box:before {
-  background-color: rgba(255, 204, 0, 0.82);
-}
-body.century .action-box, 
-body.century .section-title:before, 
-body.century .section-highlight:before, 
-body.century .section-title:after, 
-body.century .section-highlight:after, 
-body.century .latest-news-slider .item .info, 
-body.century .fullwidthsingle .info, 
-body.century .latest-news-slider .info {
-  background-color: #141414;
-}
-body.century .owl-controls .owl-buttons div.owl-prev:hover, 
-body.century .owl-controls .owl-buttons div.owl-next:hover {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-body.century .content.gray:before,
-body.century .sidebar.gray {
-  background-color: #f0f0f0;
-}
-body.century .dark-bg .section-title:before, 
-body.century .dark-bg .section-title:after, 
-body.century .colored-bg .owl-page.active span, 
-body.century .colored-bg .owl-controls.clickable .owl-page:hover span, 
-body.century .pagination ul li:hover {
-  background-color: #fff;
-}
-body.century .open .dropdown-toggle.btn-default-color, 
-body.century #home-search-buttons .form-control:focus, 
-body.century .feature i, 
-body.century .pagination ul li:hover, 
-body.century .pagination ul li.active, 
-body.century .pagination ul li.active:hover {
-  border-color: #fc0;
-}
-body.century .btn-default-color:hover, 
-body.century .btn-default-color:active, 
-body.century .btn-default-color.active, 
-body.century .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.century .sidebar #newsletter .input-group input:focus{
-  border-color: #000;
-}
-body.century .property-large-buttons a:hover, 
-body.century .colored-bg .btn-default:hover {
-  border-color: #221b00;
-}
-body.century .panel-group .panel .panel-heading .panel-title > a:after {
-  border-color: #cca300;
-}
-body.century .property-large-buttons a {
-  border-color: #fff;
-}
-body.century .carousel-style1 .item .price:before, 
-body.century .grid-style2 .item .price:before, 
-body.century .fullwidthsingle2 .price:before, 
-body.century .fullwidthsingle .price:before, 
-body.century .latest-news-slider .price:before,
-body.century #property-detail-wrapper.style1 .price:before, 
-body.century .grid-style1 .item .tag:before, 
-body.century .grid-style2 .item .tag:before, 
-body.century .list-style .item .tag:before, 
-body.century .latest-news-slider .item .tag:before, 
-body.century .agents-grid .item .tag:before, 
-body.century .blog-main-image .tag:before {
-  border-right-color: #cca300;
-}
-body.century .navbar-nav .dropdown-menu > li > a:hover, 
-body.century .navbar-nav .dropdown-menu > li > a:focus, 
-body.century .navbar-nav .dropdown-menu > li > a.active, 
-body.century .owl-controls .owl-buttons:before {
-  border-left-color: #cca300;
-}
-body.century .sidebar.gray {
-  border-left: transparent;
-}
-
-body.century .sidebar.colored {
-  background-color: #f0f0f0;
-}
-
-/* LJHOOKER */
-body.ljhooker .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.ljhooker .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.ljhooker .btn-default-color:hover, 
-body.ljhooker .btn-default-color:active, 
-body.ljhooker .btn-default-color.active, 
-body.ljhooker .open .dropdown-toggle.btn-default-color, 
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a.collapsed {
-  color: inherit;
-}
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a.collapsed:after,
-body.ljhooker .btn-default-color {
-  color: #adb2b6;
-  border-color: #adb2b6;
-}
-body.ljhooker ::selection, 
-body.ljhooker a, 
-body.ljhooker a:hover, 
-body.ljhooker .section-title, .section-highlight, 
-body.ljhooker .colored-bg .page-title, 
-body.ljhooker .pagination ul li.active a, 
-body.ljhooker .pagination ul li.active a:hover, 
-body.ljhooker .share-wraper h5, 
-body.ljhooker .breadcrumb > li:last-child > a, 
-body.ljhooker .colored-bg .breadcrumb > li:last-child, 
-body.ljhooker .breadcrumb > li > a:hover {
-  color: #221b00;
-}
-body.ljhooker #top-bar a:hover, 
-body.ljhooker .language-switcher:hover, 
-body.ljhooker .nav .open > a, 
-body.ljhooker .nav .open > a:hover, 
-body.ljhooker .nav .open > a:focus, 
-body.ljhooker .nav > li > a:hover, 
-body.ljhooker .nav > li > a:focus, 
-body.ljhooker .nav-tabs > li.active > a,
-body.ljhooker .navbar-nav > li > a.active, 
-body.ljhooker .sb-icon-search:hover, 
-body.ljhooker .sb-search.sb-search-open .sb-icon-search, 
-body.ljhooker .no-js .sb-search .sb-icon-search, 
-body.ljhooker .navbar-nav .dropdown-menu > li > a:hover, 
-body.ljhooker .navbar-nav .dropdown-menu > li > a:focus, 
-body.ljhooker .navbar-nav .dropdown-menu > li > a.active, 
-body.ljhooker .feature:hover h3, 
-body.ljhooker .fullwidthsingle2 .info h3 a:hover,
-body.ljhooker .fullwidthsingle .info h3 a:hover,
-body.ljhooker .latest-news-slider .info h3 a:hover, 
-body.ljhooker .grid-style1 .item > .info h3 a:hover, 
-body.ljhooker .grid-style2 .item > .info h3 a:hover, 
-body.ljhooker .list-style .item > .info h3 a:hover, 
-body.ljhooker .grid-style1 .item > .info-blog h3 a:hover, 
-body.ljhooker .grid-style2 .item > .info-blog h3 a:hover, 
-body.ljhooker .list-style .item > .info-blog h3 a:hover, 
-body.ljhooker .sidebar.gray .panel-group .panel .panel-heading .panel-title > a, 
-body.ljhooker .gray .sidebar .panel-group .panel .panel-heading .panel-title > a, 
-body.ljhooker .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.ljhooker .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.ljhooker .sidebar.gray .tab-content > .active h4, 
-body.ljhooker .gray .sidebar .tab-content > .active h4, 
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a:after, 
-body.ljhooker .feature i, 
-body.ljhooker .features-list li i, 
-body.ljhooker .latest-news-slider .item .info a:hover, 
-body.ljhooker .agency-detail-agents li:hover h3, 
-body.ljhooker .agency-detail-agents li a:hover, 
-body.ljhooker .home3-hero h2, 
-body.ljhooker .sidebar .latest-news > li h3 a:hover, 
-body.ljhooker .property-title, 
-body.ljhooker .property-amenities-list > li.enabled:before, 
-body.ljhooker .property-features > li i, 
-body.ljhooker .agents-grid .item .info .contact-us li a:hover, 
-body.ljhooker .agents-grid .item .info .contact-us li a:hover i, 
-body.ljhooker .assigned, 
-body.ljhooker .agent-detail .info .contact-us li a:hover, 
-body.ljhooker .blog-accordion.panel-group .panel .panel-body ul li:hover:before, 
-body.ljhooker .blog-accordion.panel-group .panel .panel-body ul li a:hover, 
-body.ljhooker .categories li:hover:before, 
-body.ljhooker .categories li a:hover span, 
-body.ljhooker .blog-title, 
-body.ljhooker .post-content .highlight-color, 
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a, 
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a:hover, 
-body.ljhooker .tab-content h4, 
-body.ljhooker #footer-top a:hover {
-  color: #ee1b2e;
-}
-
-body.ljhooker .breadcrumb > li > a {
-  color: #e10520;
-  font-weight: bold;
-}
-
-body.ljhooker .feature:hover i {
-  color: #fff5cc;
-}
-body.ljhooker .advanced-search, 
-body.ljhooker .advanced-search:hover, 
-body.ljhooker .dark-bg .section-title, 
-body.ljhooker .colored-bg .section-title, 
-body.ljhooker .caption:hover, 
-body.ljhooker .property-large-buttons a:hover, 
-body.ljhooker .fullwidthsingle .info a, 
-body.ljhooker .colored-bg .btn-default, 
-body.ljhooker .text-highlight, 
-body.ljhooker #home-search-buttons .input-group .btn-default, 
-body.ljhooker .action-box .btn-default:hover, 
-body.ljhooker .action-box h2,  
-body.ljhooker .chzn-container .chzn-results li.highlighted, 
-body.ljhooker .btn-fullcolor, 
-body.ljhooker .btn-fullcolor:focus {
-  color: #fff;
-}
-body.ljhooker .carousel-style1 .item .price, 
-body.ljhooker .fullwidthsingle2 .price, 
-body.ljhooker .fullwidthsingle .price, 
-body.ljhooker .latest-news-slider .price, 
-body.ljhooker .grid-style1 .item .price, 
-body.ljhooker #property-detail-wrapper.style1 .price, 
-body.ljhooker .colored .chzn-container-single .chzn-single, 
-body.ljhooker .chzn-container-single .chzn-single-with-drop, 
-body.ljhooker .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.ljhooker .colored .chzn-container-multi .chzn-choices li.search-choice .search-choice-close, 
-body.ljhooker .colored .chzn-container-multi .chzn-choices li.search-field input[type="text"], 
-body.ljhooker .colored .form-control {
-  color: #000;
-}
-body.ljhooker .action-box .btn-default, 
-body.ljhooker .dark-bg .btn-default, 
-body.ljhooker .property-large-buttons a {
-  color: rgba(255, 255, 255, 0.7);
-}
-body.ljhooker .colored .chzn-container-multi .chzn-choices li.search-choice {
-  border: 1px solid #dcdcdc;
-  color: #444;
-}
-body.ljhooker ::selection, 
-body.ljhooker #home-search-buttons .input-group .btn-default, 
-body.ljhooker .owl-controls .owl-page.active span, 
-body.ljhooker .owl-controls.clickable .owl-page:hover span, 
-body.ljhooker .sidebar.colored .owl-controls .owl-page.active span, 
-body.ljhooker .sidebar.colored .owl-controls.clickable .owl-page:hover span, 
-body.ljhooker .colored .chzn-container .chzn-results li.highlighted,
-body.ljhooker .chzn-container .chzn-results li.highlighted, 
-body.ljhooker .feature i:after, 
-body.ljhooker .text-highlight, 
-body.ljhooker .btn-fullcolor, 
-body.ljhooker .btn-fullcolor:focus, 
-body.ljhooker .tp-leftarrow:hover, 
-body.ljhooker .tp-rightarrow:hover, 
-body.ljhooker .pagination ul li.active, 
-body.ljhooker .pagination ul li.active:hover, 
-body.ljhooker #contacts-overlay ul li i {
-  background-color: #ee1b2e;
-}
-body.ljhooker .carousel-style1 .item .price, 
-body.ljhooker .grid-style1 .item .price, 
-body.ljhooker .grid-style2 .item .price, 
-body.ljhooker .fullwidthsingle2 .price,
-body.ljhooker .fullwidthsingle .price, 
-body.ljhooker .latest-news-slider .price, 
-body.ljhooker .list-style .item .price, 
-body.ljhooker #property-detail-wrapper.style1 .price, 
-body.ljhooker .grid-style1 .item .tag, 
-body.ljhooker .grid-style2 .item .tag, 
-body.ljhooker .list-style .item .tag, 
-body.ljhooker .latest-news-slider .item .tag,
-body.ljhooker .agents-grid .item .tag, 
-body.ljhooker .blog-main-image .tag, 
-body.ljhooker .owl-controls .owl-buttons {
-  background-color: #f8981d;
-}
-body.ljhooker .property-large-buttons li:hover:before, 
-body.ljhooker .colored-bg:before, 
-body.ljhooker .action-box:before {
-  background-color: rgba(238, 27, 46, 0.82);
-}
-body.ljhooker .action-box, 
-body.ljhooker .section-title:before, 
-body.ljhooker .section-highlight:before, 
-body.ljhooker .section-title:after, 
-body.ljhooker .section-highlight:after, 
-body.ljhooker .latest-news-slider .item .info, 
-body.ljhooker .fullwidthsingle .info, 
-body.ljhooker .latest-news-slider .info {
-  background-color: #141414;
-}
-body.ljhooker .owl-controls .owl-buttons div.owl-prev:hover, 
-body.ljhooker .owl-controls .owl-buttons div.owl-next:hover {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-body.ljhooker .content.gray:before,
-body.ljhooker .sidebar.gray {
-  background-color: #f0f0f0;
-}
-body.ljhooker .dark-bg .section-title:before, 
-body.ljhooker .dark-bg .section-title:after, 
-body.ljhooker .colored-bg .section-title:before,
-body.ljhooker .colored-bg .section-title:after,
-body.ljhooker .colored-bg .owl-page.active span, 
-body.ljhooker .colored-bg .owl-controls.clickable .owl-page:hover span, 
-body.ljhooker .pagination ul li:hover {
-  background-color: #fff;
-}
-body.ljhooker .btn-default-color:hover, 
-body.ljhooker .btn-default-color:active, 
-body.ljhooker .btn-default-color.active,
-body.ljhooker .open .dropdown-toggle.btn-default-color, 
-body.ljhooker #home-search-buttons .form-control:focus, 
-body.ljhooker .feature i, 
-body.ljhooker #find_agents .form-actions .btn-default:hover, 
-body.ljhooker .pagination ul li:hover, 
-body.ljhooker .pagination ul li.active, 
-body.ljhooker .pagination ul li.active:hover, 
-body.ljhooker .panel-group .panel .panel-heading .panel-title > a:after {
-  border-color: #ee1b2e;
-}
-body.ljhooker .property-large-buttons a:hover, 
-body.ljhooker .colored-bg .btn-default:hover {
-  border-color: #fff;
-}
-body.ljhooker .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.ljhooker .sidebar.colored #newsletter .form-control:focus {
-  border-color: #000;
-}
-body.ljhooker .property-large-buttons a {
-  border-color: rgba(255, 255, 255, .35);
-}
-body.ljhooker .carousel-style1 .item .price:before, 
-body.ljhooker .grid-style2 .item .price:before, 
-body.ljhooker .fullwidthsingle2 .price:before, 
-body.ljhooker .fullwidthsingle .price:before, 
-body.ljhooker .latest-news-slider .price:before,
-body.ljhooker #property-detail-wrapper.style1 .price:before, 
-body.ljhooker .grid-style1 .item .tag:before, 
-body.ljhooker .grid-style2 .item .tag:before, 
-body.ljhooker .list-style .item .tag:before, 
-body.ljhooker .latest-news-slider .item .tag:before, 
-body.ljhooker .agents-grid .item .tag:before, 
-body.ljhooker .blog-main-image .tag:before {
-  border-right-color: #db7e07;
-}
-body.ljhooker .navbar-nav .dropdown-menu > li > a:hover, 
-body.ljhooker .navbar-nav .dropdown-menu > li > a:focus, 
-body.ljhooker .navbar-nav .dropdown-menu > li > a.active {
-  border-left-color: #ee1b2e;
-}
-body.ljhooker .owl-controls .owl-buttons:before {
-  border-left-color: #db7e07;
-}
-body.ljhooker .sidebar.gray {
-  border-left: transparent;
-}
-
-/* RAYWHITE */ 
-body.raywhite .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.raywhite .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed, 
-body.raywhite .btn-default-color:hover, 
-body.raywhite .btn-default-color:active, 
-body.raywhite .btn-default-color.active, 
-body.raywhite .open .dropdown-toggle.btn-default-color, 
-body.raywhite .panel-group .panel .panel-heading .panel-title > a.collapsed {
-  color: inherit;
-}
-body.raywhite .panel-group .panel .panel-heading .panel-title > a.collapsed:after,
-body.raywhite .sidebar.gray .form-group .btn-default-color {
-  color: #adb2b6;
-  border-color: #adb2b6;
-}
-body.raywhite ::selection, 
-body.raywhite a, 
-body.raywhite a:hover, 
-body.raywhite .section-title, .section-highlight, 
-body.raywhite .colored-bg .page-title, 
-body.raywhite .pagination ul li.active a, 
-body.raywhite .pagination ul li.active a:hover, 
-body.raywhite .share-wraper h5, 
-body.raywhite .breadcrumb > li:last-child > a, 
-body.raywhite .colored-bg .breadcrumb > li:last-child, 
-body.raywhite .breadcrumb > li > a:hover {
-  color: #221b00;
-}
-body.raywhite h1, 
-body.raywhite h2, 
-body.raywhite h3, 
-body.raywhite h4, 
-body.raywhite h5, 
-body.raywhite h6, 
-body.raywhite #top-bar a:hover, 
-body.raywhite .language-switcher:hover, 
-body.raywhite .nav .open > a, 
-body.raywhite .nav .open > a:hover, 
-body.raywhite .nav .open > a:focus, 
-body.raywhite .nav > li > a:hover, 
-body.raywhite .nav > li > a:focus, 
-body.raywhite .nav-tabs > li.active > a,
-body.raywhite .navbar-nav > li > a.active, 
-body.raywhite .sb-icon-search:hover, 
-body.raywhite .sb-search.sb-search-open .sb-icon-search, 
-body.raywhite .no-js .sb-search .sb-icon-search, 
-body.raywhite .navbar-nav .dropdown-menu > li > a:hover, 
-body.raywhite .navbar-nav .dropdown-menu > li > a:focus, 
-body.raywhite .navbar-nav .dropdown-menu > li > a.active, 
-body.raywhite .feature:hover h3, 
-body.raywhite .fullwidthsingle2 .info h3 a:hover,
-body.raywhite .fullwidthsingle .info h3 a:hover,
-body.raywhite .latest-news-slider .info h3 a:hover, 
-body.raywhite .grid-style1 .item > .info h3 a:hover, 
-body.raywhite .grid-style2 .item > .info h3 a:hover, 
-body.raywhite .list-style .item > .info h3 a:hover, 
-body.raywhite .grid-style1 .item > .info-blog h3 a:hover, 
-body.raywhite .grid-style2 .item > .info-blog h3 a:hover, 
-body.raywhite .list-style .item > .info-blog h3 a:hover, 
-body.raywhite .sidebar.gray .panel-group .panel .panel-heading .panel-title > a, 
-body.raywhite .gray .sidebar .panel-group .panel .panel-heading .panel-title > a, 
-body.raywhite .sidebar.gray .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.raywhite .gray .sidebar .panel-group .panel .panel-heading .panel-title > a.collapsed:hover, 
-body.raywhite .sidebar.gray .tab-content > .active h4, 
-body.raywhite .gray .sidebar .tab-content > .active h4, 
-body.raywhite .panel-group .panel .panel-heading .panel-title > a:after, 
-body.raywhite .feature i, 
-body.raywhite .features-list li i, 
-body.raywhite .latest-news-slider .item .info a:hover, 
-body.raywhite .agency-detail-agents li:hover h3, 
-body.raywhite .agency-detail-agents li a:hover, 
-body.raywhite .home3-hero h2, 
-body.raywhite .sidebar .latest-news > li h3 a:hover, 
-body.raywhite .property-title, 
-body.raywhite .property-amenities-list > li.enabled:before, 
-body.raywhite .property-features > li i, 
-body.raywhite .agents-grid .item .info .contact-us li a:hover, 
-body.raywhite .agents-grid .item .info .contact-us li a:hover i, 
-body.raywhite .assigned, 
-body.raywhite .agent-detail .info .contact-us li a:hover, 
-body.raywhite .blog-accordion.panel-group .panel .panel-body ul li:hover:before, 
-body.raywhite .blog-accordion.panel-group .panel .panel-body ul li a:hover, 
-body.raywhite .categories li:hover:before, 
-body.raywhite .categories li a:hover span, 
-body.raywhite .blog-title, 
-body.raywhite .post-content .highlight-color, 
-body.raywhite .panel-group .panel .panel-heading .panel-title > a, 
-body.raywhite .panel-group .panel .panel-heading .panel-title > a:hover, 
-body.raywhite .tab-content h4, 
-body.raywhite .breadcrumb > li > a, 
-body.raywhite #footer-top a:hover, 
-body.raywhite .advanced-search, 
-body.raywhite .advanced-search:hover, 
-body.raywhite .dark-bg .section-title, 
-body.raywhite .caption:hover, 
-body.raywhite .text-highlight, 
-body.raywhite #home-search-buttons .input-group .btn-default, 
-body.raywhite .action-box .btn-default:hover, 
-body.raywhite .action-box h2,  
-body.raywhite .chzn-container .chzn-results li.highlighted, 
-body.raywhite .btn-fullcolor, 
-body.raywhite .btn-fullcolor:focus, 
-body.raywhite .list-style .item .tag, 
-body.raywhite .grid-style1 .item .tag, 
-body.raywhite .feature:hover i, 
-body.raywhite .agents-grid .item .tag, 
-body.raywhite .btn-default-color, 
-body.raywhite .property-large-buttons2 li, 
-body.raywhite .property-large-buttons2 li h4 {
-  color: #7F7F7F;
-}
-body.raywhite .carousel-style1 .item .price, 
-body.raywhite .fullwidthsingle2 .price, 
-body.raywhite .fullwidthsingle .price, 
-body.raywhite .latest-news-slider .price, 
-body.raywhite .grid-style1 .item .price, 
-body.raywhite #property-detail-wrapper.style1 .price, 
-body.raywhite .colored .chzn-container-single .chzn-single, 
-body.raywhite .chzn-container-single .chzn-single-with-drop, 
-body.raywhite .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.raywhite .sidebar #newsletter .input-group .input-group-btn .btn-default-color, 
-body.raywhite #find_agents .form-actions .btn-default:hover, 
-body.raywhite .property-large-buttons a:hover, 
-body.raywhite .latest-news-slider .info h3 a, 
-body.raywhite .fullwidthsingle .info a, 
-body.raywhite .colored-bg .section-title, 
-body.raywhite .colored-bg .btn-default, 
-body.raywhite .list-style .item .price, 
-body.raywhite .sidebar.gray .form-group .btn-default-color:hover, 
-body.raywhite .property-large-buttons2 li:hover *, 
-body.raywhite .post-content .quote span {
-  color: #000;
-}
-body.raywhite #footer-top, 
-body.raywhite #footer-top a {
-  color: #141414;
-}
-body.raywhite .action-box .btn-default, 
-body.raywhite .dark-bg .btn-default, 
-body.raywhite .property-large-buttons a {
-  color: rgba(255, 255, 255, 1);
-}
-body.raywhite ::selection, 
-body.raywhite #home-search-buttons .input-group .btn-default, 
-body.raywhite .owl-controls .owl-page.active span, 
-body.raywhite .owl-controls.clickable .owl-page:hover span, 
-body.raywhite .sidebar.colored .owl-controls .owl-page.active span, 
-body.raywhite .sidebar.colored .owl-controls.clickable .owl-page:hover span, 
-body.raywhite .colored .chzn-container .chzn-results li.highlighted,
-body.raywhite .chzn-container .chzn-results li.highlighted, 
-body.raywhite .feature i:after, 
-body.raywhite .text-highlight, 
-body.raywhite .btn-fullcolor, 
-body.raywhite .btn-fullcolor:focus, 
-body.raywhite .tp-leftarrow:hover, 
-body.raywhite .tp-rightarrow:hover, 
-body.raywhite .pagination ul li.active, 
-body.raywhite .pagination ul li.active:hover, 
-body.raywhite #contacts-overlay ul li i {
-  background-color: #ffe512;
-}
-body.raywhite .carousel-style1 .item .price, 
-body.raywhite .grid-style1 .item .price, 
-body.raywhite .grid-style2 .item .price, 
-body.raywhite .fullwidthsingle2 .price,
-body.raywhite .fullwidthsingle .price, 
-body.raywhite .latest-news-slider .price, 
-body.raywhite .list-style .item .price, 
-body.raywhite #property-detail-wrapper.style1 .price, 
-body.raywhite .grid-style1 .item .tag, 
-body.raywhite .grid-style2 .item .tag, 
-body.raywhite .list-style .item .tag, 
-body.raywhite .latest-news-slider .item .tag,
-body.raywhite .agents-grid .item .tag, 
-body.raywhite .blog-main-image .tag, 
-body.raywhite .owl-controls .owl-buttons, 
-body.raywhite .dark-bg .section-title:before, 
-body.raywhite .dark-bg .section-title:after, 
-body.raywhite .colored-bg .owl-page.active span, 
-body.raywhite .colored-bg .owl-controls.clickable .owl-page:hover span, 
-body.raywhite .pagination ul li:hover {
-  background-color: #ffe512;
-}
-body.raywhite .property-large-buttons li:hover:before, 
-body.raywhite .colored-bg:before, 
-body.raywhite .action-box:before {
-  background-color: rgba(255, 229, 18, 0.82);
-}
-body.raywhite .action-box, 
-body.raywhite .section-title:before, 
-body.raywhite .section-highlight:before, 
-body.raywhite .section-title:after, 
-body.raywhite .section-highlight:after, 
-body.raywhite .colored-bg .section-title:before,
-body.raywhite .colored-bg .section-title:after,
-body.raywhite .btn-darkred {
-  background-color: #141414;
-}
-body.raywhite .action-box h2,
-body.raywhite .btn-darkred {
-  color: #FFFFFF;
-}
-body.raywhite .owl-controls .owl-buttons div.owl-prev:hover, 
-body.raywhite .owl-controls .owl-buttons div.owl-next:hover {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-body.raywhite .content.gray:before,
-body.raywhite .sidebar.gray {
-  background-color: #fbfcfd;
-}
-body.raywhite .fullwidthsingle .info, 
-body.raywhite .latest-news-slider .item .info, 
-body.raywhite .latest-news-slider .info {
-  background-color: #dcdcdc;
-  color: #000;
-}
-body.raywhite .btn-default-color:hover, 
-body.raywhite .btn-default-color:active, 
-body.raywhite .btn-default-color.active,
-body.raywhite .open .dropdown-toggle.btn-default-color, 
-body.raywhite #home-search-buttons .form-control:focus, 
-body.raywhite .feature i, 
-body.raywhite #find_agents .form-actions .btn-default:hover, 
-body.raywhite .pagination ul li:hover, 
-body.raywhite .pagination ul li.active, 
-body.raywhite .pagination ul li.active:hover, 
-body.raywhite .panel-group .panel .panel-heading .panel-title > a:after, 
-body.raywhite .sidebar.gray .form-group .btn-default-color:hover {
-  border-color: #ffe512;
-}
-body.raywhite .property-large-buttons a:hover, 
-body.raywhite .colored-bg .btn-default:hover, 
-body.raywhite .fullwidthsingle .info a:hover, 
-body.raywhite li.animate-from-bottom.animation-from-bottom:hover {
-  border-color: #000;
-}
-body.raywhite .sidebar #newsletter .input-group .input-group-btn .btn-default, 
-body.raywhite .sidebar #newsletter .input-group .input-group-btn .btn-default-color, 
-body.raywhite .sidebar.colored #newsletter .form-control:focus, 
-body.raywhite .fullwidthsingle .info a, 
-body.raywhite .btn-default-color, 
-body.raywhite li.animate-from-bottom.animation-from-bottom {
-  border-color: #7f7f7f;
-}
-body.raywhite .property-large-buttons a {
-  border-color: rgba(0, 0, 0, .35);
-}
-body.raywhite .carousel-style1 .item .price:before, 
-body.raywhite .grid-style1 .item .price:before, 
-body.raywhite .grid-style2 .item .price:before, 
-body.raywhite .list-style .item .price:before, 
-body.raywhite .fullwidthsingle2 .price:before, 
-body.raywhite .fullwidthsingle .price:before, 
-body.raywhite .latest-news-slider .price:before,
-body.raywhite #property-detail-wrapper.style1 .price:before, 
-body.raywhite .grid-style1 .item .tag:before, 
-body.raywhite .grid-style2 .item .tag:before, 
-body.raywhite .list-style .item .tag:before, 
-body.raywhite .latest-news-slider .item .tag:before, 
-body.raywhite .agents-grid .item .tag:before, 
-body.raywhite .blog-main-image .tag:before {
-  border-right-color: #db7e07;
-}
-body.raywhite .navbar-nav .dropdown-menu > li > a:hover, 
-body.raywhite .navbar-nav .dropdown-menu > li > a:focus, 
-body.raywhite .navbar-nav .dropdown-menu > li > a.active {
-  border-left-color: #ffe512;
-}
-body.raywhite .owl-controls .owl-buttons:before {
-  border-left-color: #db7e07;
-}
-body.raywhite .sidebar.gray {
-  border-left: 1px solid #e7eaef;
-}
-
-/* ERAF */
-body.era .dark-bg .testimonials .item .author, 
-body.era .tags li a {
-  background-color: transparent;
-}
-body.era .sidebar.colored .section-title:before, 
-body.era .sidebar.colored .section-title:after, 
-body.era .colored .chzn-container-single .chzn-single, 
-body.era .testimonials .item .author, 
-body.era .sidebar.colored .owl-controls .owl-page.active span, 
-body.era .sidebar.colored .owl-controls.clickable .owl-page:hover span, 
-body.era .sidebar #newsletter .input-group .input-group-btn .btn-default:hover,
-body.era .sidebar #newsletter .btn-default-color:hover,  
-body.era .sidebar.colored #newsletter .form-control, 
-body.era .sidebar.gray #newsletter .form-control, 
-body.era .sidebar.gray .section-title:before, 
-body.era .sidebar.gray .section-title:after, 
-body.era .chzn-container-multi .chzn-choices li.search-choice, 
-body.era .gray .form-control, 
-body.era .gray .chzn-container-single .chzn-single, 
-body.era .tags li a:hover {
-  background-color: #fff;
-}
-body.era .sidebar.colored .testimonials .item .text {
-  background-color: #f0f0f0;
-}
-body.era ::selection, 
-body.era .owl-controls .owl-page.active span, 
-body.era .owl-controls.clickable .owl-page:hover span, 
-body.era .feature i:after, 
-body.era .btn-default-color:hover {
-  background-color: #c31c2d;
-}
-body.era .action-box{
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ee1c25+0,c31c2d+44,ed2225+100 */
-  background: rgb(238,28,37); /* Old browsers */
-  /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VlMWMyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ0JSIgc3RvcC1jb2xvcj0iI2MzMWMyZCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlZDIyMjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(left,  rgba(238,28,37,1) 0%, rgba(195,28,45,1) 44%, rgba(237,34,37,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(238,28,37,1)), color-stop(44%,rgba(195,28,45,1)), color-stop(100%,rgba(237,34,37,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(238,28,37,1) 0%,rgba(195,28,45,1) 44%,rgba(237,34,37,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(238,28,37,1) 0%,rgba(195,28,45,1) 44%,rgba(237,34,37,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(238,28,37,1) 0%,rgba(195,28,45,1) 44%,rgba(237,34,37,1) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(238,28,37,1) 0%,rgba(195,28,45,1) 44%,rgba(237,34,37,1) 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ee1c25', endColorstr='#ed2225',GradientType=1 ); /* IE6-8 */
-}
-
-body.era .content.colored:before, 
-body.era .content.gray:before,
-body.era .sidebar.colored, 
-body.era .sidebar.gray {
+body.gpt .content.colored:before, 
+body.gpt .content.gray:before,
+body.gpt .sidebar.colored, 
+body.gpt .sidebar.gray {
   background: rgba(195,28,45,1);
 }
 
-body.era #home-search-buttons .input-group .btn-default, 
-body.era .carousel-style1 .item .price, 
-body.era .btn-fullcolor, 
-body.era .btn-fullcolor:focus, 
-body.era .grid-style1 .item .price, 
-body.era .grid-style2 .item .price, 
-body.era .list-style .item .price, 
-body.era .grid-style1 .item .tag, 
-body.era .grid-style2 .item .tag, 
-body.era .list-style .item .tag, 
-body.era .tp-rightarrow.default, 
-body.era .fullwidthsingle .price, 
-body.era .latest-news-slider .price, 
-body.era .fullwidthsingle .info,
-body.era .latest-news-slider .info, 
-body.era .pattern-bg.colored-bg:before, 
-body.era #property-detail-wrapper.style1 .price, 
-body.era .agencies-list > li .tag, 
-body.era .agencies-grid > li .tag, 
-body.era .agents-list > li .tag, 
-body.era .agents-grid > li .tag, 
-body.era .agencies-list .item .tag, 
-body.era .agencies-grid .item .tag, 
-body.era .agents-list .item .tag, 
-body.era .agents-grid .item .tag, 
-body.era .blog-main-image .tag {
+body.gpt #home-search-buttons .input-group .btn-default, 
+body.gpt .carousel-style1 .item .price, 
+body.gpt .btn-fullcolor, 
+body.gpt .btn-fullcolor:focus, 
+body.gpt .grid-style1 .item .price, 
+body.gpt .grid-style2 .item .price, 
+body.gpt .list-style .item .price, 
+body.gpt .grid-style1 .item .tag, 
+body.gpt .grid-style2 .item .tag, 
+body.gpt .list-style .item .tag, 
+body.gpt .tp-rightarrow.default, 
+body.gpt .fullwidthsingle .price, 
+body.gpt .latest-news-slider .price, 
+body.gpt .fullwidthsingle .info,
+body.gpt .latest-news-slider .info, 
+body.gpt .pattern-bg.colored-bg:before, 
+body.gpt #property-detail-wrapper.style1 .price, 
+body.gpt .agencies-list > li .tag, 
+body.gpt .agencies-grid > li .tag, 
+body.gpt .agents-list > li .tag, 
+body.gpt .agents-grid > li .tag, 
+body.gpt .agencies-list .item .tag, 
+body.gpt .agencies-grid .item .tag, 
+body.gpt .agents-list .item .tag, 
+body.gpt .agents-grid .item .tag, 
+body.gpt .blog-main-image .tag,
+body.gpt .wrapper-widget-sidebar .section-title {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ac1d31+0,ea1f25+100 */
-  background: rgb(172,29,49); /* Old browsers */
+  background: rgb(57,19,91); /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FjMWQzMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYTFmMjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(left,  rgba(172,29,49,1) 0%, rgba(234,31,37,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(172,29,49,1)), color-stop(100%,rgba(234,31,37,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(234,31,37,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(234,31,37,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(234,31,37,1) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(172,29,49,1) 0%,rgba(234,31,37,1) 100%); /* W3C */
+  background: -moz-linear-gradient(left,  rgba(57,19,91,1) 0%, rgba(234,31,37,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(57,19,91,1)), color-stop(100%,rgba(234,31,37,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(234,31,37,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(234,31,37,1) 100%); /* Opgpt 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(234,31,37,1) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(57,19,91,1) 0%,rgba(234,31,37,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ac1d31', endColorstr='#ea1f25',GradientType=1 ); /* IE6-8 */
 }
-body.era .tp-leftarrow.default {
+body.gpt .tp-leftarrow.default {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ea1f25+0,ac1d31+100 */
   background: rgb(234,31,37); /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VhMWYyNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNhYzFkMzEiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(left,  rgba(234,31,37,1) 0%, rgba(172,29,49,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(234,31,37,1)), color-stop(100%,rgba(172,29,49,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(172,29,49,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(172,29,49,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(172,29,49,1) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(234,31,37,1) 0%,rgba(172,29,49,1) 100%); /* W3C */
+  background: -moz-linear-gradient(left,  rgba(234,31,37,1) 0%, rgba(57,19,91,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(234,31,37,1)), color-stop(100%,rgba(57,19,91,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(57,19,91,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(57,19,91,1) 100%); /* Opgpt 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(234,31,37,1) 0%,rgba(57,19,91,1) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(234,31,37,1) 0%,rgba(57,19,91,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea1f25', endColorstr='#ac1d31',GradientType=1 ); /* IE6-8 */
 }
-body.era #home-search-buttons .input-group .btn-default:hover, 
-body.era .btn-fullcolor:hover, 
-body.era .btn-fullcolor:active, 
-body.era .btn-fullcolor.active, 
-body.era .open .dropdown-toggle.btn-fullcolor, 
-body.era .tp-rightarrow.default:hover, 
-body.era .tp-leftarrow.default:hover {
+body.gpt #home-search-buttons .input-group .btn-default:hover, 
+body.gpt .btn-fullcolor:hover, 
+body.gpt .btn-fullcolor:active, 
+body.gpt .btn-fullcolor.active, 
+body.gpt .open .dropdown-toggle.btn-fullcolor, 
+body.gpt .tp-rightarrow.default:hover, 
+body.gpt .tp-leftarrow.default:hover {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ac1d31+0,ea1f25+100 */
-  background: rgb(172,29,49); /* Old browsers */
+  background: rgb(57,19,91); /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FjMWQzMSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNlYTFmMjUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(left,  rgba(172,29,49,1) 0%, rgba(172,29,49,1) 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(172,29,49,1)), color-stop(100%,rgba(172,29,49,1))); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(172,29,49,1) 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(172,29,49,1) 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  rgba(172,29,49,1) 0%,rgba(172,29,49,1) 100%); /* IE10+ */
-  background: linear-gradient(to right,  rgba(172,29,49,1) 0%,rgba(172,29,49,1) 100%); /* W3C */
+  background: -moz-linear-gradient(left,  rgba(57,19,91,1) 0%, rgba(57,19,91,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(57,19,91,1)), color-stop(100%,rgba(57,19,91,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(57,19,91,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(57,19,91,1) 100%); /* Opgpt 11.10+ */
+  background: -ms-linear-gradient(left,  rgba(57,19,91,1) 0%,rgba(57,19,91,1) 100%); /* IE10+ */
+  background: linear-gradient(to right,  rgba(57,19,91,1) 0%,rgba(57,19,91,1) 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ac1d31', endColorstr='#ea1f25',GradientType=1 ); /* IE6-8 */
 }
 
-body.era .section-title, 
-body.era .nav .open > a, 
-body.era .nav .open > a:hover, 
-body.era .nav .open > a:focus, 
-body.era .nav > li > a:hover, 
-body.era .nav > li > a:focus, 
-body.era .navbar-nav > li > a.active, 
-body.era .navbar-nav .dropdown-menu > li > a:hover, 
-body.era .navbar-nav .dropdown-menu > li > a:focus, 
-body.era .navbar-nav .dropdown-menu > li > a.active, 
-body.era .feature i, 
-body.era .feature:hover h3, 
-body.era .property-title, 
-body.era .sidebar #newsletter .input-group .input-group-btn .btn-default:hover, 
-body.era .sidebar #newsletter .btn-default-color:hover, 
-body.era .btn-default-color, 
-body.era #footer-top a:hover, 
-body.era .tags li a:hover, 
-body.era .blog-title {
+body.gpt .nav .open > a, 
+body.gpt .nav .open > a:hover, 
+body.gpt .nav .open > a:focus, 
+body.gpt .nav > li > a:hover, 
+body.gpt .nav > li > a:focus, 
+body.gpt .navbar-nav > li > a.active, 
+body.gpt .navbar-nav .dropdown-menu > li > a:hover, 
+body.gpt .navbar-nav .dropdown-menu > li > a:focus, 
+body.gpt .navbar-nav .dropdown-menu > li > a.active, 
+body.gpt .feature i, 
+body.gpt .feature:hover h3, 
+body.gpt .property-title, 
+body.gpt .sidebar #newsletter .input-group .input-group-btn .btn-default:hover, 
+body.gpt .sidebar #newsletter .btn-default-color:hover, 
+body.gpt .btn-default-color, 
+body.gpt #footer-top a:hover, 
+body.gpt .tags li a:hover, 
+body.gpt .blog-title {
   color: #c31c2d;
 }
-body.era .sidebar.colored .section-title, 
-body.era #newsletter p, 
-body.era .dark-bg .section-title, 
-body.era .sidebar.gray .section-title, 
-body.era .sidebar .latest-news > li h3 a, 
-body.era .btn-default-color:hover, 
-body.era .colored-bg.pattern-bg .section-title, 
-body.era .categories li a, 
-body.era .categories li:before, 
-body.era .categories li a:hover span, 
-body.era .sidebar.gray .panel-group .panel .panel-heading .panel-title > a, 
-body.era .gray .sidebar .panel-group .panel .panel-heading .panel-title > a, 
-body.era .blog-accordion.panel-group .panel .panel-body ul li a, 
-body.era .blog-accordion.panel-group .panel .panel-body ul li:before, 
-body.era .tags li a,
-body.era .footer-listings li a,
-body.era .sidebar #contacts-home .footer-contacts li,
-body.era .sidebar #contacts-home .footer-contacts li a,
-body.era .sidebar.property-left .agents-list > li .info,
-body.era .sidebar.property-left .agents-list > li .info h2 a,
-body.era .sidebar .social-networks li a,
-body.era .sidebar .property-list ul li span,
-body.era .sidebar .property-list ul li strong {
+body.gpt .sidebar.colored .section-title, 
+body.gpt #newsletter p, 
+body.gpt .dark-bg .section-title, 
+body.gpt .sidebar.gray .section-title,
+body.gpt .btn-default-color:hover, 
+body.gpt .colored-bg.pattern-bg .section-title, 
+body.gpt .categories li a, 
+body.gpt .categories li:before, 
+body.gpt .categories li a:hover span, 
+body.gpt .sidebar.gray .panel-group .panel .panel-heading .panel-title > a, 
+body.gpt .gray .sidebar .panel-group .panel .panel-heading .panel-title > a, 
+body.gpt .blog-accordion.panel-group .panel .panel-body ul li a, 
+body.gpt .blog-accordion.panel-group .panel .panel-body ul li:before, 
+body.gpt .tags li a,
+body.gpt .footer-listings li a,
+body.gpt .sidebar #contacts-home .footer-contacts li,
+body.gpt .sidebar #contacts-home .footer-contacts li a,
+body.gpt .sidebar.property-left .agents-list > li .info,
+body.gpt .sidebar.property-left .agents-list > li .info h2 a,
+body.gpt .sidebar .social-networks li a,
+body.gpt .sidebar .property-list ul li span,
+body.gpt .sidebar .property-list ul li strong {
   color: #fff;
 }
 
 
-body.era .sidebar.colored #newsletter .form-control:focus, 
-body.era .sidebar.gray #newsletter .form-control:focus {
+body.gpt .sidebar.colored #newsletter .form-control:focus, 
+body.gpt .sidebar.gray #newsletter .form-control:focus {
   border: none;
 }
-body.era .action-box .btn-default, 
-body.era .action-box .btn-default:focus, 
-body.era #find_agents .form-actions .btn-default {
+body.gpt .action-box .btn-default, 
+body.gpt .action-box .btn-default:focus, 
+body.gpt #find_agents .form-actions .btn-default {
   border-color: rgba(255, 255, 255, .6);
   color: rgba(255, 255, 255, .6);
 }
-body.era .action-box .btn-default:hover, 
-body.era #find_agents .form-actions .btn-default:hover, 
-body.era .sidebar #newsletter .input-group .input-group-btn .btn-default {
+body.gpt .action-box .btn-default:hover, 
+body.gpt #find_agents .form-actions .btn-default:hover, 
+body.gpt .sidebar #newsletter .input-group .input-group-btn .btn-default {
   border-color: rgba(255, 255, 255, 1);
   color: rgba(255, 255, 255, 1);
 }
-body.era .feature i, 
-body.era #home-search-buttons .form-control:focus, 
-body.era .btn-default-color {
+body.gpt .feature i, 
+body.gpt #home-search-buttons .form-control:focus, 
+body.gpt .btn-default-color {
   border-color: #c31c2d;
 }
-body.era .navbar-nav .dropdown-menu > li > a:hover, 
-body.era .navbar-nav .dropdown-menu > li > a:focus, 
-body.era .navbar-nav .dropdown-menu > li > a.active {
+body.gpt .navbar-nav .dropdown-menu > li > a:hover, 
+body.gpt .navbar-nav .dropdown-menu > li > a:focus, 
+body.gpt .navbar-nav .dropdown-menu > li > a.active {
   border-left-color: #c31c2d;
 }
 
-body.era .sidebar.gray {
+body.gpt .sidebar.gray {
   border-left: transparent;
 }
 
-body.era .property-list dl,
-body.era .property-list dt,
-body.era .property-list dd {
+body.gpt .property-list dl,
+body.gpt .property-list dt,
+body.gpt .property-list dd {
   color: #FFFFFF;
 }
 
-body.era .footer-listings li small {
+body.gpt .footer-listings li small {
   color: rgba(255, 255, 255, .6);
-}
-
-/* Dreamhouse */
-body.dreamhouse .sidebar.colored .section-title:before, 
-body.dreamhouse .sidebar.colored .section-title:after, 
-body.dreamhouse .section-title:before, 
-body.dreamhouse .section-highlight:before, 
-body.dreamhouse .section-title:after, 
-body.dreamhouse .section-highlight:after {
-  background-color: #000;
-}
-body.dreamhouse #nav-section, 
-body.dreamhouse .colored .form-control {
-  background-color: #fff;
-}
-body.dreamhouse #wrapper, 
-body.dreamhouse .action-box {
-  background-color: #f5f5f5;
-}
-body.dreamhouse .carousel-style1 .item .price, 
-body.dreamhouse .btn-fullcolor, 
-body.dreamhouse .btn-fullcolor:focus, 
-body.dreamhouse #home-search-buttons .input-group .btn-default, 
-body.dreamhouse .owl-controls .owl-page.active span, 
-body.dreamhouse .owl-controls.clickable .owl-page:hover span, 
-body.dreamhouse .grid-style1 .item .price, 
-body.dreamhouse .grid-style2 .item .price, 
-body.dreamhouse .list-style .item .price, 
-body.dreamhouse .grid-style1 .item .tag, 
-body.dreamhouse .grid-style2 .item .tag, 
-body.dreamhouse .list-style .item .tag, 
-body.dreamhouse .owl-controls .owl-buttons, 
-body.dreamhouse .sidebar.colored .owl-controls .owl-page.active span, 
-body.dreamhouse .sidebar.colored .owl-controls.clickable .owl-page:hover span, 
-body.dreamhouse .tp-leftarrow:hover, 
-body.dreamhouse .tp-rightarrow:hover, 
-body.dreamhouse .fullwidthsingle .info, 
-body.dreamhouse .latest-news-slider .info, 
-body.dreamhouse .fullwidthsingle .price, 
-body.dreamhouse .latest-news-slider .price, 
-body.dreamhouse .pattern-bg.colored-bg:before, 
-body.dreamhouse .feature i:after, 
-body.dreamhouse #property-detail-wrapper.style1 .price, 
-body.dreamhouse .agencies-list > li .tag, 
-body.dreamhouse .agencies-grid > li .tag, 
-body.dreamhouse .agents-list > li .tag, 
-body.dreamhouse .agents-grid > li .tag, 
-body.dreamhouse .agencies-list .item .tag, 
-body.dreamhouse .agencies-grid .item .tag, 
-body.dreamhouse .agents-list .item .tag, 
-body.dreamhouse .agents-grid .item .tag, 
-body.dreamhouse #contacts-overlay ul li i {
-  background-color: #26A65B;
-}
-body.dreamhouse .content.colored:before, 
-body.dreamhouse .content.gray:before, 
-body.dreamhouse .sidebar.colored, 
-body.dreamhouse .sidebar.gray {
-  background-color: #eaeaea;
-}
-body.dreamhouse .main h1, 
-body.dreamhouse .title-header-banner a:hover, 
-body.dreamhouse .nav .open > a, 
-body.dreamhouse .nav .open > a:hover, 
-body.dreamhouse .nav .open > a:focus, 
-body.dreamhouse .nav > li > a:hover, 
-body.dreamhouse .nav > li > a:focus, 
-body.dreamhouse .navbar-nav > li > a.active, 
-body.dreamhouse .grid-style1 .item > .info h3 a:hover, 
-body.dreamhouse .grid-style2 .item > .info h3 a:hover, 
-body.dreamhouse .list-style .item > .info h3 a:hover, 
-body.dreamhouse .grid-style1 .item > .info-blog h3 a:hover, 
-body.dreamhouse .grid-style2 .item > .info-blog h3 a:hover, 
-body.dreamhouse .list-style .item > .info-blog h3 a:hover, 
-body.dreamhouse .navbar-nav .dropdown-menu > li > a:hover, 
-body.dreamhouse .navbar-nav .dropdown-menu > li > a:focus, 
-body.dreamhouse .navbar-nav .dropdown-menu > li > a.active, 
-body.dreamhouse .feature i, 
-body.dreamhouse .feature:hover h3, 
-body.dreamhouse #footer-top a:hover, 
-body.dreamhouse .property-amenities-list > li.enabled:before, 
-body.dreamhouse .property-features > li i, 
-body.dreamhouse p.center a.btn-default-color:hover, 
-body.dreamhouse .contacts h2.section-title {
-  color: #26A65B;
-}
-body.dreamhouse .action-box h2, 
-body.dreamhouse .sidebar.colored, 
-body.dreamhouse .sidebar.colored .section-title, 
-body.dreamhouse .sidebar.colored a:hover {
-  color: #000;
-}
-body.dreamhouse .sidebar.colored a {
-  color: #666;
-}
-body.dreamhouse p a, 
-body.dreamhouse .sidebar.colored .latest-news .top-info, 
-body.dreamhouse .share-wrapper h5, 
-body.dreamhouse .agencies-list > li .info .contact-us li a:hover, 
-body.dreamhouse .agencies-grid > li .info .contact-us li a:hover, 
-body.dreamhouse .agents-list > li .info .contact-us li a:hover, 
-body.dreamhouse .agents-grid > li .info .contact-us li a:hover, 
-body.dreamhouse .agencies-list .item .info .contact-us li a:hover, 
-body.dreamhouse .agencies-grid .item .info .contact-us li a:hover, 
-body.dreamhouse .agents-list .item .info .contact-us li a:hover, 
-body.dreamhouse .agents-grid .item .info .contact-us li a:hover, 
-body.dreamhouse ul.categories a:hover, 
-body.dreamhouse .assigned, 
-body.dreamhouse .agency-detail .info .contact-us li a:hover, 
-body.dreamhouse .agent-detail .info .contact-us li a:hover {
-  color: #d91e18;
-}
-body.dreamhouse p.center a {
-  color: #fff;
-}
-body.dreamhouse p.center a.btn-default-color {
-  color: #616768;
-}
-body.dreamhouse .action-box h2 {
-  line-height: 1.6em;
-}
-
-
-body.dreamhouse .action-box {
-  border: none;
-}
-body.dreamhouse .feature i {
-  border-color: #26A65B;
-}
-body.dreamhouse .carousel-style1 .item .price:before, 
-body.dreamhouse .grid-style2 .item .price:before, 
-body.dreamhouse .grid-style1 .item .tag:before, 
-body.dreamhouse .grid-style2 .item .tag:before, 
-body.dreamhouse .list-style .item .tag:before, 
-body.dreamhouse #property-detail-wrapper.style1 .price:before, 
-body.dreamhouse .agencies-list > li .tag:before, 
-body.dreamhouse .agencies-grid > li .tag:before, 
-body.dreamhouse .agents-list > li .tag:before, 
-body.dreamhouse .agents-grid > li .tag:before, 
-body.dreamhouse .agencies-list .item .tag:before, 
-body.dreamhouse .agencies-grid .item .tag:before, 
-body.dreamhouse .agents-list .item .tag:before, 
-body.dreamhouse .agents-grid .item .tag:before {
-  border-right-color: #1d7d44;
-}
-body.dreamhouse .navbar-nav .dropdown-menu > li > a:hover, 
-body.dreamhouse .navbar-nav .dropdown-menu > li > a:focus, 
-body.dreamhouse .navbar-nav .dropdown-menu > li > a.active {
-  border-left-color: #26A65B;
-}
-body.dreamhouse .owl-controls .owl-buttons:before {
-  border-left-color: #1d7d44;
-}
-body.dreamhouse .property-large-buttons2 .btn-default, 
-body.dreamhouse .agents-grid .btn-default, 
-body.dreamhouse .info .btn-default {
-  border-color: rgba(255, 255, 255, .5);
-  color: rgba(255, 255, 255, .5);
-}
-body.dreamhouse .property-large-buttons2 .btn-default:hover, 
-body.dreamhouse .agents-grid .btn-default:hover, 
-body.dreamhouse .info .btn-default:hover {
-  border-color: rgba(255, 255, 255, 1);
-  color: rgba(255, 255, 255, 1);
-}
-
-body.dreamhouse .btn-default-color, 
-body.dreamhouse .btn-default-color:focus, 
-body.dreamhouse .btn-default, 
-body.dreamhouse .btn-default:focus {
-  border-color: #616768;
-  color: #616768;
-}
-body.dreamhouse .btn-default-color:hover, 
-body.dreamhouse .btn-default-color:active, 
-body.dreamhouse .btn-default:hover, 
-body.dreamhouse .btn-default:active, 
-body.dreamhouse .open .dropdown-toggle.btn-default, 
-body.dreamhouse #find_agents .form-actions .btn-default:hover, 
-body.dreamhouse .sidebar #newsletter .input-group .input-group-btn .btn-default:hover {
-  background-color: transparent;
-  border-color: #26A65B;
-  color: #26A65B;
-}
-body.dreamhouse .carousel-style1 .item .price {
-  margin-left: -5px;
-}
-body.dreamhouse .title-header-banner {
-  background-color: rgba(255, 255, 255, .5);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
-}
-body.dreamhouse .sidebar.colored a {
-  text-decoration: none;
 }
 
 .list-style .item.mpro-artikel-box{
@@ -9566,11 +8510,11 @@ body.dreamhouse .sidebar.colored a {
   }
 
   .print-no-pd {
-      padding: 0;
+    padding: 0;
   }
 
   .print-no-mg {
-      margin: 0;
+    margin: 0;
   }
 
   .print-mg-top-1 {
@@ -9605,70 +8549,11 @@ body.dreamhouse .sidebar.colored a {
   .print-property-amenities-list {
     margin-left: -15px;
   }
-    
-  #kpr-content {
-      padding: 10px;
-  }
-
-  #wrapper-kpr .print-left {
-      width: 58%;
-      float: left;
-  }
-  #wrapper-kpr .print-right {
-      width: 40%;
-      float: right;
-  }
-
-  #kpr-content #loan-summary,
-  #kpr-content #loan-summary h2,
-  #kpr-content .content-description {
-      margin-top: 0;
-  }
-
-  #kpr-content .kpr-row .print-left {
-      width: 58%;
-  }
-  #kpr-content .kpr-row .print-right {
-      width: 40%;
-  }
-
-  #kpr-content .kpr-row label.header {
-      font-size: 16px;
-      font-weight: bold;
-  }
-
-  #loan-summary, #installment-payment,
-  .print-visible{
-      display: block !important;
-  }
-  .instalement-content-table{
-      overflow:visible !important;
-  }
-  #installment-payment {
-      padding: 10px;
-  }
-  #wrapper-kpr p,
-  #wrapper-kpr label.title {
-      margin-bottom: 10px;
-  }
 
   .pagebreak {
-      page-break-before: always;
-  }
-  .instalement-content-table {
-    overflow: auto;
-    max-height: none;
+    page-break-before: always;
   }
 
-  .blog-bottom-info > ul {
-      float: left;
-      display: block;
-  }
-  .blog-bottom-info #post-author{
-      float: left;
-      padding-left: 15px;
-      display: block;
-  }
 }
 
 @media (max-width: 992px) {
@@ -9985,60 +8870,10 @@ div.sold-banner > img{
 	top:30%;
 	margin:0 auto;
 }
-.ebrosur-container .ebrosur-box{
-  margin-bottom: 30px;
-}
-.ebrosur-container .ebrosur-box a{
-  display: block;
-  position: relative;
-  width: 100%;
-  height: 140px;
-}
-.ebrosur-container .ebrosur-box a img{
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.nav.nav-pills.kpr{
-	display:block;
-}
 
 @media (max-width: 640px){
 	#footer #powered-by, #footer #powered-by .text-right{
 		text-align:center;
-	}
-}
-
-@media (max-width: 480px){
-	div.nav-kpr > ul.kpr{
-		margin:0;
-		padding:0;
-	}
-
-	div.nav-kpr > ul.kpr > li{
-		display:block;
-		width:100%;
-		margin:0 0 5px;
-		padding:0;
-	}
-
-	div.nav-kpr > ul.kpr > li > a, #bnt-kpr{
-		display:block;
-		width:100%;
-		text-align:center;
-		border:1px solid #EEEEEE;
-	}
-
-	div.nav-kpr > ul.kpr > li > a:hover{
-		border:1px solid #CCCCCC;
 	}
 }
 
@@ -10311,11 +9146,6 @@ and (max-device-width : 1024px)  {
 	width:100%;
 	display:block;
 	position:relative;
-}
-
-/*Bank KPR*/
-#bank-contact a {
-  color: #74777c;
 }
 
 /*#Company*/
