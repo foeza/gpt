@@ -7,7 +7,7 @@ App::uses('KprCommon', 'Utility');
 
 class AppController extends Controller {
 	var $uses = array(
-		'User', 'UserIntegratedAddonPackage',
+		'User'
 	);
 	var $basicLabel = 'Basic';
 	var $addressLabel = 'Address';
@@ -62,12 +62,11 @@ class AppController extends Controller {
 	public function beforeFilter(){
 		$this->RmCommon->AllowOriginRequest();
 
-		$_site_name = 'PRIME SYSTEM';
-		$_site_email = 'supportprimesystem@yopmail.com';
+		$_site_name = 'GROSIR PASAR TASIK';
+		$_site_email = 'gptsupport@yopmail.com';
 		$_site_email_primesystem = 'support@yopmail.com';
 
 		Configure::write('__Site.site_name', $_site_name);
-		Configure::write('__Site.rumahku_name', __('Rumahku.com'));
 		Configure::write('__Site.send_email_from', $_site_email);
 		Configure::write('__Site.prime_leads_email', 'leads@yopmail.com');
 		Configure::write('__Site.email_from_prime', $_site_email_primesystem);
@@ -182,8 +181,6 @@ class AppController extends Controller {
 				$notifications = $this->User->Notification->getNotif();
 			}
 		}
-
-		$this->RmCommon->callListCareer($dataCompany);
 
 		// set config
 		$this->RmCommon->_setConfigData($dataCompany);

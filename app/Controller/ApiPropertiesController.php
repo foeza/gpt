@@ -24,11 +24,6 @@ class ApiPropertiesController extends AppController {
 	                	'paging', 'data'
 	                ),
 	            ),
-	            'api_data_listing' => array(
-	            	'extract' => array(
-	                	'data', 'status'
-	                ),
-	            )
 			),
             'debug' => 2,
         ),
@@ -552,110 +547,6 @@ class ApiPropertiesController extends AppController {
 		$this->RmCommon->renderRest(array(
 			'is_paging' => true
 		));
-	}
-
-	public function api_data_listing(){
-		$params		= $this->params->query;
-		$extension	= $this->params->ext;
-
-		$limit			= $this->RmCommon->filterIssetField($params, 'limit', false, false);
-		$format			= $this->RmCommon->filterIssetField($params, 'format', false, true);
-		$lastupdated	= $this->RmCommon->filterEmptyField($params, 'lastupdated', false, false, array(
-			'type' => 'trailing_slash',
-		));
-
-		$this->loadModel('UserIntegratedSyncProperty');
-
-		$syncProperties = $this->UserIntegratedSyncProperty->getData('all', array(
-			'limit'			=> $limit, 
-			'conditions'	=> array(
-				'UserIntegratedSyncProperty.do_sync'		=> 1, 
-				'UserIntegratedSyncProperty.is_generated'	=> 0, 
-				'UserIntegratedSyncProperty.is_sent'		=> 0, 
-			), 
-		));
-
-		$propertyID	= Hash::extract($syncProperties, '{n}.UserIntegratedSyncProperty.property_id');
-		$properties	= array();
-
-		if($propertyID){
-			$this->loadModel('Property');
-
-			$options = array(
-				'limit' => $limit, 
-				'type_merge' => 'regular_merge', 
-				'order' => array(
-					'Property.modified' => 'ASC',
-				),
-				'conditions' => array(
-					'Property.id' => $propertyID, 
-				),
-			);
-
-			if( !empty($lastupdated) ) {
-				$options['conditions'][]['OR'] = array(
-					'Property.modified >' => $lastupdated,
-					'Property.created >' => $lastupdated,
-				);
-			}
-
-			$contain = array(
-				'MergeDefault',
-				'PropertyAddress',
-				'PropertyFacility',
-				'PropertyAsset',
-				'PropertySold',
-				'User',
-			);
-
-			$element = array(
-				'mine' => false, 
-				'admin_mine' => false,
-				'company' => false,
-				'other_contain' => true,
-				'contain_data' => $contain,
-			);
-
-			$properties = $this->RmProperty->_callBeforeViewProperties($options, $element);
-
-			if(!empty($properties)){
-				foreach ($properties as $key => $value) {
-					$property_id = $this->RmCommon->filterEmptyField($value, 'Property', 'id');
-					$user_id = $this->RmCommon->filterEmptyField($value, 'Property', 'user_id');
-					$property_type_id = $this->RmCommon->filterEmptyField($value, 'Property', 'property_type_id');
-
-					$value = $this->Property->PropertyMedias->getMerge($value, $property_id, 'all');
-					$value = $this->Property->PropertyVideos->getMerge($value, $property_id, 'all');
-
-					$value = $this->User->UserProfile->getMerge($value, $user_id, true);
-					$value['ParentInfo'] = $this->User->getInfoParent($user_id);
-
-					$properties[$key] = $value;
-
-					if(empty($format)){
-						$logPath	= sprintf('/UserIntegratedSyncProperty[property_id=%s]', $property_id);
-						$logValue	= Set::extract($logPath, $syncProperties);
-						$logValue	= Hash::sort($logValue, '{n}.UserIntegratedSyncProperty.id', 'DESC');
-						$logValue	= array_shift($logValue);
-
-						$properties[$key] = array_merge($properties[$key], $logValue);
-					}
-				}
-
-				if($format){
-					$properties = $this->RmApiProperty->formatListing($properties);
-				}
-			}
-		}
-
-		if($extension == 'json'){
-			Configure::write('Rest.token', true);
-			$this->RmCommon->_callDataForAPI($properties, 'manual');	
-		}
-		else{
-			$this->autoRender = false;
-			return $properties;
-		}
 	}
 
 	public function api_master_data($modelKey = false, $getType = 'list'){

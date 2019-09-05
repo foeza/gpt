@@ -239,10 +239,6 @@ class Property extends AppModel {
 			'className' => 'PropertyAsset',
 			'foreignKey' => 'property_id',
 		),
-		'UserIntegratedSyncProperty' => array(
-			'className' => 'UserIntegratedSyncProperty',
-			'foreignKey' => 'property_id',
-		),
 		'PropertySold' => array(
 			'className' => 'PropertySold',
 			'foreignKey' => 'property_id',
@@ -1119,7 +1115,6 @@ class Property extends AppModel {
 			$is_api	 = !empty($data['is_api']) ? true : false;
 
 			$pageConfig	 = !empty($data['PageConfig']) ? $data['PageConfig'] : false;
-			$syncProperty = !empty($data['UserIntegratedSyncProperty']) ? $data['UserIntegratedSyncProperty'] : false;
 			$is_easy_mode = !empty($data['is_easy_mode']);
 
 			if( empty($validate) ) {
@@ -1240,12 +1235,6 @@ class Property extends AppModel {
 					$msg = __('Berhasil menyimpan informasi dasar properti Anda');
 					$this->PageConfig->doSave($pageConfig, $id, 'property');
 
-					if(empty($is_easy_mode)){
-					//	sync rumah 123 untuk property yang lengkap datanya
-					//	easy mode skip sync
-						$this->UserIntegratedSyncProperty->doSave($syncProperty, $id);
-					}
-
 					$result = array(
 						'msg' => $msg,
 						'status' => 'success',
@@ -1286,11 +1275,6 @@ class Property extends AppModel {
 			}
 		} else if( !empty($value) ) {
 			$value = $this->PageConfig->getMerge($value, $id, 'property');
-			$value = $this->User->Property->getMergeList($value, array(
-				'contain' => array(
-					'UserIntegratedSyncProperty',
-				),
-			));
 			$result['data'] = $value;
 		}
 
@@ -3537,20 +3521,6 @@ class Property extends AppModel {
 				/*untuk kebutuhan API*/
 				$value['UserClient']['email'] = $client_email;
 				/*END - untuk kebutuhan API*/
-			}
-		}
-
-		// merge userintegratedconfig
-		if( !empty($value['Property']['user_id']) ){
-			$user_id = $value['Property']['user_id'];
-			$userIntegratedConfig = $this->User->UserIntegratedConfig->getData('first', array(
-	            'conditions' => array(
-	                'UserIntegratedConfig.user_id' => $user_id,
-	            ),
-			));
-
-			if (!empty($userIntegratedConfig)) {
-				$value = array_merge($value, $userIntegratedConfig);
 			}
 		}
 

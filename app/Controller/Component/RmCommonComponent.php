@@ -308,13 +308,6 @@ class RmCommonComponent extends Component {
 		$meta_desc = $this->filterEmptyField($data, 'UserCompanyConfig', 'meta_description', $meta_desc);
 		// E: init meta setting backend
 
-		// package user integrated info
-		$all_package = $this->controller->UserIntegratedAddonPackage->getData('all', array(
-			'conditions'  => array(
-				'UserIntegratedAddonPackage.status' => 1,
-			),
-		));
-
 		// Mobile Belum di implementasi
 		$isTablet = $this->controller->MobileDetect->detect('isTablet');
 		$this->controller->mobile = $isMobile = $this->controller->MobileDetect->detect('isMobile');
@@ -430,9 +423,6 @@ class RmCommonComponent extends Component {
 				'5000000000-10000000000' => __('5 - 10 miliar'),
 				'10000000000-50000000000' => __('10 - 50 miliar'),
 				'>50000000000' => __('50 miliar keatas'),
-			),
-			'package_options' => array(
-				'all-package' => $all_package,
 			),
 			'operator_options' => array(
 				'1' => '=',
@@ -6592,29 +6582,6 @@ class RmCommonComponent extends Component {
 			'message' => $msg,
 		));
 		$this->controller->render('/Elements/blocks/common/modals/message');
-	}
-
-	/*
-		NOTE: set list career footer frontend
-		ini untuk kebutuhan tema BigCity, di footer ada section Join A Team ( Career )
-		misal ada tema baru atau memang ada perubahan/ingin ditambahkan di tema yang sudah ada
-		set column join_team_footer di tabel Themes jadi TRUE 1
-
-	*/
-	public function callListCareer( $data ) {
-		$prefix = Configure::read('App.prefix');
-		$flag_join_team = Common::hashEmptyField($data, 'Theme.join_team_footer');
-		
-		if ( empty($prefix) && $flag_join_team ) {
-			$this->controller->loadModel('Career');
-			$this->controller->set(array(
-				'list_career' => $this->controller->Career->getData('all', array(
-					'contain' => false,
-					'limit' => 5
-				)),
-			));
-		}
-
 	}
 
 }

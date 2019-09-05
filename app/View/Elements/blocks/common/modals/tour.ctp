@@ -1,7 +1,6 @@
 <?php 
 		$User = !empty($User)?$User:array();
 		$slide_tour = Hash::get($User, 'UserConfig.slide_tour');
-		$sign_integrated = Hash::get($User, 'UserConfig.sign_integrated');
 		$group_id = Hash::get($User, 'group_id');
 
 		if( empty($slide_tour) ) {
@@ -145,7 +144,4 @@
   	</div>
 </div>
 <?php
-		} elseif ( empty($sign_integrated) && $group_id == 2 ) {
-			echo $this->element('blocks/common/modals/sign_integrated');
 		}
-?>

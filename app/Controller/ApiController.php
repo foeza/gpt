@@ -475,32 +475,6 @@ class ApiController extends AppController {
 		}
 	}
 
-	function add_career(){
-		$data 		= $this->request->data;
-		$user_id 	= $this->RmCommon->filterEmptyField($data, 'Career', 'user_id');
-
-		if(!empty($data)){
-			$this->User->bindModel(array(
-	            'hasMany' => array(
-	                'Career' => array(
-	                    'className' => 'Career',
-	                    'foreignKey' => 'user_id'
-	                ),
-	            )
-	        ), false);
-
-			$result = $this->User->Career->doSave($data, false, false, true);
-		}else{
-			$result = array(
-				'msg' => __('Data tidak ditemukan'),
-				'status' => 'error'
-			);
-		}
-
-		$this->RmCommon->setProcessParams($result, false, array(
-			'noRedirect' => true
-		));
-	}
 
 	function add_banner_slider(){
 		$data = $this->request->data;

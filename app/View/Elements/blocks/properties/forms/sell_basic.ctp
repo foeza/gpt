@@ -4,9 +4,6 @@
         $property_type_id = $this->Rumahku->filterEmptyField($data, 'Property', 'property_type_id');
         $property_action_id = $this->Rumahku->filterEmptyField($data, 'Property', 'property_action_id');
 
-        $is_connect_r123 = $this->Rumahku->filterEmptyField($data, 'UserIntegratedConfig', 'is_connect_r123');
-        $is_connect_olx  = $this->Rumahku->filterEmptyField($data, 'UserIntegratedConfig', 'is_connect_olx');
-
         echo $this->Form->create('Property', array(
             'class' => 'form-horizontal',
             'id' => 'sell-property',
@@ -84,17 +81,6 @@
             echo $this->element('blocks/properties/forms/input_meta_tag', array(
                 'ajax_blur' => false,
             ));
-
-            // if( !empty($is_connect_olx)) {
-                echo $this->Rumahku->buildInputToggle('UserIntegratedSyncProperty.do_sync', array(
-                    'label' => __('Sync OLX'),
-                    'frameClass' => 'col-sm-12',
-                    'class' => 'relative col-xl-4 col-sm-7', 
-                    'labelClass' => 'col-xl-2 col-sm-3 taright',
-                    'infoText' => __('Info: pastikan bahwa data properti sudah lengkap'),
-                    'infoClass' => 'info-toggle-sync',
-                ));
-            // }
 
             echo $this->element('blocks/properties/sell_action', array(
                 'action_type' => 'bottom',

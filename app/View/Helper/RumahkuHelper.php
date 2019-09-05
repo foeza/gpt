@@ -3702,25 +3702,6 @@ class RumahkuHelper extends AppHelper {
 		}
 	}
 
-	// get package by filter partner name
-	function filterPackagePartner( $datas, $options = array() ) {
-		$opt_package = Common::hashEmptyField($options, 'partner_package');
-
-		$tempArray = array();
-		if (!empty($datas)) {
-			foreach ($datas as $key => $value) {
-				$partner_package = Common::hashEmptyField($value, 'UserIntegratedAddonPackage.partner_package');
-
-				if ($opt_package == $partner_package) {
-					$tempArray['PackageAddonList'][] = $value;
-				}
-
-			}
-		}
-
-		return $tempArray;
-	}
-
 	function _callDisplayPhoneNumber( $value, $style = 'default', $options = '' ) {
 		$field = Common::hashEmptyField($options, 'field', 'no_hp');
 		$icon = Common::hashEmptyField($options, 'icon', $this->icon('fa fa-phone'), array(
@@ -4911,29 +4892,6 @@ class RumahkuHelper extends AppHelper {
 		}
 
 		return $result;
-	}
-
-	// function check allow sync property to partner
-	function callAllowSync ( $data ) {
-		$data_config['UserIntegratedConfig'] = Common::hashEmptyField($data, 'UserIntegratedConfig', false);
-		
-		if (!empty($data_config['UserIntegratedConfig'])) {
-			$is_verified 	 = Common::hashEmptyField($data_config, 'UserIntegratedConfig.is_verified');
-			$is_connect_r123 = Common::hashEmptyField($data_config, 'UserIntegratedConfig.is_connect_r123');
-			$is_connect_olx  = Common::hashEmptyField($data_config, 'UserIntegratedConfig.is_connect_olx');
-
-			$allow_condition = array($is_connect_r123,$is_connect_olx);
-
-			if( $is_verified && in_array(true, $allow_condition) ) {
-				return true;
-			} else {
-				return false;
-			}
-
-		} else {
-			return false;
-		}
-		
 	}
 
 	function getTextDay($value){

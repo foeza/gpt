@@ -4,6 +4,7 @@
 - berita
 - new developer page
 - header
+- footer
 - About
 
 ==================================*/
@@ -223,27 +224,6 @@ a.pp_close {
     padding: 5px;
 }
 
-
-/* --- MEDIA QUERIES AREA --- */
-
-@media(max-width: 480px){
-	#result-calculator ul.nav.nav-tabs li{
-	    width: 50%;
-	}
-	#result-calculator .nav{
-		display: block;
-	}
-	.app-setup .nav-tabs > li{
-		width: 50%;
-		margin-right: 0 !important;
-	}
-}
-@media (max-width: 992px){
-	.nav.nav-tabs{
-		display:block;
-	}
-}
-
 /* - header */
 .topBarText{
     font-size: 12px;
@@ -254,26 +234,11 @@ a.pp_close {
 .topBar a:hover, .topBar a:focus{
 	text-decoration: none;
 }
-@media (max-width: 425px) {
-	.topBar .socialIcons{
-		padding: 0;
-	}
-}
 /**/
 
-@media (max-width: 768px) {
-	ul.career {
-	    -webkit-padding-start: initial;
-	}
-
-	.section-title, .section-highlight {
-	    margin-top: 0;
-	}
-
-	.mobile-search-trigger {
-		z-index: 99 !important;
-	}
-
+/* footer */
+#footer-short-desc p {
+    padding-left: 10px;
 }
 
 /* About */
@@ -308,4 +273,31 @@ a.pp_close {
 
 .dropdown-group a.dropdown-toggle span.icon > i:before {
   font-size: 6px !important;
+}
+
+/* media queries */
+@media (max-width: 425px) {
+	.topBar .socialIcons{
+		padding: 0;
+	}
+}
+
+@media (max-width: 768px) {
+	ul.career {
+	    -webkit-padding-start: initial;
+	}
+
+	.section-title, .section-highlight {
+	    margin-top: 0;
+	}
+
+	.mobile-search-trigger {
+		z-index: 99 !important;
+	}
+}
+
+@media (max-width: 992px){
+	.nav.nav-tabs{
+		display:block;
+	}
 }

@@ -119,7 +119,7 @@ class AjaxController extends AppController {
 			'get_kpr_calculation', 'list_users', 'admin_get_dashboard_table',
 			'get_list_subareas', 'get_ebrochure', 
 			'save_property_video', 'api_info_property',
-			'api_info_user', 'set_sorting', 'slide_tour', 'sign_integrated', 
+			'api_info_user', 'set_sorting', 'slide_tour', 
 			'get_location', 'set_location', 'share', 'get_property', 'get_user', 'get_ebrochure_template', 
 		));
 		$this->autoLayout = false;
@@ -2319,14 +2319,6 @@ class AjaxController extends AppController {
 		$user_id = Configure::read('User.data.UserConfig.id');
 		
 		$this->User->UserConfig->set('slide_tour', $value);
-		$this->User->UserConfig->id = $user_id;
-		$this->User->UserConfig->save();
-	}
-
-	function sign_integrated ( $value = 1 ) {
-		$user_id = Configure::read('User.data.UserConfig.id');
-		
-		$this->User->UserConfig->set('sign_integrated', $value);
 		$this->User->UserConfig->id = $user_id;
 		$this->User->UserConfig->save();
 	}

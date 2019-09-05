@@ -34,10 +34,6 @@ class User extends AppModel {
 			'className' => 'UserProfile',
 			'foreignKey' => 'user_id'
 		),
-		'UserIntegratedConfig' => array(
-			'className' => 'UserIntegratedConfig',
-			'foreignKey' => 'user_id'
-		),
 		'UserCompany' => array(
 			'className' => 'UserCompany',
 			'foreignKey' => 'user_id'
@@ -186,14 +182,6 @@ class User extends AppModel {
 		),
 		'Report' => array(
 			'className' => 'Report',
-			'foreignKey' => 'user_id',
-		),
-		'UserIntegratedOrder' => array(
-			'className' => 'UserIntegratedOrder',
-			'foreignKey' => 'user_id'
-		),
-		'UserIntegratedOrderAddon' => array(
-			'className' => 'UserIntegratedOrderAddon',
 			'foreignKey' => 'user_id',
 		),
 		'LogView' => array(
