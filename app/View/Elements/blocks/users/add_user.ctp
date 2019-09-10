@@ -15,8 +15,6 @@
         $user_type = !empty($user_type)?$user_type:false;
         $inputAddress = isset($inputAddress)?$inputAddress:true;
 
-        $access_membership_rku = !empty($access_membership_rku)?$access_membership_rku:false;
-
         $custom_form = !empty($custom_form)?$custom_form:false;
         $path_form = !empty($path_form)?$path_form:false;
         $custom_url_back = !empty($custom_url_back)?$custom_url_back:false;
@@ -127,27 +125,6 @@
                     echo $this->Html->tag('div', $content_commission, array(
                         'id' => 'user-group-commission',
                     ));
-
-                    // s: block premium in user agent
-                    if ( $access_membership_rku ) {
-                        $block_premium = $this->element('blocks/settings/block_premium', array(
-                            'display_item'  => true,
-                            'custom_item' => array(
-                                'label_name' => 'Pilih Paket Membership',
-                                'model_name' => 'User',
-                                'field_name' => 'membership_package_id',
-                            ),
-                        ));
-
-                        $heading_premium = $this->Html->tag('h2', __('Membership Premium'), array(
-                            'class' => 'sub-heading'
-                        ));
-
-                        echo $this->Html->tag('div', $heading_premium.$block_premium, array(
-                            'id' => 'user-block-premium',
-                        ));
-                    }
-                    // e: block premium in user agent
 
     		?>
     	</div>

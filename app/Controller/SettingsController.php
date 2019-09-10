@@ -4,7 +4,7 @@ App::uses('AppController', 'Controller');
 class SettingsController extends AppController {
 	public $components = array(
 		'RmImage', 'RmSetting', 'RmRecycleBin',
-		'RmMigrateCompany', 'RmKpr',
+		'RmMigrateCompany',
 		'Rest.Rest' => array(
             'debug' => 2,
             'actions' => array(
@@ -1687,34 +1687,6 @@ class SettingsController extends AppController {
 			}
 
 			$value['AttributeOption'] = $result;
-			$value['ClientJobType'] = $this->User->Kpr->KprApplication->JobType->getData('all');
-
-			$value['DocumentClient'] = $this->RmKpr->getDocumentSort(array(
-				'DocumentCategory.is_required' => 1,
-				'DocumentCategory.id' => Configure::read('__Site.Global.Variable.KPR.document_client'),
-			), array(
-				'document_type' => 'kpr_application',
-			));
-			
-			$value['DocumentClientSpouse'] = $this->RmKpr->getDocumentSort(array(
-				'DocumentCategory.is_required' => 1,
-				'DocumentCategory.id' => Configure::read('__Site.Global.Variable.KPR.document_client_spouse'),
-			), array(
-				'document_type' => 'kpr_spouse_particular',
-			));
-
-			$value['DocumentKPR'] = $this->RmKpr->getDocumentSort(array(
-				'DocumentCategory.is_required' => 1,
-				'DocumentCategory.id <>' => array( 3, 7, 19, 20),
-			), array(
-				'document_type' => 'kpr_application',
-			));
-
-			$value['BankApplyCategory'] = $this->User->Kpr->BankApplyCategory->getData('all', array(
-				'fields' => array(
-					'BankApplyCategory.id', 'BankApplyCategory.category_name', 
-				),
-			));
 
 			Cache::write($cacheName, $value, 'default');
 		}

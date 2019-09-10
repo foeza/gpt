@@ -1,18 +1,19 @@
 <?php 
+        $id          = !empty($id)?$id:false;
+        $step        = !empty($step)?$step:false;
+        $urlBack     = !empty($urlBack)?$urlBack:false;
         $action_type = !empty($action_type)?$action_type:'top';
-        $step = !empty($step)?$step:false;
-        $urlBack = !empty($urlBack)?$urlBack:false;
-        $id = !empty($id)?$id:false;
 
         $active_menu = !empty($active_menu)?$active_menu:false;
 
-        $value = !empty($value)?$value:false;
-        $userData = $this->Rumahku->filterEmptyField($value, 'User');
-        $companyData = $this->Rumahku->filterEmptyField($value, 'UserCompany');
+        $value       = !empty($value)?$value:false;
+
+        $userData    = Common::hashEmptyField($value, 'User');
+        $companyData = Common::hashEmptyField($value, 'UserCompany');
         
-        $stepBasic = 'Basic';
+        $stepBasic   = 'Basic';
         $stepCompany = 'Company';
-        $stepSocialMedia = 'social_media';
+        $stepSosmed  = 'social_media';
 ?>
 <div class="action-group <?php echo $action_type; ?>">
     <?php
@@ -36,23 +37,24 @@
             if( $action_type == 'top' ) {
                 $urlBasic = array(
                     'action' => 'edit_principle',
+                    'admin'  => true,
                     $id,
-                    'admin' => true,
                 );
                 $urlCompany = array_merge(array(
                     'action' => 'principle_company',
+                    'admin'  => true,
                     $id,
-                    'admin' => true,
                 ), $options);
                 $urlSocialMedia = array_merge(array(
                     'action' => 'general_social_media',
+                    'admin'  => true,
                     $id,
-                    'admin' => true,
                 ), $options);
 
-                $urlStepBasic = $this->Rumahku->getUrlStep($urlBasic, $stepBasic, false, $id);
-                $urlStepCompany = $this->Rumahku->getUrlStep($urlCompany, $stepCompany, false, $id);
-                $urlStepSocialMedia = $this->Rumahku->getUrlStep($urlSocialMedia, $stepSocialMedia, false, $id);
+                $urlStepBasic       = $this->Rumahku->getUrlStep($urlBasic, $stepBasic, false, $id);
+                $urlStepCompany     = $this->Rumahku->getUrlStep($urlCompany, $stepCompany, false, $id);
+                $urlStepSocialMedia = $this->Rumahku->getUrlStep($urlSocialMedia, $stepSosmed, false, $id);
+
     ?>
     <div class="step floright">
         <div class="step floright">
@@ -86,7 +88,7 @@
                         ))), $urlStepSocialMedia, array(
                             'escape' => false,
                         )), array(
-                            'class' => $this->Rumahku->getActiveStep($step, $stepSocialMedia),
+                            'class' => $this->Rumahku->getActiveStep($step, $stepSosmed),
                         ));
                 ?>
             </ul>
@@ -98,7 +100,7 @@
     <div class="btn-group floright">
         <?php
                 if( $action_type == 'bottom' ) {
-                    if( !empty($urlBack) ) {
+                    if( !empty($urlBack) && $step != 'Basic' ) {
                         echo $this->Html->link(__('Kembali'), $urlBack, array(
                             'escape' => false,
                             'class' => 'btn default',

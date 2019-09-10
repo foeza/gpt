@@ -152,11 +152,6 @@
                 'class' => 'tacenter',
                 'filter' => 'default',
             ),
-            'ebrosur_count' => array(
-                'name' => __('eBrosur'),
-                'class' => 'tacenter',
-                'filter' => 'default',
-            ),
             'log_view' => array(
                 'name' => __('Session Terakhir'),
                 'class' => 'tacenter',
@@ -313,7 +308,6 @@
 		      				$property_count = $this->Rumahku->filterEmptyField($value, 'Property', 'cnt');
 		      				$agent_count = $this->Rumahku->filterEmptyField($value, 'Agent', 'cnt');
 		      				$admin_count = $this->Rumahku->filterEmptyField($value, 'Admin', 'cnt', '-');
-		      				$ebrosur_count = $this->Rumahku->filterEmptyField($value, 'EbrosurCount', false, '-');
 		      				$division_count = $this->Rumahku->filterEmptyField($value, 'divisionCount', false, '-');
 		      				$user_count = $this->Rumahku->filterEmptyField($value, 'UserCount', false, '-');
 		      				$client_count = $this->Rumahku->filterEmptyField($value, 'ClientCount', false, '-');
@@ -429,17 +423,6 @@
 				         			), array(
 		            					'target' => 'blank',
 				         			)):'-', 'property_count', array(
-						            	'class' => 'tacenter',
-					            	)),
-				         			$this->Rumahku->_getDataColumn(!empty($ebrosur_count)?$this->Html->link($ebrosur_count, array(
-					         			'controller' => 'ebrosurs',
-					         			'action' => 'info',
-					         			$id,
-					         			'admin' => true,
-                                        'cookie' => true,
-				         			), array(
-		            					'target' => 'blank',
-				         			)):'-', 'ebrosur_count', array(
 						            	'class' => 'tacenter',
 					            	)),
 					         		$this->Rumahku->_getDataColumn($customLogView, 'log_view', array(

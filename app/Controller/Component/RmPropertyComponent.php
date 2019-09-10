@@ -3121,7 +3121,7 @@ class RmPropertyComponent extends Component {
                     'cache_page'        =>  sprintf('properties_admin_index_%s', $user_id),
                 );
 
-                $result = $this->controller->RmSetting->callDataMembershipRKU($opsi_link);
+                $result = array();
             }
             
         }

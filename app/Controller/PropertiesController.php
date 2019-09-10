@@ -1735,13 +1735,7 @@ class PropertiesController extends AppController {
 			}
 			// END
 
-			// S: validate package bundling to show btn premium/unpremium
-			// get package info
-			$opsi_validate = array(
-				'cache_page' => 'properties_admin_index',
-			);
-			$packages = $this->RmSetting->validatePackageRKU($opsi_validate);
-			// E: validate package bundling to show btn premium/unpremium
+			$packages = array();
 
 			$this->set(array(
 				'module_title' => __('Daftar Properti'),
@@ -2362,13 +2356,7 @@ class PropertiesController extends AppController {
 		));
 
 		if( !empty($value) ){
-			// if log in as admin check the data
-			$membership_agent = $this->RmProperty->checkAgentMembership($value);
-
-			$opsi_validate = array(
-				'cache_page' => 'properties_admin_index',
-			);
-			$data_config = $this->RmSetting->validatePackageRKU($opsi_validate);
+			$data_config = false;
 
 			$result = $this->Property->doPremium($id, $data_config, $membership_agent, $value);
 			$this->RmCommon->setProcessParams($result, false, array(

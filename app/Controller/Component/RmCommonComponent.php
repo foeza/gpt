@@ -83,7 +83,6 @@ class RmCommonComponent extends Component {
 			}
 
 			foreach( $dataEmails as $value ) {
-				$bank_id = $this->filterEmptyField($value, 'bank_id');
 				$to_name = $this->filterEmptyField($value, 'to_name');
 				$to_email = $this->filterEmptyField($value, 'to_email');
 				$subject = $this->filterEmptyField($value, 'subject');
@@ -95,14 +94,6 @@ class RmCommonComponent extends Component {
 
 				if(!empty($include_role)){
 					unset($value['include_role']);
-				}
-
-				if( !empty($bank_id) ) {
-					$bank = $this->controller->User->Kpr->KprBank->Bank->getMerge(array(), $bank_id);
-					$bank_data = $this->filterEmptyField($bank, 'Bank');
-					$bank_name = $this->filterEmptyField($bank_data, 'name');
-					$sub_domain = $this->filterEmptyField($bank_data, 'sub_domain');
-					$data['BankDomain'] = $bank_data;
 				}
 
 				if( !empty($debug) ) {

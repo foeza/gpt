@@ -656,11 +656,7 @@ class UsersController extends AppController {
 				'ckeditor',
 			));
 
-			// check membership here, page admin_edit
-			$opsi_validate = array(
-				'cache_page' => 'properties_admin_index',
-			);
-			$packages = $this->RmSetting->validatePackageRKU($opsi_validate);
+			$packages = array();
 
 			$this->set(array(
 				'user_company' => $user_company,
@@ -732,10 +728,7 @@ class UsersController extends AppController {
 	            'cache' => __('PropertyType.List'),
 	        ));
 
-			$opsi_validate = array(
-				'cache_page' => 'properties_admin_index',
-			);
-			$packages = $this->RmSetting->validatePackageRKU($opsi_validate);
+			$packages = array();
 
 			if($this->Rest->isActive()){
 				$client_types = $this->RmCommon->listToCakeArray($client_types);
@@ -810,10 +803,7 @@ class UsersController extends AppController {
 			$this->RmCommon->redirectReferer(__('User tidak ditemukan'));
 		}
 
-		$opsi_validate = array(
-			'cache_page' => 'properties_admin_index',
-		);
-		$packages = $this->RmSetting->validatePackageRKU($opsi_validate);
+		$packages = array();
 		
 		$this->RmCommon->_callDataForAPI($user, 'manual');
 		$this->RmCommon->_layout_file('fileupload');
@@ -1207,10 +1197,7 @@ class UsersController extends AppController {
 					break;
 			}
 
-			$opsi_validate = array(
-				'cache_page' => 'properties_admin_index',
-			);
-			$packages = $this->RmSetting->validatePackageRKU($opsi_validate);
+			$packages = array();
 
 			$this->RmUser->_callRoleActiveMenu($value);
 			$this->set(array(
@@ -2035,11 +2022,7 @@ class UsersController extends AppController {
 					'slug' => $groupName,
 				));
 
-				// call data package membership rku
-				$opsi_link = array(
-					'user_own' => false,
-				);
-				$packages = $this->RmSetting->callDataMembershipRKU($opsi_link);
+				$packages = array();
 
 				$this->set(array(
 					'user' => $value,
@@ -2052,13 +2035,6 @@ class UsersController extends AppController {
 				));
 
 				if($principle_group_id == 3){
-
-					if ($_isAdmin) {
-						$this->set(array(
-							'access_membership_rku' => true,
-						));
-					}
-
 					$this->set(array(
 						'user_type' => 'user',
 					));
@@ -2419,9 +2395,7 @@ class UsersController extends AppController {
 			$group_id = Common::hashEmptyField($data, 'User.group_id');
 
 			// call data master package membership rku
-			$packages = $this->RmSetting->callDataMembershipRKU(array(
-				'user_own' => false,
-			));
+			$packages = array();
 
 			$data	= $this->RmImage->_uploadPhoto($data, 'User', 'photo', $save_path, true, array(
 	            'keep_file_name' => true,
@@ -2473,12 +2447,6 @@ class UsersController extends AppController {
 			}
 
 			if($principle_group_id == 3){
-				if ($_isAdmin) {
-					$this->set(array(
-						'access_membership_rku' => true,
-					));
-				}
-
 				$this->set(array(
 					'user_type' => 'user',
 				));

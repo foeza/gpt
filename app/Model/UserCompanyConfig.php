@@ -636,47 +636,6 @@ class UserCompanyConfig extends AppModel {
 		return $default_options;
 	}
 
-	// s: update membership bundling rku all company
-	function updateMembershipRKU( $value = false, $data_package = array() ) {
-        $default_msg = __('update data company');
-		$result = array(
-            'msg' => __('Gagal, data tidak ditemukan.'),
-            'status' => 'error',
-        );
-		
-        if (!empty($value)) {
-			$company_config_id = $this->filterEmptyField($value, 'UserCompanyConfig', 'id');
-
-			$company_name = Common::hashEmptyField($value, 'User.UserCompany.name');
-
-        	$id_package   = $this->filterEmptyField($data_package, 'MembershipPackage', 'id', false);
-        	$name_package = $this->filterEmptyField($data_package, 'MembershipPackage', 'name', false);
-
-	        $flag = $this->updateAll(array(
-				'UserCompanyConfig.is_block_premium_listing' => 1,
-	    		'UserCompanyConfig.premium_listing' => $id_package,
-			), array(
-				'UserCompanyConfig.id' => $company_config_id,
-			));
-
-	        if( $flag ) {
-	            $result = array(
-	                'msg' => sprintf(__('Berhasil %s, %s, membership: %s'), $default_msg, $company_name, $name_package),
-	                'status' => 'success',
-	            );
-	        } else {
-	            $result = array(
-	                'msg' => sprintf(__('Gagal %s, %s, membership: %s'), $default_msg, $company_name, $name_package),
-	                'status' => 'error',
-	            );
-	        }
-
-        }
-
-        return $result;
-    }
-    // e: update membership bundling rku all company
-
 	function _callCount( $city_id, $data = false, $status = 'all' ){
 		$default_options = array(
 			'conditions' => array(

@@ -83,7 +83,7 @@
 		            echo $this->Html->tag('div', $userEmail, array(
 		            	'class' => 'user-email fs085',
 		            ));
-		            echo $this->Html->tag('div', sprintf(__('Log As: %s'), $this->Html->tag('span', $userGroup, array(
+		            echo $this->Html->tag('div', sprintf(__('Status: %s'), $this->Html->tag('span', $userGroup, array(
 		            	'class' => 'color-red fbold',
 		            ))), array(
 		            	'class' => 'user-status fs085',
