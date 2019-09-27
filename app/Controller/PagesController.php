@@ -41,6 +41,7 @@ class PagesController extends AppController {
 
 	public function home(){
 		$this->RmPage->callBeforeViewHomepage();
+
 	}
 
 	public function admin_slides(){

@@ -6909,7 +6909,7 @@ a.pp_previous {
   line-height: 40px;
   font-size: 18pt;
   text-align: center;
-  background-color: #df4a43;
+  /*background-color: #df4a43;*/
   top: 50%;
   position: relative;
   margin-top: -20px;
@@ -6924,8 +6924,9 @@ a.pp_previous {
 }
 a.pp_next {
   float: right;
-  padding: 0 0 0 13px;
+  padding: 0 0 0 5px;
   margin-right: 10px;
+  text-indent: 0 !important;
 }
 a.pp_next:before {
   content: "\f054";
@@ -6933,8 +6934,9 @@ a.pp_next:before {
 }
 a.pp_previous {
   float: left;
-  padding: 0 0 0 10px;
+  padding: 0;
   margin-left: 10px;
+  text-indent: 0 !important;
 }
 a.pp_previous:before {
   content: "\f053";
@@ -6943,6 +6945,7 @@ a.pp_previous:before {
 .pp_content:hover a.pp_next,
 .pp_content:hover a.pp_previous {
   opacity: 1;
+  background: #df4a43;
 }
 a.pp_expand,
 a.pp_contract {

@@ -294,7 +294,7 @@ class RmCommonComponent extends Component {
 		$meta_title = $this->filterEmptyField($data, 'UserCompanyConfig', 'meta_title', $meta_title);
 
 		// set meta description
-		$meta_desc = sprintf(__('%s adalah situs properti terlengkap di %s, %s, %s. Pasang iklan rumah dijual, sewa, atau mencari Rumah Baru disini!'), $url_without_http, ucwords($subarea_name), ucwords($city_name), ucwords($region_name));
+		$meta_desc = sprintf(__('%s adalah situs jual beli berbagai busana dan atau keperluan fashion. Pusat Grosir Pasar Tasik. Toko Online Termurah dan Terpercaya.'), $url_without_http);
 
 		$meta_desc = $this->filterEmptyField($data, 'UserCompanyConfig', 'meta_description', $meta_desc);
 		// E: init meta setting backend
@@ -864,41 +864,27 @@ class RmCommonComponent extends Component {
 		Configure::write('__Site.youtube_client_id', '477037212613-ehk1rger43mm6ehelc5c0ic1ejf35am7.apps.googleusercontent.com');
 		Configure::write('__Site.youtube_api_key', 'AIzaSyB7M5hGwCFfnM80dvU1nTKYI8KqxKvp0H0');
 
-	//	jangan pake yang ini (punya pribadi)
-	//	Configure::write('__Site.youtube_client_id', '609353073924-mpi51a0h19t0s77fcp2fpprlsilnete7.apps.googleusercontent.com');
-	//	Configure::write('__Site.youtube_api_key', 'AIzaSyCUz52-rjugXMeDTUmcG97wxAUiOCYI3K0');
-
 	//	recaptcha
 		Configure::write('__Site.recaptcha_site_key', '6Le68jgUAAAAAABuczUbcu-8cRNvWzRp9wjEd6aL');
 		Configure::write('__Site.recaptcha_secret_key', '6Le68jgUAAAAABrhFLYVTgGdVxv60WCj3bcE_VAV');
 
-		Configure::write('__Site.prime_site', 'http://agentv2.pasiris.com');
-		Configure::write('__Site.main_website', 'http://v4.pasiris.com/');
-		Configure::write('__Site.kpr_site_name', 'http://kpr.pasiris.com');
-		// Configure::write('__Site.kpr_site_name', 'http://ww.mandiri.com');
-
 		Configure::write('__Site.company_profile', array(
-			'name_premiere' => 'Rumahku.com',
-			'name' => 'PT. NAGA LANGIT',
-			'app_name' => 'Prime System',
-			'ceo' => 'Robert Adrian',
-			'address' => 'Wisma Slipi, Jl. S. Parman Kav. 12, Suite #318',
-			'phone' => '(021) 5332555',
-			'phone2' => '0822 505 77777',
-			'email_name' => 'support Primesystem',
-			'email' => 'support@primesystem.id',
-			'link' => 'http://www.rumahku.com',
-			'bank_account' => array(
-				'no_account' => '482-3000-777',
-				'bank_name' => 'BCA',
-				'npwp' => '03.093.658.7-031.000',
-			),
+			// 'name_premiere' => 'Rumahku.com',
+			// 'name' => 'PT. NAGA LANGIT',
+			// 'app_name' => 'Prime System',
+			// 'ceo' => 'Robert Adrian',
+			// 'address' => 'Wisma Slipi, Jl. S. Parman Kav. 12, Suite #318',
+			// 'phone' => '(021) 5332555',
+			// 'phone2' => '0822 505 77777',
+			// 'email_name' => 'support Primesystem',
+			// 'email' => 'support@primesystem.id',
+			// 'link' => 'http://www.rumahku.com',
+			// 'bank_account' => array(
+			// 	'no_account' => '482-3000-777',
+			// 	'bank_name' => 'BCA',
+			// 	'npwp' => '03.093.658.7-031.000',
+			// ),
 		));
-
-		// Meta Front End
-		Configure::write('__Site.title_for_layout', __('Rumah Dijual Disewakan | Jual Beli & Cari Iklan Properti'));
-		Configure::write('__Site.description_for_layout', __('Website database properti terbesar di Indonesia'));
-		Configure::write('__Site.keywords_for_layout', __('jual rumah, beli rumah, rumah, tanah, ruko, rukan, apartemen, gudang, kantor'));
 
 		// Image Path
 		Configure::write('__Site.upload_path', APP.'Uploads');
@@ -946,9 +932,9 @@ class RmCommonComponent extends Component {
 		));
 
 		$dimensionProfile = array(
-			'ps' => '50x50',
-			'pm' => '100x100',
-			'pl' => '150x150',
+			'ps'  => '50x50',
+			'pm'  => '100x100',
+			'pl'  => '150x150',
 			'pxl' => '300x300',
 		);
 		Configure::write('__Site.dimension_profile', $dimensionProfile);
@@ -993,50 +979,30 @@ class RmCommonComponent extends Component {
 
 		if(!empty($data)){
 			$approval = $this->filterEmptyField($data, 'UserCompanyConfig', 'is_approval_property');
-			$is_co_broke = $this->filterEmptyField($data, 'UserCompanyConfig', 'is_co_broke');
 
 			Configure::write('Config.Approval.Property', $approval);
 			Configure::write('Config.Company.data', $data);
 
-			if($is_co_broke){
-				Configure::write('Config.Type.CoBroke.Commission', $this->getGlobalVariable('type_commision_cobroke'));
-			}
-
 		}
 
 		Configure::write('__Site.Attribute.Type', array(
-			'text' => __('Textbox'),
-			'number' => __('Number'),
-			'price' => __('Price'),
-			'textarea' => __('Textarea'),
-			'select' => __('Selectbox'),
-			'option' => __('Select Option'),
-			'radio' => __('Radio Button'),
-			'checkbox' => __('Checkbox'),
-			'phone_number' => __('Phone Number'),
-			'email' => __('Email'),
-			'file' => __('Upload File'),
-			'image' => __('Upload Image'),
-			'payment' => __('Pembayaran'),
-			'sold' => __('Proses Terjual/Tersewa'),
+			'checkbox' 		=> __('Checkbox'),
+			'email' 		=> __('Email'),
+			'number' 		=> __('Number'),
+			'payment' 		=> __('Pembayaran'),
+			'phone_number' 	=> __('Phone Number'),
+			'price' 		=> __('Price'),
+			'sold' 			=> __('Proses Terjual/Tersewa'),
+			'radio' 		=> __('Radio Button'),
+			'select' 		=> __('Selectbox'),
+			'option' 		=> __('Select Option'),
+			'textarea' 		=> __('Textarea'),
+			'text' 			=> __('Textbox'),
+			'file' 			=> __('Upload File'),
+			'image' 		=> __('Upload Image'),
 		));
 
-		Configure::write('__variableSyncBank', array(
-			'Bank',
-			'BankBanner',
-			'BankProduct',
-			'BankProductSpec',
-			'BankProductSpecCompany',
-			'BankContact',
-			'BankSetting',
-			'BankCommissionSetting',
-			'BankCommissionSettingLoan',
-		));
-
-		// Rumahku Info
-		Configure::write('__Site.site_wa', '0822 505 77777');
-		Configure::write('__Site.site_phone', '(021) 5332555');
-
+		Configure::write('__Site.site_wa', '');
 		Configure::write('__Site.domain', $_SERVER['HTTP_HOST']);
 
 		// config Rest
@@ -1053,8 +1019,6 @@ class RmCommonComponent extends Component {
         	'expired' => __('Expired'),
         	'active' => __('Active'),
     	));
-
-		Configure::write('__Site.theme_host', 'http://themes.pasiris.com');
 
 		Configure::write('__Site.language', array(
 			'id' => __('Indonesia'),
@@ -1108,9 +1072,6 @@ class RmCommonComponent extends Component {
 			));
 		}
 
-		$manualDownloadURL = sprintf('%s/files/user_manual/prime/principle.doc', FULL_BASE_URL);
-		Configure::write('__Site.user_manual_download_url', $manualDownloadURL);
-
 		$certificates = $this->controller->User->Property->Certificate->getData('list', array(
             'group' => array(
                 'Certificate.slug'
@@ -1162,18 +1123,6 @@ class RmCommonComponent extends Component {
 			), 
 		));
 
-	//	integrasi rumah 123
-		Configure::write('Config.Integration', array(
-			'api' => array(
-				'rumah123' => array(
-					'client'		=> '', 
-					'key'			=> '1DE96880634A99B1841762185C9720E2', 
-					'base_url'		=> 'https://api-beta.rumah123.com', 
-					'crontab_limit'	=> 100, 
-				),
-			), 
-		));
-
 		Configure::write('Config.PaymentConfig', array(
 			'payment_cash' => 98,
 			'payment_channels' => array(
@@ -1210,12 +1159,6 @@ class RmCommonComponent extends Component {
 			),
 		));
 
-		Configure::write('__Site.cobroke_type', array(
-			'in_corp' => __('Internal'),
-			'out_corp' => __('Eksternal'),
-			'both' => __('Internal dan Eksternal'),
-		));
-
 		Configure::write('__Site.exlude_acos', array(
 			'AclManager',
 			'Ajax',
@@ -1240,34 +1183,6 @@ class RmCommonComponent extends Component {
 			'Transactions',
 		));
 
-		Configure::write('__Site.SP.conditions', array(
-			// Compare All Options
-			'default' => array(
-				'time' => __('Time'),
-				'ranges' => __('Range'),
-				'day' => __('Hari'),
-				'property_action' => __('Jumlah Listing'),
-				'ebrosur_action' => __('Jumlah E-Brosur'),
-				'other' => __('Lainnya'),
-			),
-			// Untuk kondisi di component
-			'full' => array(
-				'time' => __('Time'),
-				'ranges' => __('Range'),
-				'day' => __('Hari'),
-				'other' => __('Lainnya'),
-			),
-			// Untuk kondisi jml listing
-			'period' => array(
-				// 'time' => __('Time'),
-				'day' => __('Hari'),
-			),
-			'component_period' => array(
-            	'daily' => __('Harian'),
-            	'weekly' => __('Mingguan'),
-            	'monthly' => __('Bulanan'),
-			),
-		));
 	}
 
 	public function configureMembership(){
@@ -2451,8 +2366,8 @@ class RmCommonComponent extends Component {
 				switch ($type) {
 					case 'map':
 						$layout_js = array_merge($layout_js, array(
-							'//maps.google.com/maps/api/js?key=false',
-							'jquery/gmap.js',
+							// '//maps.google.com/maps/api/js?key=false',
+							// 'jquery/gmap.js',
 						));
 						break;
 					case 'fileupload':

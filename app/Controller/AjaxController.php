@@ -6,9 +6,7 @@ class AjaxController extends AppController {
 
 	public $components = array(
 		'RmImage', 
-		'RmProperty', 
-		'RmKpr',
-		'RmCrm', 
+		'RmProperty',
 		'RmRecycleBin', 
 		'RmEbroschure',
 		'Rest.Rest' => array(
@@ -49,12 +47,6 @@ class AjaxController extends AppController {
 			 	'property_video_delete' => array(
 			 		'extract' => array(
 				  		'msg', 'status', 'link', 'appversion', 'device'
-				 	),
-			 	),
-			 	'get_form_ebrosur' => array(
-			 		'extract' => array(
-				  		'msg', 'status', 'link', 'appversion', 'device',
-				  		'data', 'property_medias'
 				 	),
 			 	),
 			 	'list_company_properties' => array(
@@ -115,8 +107,7 @@ class AjaxController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Auth->allow(array(
-			'get_subareas', 'get_zip', 'get_kpr_installment_payment',
-			'get_kpr_calculation', 'list_users', 'admin_get_dashboard_table',
+			'get_subareas', 'get_zip', 'list_users', 'admin_get_dashboard_table',
 			'get_list_subareas', 'get_ebrochure', 
 			'save_property_video', 'api_info_property',
 			'api_info_user', 'set_sorting', 'slide_tour', 
@@ -1360,131 +1351,6 @@ class AjaxController extends AppController {
 		}
 	}
 
-	function get_crm_property( $mls_id = false ){
-		$params = $this->params;
-		$this->theme = false;
-
-		$template = Common::hashEmptyField($params->params, 'named.template', 'property');
-
-		$crm_project_id = $this->RmCommon->filterEmptyField($params, 'named', 'crm_project_id', 0);
-		$kpr = $this->RmCommon->filterEmptyField($params, 'named', 'kpr');
-
-		$value = $this->User->Property->_callPropertyMerge(array(), $mls_id, 'Property.mls_id');
-		$value = $this->User->CrmProject->getMerge($value, $crm_project_id);
-		$value = $this->User->CrmProject->CrmProjectPayment->getMerge($value, $crm_project_id, 'CrmProjectPayment.crm_project_id');
-		
-		$property_id = $this->RmCommon->filterEmptyField($value, 'Property', 'id', 0);
-		$owner_id = $this->RmCommon->filterEmptyField($value, 'Property', 'client_id');
-		$user_id = $this->RmCommon->filterEmptyField($value, 'Property', 'user_id');
-		$value = $this->User->getMerge($value, $owner_id, false, 'Owner');
-
-		$price = $this->RmCommon->filterEmptyField($value, 'Property', 'price_measure');
-		$price = $this->RmCommon->filterEmptyField($value, 'CrmProjectPayment', 'price', $price);
-
-		$value['Kpr']['property_price'] = $price;
-		$value['Kpr']['sold_date'] = date('d/m/Y');
-		$value['Kpr']['kpr_date'] = date('d/m/Y');
-
-		$documentCategories = $this->RmKpr->_callDocumentCategories(array(
-			'DocumentCategory.is_required' => 1,
-			'DocumentCategory.id' => array( 1,5 ),
-		), array(
-			'crm_project_id' => $crm_project_id,
-			'property_id' => $property_id,
-		));
-
-		$client = $this->RmCommon->filterEmptyField($value, 'Client');
-		$value['User'] = $client;
-
-		$mandatory = __('*');
-		$this->request->data = $value;
-
-		$this->set(compact(
-			'mandatory', 'kpr', 'documentCategories', 'user_id'
-		));
-
-		$this->render('/Elements/blocks/crm/'.$template);
-	}
-
-	function get_form_ebrosur($mls_id, $color = false){
-		$property = $this->User->Property->getData('first', array(
-			'conditions' => array(
-				'Property.mls_id' => $mls_id
-			)
-		), array(
-			'status' => 'active-pending-sold',
-			'restrict_api' => false,
-			'skip_is_sales' => true,
-		));
-
-		if(!empty($property)){
-			$property = $this->User->Property->getDataList($property, array(
-				'contain' => array(
-					'MergeDefault',
-					'PropertyAddress',
-					'PropertyAsset',
-					'PropertySold',
-					'User'
-				),
-			));
-
-			$property_medias = $this->User->Property->PropertyMedias->getData('all', array(
-				'conditions' => array(
-					'PropertyMedias.property_id' => $property['Property']['id']
-				)
-			), array(
-				'status' => 'all'
-			));
-
-			$this->RmEbroschure->setDataForm($property);
-
-			$this->set('property_medias', $property_medias);
-		}
-
-		$propertyActions = $this->User->Property->PropertyAction->getData('list', array(
-			'cache' => __('PropertyAction.List'),
-		));
-		$propertyTypes = $this->User->Property->PropertyType->getData('list', array(
-			'cache' => __('PropertyType.List'),
-		));
-		$color_scheme = $this->RmCommon->getGlobalVariable('color_banner_option');
-		$currencies = $this->User->Property->Currency->getData('list', array(
-			'fields' => array(
-				'Currency.id', 'Currency.alias',
-			),
-			'cache' => __('Currency.alias'),
-		));
-
-		$periods = $this->User->Property->PropertyPrice->Period->getData('list', array(
-			'cache' => __('Period.List'),
-		));
-
-		$lotUnits = $this->User->Property->PropertyAsset->LotUnit->getData('list', array(
-			'fields' => array(
-				'LotUnit.id', 'LotUnit.slug',
-			),
-			'group' => array(
-				'LotUnit.slug',
-			),
-			'cache' => __('LotUnit.GroupSlug.List'),
-		), array(
-			'is_lot' => true,
-		));
-
-		$this->RmCommon->_callRequestSubarea('UserCompanyEbrochure');
-
-		$dataUser = Configure::read('User.data');
-
-		$this->set(compact(
-			'propertyActions', 'propertyTypes', 'module_title', 'color_scheme',
-			'subareas', 'currencies', 'periods', 'lotUnits', 'list_agent'
-		));
-
-		$this->render('/Elements/blocks/ebrosurs/forms/ebrosur');
-
-		$this->RmCommon->renderRest();
-	}
-
 	function admin_approve_media($media_id, $property_id){
 		if(!empty($media_id) && !empty($property_id)){
 			$result = $this->User->Property->PropertyMedias->doApprove($media_id);
@@ -1617,110 +1483,6 @@ class AjaxController extends AppController {
 
 			$this->render('admin_image');
 		}
-	}
-
-	function get_kpr_installment_payment( $property_price = false, $loan_amount = false, $credit_fix = false, $interest_rate = false ) {
-
-		if( !empty($property_price) && !empty($loan_amount) && !empty($credit_fix) && !empty($interest_rate) ) {
-			
-			$property_price = $this->RmCommon->safeTagPrint($property_price);
-			$loan_amount = $this->RmCommon->safeTagPrint($loan_amount);
-			$credit_fix = $this->RmCommon->safeTagPrint($credit_fix);
-			$interest_rate = $this->RmCommon->safeTagPrint($interest_rate);
-
-			$total_dp =  $property_price - $loan_amount;
-			$total_first_credit = $this->RmKpr->creditFix($loan_amount, $interest_rate, $credit_fix );
-		} else {
-			$total_first_credit = 0;
-		}
-
-		$this->set(compact(
-			'total_first_credit'
-		));
-		$this->render('get_kpr_installment_payment');
-	}
-
-	function get_kpr_calculation() {
-		$bank_apply_category_id = 1;
-		$loan_summary = $this->request->data;
-		$property_price = $this->RmCommon->filterEmptyField($loan_summary, 'Kpr', 'property_price');
-		$loan_price = $this->RmCommon->filterEmptyField($loan_summary, 'Kpr', 'loan_price');
-		$down_payment = $this->RmCommon->filterEmptyField($loan_summary, 'Kpr', 'down_payment');
-		$credit_fix = $this->RmCommon->filterEmptyField($loan_summary, 'Kpr', 'credit_fix', 0);
-		$credit_total = $this->RmCommon->filterEmptyField($loan_summary, 'Kpr', 'credit_total', 0);
-		$bankKpr = $this->User->Kpr->KprBank->Bank->getKpr();
-
-		$loan_summary['Kpr']['property_price'] = $this->RmCommon->convertPriceToString($property_price);
-		$loan_summary['Kpr']['loan_price'] = $this->RmCommon->convertPriceToString($loan_price);
-		$loan_summary['Kpr']['down_payment'] = $this->RmCommon->convertPriceToString($down_payment);
-		$kpr_data = $this->RmKpr->calculate_kpr_installment_detail( $bankKpr, $loan_summary );
-
-		if(!empty($this->params['named']['mls_id'])){
-			$property = $this->User->Property->getData('first', array(
-	        	'conditions' => array(
-	        		'Property.mls_id' => $this->params['named']['mls_id']
-	    		),
-	    	), array(
-				'status' => 'active-pending-sold',
-	    		'company' => true,
-				'skip_is_sales' => true,
-	    	));
-
-	    	$property = $this->User->Property->getDataList($property, array(
-				'contain' => array(
-					'MergeDefault',
-					'PropertyAddress',
-				),
-			));
-
-			$property_id = $this->RmCommon->filterEmptyField($property, 'Property', 'id');
-			$currency_id = $this->RmCommon->filterEmptyField($property, 'Property', 'currency_id');
-			$property_type_id = $this->RmCommon->filterEmptyField($property, 'Property', 'property_type_id');
-			$bank_apply_category_id = $this->RmKpr->_callGetBankApplyCategory($property_type_id);
-
-			$loan_summary['Kpr']['property_id'] = $property_id;
-
-			if( !empty($currency_id) ) {
-				$loan_summary['Kpr']['currency_id'] = $currency_id;
-			}
-
-			$this->set('property', $property);
-		}
-
-		$data = $loan_summary['Kpr'];
-
-		if(!empty($property['Property'])){
-			$data = array_merge($data, $property['Property']);
-
-			if(!empty($property['PropertyAddress'])){
-				$data = array_merge($data, $property['PropertyAddress']);
-			}
-		}
-
-		$data = $this->RmCommon->_callUnset(array(
-			'id',
-			'created',
-			'modified',
-		), $data);
-
-		if( !empty($bankKpr['BankSetting']) ) {
-			$bankKpr = $this->RmCommon->_callUnset(array(
-				'id',
-				'created',
-				'modified',
-			), $bankKpr);
-
-			$data = array_merge($data, $bankKpr);
-		}
-
-		$data_log = $this->RmKpr->beforeSaveKprLog($data);
-		$id_log_kpr = $this->User->Kpr->KprBank->doSaveLog($data_log);
-
-		$this->set(compact(
-			'loan_summary', 'kpr_data', 'id_log_kpr',
-			'bankKpr'
-		));
-		$this->render('get_kpr_calculation');
 	}
 
 	function get_ebrochure($maxid){

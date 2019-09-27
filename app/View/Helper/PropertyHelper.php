@@ -456,11 +456,6 @@ class PropertyHelper extends AppHelper {
 
 						if( !empty($display) ) {
 							$value = $this->Rumahku->filterEmptyField($data, $modelName, $field);
-
-							if($field == 'co_broke_type'){
-								$cobroke_types = Configure::read('__Site.cobroke_type');
-								$value = Common::hashEmptyField($cobroke_types, $value, 'N/A');
-							}
 						}
 
 						if( $format == 'date' ) {
@@ -1489,9 +1484,6 @@ class PropertyHelper extends AppHelper {
 
 								if( $format == 'date' ) {
 									$val = $this->Rumahku->formatDate($val, 'd/m/Y');
-								}else if($fieldName == 'co_broke_type'){
-									$cobroke_types = Configure::read('__Site.cobroke_type');
-									$val = Common::hashEmptyField($cobroke_types, $co_broke_type, 'N/A');
 								}
 
 								$result .= $this->Html->tag($tag, $this->Rumahku->getCheckRevision($modelName, $fieldName, $data_revision, sprintf('%s : %s', $label, $this->Html->tag('strong', $val.$addText, array(

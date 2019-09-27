@@ -12,7 +12,6 @@
 		$site_name = Configure::read('__Site.site_name');
 		$site_email = Configure::read('__Site.send_email_from');
 		$site_wa = Configure::read('__Site.site_wa');
-		$site_phone = Configure::read('__Site.site_phone');
 
 		$even = 'padding: 5px 8px;line-height: 20px;vertical-align: top;text-align: left;background-color: #f4f4f4;';
 		$odd = $even.'background-color: transparent;';
@@ -51,9 +50,6 @@
 		echo $this->Html->tag('p', sprintf('%s | %s', $site_name, $site_email), array(
 			'style' => 'color: #303030; font-size: 14px; margin: 5px 0 0; line-height: 20px;font-weight: bold;',
 		));
-		// echo $this->Html->tag('p', sprintf(__('Sales and Support: %s'), $site_phone), array(
-		// 	'style' => 'color: #303030; font-size: 14px; margin: 5px 0 0; line-height: 20px;font-weight: bold;',
-		// ));
 		echo $this->Html->tag('p', sprintf(__('WhatsApp: %s'), $site_wa), array(
 			'style' => 'color: #303030; font-size: 14px; margin: 5px 0 0; line-height: 20px;font-weight: bold;',
 		));

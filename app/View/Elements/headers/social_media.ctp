@@ -6,10 +6,13 @@
         $pinterest   = Common::hashEmptyField($dataCompany, 'UserConfig.pinterest');
         $instagram   = Common::hashEmptyField($dataCompany, 'UserConfig.instagram');
         $youtube     = Common::hashEmptyField($dataCompany, 'UserConfig.youtube');
+        $link_nabang = Configure::read('__Site.nabangshop');
         
 ?>
 <ul class="socialIcons">
     <?php
+
+
 
             if( $youtube ) {
                 echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-youtube-play'), $youtube, array(
@@ -41,12 +44,6 @@
                     'target' => '_blank',
                 )));
             }
-            if( !empty($pinterest) ) {
-                echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-pinterest'), $pinterest, array(
-                    'escape' => false,
-                    'target' => '_blank',
-                )));
-            }
             if( !empty($instagram) ) {
                 echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-instagram'), $instagram, array(
                     'escape' => false,
@@ -54,11 +51,16 @@
                 )));
             }
 
+            echo $this->Html->tag('li', $this->Html->link(__('part of @nabangshop'), $link_nabang, array(
+                'escape' => false,
+                'target' => '_blank',
+            )));
+
             //  link ke dashboard, dimunculkan hanya jika user sudah login
-            echo $this->element('blocks/common/direct_backend', array(
-                'style' => 'padding-left: 15px;',
-                'divStyle' => 'margin-left: 10px;',
-            ));
+            // echo $this->element('blocks/common/direct_backend', array(
+            //     'style' => 'padding-left: 15px;',
+            //     'divStyle' => 'margin-left: 10px;',
+            // ));
 
   //       echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-rss'), Configure::read('__Site.site_default').'/rss/', array(
         //  'escape' => false,

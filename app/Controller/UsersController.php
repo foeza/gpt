@@ -511,7 +511,7 @@ class UsersController extends AppController {
 				$this->set('module_title', __('Dashboard'));
 				$this->set('active_menu', 'dashboard');
 				$this->set(compact(
-					'total_listing_per_agent', 'total_listing_sold_per_agent', 
+					'total_listing_per_agent', 
 					'chartProperties', 'chartCommission', 'percentage',
 					'total_ebrosur', 'user', 'total_premium_listing',
 					'total_listing', 'top_ebrosurs', 'total_kpr',

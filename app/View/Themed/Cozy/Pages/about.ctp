@@ -2,22 +2,9 @@
         $general_path = Configure::read('__Site.general_folder');
 
         $company_name = $this->Rumahku->filterEmptyField($dataCompany, 'UserCompany', 'name');
-        $description = $this->Rumahku->filterEmptyField($dataCompany, 'UserCompany', 'description', false, false);
+        $description  = $this->Rumahku->filterEmptyField($dataCompany, 'UserCompany', 'description', false, false);
 
-        $about_bg = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'about_bg');
-        
-        if( !empty($about_bg) ) {
-            $_class = 'main';
-            $customBg = $this->Rumahku->photo_thumbnail(array(
-                'save_path' => $general_path, 
-                'src'=> $about_bg, 
-                'thumb' => false,
-                'url' => true,
-            ));
-        } else {
-            $_class = '';
-            $customBg = '/images/about.png';
-        }
+        $customBg     = '/images/about.png';
 
         $this->Html->addCrumb($module_title);
 ?>
@@ -27,7 +14,7 @@
             <div class="main col-sm-6">
                 <div class="center">
                     <?php
-                            echo $this->Html->tag('h2', sprintf('%s Memberikan Solusi Terbaik Untuk Properti Anda', $company_name), array(
+                            echo $this->Html->tag('h2', $company_name, array(
                                 'class' => 'section-highlight',
                                 'data-animation-direction' => 'from-left',
                                 'data-animation-delay' => '50'
@@ -42,7 +29,7 @@
                     ?>
                 </div>
             </div>
-            <div class="col-sm-6 <?php echo $_class; ?>">
+            <div class="col-sm-6 main">
                 <?php
                         echo $this->Html->image($customBg, array(
                             'data-animation-direction' => 'from-right',
@@ -54,6 +41,7 @@
         </div>
     </div>
 </div>
+<!-- 
 <div class="parallax colored-bg pattern-bg" data-stellar-background-ratio="0.5">
     <div class="container">
         <div class="row">
@@ -113,14 +101,4 @@
         </div>
     </div>
 </div>
-<div class="content">
-    <div class="container">
-        <div class="row">
-            <div class="main col-sm-12">
-                <?php
-                        echo $this->element('blocks/users/agents', array('_class' => 'col-xs-12 col-sm-12 col-md-4'));
-                ?>
-            </div>  
-        </div>
-    </div>
-</div>
+-->

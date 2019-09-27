@@ -35,51 +35,43 @@ class BannerSlide extends AppModel {
 	}
 
 	function getData( $find = 'all', $options = array(), $elements = array() ){
-		$status = isset($elements['status'])?$elements['status']:'all';
+		$status 		= isset($elements['status'])?$elements['status']:'all';
 
-	//	personal page (kalo bukan personal page user ini isinya principal)
-		$isPersonalPage	= Configure::read('Config.Company.is_personal_page');
 		$companyData	= Configure::read('Config.Company.data');
 		$companyGroupID	= Common::hashEmptyField($companyData, 'User.group_id');
-		$isIndependent	= Common::validateRole('independent_agent', $companyGroupID);
 
-		if($isPersonalPage){
-			$userID = Common::hashEmptyField($companyData, 'User.id');
-		}
-		else{
-			$principleID	= Configure::read('Principle.id');
-			$authUserID		= Configure::read('User.id');
-			$authGroupID	= Configure::read('User.group_id');
-			$isCompanyAgent	= Common::validateRole('company_agent', $authGroupID);
+		$principleID	= Configure::read('Principle.id');
+		$authUserID		= Configure::read('User.id');
+		$authGroupID	= Configure::read('User.group_id');
+		$isCompanyAgent	= Common::validateRole('company_agent', $authGroupID);
 
-			if($isCompanyAgent){
-				$currentDomain	= Router::fullbaseUrl();
-				$personalDomain = Configure::read('User.data.UserConfig.personal_web_url');
+		if($isCompanyAgent){
+			$currentDomain	= Router::fullbaseUrl();
+			$personalDomain = Configure::read('User.data.UserConfig.personal_web_url');
 
-				$currentDomain	= str_replace(array('http://', 'https://', '/'), null, $currentDomain);
-				$personalDomain	= str_replace(array('http://', 'https://', '/'), null, $personalDomain);
+			$currentDomain	= str_replace(array('http://', 'https://', '/'), null, $currentDomain);
+			$personalDomain	= str_replace(array('http://', 'https://', '/'), null, $personalDomain);
 
-				if($currentDomain == $personalDomain){
-				//	pake id agent kalo domain sama dengan domain personal page
-					$userID = $authUserID;
-				}
-				else{
-				//	posisi lagi di halaman company
-					$request	= Router::getRequest();
-					$adminPage	= Common::hashEmptyField($request->params, 'admin');
-
-					if($adminPage){
-						$personalPackageID = Configure::read('User.data.UserConfig.membership_package_id');
-						$userID = $personalPackageID ? $authUserID : null;
-					}
-					else{
-						$userID = $principleID;
-					}
-				}
+			if($currentDomain == $personalDomain){
+			//	pake id agent kalo domain sama dengan domain personal page
+				$userID = $authUserID;
 			}
 			else{
-				$userID = $principleID;
+			//	posisi lagi di halaman company
+				$request	= Router::getRequest();
+				$adminPage	= Common::hashEmptyField($request->params, 'admin');
+
+				if($adminPage){
+					$personalPackageID = Configure::read('User.data.UserConfig.membership_package_id');
+					$userID = $personalPackageID ? $authUserID : null;
+				}
+				else{
+					$userID = $principleID;
+				}
 			}
+		}
+		else{
+			$userID = $principleID;
 		}
 
 		$default_options = array(

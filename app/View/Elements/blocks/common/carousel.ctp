@@ -45,15 +45,29 @@
                             'class' => 'default-thumbnail',
                         ));
 
+                        $optionLink = array(
+                            'escape' => false,
+                            'rel' => 'prettyPhoto[slide]',
+                        );
+
                         if( !empty($url) ) {
-                            $optionLink = array(
-                                'escape' => false,
-                            );
 
                             if( !empty($is_video) ) {
-                                $optionLink['rel'] = 'prettyPhoto[slide1]';
                                 $url .= '&autoplay=1';
                             }
+
+                            $mediaPhoto = $this->Html->link($mediaPhoto, $url, $optionLink);
+                        } else {
+                            $url = $this->Rumahku->photo_thumbnail(array(
+                                'save_path' => $general_path, 
+                                'src' => $photo, 
+                                'thumb' => false,
+                                'url' => true,
+                            ), array(
+                                'title'=> $title, 
+                                'alt'=> $title, 
+                                'class' => 'default-thumbnail',
+                            ));
 
                             $mediaPhoto = $this->Html->link($mediaPhoto, $url, $optionLink);
                         }
@@ -86,7 +100,7 @@
     <a class="left carousel-control" href="#carousel-gallery" role="button" data-slide="prev">
         <?php 
                 echo $this->Rumahku->icon('fa fa-angle-left', false, 'i', ' arrow-left');
-                echo $this->Html->tag('span', __('Previous'), array(
+                echo $this->Html->tag('span', '', array(
                     'class' => 'sr-only',
                 ));
         ?>
@@ -94,7 +108,7 @@
     <a class="right carousel-control" href="#carousel-gallery" role="button" data-slide="next">
         <?php 
                 echo $this->Rumahku->icon('fa fa-angle-right', false, 'i', ' arrow-right');
-                echo $this->Html->tag('span', __('Next'), array(
+                echo $this->Html->tag('span', '', array(
                     'class' => 'sr-only',
                 ));
         ?>

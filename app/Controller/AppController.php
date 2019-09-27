@@ -62,18 +62,15 @@ class AppController extends Controller {
 	public function beforeFilter(){
 		$this->RmCommon->AllowOriginRequest();
 
-		$_site_name = 'GROSIR PASAR TASIK';
+		$_site_name  = 'GROSIR PASAR TASIK';
 		$_site_email = 'gptsupport@yopmail.com';
-		$_site_email_primesystem = 'support@yopmail.com';
 
 		Configure::write('__Site.site_name', $_site_name);
 		Configure::write('__Site.send_email_from', $_site_email);
-		Configure::write('__Site.prime_leads_email', 'leads@yopmail.com');
-		Configure::write('__Site.email_from_prime', $_site_email_primesystem);
+		Configure::write('__Site.nabangshop', 'https://www.instagram.com/nabangshop/');
 
-		$this->_base_url = $_base_url = $this->RmCommon->manage_base_url();
+		$this->_base_url  = $_base_url = $this->RmCommon->manage_base_url();
 		$site_url_default = $this->RmCommon->checkRootDomain($_base_url);
-
 		Configure::write('__Site.site_default', $site_url_default);
 
 		// untuk RmFileManager
@@ -91,36 +88,27 @@ class AppController extends Controller {
 		// Set User Log-in
 		$this->Auth->autoRedirect = false;
 		
-		$User = $this->Auth->user();
+		$p_query = $this->params->query;
 		$logged_group = false;
 		$logged_in = false;
+		$User = $this->Auth->user();
 
 		// token login
 		$User = $this->RmUser->tokenCheck($User, $this->params);
 
 		// Get Data Company
-		$this->data_company = $dataCompany = $_config = $this->RmUser->getDataCompanyFromApi( $User, $_base_url, $this->params->query );
+		$this->data_company = $dataCompany = $_config = $this->RmUser->getDataCompanyFromApi($User,$_base_url,$p_query);
+		$parent_id 			= Common::hashEmptyField($dataCompany, 'UserCompany.user_id');
 
 		// Set Configure Global
 		$this->RmCommon->_setConfigVariable($dataCompany);
-
-		$userID			= Common::hashEmptyField($dataCompany, 'User.id');
-		$companyID		= Common::hashEmptyField($dataCompany, 'UserCompany.id');
-		$isPersonalPage	= $userID && empty($companyID);
-
-		if($isPersonalPage){
-			$parent_id = Common::hashEmptyField($dataCompany, 'User.parent_id');
-		}
-		else{
-			$parent_id = Common::hashEmptyField($dataCompany, 'UserCompany.user_id');
-		}
 
 		// set Variable Parent
 		$this->parent_id = $parent_id;
 
 		Configure::write('Principle.id', $parent_id);
 		Configure::write('Config.Company.principle_id', $parent_id);
-		Configure::write('Config.Company.is_personal_page', $isPersonalPage);
+		Configure::write('Config.Company.is_personal_page', 0);
 
 		// Set Variable Global
 		$this->global_variable = $_global_variable = $this->RmCommon->_set_global_variable($_config);
@@ -191,7 +179,7 @@ class AppController extends Controller {
 		$this->RmCommon->_layout( $this->params, $theme_path );
 		$this->RmCommon->_setTour();
 
-	//	set list permissions, pengganti aclLinkHelper
+		//	set list permissions, pengganti aclLinkHelper
 		$authGroupID = $this->Auth->user('group_id');
 
 		$this->RmUser->setPermission($authGroupID);

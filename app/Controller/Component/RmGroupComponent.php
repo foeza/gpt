@@ -152,35 +152,6 @@ class RmGroupComponent extends Component {
 	}
 
 	function getExtendRule(){
-		$crmRole = array(
-			'controllers/Crm/admin_attributes',
-			'controllers/Crm/admin_change_status',
-			'controllers/Crm/admin_follow_up',
-			'controllers/Crm/admin_edit_followup',
-			'controllers/Crm/admin_activity_edit',
-			'controllers/Crm/admin_activity_delete',
-			'controllers/Crm/admin_project_clients',
-			'controllers/Crm/admin_project_contract',
-			'controllers/Crm/admin_status',
-			'controllers/Crm/admin_project_upload_documents',
-			'controllers/Crm/admin_project_document',
-			'controllers/Crm/admin_project_document_add',
-			'controllers/Crm/admin_project_document_edit',
-			'controllers/Crm/admin_project_document_delete',
-			'controllers/Crm/admin_change_status',
-			'controllers/Crm/admin_project_payment',
-			'controllers/Crm/admin_project_payment_add',
-			'controllers/Crm/admin_project_payment_edit',
-			'controllers/Crm/admin_project_kpr',
-			'controllers/Crm/admin_project_detail',
-			'controllers/Crm/admin_cancel',
-			'controllers/Crm/admin_submmission_nonaktif',
-			'controllers/Crm/admin_project_submission',
-			'controllers/Crm/admin_submission_nonaktif',
-			'controllers/Crm/admin_updateKprComplete',
-			'controllers/Crm/admin_detailView',
-			'controllers/Crm/admin_project_load_more', 
-		);
 		$reportRole = array(
 			'controllers/Reports/admin_detail',
 			'controllers/Reports/admin_download',
@@ -242,9 +213,6 @@ class RmGroupComponent extends Component {
 				'controllers/Properties/market_trend',
 				'controllers/Properties/proprety_statistic',
 			),
-			'controllers/Crm/admin_projects' => $crmRole,
-			// 'controllers/Crm/admin_project_add' => $crmRole,
-			// 'controllers/Crm/admin_project_edit' => $crmRole,
 			'controllers/Newsletters/admin_lists' => array(
 				'controllers/Newsletters/admin_detail_lists',
 				'controllers/Newsletters/admin_detail_list_clients',
@@ -281,35 +249,6 @@ class RmGroupComponent extends Component {
 				'controllers/Newsletters/admin_preview_template',
 				'controllers/Newsletters/admin_preview_template_detail',
 				'controllers/Newsletters/admin_detail_list_users',
-			),
-			'controllers/Kpr/admin_index' => array(
-				'controllers/Kpr/admin_application_detail',
-				'controllers/Kpr/admin_notice_toggle',
-				'controllers/Bank/admin_promos',
-				'controllers/Bank/admin_promo_info',
-			),
-			'controllers/Kpr/admin_add' => array(
-				'controllers/Kpr/admin_developer',
-				'controllers/Kpr/admin_filing',
-				'controllers/Kpr/admin_all_forward',
-				'controllers/Kpr/admin_application',
-				'controllers/Kpr/admin_application_detail',
-				'controllers/Kpr/admin_application_detail_excel',
-				'controllers/Kpr/admin_bank_list',
-				'controllers/Kpr/admin_completed',
-				'controllers/Kpr/admin_edit',
-				'controllers/Kpr/admin_foward_application',
-				'controllers/Kpr/admin_info',
-				'controllers/Kpr/admin_notice_toggle',
-				'controllers/Kpr/admin_resend_application',
-				'controllers/Kpr/admin_update_kpr',
-				'controllers/Kpr/admin_update_kpr_non_komisi',
-				'controllers/Kpr/admin_options',
-				'controllers/Kpr/ajax_compare_detail',
-				'controllers/Kpr/backprocess_get_property',
-				'controllers/Ajax/get_properties',
-				'controllers/Ajax/backprocess_get_property',
-				'controllers/Ajax/backprocess_get_bank',
 			),
 			'controllers/Payments/admin_index' => array(
 				'controllers/Payments/admin_view',
@@ -369,14 +308,12 @@ class RmGroupComponent extends Component {
 			),
 			'controllers/Ebrosurs/admin_add' => array(
 				'controllers/Ajax/list_company_properties',
-				'controllers/Ajax/get_form_ebrosur',
 				'controllers/Ebrosurs/admin_builder',
 				'controllers/Ebrosurs/admin_generate',
 				'controllers/Ebrosurs/admin_regenerate',
 			),
 			'controllers/Ebrosurs/admin_edit' => array(
 				'controllers/Ajax/list_company_properties',
-				'controllers/Ajax/get_form_ebrosur',
 				'controllers/Ebrosurs/admin_builder',
 				'controllers/Ebrosurs/admin_generate',
 				'controllers/Ebrosurs/admin_regenerate',
@@ -443,10 +380,6 @@ class RmGroupComponent extends Component {
 				'controllers/Rules/admin_actived',
 
 			),
-			// 'controllers/CoBrokes/admin_index' => array(
-			// 	'controllers/CoBrokes/admin_request_cobroke',
-			// 	'controllers/CoBrokes/admin_detail_property',
-			// ),
 			'controllers/Reports/admin_overview' => array(
 				'controllers/Users/admin_clients',
 				'controllers/Reports/admin_top_agents',
@@ -455,16 +388,12 @@ class RmGroupComponent extends Component {
 				'controllers/Reports/admin_share_detail_module',
 			),
 			'controllers/Reports/admin_kpi_marketing' => array(
-				'controllers/Crm/admin_projects',
 				'controllers/Reports/admin_crm',
 				'controllers/Ebrosurs/admin_index',
 			),
 			'controllers/Reports/admin_overview_clients' => array(
 				'controllers/Users/admin_agent_clients',
 				'controllers/Users/admin_clients',
-			),
-			'controllers/Reports/admin_overview_kpr' => array(
-				'controllers/Kpr/admin_index',
 			),
 			'controllers/Properties/admin_premium' => array(
 				'controllers/Properties/admin_unpremium',
@@ -483,7 +412,6 @@ class RmGroupComponent extends Component {
 						'controllers/Users/admin_edit',
 						'controllers/Users/admin_security',
 						'controllers/ajax/get_properties',
-						'controllers/ajax/get_crm_property',
 						'controllers/ajax/list_users',
 						'controllers/ajax/get_data_client',
 						'controllers/reports/admin_generate',

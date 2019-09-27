@@ -65,12 +65,11 @@
                 ));
 
                 $isAdmin        = $this->Rumahku->_isAdmin();
-				$isPersonalPage = Configure::read('Config.Company.is_personal_page');
 				$authGroupID	= Configure::read('User.group_id');
 				$packageID		= Configure::read('User.data.UserConfig.membership_package_id');
 				$isAgent		= Common::validateRole('agent', $authGroupID);
 
-				if($isAdmin || $isPersonalPage || ($isAgent && $packageID)){
+				if($isAdmin || ($isAgent && $packageID)){
 					echo($this->Html->tag('h2', __('Informasi Lainnya'), array(
 						'class' => 'sub-heading'
 					)));

@@ -96,6 +96,7 @@ a.pp_close {
 
 .grid-style1 .item .image, .grid-style2 .item .image, .list-style .item .image {
 	max-height: none;
+	border: #e3e3e3 1px solid;
 }
 
 * {

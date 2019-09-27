@@ -350,13 +350,9 @@ class RmPageComponent extends Component {
 				'populars'					=> $populars, 
 				'populers'					=> $populars, 
 				'agents'					=> $agents, 
-				'advices'					=> $advices,
-				'highlight'					=> $highlight,
+				'advices'					=> $advices
 			));
 
-			if($isPersonalPage){
-				$this->controller->render('../Profiles/index');
-			}
 		}
 	}
 
