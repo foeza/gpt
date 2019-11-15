@@ -692,18 +692,6 @@ class RmCommonComponent extends Component {
 	                'faq' => __('FAQ'),
 	                'career' => __('Career'),
 	                'company' => __('Company'),
-
-	                // S: RQ WIDIA REALTY INI PENAMBAHAN SEMENTARA minta penamaannya beda
-	                'find-property' 	 => __('Find Property'),      // ini menu find property
-	                'current-project' 	 => __('Current Project'),      // ini menu find property
-	                'teams' 			 => __('Team'),               // ini menu agent
-	                'eflyer' 			 => __('E-Flyer'),            // ini menu ebrosur
-	                'properti-highlight' => __('Property Highlight'), // ini menu property highlight
-	                'insight' 			 => __('Insight'),            // ini menu Berita
-	                'join' 			     => __('Join A Team'),
-
-	                // E: RQ WIDIA REALTY INI PENAMBAHAN SEMENTARA
-
             	),
             	'id' => array(
 	                'home' => __('Beranda'),
@@ -1331,9 +1319,6 @@ class RmCommonComponent extends Component {
 					'berita' => __('Berita'),
 					'ebrosur' => __('EBrosur'),
 					'developer' => __('Developer'),
-					'project_list_product' => __('Project List Product'),
-					'project_list_unit' => __('Project List Unit'),
-					'project_detail_unit' => __('Project Detail Unit'),
 				),
 			),
 			'Expert' => array(
@@ -1698,8 +1683,8 @@ class RmCommonComponent extends Component {
 					}
 				}	
 
-				$data_category = $this->controller->User->Property->PropertyStatusListing->getData('list', array(
-					'cache' => __('PropertyStatusListing.List.%s', $userID),
+				$data_category = $this->controller->User->Property->PropertyProductCategory->getData('list', array(
+					'cache' => __('PropertyProductCategory.List.%s', $userID),
 					'cacheConfig' => 'default',
 				), array(
 					'status' => 'active',

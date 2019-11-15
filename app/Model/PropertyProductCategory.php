@@ -1,6 +1,6 @@
 <?php
-class PropertyStatusListing extends AppModel {
-	var $name = 'PropertyStatusListing';
+class PropertyProductCategory extends AppModel {
+	var $name = 'PropertyProductCategory';
 	var $displayField = 'name';
 	var $validate = array(
 		'name' => array(
@@ -21,20 +21,20 @@ class PropertyStatusListing extends AppModel {
             'fields'=> array(),
             'group'=> array(),
             'order' => array(
-				'PropertyStatusListing.modified' => 'DESC'
+				'PropertyProductCategory.modified' => 'DESC'
 			),
 		);
 
         switch ($status) {
         	case 'active':
                 $default_options['conditions'] = array_merge($default_options['conditions'], array(
-                	'PropertyStatusListing.status' => 1,
+                	'PropertyProductCategory.status' => 1,
             	));
                 break;
 
             case 'non-active':
                 $default_options['conditions'] = array_merge($default_options['conditions'], array(
-                	'PropertyStatusListing.status' => 0,
+                	'PropertyProductCategory.status' => 0,
             	));
                 break;
         }
@@ -62,7 +62,7 @@ class PropertyStatusListing extends AppModel {
 				}
 			}
 			
-			$default_options['conditions']['PropertyStatusListing.user_id'] = array_filter($userID);
+			$default_options['conditions']['PropertyProductCategory.user_id'] = array_filter($userID);
 		}
 		
 		if( !empty($options) ){
@@ -107,7 +107,7 @@ class PropertyStatusListing extends AppModel {
 		if( !empty($data) && !empty($category_id) ) {
 			$data_category = $this->getData('first', array(
 				'conditions' => array(
-					'PropertyStatusListing.id' => $category_id
+					'PropertyProductCategory.id' => $category_id
 				),
 			));
 
@@ -119,9 +119,9 @@ class PropertyStatusListing extends AppModel {
 		return $data;
 	}
 
-	public function doSave( $data = false, $status_category = false, $id = false ) {
+	public function doSave( $data = false, $data_exist = false, $id = false ) {
 		$result = false;
-		$default_msg = __('%s data kategori properti');
+		$default_msg = __('%s data kategori produk');
 
 		if ( !empty($data) ) {
 			if( !empty($id) ) {
@@ -135,21 +135,21 @@ class PropertyStatusListing extends AppModel {
 			$principleID	= Configure::read('Principle.id');
 			$authUserID		= Configure::read('User.data.id');
 
-			$data['PropertyStatusListing']['user_id'] = $principleID ?: $authUserID;
-			$data['PropertyStatusListing']['name'] = !empty($data['PropertyStatusListing']['name']) ? trim($data['PropertyStatusListing']['name']) : '';
+			$data['PropertyProductCategory']['user_id'] = $principleID ?: $authUserID;
+			$data['PropertyProductCategory']['name'] = !empty($data['PropertyProductCategory']['name']) ? trim($data['PropertyProductCategory']['name']) : '';
 			
 			$this->set($data);
 			if ( $this->validates() ) {
 				if( $this->save() ) {
-					$status_category_id = $this->id;
+					$category_id = $this->id;
 					$msg = sprintf(__('Berhasil %s'), $default_msg);
 					$result = array(
 						'msg' => $msg,
 						'status' => 'success',
-						'id' => $status_category_id,
+						'id' => $category_id,
 						'Log' => array(
 							'activity' => $msg,
-							'old_data' => $status_category,
+							'old_data' => $data_exist,
 							'document_id' => $id,
 						),
 					);
@@ -161,7 +161,7 @@ class PropertyStatusListing extends AppModel {
 						'data' => $data,
 						'Log' => array(
 							'activity' => $msg,
-							'old_data' => $status_category,
+							'old_data' => $data_exist,
 							'document_id' => $id,
 							'error' => 1,
 						),
@@ -174,38 +174,37 @@ class PropertyStatusListing extends AppModel {
 					'data' => $data,
 					'Log' => array(
 						'activity' => sprintf(__('Gagal %s'), $default_msg),
-						'old_data' => $status_category,
+						'old_data' => $data_exist,
 						'document_id' => $id,
 						'error' => 1,
 					),
 				);
 			}
-		} else if( !empty($status_category) ) {
-			$result['data'] = $status_category;
+		} else if( !empty($data_exist) ) {
+			$result['data'] = $data_exist;
 		}
 
 		return $result;
 	}
 
 	function doDelete( $id ) {
-		
 		$result = false;
-		$status_listing_category = $this->getData('all', array(
+		$data_categories = $this->getData('all', array(
         	'conditions' => array(
-				'PropertyStatusListing.id' => $id,
+				'PropertyProductCategory.id' => $id,
 			),
 		));
 
-		if ( !empty($status_listing_category) ) {
-			$name = Set::extract('/PropertyStatusListing/name', $status_listing_category);
+		if ( !empty($data_categories) ) {
+			$name = Set::extract('/PropertyProductCategory/name', $data_categories);
 			$name = implode(', ', $name);
-			$default_msg = sprintf(__('menghapus kategori properti %s'), $name);
+			$default_msg = sprintf(__('menghapus kategori produk %s'), $name);
 
 			$flag = $this->updateAll(array(
-				'PropertyStatusListing.status' => 0,
-	    		'PropertyStatusListing.modified' => "'".date('Y-m-d H:i:s')."'",
+				'PropertyProductCategory.status' => 0,
+	    		'PropertyProductCategory.modified' => "'".date('Y-m-d H:i:s')."'",
 			), array(
-				'PropertyStatusListing.id' => $id,
+				'PropertyProductCategory.id' => $id,
 			));
 
             if( $flag ) {
@@ -218,7 +217,7 @@ class PropertyStatusListing extends AppModel {
 					'status' => 'success',
 					'Log' => array(
 						'activity' => $msg,
-						'old_data' => $status_listing_category,
+						'old_data' => $data_categories,
 					),
 				);
             } else {
@@ -228,14 +227,14 @@ class PropertyStatusListing extends AppModel {
 					'status' => 'error',
 					'Log' => array(
 						'activity' => $msg,
-						'old_data' => $status_listing_category,
+						'old_data' => $data_categories,
 						'error' => 1,
 					),
 				);
 			}
 		} else {
 			$result = array(
-				'msg' => __('Gagal menghapus kategori properti. Data tidak ditemukan'),
+				'msg' => __('Gagal menghapus kategori produk. Data tidak ditemukan'),
 				'status' => 'error',
 			);
 		}
@@ -262,21 +261,21 @@ class PropertyStatusListing extends AppModel {
 
 		if( !empty($keyword) ) {
 			$default_options['conditions']['OR'] = array(
-				'PropertyStatusListing.name LIKE' => '%'.$keyword.'%',
+				'PropertyProductCategory.name LIKE' => '%'.$keyword.'%',
 			);
 		}
 		if( !empty($date_from) ) {
-			$default_options['conditions']['DATE_FORMAT(PropertyStatusListing.created, \'%Y-%m-%d\') >='] = $date_from;
+			$default_options['conditions']['DATE_FORMAT(PropertyProductCategory.created, \'%Y-%m-%d\') >='] = $date_from;
 
 			if( !empty($date_to) ) {
-				$default_options['conditions']['DATE_FORMAT(PropertyStatusListing.created, \'%Y-%m-%d\') <='] = $date_to;
+				$default_options['conditions']['DATE_FORMAT(PropertyProductCategory.created, \'%Y-%m-%d\') <='] = $date_to;
 			}
 		}
 		if( !empty($modified_from) ) {
-			$default_options['conditions']['DATE_FORMAT(PropertyStatusListing.modified, \'%Y-%m-%d\') >='] = $modified_from;
+			$default_options['conditions']['DATE_FORMAT(PropertyProductCategory.modified, \'%Y-%m-%d\') >='] = $modified_from;
 
 			if( !empty($modified_to) ) {
-				$default_options['conditions']['DATE_FORMAT(PropertyStatusListing.modified, \'%Y-%m-%d\') <='] = $modified_to;
+				$default_options['conditions']['DATE_FORMAT(PropertyProductCategory.modified, \'%Y-%m-%d\') <='] = $modified_to;
 			}
 		}
 		
@@ -286,7 +285,7 @@ class PropertyStatusListing extends AppModel {
 	public function afterSave($created, $options = array()){
 		$parent_id = Configure::read('Principle.id');
 		
-		Cache::delete(__('PropertyStatusListing.List.%s', $parent_id), 'default');
+		Cache::delete(__('PropertyProductCategory.List.%s', $parent_id), 'default');
 	}
 }
 ?>

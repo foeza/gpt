@@ -32,20 +32,6 @@ class ShareLog extends AppModel {
 				'ShareLog.type' => 'berita',
 			),
 		),
-		'ApiAdvanceDeveloper' => array(
-			'className' => 'ApiAdvanceDeveloper',
-			'foreignKey' => 'document_id',
-			'conditions' => array(
-				'ShareLog.type' => 'developer',
-			),
-		),
-		'UserCompanyEbrochure' => array(
-			'className' => 'UserCompanyEbrochure',
-			'foreignKey' => 'document_id',
-			'conditions' => array(
-				'ShareLog.type' => 'ebrosur',
-			),
-		),
 	);
 	
 	function __construct($id = false, $table = null, $ds = null) {
@@ -174,15 +160,11 @@ class ShareLog extends AppModel {
 					'OR' => array(
 						'CONCAT(\'#\', Property.mls_id, \' - \', Property.title)',
 						'Advice.title',
-						'ApiAdvanceDeveloper.name',
-						'UserCompanyEbrochure.property_title',
 					),
 				),
 				'contain' => array(
 					'Property',
 					'Advice',
-					'ApiAdvanceDeveloper',
-					'UserCompanyEbrochure',
 				),
 			),
 			'type_name' => array(

@@ -13,7 +13,9 @@ class PropertiesController extends AppController {
 	);
 
 	public $components = array(
-		'RmProperty', 'Captcha', 'RmImage',
+		'RmMarketTrend', 'RmSetting',
+		'RmProperty', 'Captcha', 'RmEbroschure',
+		'RmCrm', 'RmImage',
 		'Rest.Rest' => array(
             'debug' => 2,
             'actions' => array(
@@ -176,13 +178,13 @@ class PropertiesController extends AppController {
 
 		$this->Auth->allow($allowedMethods);
 
-		// if($draft){
-		// 	$active_menu = 'property_draft';
-		// } else {
-		// 	$active_menu = 'property_list';
-		// }
+		if($draft){
+			$active_menu = 'property_draft';
+		} else {
+			$active_menu = 'property_list';
+		}
 
-		// $this->set('active_menu', $active_menu);
+		$this->set('active_menu', $active_menu);
 		$this->draft_id = Configure::read('__Site.PropertyDraft.id');
 	}
 
@@ -194,6 +196,15 @@ class PropertiesController extends AppController {
 			'admin' => $_admin,
 		);
 
+		$this->RmCommon->processSorting($params, $data);
+	}
+
+	function client_search ( $action = 'index', $_client = true ) {
+		$data = $this->request->data;
+		$params = array(
+			'action' => $action,
+			'client' => $_client,
+		);
 		$this->RmCommon->processSorting($params, $data);
 	}
 
@@ -1700,8 +1711,14 @@ class PropertiesController extends AppController {
 	                'MergeDefault',
 	                'PropertyAddress',
 	                'PropertyAsset',
-	                'PropertyProductCategory',
+	                'PropertySold',
+	                'PropertyNotification',
+	                'PropertyStatusListing',
 	                'User',
+	                'Approved',
+	                'Client',
+	                'CoBrokeProperty',
+	                'UserActivedAgentDetail',
 					), 
 				));
 
@@ -4621,39 +4638,42 @@ class PropertiesController extends AppController {
 		));
 	}
 
-	/* ================================================================
-	=================== S: PRODUCT CATEGORIES FUNC ====================
-	================================================================ */
-	public function admin_product_category() {
-		$module_title = __('Daftar Kategori');
-		$this->RmCommon->_callRefineParams($this->params);
+	public function admin_status_listing_categories() {
+		$module_title = __('Daftar Kategori Properti');
+		$this->loadModel('PropertyStatusListing');
 
-        $options = $this->Property->PropertyProductCategory->_callRefineParams($this->params, array(
+        $options =  $this->PropertyStatusListing->_callRefineParams($this->params, array(
 			'limit' => Configure::read('__Site.config_new_table_pagination'),
 		));
 
-        $this->paginate = $this->Property->PropertyProductCategory->getData('paginate', $options);
-		$values = $this->paginate('PropertyProductCategory');
+		$this->RmCommon->_callRefineParams($this->params);
+
+		$authGroupID	= $this->Auth->user('group_id');
+		$elements		= array();
+
+		if($authGroupID == 1){
+			$elements = array('company' => false, 'mine' => true);
+		}
+
+        $this->paginate = $this->PropertyStatusListing->getData('paginate', $options, $elements);
+		$values = $this->paginate('PropertyStatusListing');
 
 		$this->set(array(
 			'values' => $values,
 			'module_title' => $module_title,
 			'active_menu' => 'property_category',
 		));
-
-		$this->render('../Product/admin_product_category');
 	}
 
-	public function admin_add_product_category() {
-    	$module_title = __('Tambah Kategori Produk');
-    	$user_id 	  = $this->user_id;
-
+	public function admin_add_status_listing_category() {
+    	$module_title = __('Tambah Kategori Properti');
     	$urlRedirect = array(
-            'admin' 	 => true,
             'controller' => 'properties',
-            'action' 	 => 'product_category',
+            'action' => 'status_listing_categories',
+            'admin' => true
         );
 
+    	$user_id = $this->user_id;
 		$user = $this->User->getData('first', array(
 			'conditions' => array(
 				'User.id' => $user_id
@@ -4661,42 +4681,12 @@ class PropertiesController extends AppController {
 		));
 
 		if( !empty($user) ) {
-			$data 	= $this->request->data;
-			$result = $this->Property->PropertyProductCategory->doSave( $data );
+			
+			$this->loadModel('PropertyStatusListing');
 
-			$this->RmCommon->setProcessParams($result, $urlRedirect);
-
-			$this->RmCommon->_layout_file('color-picker');
-			$this->set(array(
-				'module_title' => $module_title,
-				'active_menu'  => 'property_category',
-			));
-
-			$this->render('../Product/admin_add_product_category');
-		} else {
-			$this->RmCommon->redirectReferer(__('Kategori tidak ditemukan'));
-		}
-
-	}
-
-	public function admin_edit_product_category( $id ) {
-        $module_title = __('Edit Kategori Produk');
-        $urlRedirect = array(
-            'admin' 	 => true,
-            'controller' => 'properties',
-            'action' 	 => 'product_category',
-        );
-
-        $data_exist = $this->Property->PropertyProductCategory->getData('first', array(
-        	'conditions' => array(
-				'PropertyProductCategory.id' => $id,
-			),
-		));
-
-		if( !empty($data_exist) ) {
-			$data   = $this->request->data;
-			$result = $this->Property->PropertyProductCategory->doSave( $data, $data_exist, $id );
-
+			// $data_category = 
+			$data = $this->request->data;
+			$result = $this->PropertyStatusListing->doSave( $data );
 			$this->RmCommon->setProcessParams($result, $urlRedirect);
 
 			$this->RmCommon->_layout_file('color-picker');
@@ -4704,10 +4694,41 @@ class PropertiesController extends AppController {
 				'module_title' => $module_title,
 				'active_menu' => 'property_category',
 			));
-
-			$this->render('../Product/admin_add_product_category');
+			$this->render('status_listing_category_form');
 		} else {
-			$this->RmCommon->redirectReferer(__('Kategori tidak ditemukan'));
+			$this->RmCommon->redirectReferer(__('User tidak ditemukan'));
+		}
+	}
+
+	public function admin_edit_status_listing_category( $status_listing_category_id ) {
+        
+        $module_title = __('Edit Kategori Properti');
+        $urlRedirect = array(
+            'controller' => 'properties',
+            'action' => 'status_listing_categories',
+            'admin' => true
+        );
+
+        $this->loadModel('PropertyStatusListing');
+        $status_category = $this->PropertyStatusListing->getData('first', array(
+        	'conditions' => array(
+				'PropertyStatusListing.id' => $status_listing_category_id,
+			),
+		));
+
+		if( !empty($status_category) ) {
+			$data = $this->request->data;
+			$result = $this->PropertyStatusListing->doSave( $data, $status_category, $status_listing_category_id );
+			$this->RmCommon->setProcessParams($result, $urlRedirect);
+
+			$this->RmCommon->_layout_file('color-picker');
+			$this->set(array(
+				'module_title' => $module_title,
+				'active_menu' => 'property_category',
+			));
+			$this->render('status_listing_category_form');
+		} else {
+			$this->RmCommon->redirectReferer(__('Status Kategori tidak ditemukan'));
 		}
     }
 
@@ -4727,7 +4748,7 @@ class PropertiesController extends AppController {
 					'PropertyAsset',
 					'PropertyMediasCount',
 					'User',
-					'PropertyProductCategory',
+					'PropertyStatusListing',
 				),
 			));
 
@@ -4762,16 +4783,16 @@ class PropertiesController extends AppController {
 				'property'
 			));
 		} else {
-			$this->RmCommon->redirectReferer(__('Produk tidak ditemukan'), 'error');
+			$this->RmCommon->redirectReferer(__('Properti tidak ditemukan'), 'error');
 		}
 	}
 
-    public function admin_delete_multiple_product_category() {
-		$data   = $this->request->data;
-		$id     = $this->RmCommon->filterEmptyField($data, 'PropertyProductCategory', 'id');
+    public function admin_delete_multiple_status_listing_category() {
+		$data = $this->request->data;
+		$id = $this->RmCommon->filterEmptyField($data, 'PropertyStatusListing', 'id');
 
-    	$result = $this->Property->PropertyProductCategory->doDelete( $id );
-
+		$this->loadModel('PropertyStatusListing');
+    	$result = $this->PropertyStatusListing->doDelete( $id );
 		$this->RmCommon->setProcessParams($result, false, array(
 			'redirectError' => true,
 		));
@@ -4783,10 +4804,6 @@ class PropertiesController extends AppController {
 			'redirectError' => true,
 		));
     }
-
-    /* ================================================================
-	=================== E: PRODUCT CATEGORIES FUNC ====================
-	================================================================ */
 
 	public function admin_market_trend(){
 		$this->market_trend();

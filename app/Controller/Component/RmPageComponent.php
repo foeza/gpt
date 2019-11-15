@@ -137,76 +137,23 @@ class RmPageComponent extends Component {
 					$properties							= $cacheData['result'];
 				}
 				else{
-					if($isPersonalPage){
-					//	PERSONAL PAGE PROPERTIES
-						$propertiesConditions = array(
-							'Property.user_id'					=> $userID, 
-						);
-
-						if( !empty($companyID) ) {
-							$propertiesConditions['COALESCE(Property.company_id, 0)'] = $companyID;
-						}
-
-						$properties = $this->controller->User->Property->getData('all', array(
-							'limit'			=> $propertyLimit,
-							'conditions'	=> $propertiesConditions, 
-						), array(
-							'status'		=> 'active-pending-sold',
-							'company'		=> false,
-							'skip_is_sales'	=> true,
-						));
-
-						$properties = $this->controller->User->Property->getDataList($properties, array(
-							'contain' => array(
-								'MergeDefault',
-								'PropertyAddress',
-								'PropertyAsset',
-								'PropertySold',
-								// ** Gk perlu tampilin jml fotonya, bikin berat
-								// 'PropertyMediasCount',
-								'PropertyStatusListing',
-								'User',
-							),
-						));
-
-						$properties = $this->controller->User->Property->mergeMedia($properties);
-					}
-					else{
 					//	COMPANY PROPERTIES
-						$properties = $this->controller->User->Property->getData('all', array(
-							'limit' => $propertyLimit,
-						), array(
-							'status'		=> 'active-pending-sold',
-							'company'		=> true,
-							'skip_is_sales'	=> true,
-						));
+					$properties = $this->controller->User->Property->getData('all', array(
+						'limit' => $propertyLimit,
+					), array(
+						'status'		=> 'active-pending-sold',
+						'company'		=> true,
+						'skip_is_sales'	=> true,
+					));
 
-						$properties = $this->controller->User->Property->getDataList($properties, array(
-							'contain' => array(
-								'MergeDefault',
-								'PropertyAsset',
-								'PropertyAddress',
-								// ** Gk perlu tampilin jml fotonya, bikin berat
-								// 'PropertyMediasCount',
-								'PropertyStatusListing',
-							),
-						));
-
-						$isDirector = $this->RmCommon->_callIsDirector();
-
-						if($isDirector && $properties){
-							foreach($properties as &$property){
-								$property = $this->controller->User->getMergeList($property, array(
-									'contain' => array(
-										'UserCompanyConfig' => array(
-											'primaryKey' => 'user_id',
-											'foreignKey' => 'parent_id',
-										),
-									),
-								));
-							}
-						}
-					}
+					$properties = $this->controller->User->Property->getDataList($properties, array(
+						'contain' => array(
+							'MergeDefault',
+							'PropertyAsset',
+							'PropertyAddress',
+							'PropertyProductCategory',
+						),
+					));
 
 					if(empty($queryParams)){
 					//	find all query, generate cache

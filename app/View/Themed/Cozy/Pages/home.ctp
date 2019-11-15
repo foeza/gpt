@@ -15,7 +15,7 @@
             </div>
             <div class="col-sm-12 col-md-4">
             <?php 
-                    echo $this->element('blocks/common/sidebars/search');
+                    // echo $this->element('blocks/common/sidebars/search');
             ?>
             </div>
             

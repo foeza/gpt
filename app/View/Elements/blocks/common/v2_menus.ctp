@@ -35,50 +35,6 @@
 				'data_submenu' => 'User',
 				'class' => 'main-menu-user take-tour',
 				'child' => array(
-					// array(
-					// 	'name' => __('User'),
-					// 	'url' => array(
-					// 		'plugin' => false, 
-					// 		'controller' => 'users',
-					// 		'action' => 'user_info',
-					// 		'admin' => true,
-					// 	),
-					// 	'active' => 'user',
-					// 	'forbidden_allow' => !$isAdmin,
-					// 	'class' => 'sub-menu-user take-tour',
-					// ),
-					// array(
-					// 	'name' => __('Divisi'),
-					// 	'url' => array(
-					// 		'plugin' => false,
-					// 		'controller' => 'groups',
-					// 		'action' => 'index',
-					// 		'admin' => true,
-					// 	),
-					// 	'active' => 'division',
-					// 	'forbidden_allow' => !$isAdmin,
-					// 	'class' => 'sub-menu-divisi take-tour',
-					// ), 
-					// array(
-					// 	'name' => __('Admin Prime System'),
-					// 	'url' => array(
-					// 		'plugin' => false, 
-					// 		'controller' => 'users',
-					// 		'action' => 'rku_admins',
-					// 		'admin' => true,
-					// 	),
-					// 	'active' => 'rku_admin',
-					// ),
-					// array(
-					// 	'name' => __('Non Company'),
-					// 	'url' => array(
-					// 		'plugin' => false, 
-					// 		'controller' => 'users',
-					// 		'action' => 'non_companies',
-					// 		'admin' => true,
-					// 	),
-					// 	'active' => 'non_company',
-					// ),
 					array(
 						// 'icon' => 'rv4-user-group',
 						'name' => 'Admin',
@@ -93,45 +49,45 @@
 				),
 			),
 			// Property
-			// array(
-			// 	'icon' => 'rv4-building',
-			// 	'name' => 'Properti',
-			// 	'url' => 'javaScript:void(0);',
-			// 	'data_submenu' => 'Property',
-			// 	'child' => array(
-			// 		array(
-			// 			'name' => __('Daftar Properti'),
-			// 			'url' => array(
-			// 				'plugin' => false, 
-			// 				'controller' => 'properties',
-			// 				'action' => 'index',
-			// 				'admin' => true,
-			// 			),
-			// 			'active' => 'property_list',
-			// 		),
-			// 		array(
-			// 			'name' => __('Kategori Properti'),
-			// 			'url' => array(
-			// 				'plugin' => false, 
-			// 				'controller' => 'properties',
-			// 				'action' => 'status_listing_categories',
-			// 				'admin' => true,
-			// 			),
-			// 			'active' => 'property_category',
-			// 		),
-			// 		array(
-			// 			'name' => __('Draft Properti'),
-			// 			'url' => array(
-			// 				'plugin' => false, 
-			// 				'controller' => 'properties',
-			// 				'action' => 'drafts',
-			// 				'admin' => true,
-			// 			),
-			// 			'active' => 'property_draft',
-			// 		),
+			array(
+				'icon' => 'rv4-compose',
+				'name' => 'Produk',
+				'url' => 'javaScript:void(0);',
+				'data_submenu' => 'Property',
+				'child' => array(
+					array(
+						'name' => __('Daftar Kategori'),
+						'url' => array(
+							'plugin' => false, 
+							'controller' => 'properties',
+							'action' => 'product_category',
+							'admin' => true,
+						),
+						'active' => 'property_category',
+					),
+					array(
+						'name' => __('Daftar Produk'),
+						'url' => array(
+							'plugin' => false, 
+							'controller' => 'properties',
+							'action' => 'index',
+							'admin' => true,
+						),
+						'active' => 'property_list',
+					),
+					// array(
+					// 	'name' => __('Draft Properti'),
+					// 	'url' => array(
+					// 		'plugin' => false, 
+					// 		'controller' => 'properties',
+					// 		'action' => 'drafts',
+					// 		'admin' => true,
+					// 	),
+					// 	'active' => 'property_draft',
+					// ),
 
-			// 	),
-			// ),
+				),
+			),
 			
 			// Finance
 			// array(

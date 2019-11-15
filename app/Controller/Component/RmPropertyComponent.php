@@ -2610,7 +2610,7 @@ class RmPropertyComponent extends Component {
                 'PropertyAsset',
                 'PropertySold',
                 'PropertyNotification',
-                'PropertyStatusListing',
+                'PropertyProductCategory',
                 'User',
                 'Approved',
                 'Client',
@@ -3192,7 +3192,7 @@ class RmPropertyComponent extends Component {
 					'contain' => array(
 						'PropertyAddress',
 						'PropertyAsset',
-						'PropertyStatusListing',
+						'PropertyProductCategory',
 						'Approved',
 						'Client',
 						'UserActivedAgentDetail',

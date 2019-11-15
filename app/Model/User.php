@@ -50,10 +50,6 @@ class User extends AppModel {
 			'className' => 'UserCompanySetting',
 			'foreignKey' => 'user_id'
 		),
-		'UserCompanyLauncher' => array(
-			'className' => 'UserCompanyLauncher',
-			'foreignKey' => 'user_id'
-		),
 	);
 
 	var $belongsTo = array(
@@ -82,14 +78,6 @@ class User extends AppModel {
 		),
 		'Log' => array(
 			'className' => 'Log',
-			'foreignKey' => 'user_id'
-		),
-		'UserRemoveAgent' => array(
-			'className' => 'UserRemoveAgent',
-			'foreignKey' => 'user_id'
-		),
-		'UserActivedAgent' => array(
-			'className' => 'UserActivedAgent',
 			'foreignKey' => 'user_id'
 		),
 		'Property' => array(
@@ -144,22 +132,6 @@ class User extends AppModel {
 			'className' => 'Notification',
 			'foreignKey' => 'user_id'
 		),
-		'Kpr' => array(
-			'className' => 'Kpr',
-			'foreignKey' => 'user_id'
-		),
-		'LogKpr' => array(
-			'className' => 'LogKpr',
-			'foreignKey' => 'user_id'
-		),
-		'EbrosurRequest' => array(
-			'className' => 'EbrosurRequest',
-			'foreignKey' => 'user_id'
-		),
-		'CrmProject' => array(
-			'className' => 'CrmProject',
-			'foreignKey' => 'user_id'
-		),
 		'UserClientRelation' => array(
 			'className' => 'UserClientRelation',
 			'foreignKey' => 'user_id'
@@ -176,10 +148,6 @@ class User extends AppModel {
 			'className' => 'MailchimpPersonalCampaign',
 			'foreignKey' => 'user_id'
 		),
-		'CoBrokeUser' => array(
-			'className' => 'CoBrokeUser',
-			'foreignKey' => 'user_id'
-		),
 		'Report' => array(
 			'className' => 'Report',
 			'foreignKey' => 'user_id',
@@ -192,29 +160,15 @@ class User extends AppModel {
 			'className' => 'InvoiceCollector',
 			'foreignKey' => 'company_id',
 		),
-		'ApiAdvanceDeveloper' => array(
-			'className' => 'ApiAdvanceDeveloper',
-			'foreignKey' => 'user_id',
-		),
 		'PropertyLog' => array(
 			'className' => 'PropertyLog',
 			'foreignKey' => 'user_id',
-		),
-		'AgentRank' => array(
-			'foreignKey' => 'user_id', 
 		),
 		'SocialProfile' => array(
             'className' => 'SocialProfile',
 			'foreignKey' => 'user_id', 
         ),
-		'ActivityUser' => array(
-            'className' => 'ActivityUser',
-			'foreignKey' => 'user_id', 
-        ),
 		'UserHistory' => array(
-			'foreignKey' => 'user_id', 
-		),
-		'CrmProjectActivity' => array(
 			'foreignKey' => 'user_id', 
 		),
 	);
@@ -3131,15 +3085,10 @@ class User extends AppModel {
 					$this->UserClient->id = $client_id;
 				} else {
 					$this->UserClient->create();
-
-					if( in_array($modelName, array( 'CrmProject', 'Kpr' )) ) {
-						$dataClient['UserClient']['client_type_id'] = 1;
-					}
 				}
 
 				$this->UserClient->set($dataClient);
 				$this->UserClient->save();
- 				$data = Hash::insert($data, 'CrmProject.user_client_id', $this->UserClient->id);
 			}
 
 			if( !empty($user_id) ) {
@@ -3215,10 +3164,6 @@ class User extends AppModel {
 				$current_agent_id = !empty($value['UserClient']['agent_id'])?$value['UserClient']['agent_id']:false;
 				$user_client_id = !empty($value['UserClient']['id'])?$value['UserClient']['id']:false;
 
-				if( !empty($user_client_id) ) {
-	 				$data = Hash::insert($data, 'CrmProject.user_client_id', $user_client_id);
-				}
-
 				$this->UserClient->id = $user_client_id;
 				$this->UserClient->save(array(
 					'UserClient' => $dataSave,
@@ -3238,7 +3183,6 @@ class User extends AppModel {
 					)),
 				));
 				
- 				$data = Hash::insert($data, 'CrmProject.user_client_id', $this->UserClient->id);
 				$this->UserClientRelation->doSave( $agent_id, $client_id );
 			}
 
@@ -3911,287 +3855,6 @@ class User extends AppModel {
 		return $record;
 	}
 
-	public function updateUserRank($parentID = null, $userID = null, $options = array()){
-		$parentID	= intval($parentID);
-		$userID		= intval($userID);
-		$options	= (array) $options;
-		$periodDate	= Common::hashEmptyField($options, 'period_date');
-		$elements	= Common::hashEmptyField($options, 'elements', array(
-			'status'	=> 'active', 
-			'role'		=> 'agent', 
-		));
-
-		if($parentID){
-			$elements['company'] = $parentID;
-		}
-
-		$currentDate	= strtotime(date('Y-m-d'));
-		$periodDate		= strtotime($periodDate);
-		$periodDate		= $periodDate > 0 ? $periodDate : $currentDate;
-
-		$periodStart	= date('Y-m-01', $periodDate);
-		$periodEnd		= date('Y-m-t', $periodDate);
-		$options		= array('limit' => null);
-
-		if($userID){
-			$options['conditions']['User.id'] = $userID;
-		}
-
-		$users	= $this->getData('all', $options, $elements);
-		$data	= array();
-
-		if($users){
-			$arrUserID = Hash::extract($users, '{n}.User.id');
-
-		//	filter date sengaja di paksa jadi tanggal 1
-			$priceMeasureField	= 'case when coalesce(Property.price_measure, 0) > 0 then Property.price_measure else coalesce(Property.price, 0) end';
-			$filterDateField	= '
-				date_format(case when Property.publish_date is null or date_format(Property.publish_date, "%Y-%m-%d") = "000-00-00" then 
-					Property.created
-				else 
-					Property.publish_date
-				end, "%Y-%m-%d")
-			';
-
-			$this->Property->virtualFields = array(
-				'property_count'	=> 'count(Property.id)', 
-				'price_measure'		=> sprintf('sum(%s)', $priceMeasureField), 
-				'price_measure_min'	=> sprintf('min(%s)', $priceMeasureField), 
-				'price_measure_max'	=> sprintf('max(%s)', $priceMeasureField), 
-				'price_measure_avg'	=> sprintf('sum(%s) / count(Property.id)', $priceMeasureField), 
-				'filter_date'		=> $filterDateField, 
-			);
-
-			$order = array(
-				'Property.user_id', 
-				'Property.property_action_id', 
-				'Property.property_type_id', 
-				'PropertyAddress.region_id', 
-				'PropertyAddress.city_id', 
-				'PropertyAddress.subarea_id', 
-			);
-
-			$groups	= $order;
-			$fields	= array_merge($groups, array(
-				'Property.property_count', 
-				'Property.price_measure', 
-				'Property.price_measure_min', 
-				'Property.price_measure_max', 
-				'Property.price_measure_avg', 
-				'Property.filter_date', 
-				'PropertyAddress.region_id', 
-				'PropertyAddress.city_id', 
-				'PropertyAddress.subarea_id', 
-			));
-
-			$properties = $this->Property->getData('all', array(
-				'fields'		=> $fields, 
-				'order'			=> $order, 
-				'group'			=> $groups, 
-				'contain'		=> array('PropertyAddress'), 
-				'conditions'	=> array(
-					'Property.user_id' => $arrUserID, 
-					'or' => array(
-					//	untuk total listing di ambil as of date
-						sprintf('%s <=', $filterDateField) => $periodEnd, 
-					), 
-				), 
-			), array(
-				'company'	=> false, 
-				'mine'		=> true, 
-				'status'	=> 'active-or-sold', 
-			));
-
-		//	COUNT TOTAL PROPERTY SOLD (AS OF MONTH) =======================================================================================
-
-			$search		= array('Property', 'publish_date');
-			$replace	= array('PropertySold', 'sold_date');
-
-			$priceMeasureField	= 'coalesce(PropertySold.price_sold, 0) * coalesce(PropertySold.rate, 1)';
-			$filterDateField	= str_replace($search, $replace, $filterDateField);
-
-			$this->Property->virtualFields = array(
-				'property_count'	=> 'count(Property.id)', 
-				'price_measure'		=> sprintf('sum(%s)', $priceMeasureField), 
-				'price_measure_min'	=> sprintf('min(%s)', $priceMeasureField), 
-				'price_measure_max'	=> sprintf('max(%s)', $priceMeasureField), 
-				'price_measure_avg'	=> sprintf('sum(%s) / count(Property.id)', $priceMeasureField), 
-				'filter_date'		=> $filterDateField, 
-			); 
-
-			$propertySolds = $this->Property->getData('all', array(
-				'order'			=> $order, 
-				'group'			=> $groups, 
-				'fields'		=> $fields, 
-				'contain'		=> array('PropertySold', 'PropertyAddress'), 
-				'conditions'	=> array(
-				//	untuk total penjualan di ambil hanya untuk bulan aktif
-					'Property.user_id'										=> $arrUserID, 
-					sprintf('%s >=', $filterDateField) => $periodStart, 
-					sprintf('%s <=', $filterDateField) => $periodEnd, 
-				), 
-			), array(
-				'company'	=> false, 
-				'mine'		=> false, 
-				'status'	=> 'sold', 
-			));
-
-		//	===============================================================================================================================
-
-		//	PREPARE SAVE DATA =============================================================================================================
-
-			$periodYear		= date('Y', $periodDate);
-			$periodMonth	= date('m', $periodDate);
-			$currentDate	= date('Y-m-d H:i:s');
-
-			foreach($users as $user){
-				$userID			= Common::hashEmptyField($user, 'User.id');
-				$parentID		= Common::hashEmptyField($user, 'User.parent_id');
-
-				if($properties){
-				//	loop total listing (available / sold) sebagai total listing (as of date)
-					foreach($properties as $propertyKey => $property){
-						$propertyUserID	= Common::hashEmptyField($property, 'Property.user_id');
-
-						if($propertyUserID == $userID){
-							$actionID			= Common::hashEmptyField($property, 'Property.property_action_id');
-							$typeID				= Common::hashEmptyField($property, 'Property.property_type_id');
-							$regionID			= Common::hashEmptyField($property, 'PropertyAddress.region_id');
-							$cityID				= Common::hashEmptyField($property, 'PropertyAddress.city_id');
-							$subareaID			= Common::hashEmptyField($property, 'PropertyAddress.subarea_id');
-
-							$propertyCount		= Common::hashEmptyField($property, 'Property.property_count', 0);
-							$priceMeasure		= Common::hashEmptyField($property, 'Property.price_measure', 0);
-							$priceMeasureMin	= Common::hashEmptyField($property, 'Property.price_measure_min', 0);
-							$priceMeasureMax	= Common::hashEmptyField($property, 'Property.price_measure_max', 0);
-							$priceMeasureAvg	= Common::hashEmptyField($property, 'Property.price_measure_avg', 0);
-
-							$soldPropertyCount		= 0;
-							$soldPriceMeasure		= 0;
-							$soldPriceMeasureMin	= 0;
-							$soldPriceMeasureMax	= 0;
-							$soldPriceMeasureAvg	= 0;
-
-							if($propertySolds){
-								foreach($propertySolds as $propertySoldKey => $propertySold){
-									$soldActionID	= Common::hashEmptyField($propertySold, 'Property.property_action_id');
-									$soldTypeID		= Common::hashEmptyField($propertySold, 'Property.property_type_id');
-									$soldRegionID	= Common::hashEmptyField($propertySold, 'PropertyAddress.region_id');
-									$soldCityID		= Common::hashEmptyField($propertySold, 'PropertyAddress.city_id');
-									$soldSubareaID	= Common::hashEmptyField($propertySold, 'PropertyAddress.subarea_id');
-
-									if($actionID == $soldActionID && $typeID == $soldTypeID && $subareaID == $soldSubareaID){
-										$soldPropertyCount		= Common::hashEmptyField($propertySold, 'Property.property_count', 0);
-										$soldPriceMeasure		= Common::hashEmptyField($propertySold, 'Property.price_measure', 0);
-										$soldPriceMeasureMin	= Common::hashEmptyField($propertySold, 'Property.price_measure_min', 0);
-										$soldPriceMeasureMax	= Common::hashEmptyField($propertySold, 'Property.price_measure_max', 0);
-										$soldPriceMeasureAvg	= Common::hashEmptyField($propertySold, 'Property.price_measure_avg', 0);
-
-									//	unset jadi nanti looping berikut nya udah ga berat
-										unset($propertySold[$propertySoldKey]);
-									}
-								}
-							}
-
-							$agentRankID = $this->AgentRank->field('AgentRank.id', array(
-								'AgentRank.parent_id'			=> $parentID, 
-								'AgentRank.user_id'				=> $userID, 
-								'AgentRank.property_action_id'	=> $actionID, 
-								'AgentRank.property_type_id'	=> $typeID, 
-								'AgentRank.region_id'			=> $regionID, 
-								'AgentRank.city_id'				=> $cityID, 
-								'AgentRank.subarea_id'			=> $subareaID, 
-								'AgentRank.period_year'			=> $periodYear, 
-								'AgentRank.period_month'		=> $periodMonth, 
-							));
-
-							$data[$propertyKey]	= array(
-								'AgentRank' => array(
-									'id'							=> $agentRankID, 
-									'parent_id'						=> $parentID,
-									'parent_id'						=> $parentID,
-									'user_id'						=> $userID,
-									'property_action_id'			=> $actionID,
-									'property_type_id'				=> $typeID,
-									'region_id'						=> $regionID, 
-									'city_id'						=> $cityID, 
-									'subarea_id'					=> $subareaID, 
-
-								//	property summary
-									'property_count'				=> $propertyCount,
-									'price_measure'					=> $priceMeasure,
-									'price_measure_min'				=> $priceMeasureMin,
-									'price_measure_max'				=> $priceMeasureMax,
-									'price_measure_average'			=> $priceMeasureAvg,
-
-								//	sold property summary
-									'sold_property_count'			=> $soldPropertyCount,
-									'sold_price_measure'			=> $soldPriceMeasure,
-									'sold_price_measure_min'		=> $soldPriceMeasureMin,
-									'sold_price_measure_max'		=> $soldPriceMeasureMax,
-									'sold_price_measure_average'	=> $soldPriceMeasureAvg,
-
-									'period_year'					=> $periodYear,
-									'period_month'					=> $periodMonth,
-								),
-							);
-
-							if($agentRankID){
-								$data[$propertyKey] = Hash::insert($data[$propertyKey], 'AgentRank.modified', $currentDate);
-							}
-							else{
-								$data[$propertyKey] = Hash::insert($data[$propertyKey], 'AgentRank.created', $currentDate);
-							}
-
-						//	unset jadi nanti looping berikut nya udah ga berat
-							unset($properties[$propertyKey]);
-						}
-					}
-				}
-			}
-
-			if($data){
-				$flag = $this->AgentRank->saveAll($data, array(
-					'validate' => 'only', 
-				));
-
-				if($flag){
-				//	actual save
-					$this->AgentRank->saveAll($data);
-
-					$status		= 'success';
-					$message	= 'Berhasil meng-generate data';
-				}
-				else{
-					$status		= 'success';
-					$message	= 'Gagal meng-generate data';
-				}
-			}
-			else{
-				$status		= 'error';
-				$message	= 'Tidak ada data untuk disimpan';
-			}
-
-		//	===============================================================================================================================			
-		}
-		else{
-			$status		= 'error';
-			$message	= 'User tidak ditemukan';
-		}
-
-		$result = array(
-			'status'	=> $status,
-			'msg'		=> $message,
-			'data'		=> $data, 
-			'Log'		=> array(
-				'error'			=> $status == 'error', 
-				'activity'		=> $message,
-			),
-		);
-
-		return $result;
-	}
-
 	public function createFromSocialProfile($incomingProfile){
 	//	check to ensure that we are not using an email that already exists
 		$existingUser = $this->find('first', array(
@@ -4257,124 +3920,5 @@ class User extends AppModel {
 		return array_sum($clientCount);
 	}
 
-	public function _callCrmProjectCount($userId = null, $type = 'summary', $date = array()){
-		$userId	= (int) $userId;
-		$date	= (array) $date;
-		$type	= in_array($type, array('summary', 'detail')) ? $type : 'summary';
-
-		$dateFrom	= Common::hashEmptyField($date, 'date_from');
-		$dateTo		= Common::hashEmptyField($date, 'date_to');
-		$options	= array(
-			'group'			=> array('ViewAgentCrmProject.user_id'), 
-			'conditions'	=> array(
-				'not' => array(
-					'ViewAgentCrmProject.step' => 'change_status', 
-				), 
-			), 
-			'fields'		=> array(
-				'ViewAgentCrmProject.user_id', 
-				'ViewAgentCrmProject.crm_count', 
-				'ViewAgentCrmProject.activity_count', 
-			), 
-		);
-
-		$this->bindModel(array(
-			'hasMany' => array(
-				'ViewAgentCrmProject' => array('foreignKey' => 'user_id'), 
-			), 
-		));
-
-		if($userId){
-			$options['conditions'][]['ViewAgentCrmProject.user_id'] = $userId;
-		}
-
-		if($dateFrom && $dateTo){
-			$options['conditions'][]['ViewAgentCrmProject.activity_date >='] = $dateFrom;
-			$options['conditions'][]['ViewAgentCrmProject.activity_date <='] = $dateTo;
-		}
-
-		if($type == 'detail'){
-			$options['fields'][]	= 'ViewAgentCrmProject.attribute_set_id';
-			$options['group'][]		= 'ViewAgentCrmProject.attribute_set_id';
-		}
-
-		$this->ViewAgentCrmProject->virtualFields['crm_count']		= 'COUNT(DISTINCT ViewAgentCrmProject.crm_project_id)';
-		$this->ViewAgentCrmProject->virtualFields['activity_count']	= 'COUNT(DISTINCT ViewAgentCrmProject.crm_project_activity_id)';
-
-		$results = $this->ViewAgentCrmProject->find('all', $options);
-
-	//	$crmCount		= Hash::extract($results, '{n}.ViewAgentCrmProject.crm_count');
-	//	$activityCount	= Hash::extract($results, '{n}.ViewAgentCrmProject.activity_count');
-
-	//	if($type == 'detail' && ($crmCount || $activityCount)){
-	//		debug($results);exit;
-	//	}
-
-	//	return array(
-	//		'crm_count'			=> array_sum($crmCount), 
-	//		'activity_count'	=> array_sum($activityCount), 
-	//	);
-
-		return $results;
-	}
-
-	public function _callCrmProjectActivityCount($userId = null, $date = array()){
-		$userId	= (int) $userId;
-		$date	= (array) $date;
-
-		$this->AttributeOption	= ClassRegistry::init('AttributeOption');
-		$attributeOptions		= $this->AttributeOption->getData('all', array(
-			'conditions' => array(
-				'AttributeOption.status'	=> 1, 
-				'AttributeOption.show'		=> 1, 
-				'AttributeOption.type'		=> 'option', 
-			), 
-		));
-
-		$attributeOptionId = Hash::extract($attributeOptions, '{n}.AttributeOption.id');
-
-		$dateFrom	= Common::hashEmptyField($date, 'date_from');
-		$dateTo		= Common::hashEmptyField($date, 'date_to');
-		$options	= array(
-			'conditions'	=> array(
-				'ViewAgentCrmProjectActivity.attribute_option_id' => $attributeOptionId, 
-				'not' => array(
-					'ViewAgentCrmProjectActivity.step' => 'change_status', 
-				), 
-			), 
-			'fields'		=> array(
-				'ViewAgentCrmProjectActivity.user_id', 
-				'ViewAgentCrmProjectActivity.crm_count', 
-				'ViewAgentCrmProjectActivity.activity_count', 
-			), 
-			'group'			=> array(
-				'ViewAgentCrmProjectActivity.user_id', 
-				'ViewAgentCrmProjectActivity.crm_project_activity_id', 
-				'ViewAgentCrmProjectActivity.attribute_option_id', 
-			), 
-		);
-
-		$this->bindModel(array(
-			'hasMany' => array(
-				'ViewAgentCrmProjectActivity' => array('foreignKey' => 'user_id'), 
-			), 
-		));
-
-		if($userId){
-			$options['conditions'][]['ViewAgentCrmProjectActivity.user_id'] = $userId;
-		}
-
-		if($dateFrom && $dateTo){
-			$options['conditions'][]['ViewAgentCrmProjectActivity.activity_date >='] = $dateFrom;
-			$options['conditions'][]['ViewAgentCrmProjectActivity.activity_date <='] = $dateTo;
-		}
-
-		$this->ViewAgentCrmProjectActivity->virtualFields['crm_count']		= 'COUNT(DISTINCT ViewAgentCrmProjectActivity.crm_project_id)';
-		$this->ViewAgentCrmProjectActivity->virtualFields['activity_count']	= 'COUNT(DISTINCT ViewAgentCrmProjectActivity.crm_project_activity_id)';
-
-		$results = $this->ViewAgentCrmProjectActivity->find('all', $options);
-
-		return $results;
-	}
 }
 ?>

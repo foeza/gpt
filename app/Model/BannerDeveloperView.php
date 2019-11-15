@@ -6,10 +6,6 @@ class BannerDeveloperView extends AppModel {
 			'className' => 'BannerDeveloper',
 			'foreignKey' => 'banner_developer_view_id',
 		),
-		'ApiAdvanceDeveloper' => array(
-			'className' => 'ApiAdvanceDeveloper',
-			'foreignKey' => 'banner_developer_view_id',
-		),
 	);
 	
 	function getData( $find = 'all', $options = array() ){

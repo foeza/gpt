@@ -2,7 +2,7 @@
 		$_global_variable = !empty($_global_variable)?$_global_variable:false;
 		$default_theme_settings = $this->Rumahku->filterEmptyField($_global_variable, 'theme_custom_badge');
         
-        echo $this->Form->create('PropertyStatusListing');
+        echo $this->Form->create('PropertyProductCategory');
 ?>
 <div class="user-fill">
     <?php

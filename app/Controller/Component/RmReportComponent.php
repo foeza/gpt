@@ -8822,9 +8822,6 @@ class RmReportComponent extends Component {
 						'Advice' => array(
 							'forceMerge' => true,
 						),
-						'ApiAdvanceDeveloper' => array(
-							'forceMerge' => true,
-						),
 						'UserCompanyEbrochure' => array(
 							'forceMerge' => true,
 						),

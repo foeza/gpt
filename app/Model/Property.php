@@ -217,8 +217,8 @@ class Property extends AppModel {
 			'className' => 'Period',
 			'foreignKey' => 'period_id',
 		),
-		'PropertyStatusListing' => array(
-			'className' => 'PropertyStatusListing',
+		'PropertyProductCategory' => array(
+			'className' => 'PropertyProductCategory',
 			'foreignKey' => 'property_status_id',
 		),
 		'UserCompany' => array(
@@ -1690,8 +1690,8 @@ class Property extends AppModel {
 					$value = $this->$contain->getMerge( $value, $user_id );
 				} else if( $contain == 'Approved' ) {
 					$value = $this->User->getMerge( $value, $approved_by, false, 'Approved' );
-				} else if( $contain == 'PropertyStatusListing' ) {
-					$value = $this->User->Property->PropertyStatusListing->getMerge( $value, $category_id );
+				} else if( $contain == 'PropertyProductCategory' ) {
+					$value = $this->User->Property->PropertyProductCategory->getMerge( $value, $category_id );
 				} else if( $contain == 'Client' ) {
 					$value = $this->User->UserClient->getMerge( $value, $client_id, Configure::read('Principle.id'), 'ClientProfile' );
 				} else if( $contain == 'PageConfig' ) {
@@ -3166,7 +3166,7 @@ class Property extends AppModel {
 							'User',
 							'PropertyAsset',
 							'PropertyAddress',
-							'PropertyStatusListing', 
+							'PropertyProductCategory', 
 						),
 					));
 					
@@ -3253,7 +3253,7 @@ class Property extends AppModel {
 			'contain' => array(
 				'MergeDefault',
 				'PropertyAddress',
-				'PropertyStatusListing',
+				'PropertyProductCategory',
 				'PropertyAsset',
 				'PropertySold',
 				'User',
