@@ -25,7 +25,10 @@
             'admin' => true,
         );
 
+        $temp_hide = false;
 ?>
+<?php if ($temp_hide): ?>
+
 <div class="search-box <?php echo $_display; ?> locations-trigger">
 	<div class="detail-menu <?php echo $_is_advanced_search ?>">
 		<div class="row">
@@ -244,3 +247,7 @@
 		?>
 	</div>
 </div>
+	
+<?php else: ?>
+	
+<?php endif ?>

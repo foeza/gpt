@@ -1,28 +1,20 @@
 <?php
 		$_action = isset($_action)?$_action:true;
 		$_target = !empty($_target)?$_target:false;
-		$is_refresh_listing = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'is_refresh_listing');
-		$is_easy_mode = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'is_easy_mode');
 
-		$authGroupID	= Configure::read('User.group_id');
-		$isIndependent	= Common::validateRole('independent_agent', $authGroupID);
+		$is_easy_mode 	= $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'is_easy_mode');
+
 		$statusOptions	= array();
-
 		$companyData	= Configure::read('Config.Company.data');
-		$isOpenListing	= Common::hashEmptyField($companyData, 'UserCompanyConfig.is_open_listing');
-
-		if($isOpenListing){
-			$statusOptions['mine'] = __('Milik Saya');
-		}
 
 		$statusOptions = array_merge($statusOptions, array(
 			'premium'			=> __('Premium'),
 			'active-pending'	=> __('Tayang/Aktif'),
-			'pending'			=> __('Pratinjau'),
-			'update'			=> __('Updated'),
-			'sold'				=> __('Terjual/Tersewa'),
-			'cobroke'			=> __('Co-Broke'),
-			'inactive'			=> __('Tidak Aktif/Rejected'),
+			// 'pending'			=> __('Pratinjau'),
+			// 'update'			=> __('Updated'),
+			// 'sold'				=> __('Terjual/Tersewa'),
+			// 'cobroke'			=> __('Co-Broke'),
+			// 'inactive'			=> __('Tidak Aktif/Rejected'),
 		));
 
 		$searchUrl = !empty($searchUrl)?$searchUrl:array(
@@ -43,12 +35,12 @@
             	),
             	'options' => array(
             		'class' => 'check-multiple-delete',
-            		'data-alert' => __('Anda yakin ingin menghapus Properti ini?'),
+            		'data-alert' => __('Anda yakin ingin menghapus Produk ini?'),
         		),
 	        ),
 	        'overflowDelete' => true,
 	        'buttonAdd' => !empty($_action)?array(
-	            'text' => __('Tambah %s', $this->Html->tag('span', __('Properti'))),
+	            'text' => __('Tambah %s', $this->Html->tag('span', __('Produk'))),
 				'url' => array(
 					'controller' => 'properties',
 					'action' => $is_easy_mode ? 'easy_add' : 'sell', 
@@ -56,37 +48,25 @@
 				),
             	'class' => 'btn-sell',
             	'options' => array(
-            		'title' => __('Tambah Properti %s', $is_easy_mode ? '(Easy Mode)' : ''),
+            		'title' => __('Tambah Produk %s', $is_easy_mode ? '(Easy Mode)' : ''),
             		'target' => $_target,
         		),
 	        ):false,
 	        'options' => array(
 	        	'optionsFilter' => array(
-	        		'Property.created-desc' => __('Baru ke Lama'),
-	        		'Property.created-asc' => __('Lama ke Baru'),
-	        		'property_updated-desc' => __('Terupdate'),
-	        		'Property.price_converter-asc' => __('Harga rendah ke tinggi'),
+	        		'Property.created-desc' 		=> __('Baru ke Lama'),
+	        		'Property.created-asc' 			=> __('Lama ke Baru'),
+	        		'property_updated-desc' 		=> __('Terupdate'),
+	        		'Property.price_converter-asc' 	=> __('Harga rendah ke tinggi'),
 	        		'Property.price_converter-desc' => __('Harga tinggi ke rendah'),
         		),
 	        	'optionsStatus' => $statusOptions,
         		'url' => $searchUrl,
         	),
 		);
-
-		if( (!empty($refresh_all) && !empty($is_refresh_listing)) || $isIndependent ) {
-			$sortingOptions['buttonCustom'] = array(
-	            'text' => __('Refresh Semua'),
-	            'url' => array(
-	            	'controller' => 'properties',
-		            'action' => 'refresh_all',
-		            'admin' => true,
-            	),
-            	'alert' => __('Anda yakin ingin me-refresh semua Properti?'),
-	        );
-		}
 		
         echo $this->element('blocks/common/forms/search/backend', array(
-        	'placeholder' => __('Cari berdasarkan Judul, Alamat dan Lokasi'),
+        	'placeholder' => __('Cari berdasarkan Judul'),
         	'url' => $searchUrl,
         	'btnSearchClass' => 'btn-search advanced',
         	'advanced_content' => 'blocks/properties/forms/search_advanced',
@@ -106,7 +86,7 @@
 							));
 						}
 					} else {
-						echo $this->Html->tag('div', __('Properti belum tersedia'), array(
+						echo $this->Html->tag('div', __('Produk belum tersedia'), array(
 							'class' => 'alert alert-warning',
 						));
 					}

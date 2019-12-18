@@ -80,7 +80,7 @@ a.pp_close {
 .post-content p {
     margin-bottom: 0;
 }
-.post-content.read-article p {
+.post-content.read-article p.indent-text {
     text-indent: 50px;
 }
 .post-content.read-article p, .post-content.read-article h1, .post-content.read-article h2,

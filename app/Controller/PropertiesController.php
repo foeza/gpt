@@ -1706,26 +1706,13 @@ class PropertiesController extends AppController {
 				));
 
 			$refresh_all = $this->Property->isAllowRefresh();
-			
-			// Check OpenListing & Khusus sales manager hanya boleh edit properti yg dibawahnya aja
-			$user_login_id = Configure::read('User.id');
-			$isOpenListing	= Common::_callAllowAccess('is_open_listing');
-
-			if( !empty($isOpenListing) ) {
-				$childList = $this->User->getUserParent($user_login_id);
-			} else {
-				$childList = array();
-			}
-			// END
-
-			$packages = array();
 
 			$this->set(array(
-				'module_title' => __('Daftar Properti'),
+				'module_title' => __('Daftar Produk'),
 				'properties' => $properties,
 				'refresh_all' => $refresh_all, 
-				'packages' => $packages,
-				'childList' => $childList,
+				'packages' => array(),
+				'childList' => array(),
 			));
 
 			$this->RmCommon->renderRest(array(

@@ -34,21 +34,21 @@
                         'admin' => false,
                     )),
 				)));
-				echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-twitter'), $twitter, array(
-					'escape' => false,
-                    'class' => 'popup-window',
-                    'data-url' => $this->Html->url(array(
-                        'controller' => 'ajax',
-                        'action' => 'share',
-                        $share_id,
-                        $share_type,
-                        'twitter',
-                        '?' => array(
-                            'url' => $twitter,
-                        ),
-                        'admin' => false,
-                    )),
-				)));
+				// echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('fa fa-twitter'), $twitter, array(
+				// 	'escape' => false,
+    //                 'class' => 'popup-window',
+    //                 'data-url' => $this->Html->url(array(
+    //                     'controller' => 'ajax',
+    //                     'action' => 'share',
+    //                     $share_id,
+    //                     $share_type,
+    //                     'twitter',
+    //                     '?' => array(
+    //                         'url' => $twitter,
+    //                     ),
+    //                     'admin' => false,
+    //                 )),
+				// )));
 
 				if( !empty($linkwa) ) {
 					echo $this->Html->tag('li', $this->Html->link($this->Rumahku->icon('rv4-wa'), $linkwa, array(
