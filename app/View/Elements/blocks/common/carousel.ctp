@@ -30,10 +30,10 @@
                 if( !empty($medias) ) {
                     foreach ($medias as $key => $media) {
                         $content = '';
-                        $photo = $this->Rumahku->filterEmptyField($media, 'BannerSlide', 'photo');
-                        $title = $this->Rumahku->filterEmptyField($media, 'BannerSlide', 'title');
-                        $url = $this->Rumahku->filterEmptyField($media, 'BannerSlide', 'url');
-                        $is_video = $this->Rumahku->filterEmptyField($media, 'BannerSlide', 'is_video');
+                        $photo      = Common::hashEmptyField($media, 'BannerSlide.photo');
+                        $title      = Common::hashEmptyField($media, 'BannerSlide.photo');
+                        $url        = Common::hashEmptyField($media, 'BannerSlide.photo');
+                        $is_video   = Common::hashEmptyField($media, 'BannerSlide.photo');
 
                         $mediaPhoto = $this->Rumahku->photo_thumbnail(array(
                             'save_path' => $general_path, 
@@ -45,19 +45,25 @@
                             'class' => 'default-thumbnail',
                         ));
 
-                        $optionLink = array(
-                            'escape' => false,
-                            'rel' => 'prettyPhoto[slide]',
-                        );
 
                         if( !empty($url) ) {
-
+                            $optionLink = array(
+                                'escape' => false,
+                            );
                             if( !empty($is_video) ) {
                                 $url .= '&autoplay=1';
+                                $optionLink = array_merge($optionLink, array('rel' => 'prettyPhoto'));
+                            } else {
+                                $optionLink = array_merge($optionLink, array('target' => '_blank'));
                             }
 
                             $mediaPhoto = $this->Html->link($mediaPhoto, $url, $optionLink);
                         } else {
+                            $optionLink = array(
+                                'escape' => false,
+                                'rel' => 'prettyPhoto[slide]',
+                            );
+
                             $url = $this->Rumahku->photo_thumbnail(array(
                                 'save_path' => $general_path, 
                                 'src' => $photo, 
