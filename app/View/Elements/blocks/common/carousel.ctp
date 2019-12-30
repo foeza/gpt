@@ -31,9 +31,9 @@
                     foreach ($medias as $key => $media) {
                         $content = '';
                         $photo      = Common::hashEmptyField($media, 'BannerSlide.photo');
-                        $title      = Common::hashEmptyField($media, 'BannerSlide.photo');
-                        $url        = Common::hashEmptyField($media, 'BannerSlide.photo');
-                        $is_video   = Common::hashEmptyField($media, 'BannerSlide.photo');
+                        $title      = Common::hashEmptyField($media, 'BannerSlide.title');
+                        $url        = Common::hashEmptyField($media, 'BannerSlide.url');
+                        $is_video   = Common::hashEmptyField($media, 'BannerSlide.is_video');
 
                         $mediaPhoto = $this->Rumahku->photo_thumbnail(array(
                             'save_path' => $general_path, 
