@@ -2049,7 +2049,35 @@ class AjaxController extends AppController {
 	}
 
 	function list_data ( $type = false ) {
+		$this->loadModel('PropertyProductCategory');
+
 		switch ($type) {
+			case 'product_ctg':
+				$keyword = $this->RmCommon->filterEmptyField($this->request->data, 'Query', 'keyword');
+				$keyword = $this->RmCommon->filterEmptyField($this->request->data, 'query', false, $keyword);
+				if (!empty($keyword) && strpos($keyword, ',') !== false) {
+				    $keyword = explode(',', $keyword);
+
+				    $keyword = $keyword[count($keyword)-1];
+				}
+				// $data = $this->RmProperty->callProductCategories();
+				// $data = $this->RmCommon->_callGenerateDataModel($data, 'PropertyProductCategory');
+				$options = array(
+					'conditions' => array(
+						'OR' => array(
+							'PropertyProductCategory.name LIKE' => '%'.$keyword.'%',
+						),
+					),
+					'fields' => array(
+						'PropertyProductCategory.id', 'PropertyProductCategory.name'
+					),
+					'limit' => 10,
+				);
+
+				$result = $this->PropertyProductCategory->getData('list', $options);
+				$data   = $this->RmCommon->convertDataAutocomplete($result);
+
+				break;
 			case 'company':
 				$data =  $this->RmCommon->_callCompanies('all');
 				$data = $this->RmCommon->_callGenerateDataModel($data, 'UserCompany');

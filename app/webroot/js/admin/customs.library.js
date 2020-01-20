@@ -1584,7 +1584,8 @@
         function _callAutocomplete ( objTarget ) {
             var url = objTarget.attr('data-ajax-url');
             var data_change = objTarget.attr('data-change');
-
+console.log(url)
+console.log(data_change)
             var autocomplete = objTarget.typeahead({
                 minLength: 3,
                 highlighter: function (item) {

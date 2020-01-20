@@ -7,7 +7,7 @@ App::uses('KprCommon', 'Utility');
 
 class AppController extends Controller {
 	var $uses = array(
-		'User'
+		'User',
 	);
 	var $basicLabel = 'Basic';
 	var $addressLabel = 'Address';

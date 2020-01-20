@@ -247,7 +247,6 @@ class RmPropertyComponent extends Component {
                 'price' => array(
                     'Property' => array(
                         'price',
-                        'co_broke_commision'
                     ),
                 ),
                 'date' => array(
@@ -257,7 +256,7 @@ class RmPropertyComponent extends Component {
                 )
             ));
 
-            $data = $this->_callDataClient($data, $property);
+            // $data = $this->_callDataClient($data, $property);
 
             if( isset($data['Property']['commission']) ) {
                 $commission = Common::hashEmptyField($data, 'Property.commission', 0);
@@ -266,37 +265,6 @@ class RmPropertyComponent extends Component {
 
             $price = Common::hashEmptyField($data, 'Property.price');
             $dataTitle = Common::hashEmptyField($data, 'Property.title');
-
-            $dataRegion = Common::hashEmptyField($data, 'Region.name');
-
-            $city = Common::hashEmptyField($dataAddress, 'City.name');
-            $city = Common::hashEmptyField($data, 'City.name', $city);
-
-            $subarea = Common::hashEmptyField($dataAddress, 'Subarea.name');
-            $subarea = Common::hashEmptyField($data, 'Subarea.name', $subarea);
-
-            $zip = Common::hashEmptyField($dataAddress, 'zip');
-            $zip = Common::hashEmptyField($data, 'PropertyAddress.zip', $zip);
-
-            $address = Common::hashEmptyField($dataAddress, 'address');
-            $address = Common::hashEmptyField($data, 'PropertyAddress.address', $address);
-            $no = Common::hashEmptyField($dataAddress, 'no');
-            $no = Common::hashEmptyField($data, 'PropertyAddress.no', $no);
-            $rt = Common::hashEmptyField($dataAddress, 'rt');
-            $rt = Common::hashEmptyField($data, 'PropertyAddress.rt', $rt);
-            $rw = Common::hashEmptyField($dataAddress, 'rw');
-            $rw = Common::hashEmptyField($data, 'PropertyAddress.rw', $rw);
-
-            if( !empty($is_easymode) ) {
-                $userID     = Common::hashEmptyField($data, 'Property.user_id');
-                $agentEmail = Common::hashEmptyField($data, 'Property.agent_email');
-
-                if($agentEmail){
-                    $userID = $this->controller->User->field('User.id', array('User.email' => $agentEmail));
-                }
-
-                $data = Hash::insert($data, 'Property.user_id', $userID);
-            }
 
             if( !empty($data['Property']['currency_id']) ) {
                 $property = $this->RmCommon->_callUnset(array(
@@ -318,6 +286,7 @@ class RmPropertyComponent extends Component {
                         'name' => __('PropertyAction.%s', $data['Property']['property_action_id']),
                     ),
                 ));
+
             }
             if( !empty($data['Property']['property_type_id']) ) {
                 $property = $this->RmCommon->_callUnset(array(
@@ -350,21 +319,19 @@ class RmPropertyComponent extends Component {
                 }
             }
 
+            $data['Property']['agent_email']   = 'admingpt@yopmail.com';
             $data['Property']['price_measure'] = $this->getMeasurePrice($property, $price);
-
-            $title = Common::hashEmptyField($property, 'Property.title');
-            $region = Common::hashEmptyField($dataAddress, 'Region.name');
 
             if( !empty($dataTitle) ) {
                 $title = $dataTitle;
-            }
-            if( !empty($dataRegion) ) {
-                $region = $dataRegion;
+            } else {
+                $title = Common::hashEmptyField($property, 'Property.title');
             }
 
-            $action = Common::hashEmptyField($property, 'PropertyAction.name');
-            $type = Common::hashEmptyField($property, 'PropertyType.name');
-            $data['Property']['keyword'] = sprintf('%s, %s %s di %s, %s, %s %s, %s, No %s, RT %s, RW %s', $title, $type, $action, $subarea, $city, $region, $zip, $address, $no, $rt, $rw);
+            $action        = Common::hashEmptyField($property, 'PropertyAction.name');
+            $prop_ctg_name = Common::hashEmptyField($data, 'Property.name_category');
+
+            $data['Property']['keyword'] = sprintf('%s, %s %s ', $title, $action, $prop_ctg_name);
 
             if( !empty($data['PropertyPrice']) ) {
                 $data = $this->_callProcessPricePeriod($data);
@@ -3246,7 +3213,7 @@ class RmPropertyComponent extends Component {
                 ));
             }
 
-			Configure::write('__Site.CategoryMedias.Data', $propertyModel->PropertyMedias->CategoryMedias->getData('list'));
+			// Configure::write('__Site.CategoryMedias.Data', $propertyModel->PropertyMedias->CategoryMedias->getData('list'));
 
             $regionName     = Common::hashEmptyField($record, 'Region.name');
             $cityName       = Common::hashEmptyField($record, 'City.name');
@@ -3523,5 +3490,18 @@ class RmPropertyComponent extends Component {
 
 		return $data;
 	}
+
+    // ======== call product categories ========
+    function callProductCategories () {
+        $result = $this->controller->PropertyProductCategory->getData('list', array(
+            'order' => array(
+                'PropertyProductCategory.created' => 'DESC',
+                'PropertyProductCategory.name' => 'ASC',
+            ),
+        ));
+        return $result;
+    }
+    // ======== call product categories ========
+
 }
 ?>

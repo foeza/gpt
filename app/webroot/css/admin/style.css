@@ -1691,16 +1691,16 @@ body.wrapper-inbox #content {
 }
 #content .step ul li.done .step-number {
   color: #FFF;
-  border-color: #069D54;
-  background-color: #069D54;
+  border-color: #7e00f1;
+  background-color: #7e00f1;
 }
 #content .step ul li.done label {
-  color: #069D54;
+  color: #7e00f1;
   font-weight: 700;
 }
 #content .step ul li.active .step-number {
-  color: #069D54;
-  border-color: #069D54;
+  color: #7e00f1;
+  border-color: #7e00f1;
   background-color: transparent;
 }
 #content .step ul li.active label {
@@ -1765,7 +1765,7 @@ body.wrapper-inbox #content {
   vertical-align: middle;
 }
 .extra-plus-list.added a[role="button"] span.btn {
-  background-color: #069D54;
+  background-color: #7e00f1;
   color: #FFF;
   margin-top: 5px;
 }
@@ -2508,7 +2508,8 @@ table.green th .cb-custom .cb-checkmark input[type="radio"]:checked + label:afte
   background-color: #f2f2f2;
 }
 .tabs li a.active {
-  background-color: #069D54;
+  /*background-color: #069D54;*/
+  background-color: #7e00f1;
   color: #FFF;
 }
 .tabs > li {

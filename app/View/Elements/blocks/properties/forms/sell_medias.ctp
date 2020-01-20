@@ -14,9 +14,9 @@
                     ));
             ?>
             <div class="content-upload-photo">
-                <div class="info-full alert photo-info-top">
+                <div class="info-full alert photo-info-top row-centered">
                     <?php 
-                            echo $this->Html->tag('p', sprintf(__('%s Dengan mengunggah foto untuk setiap ruangan (lebih dari 1 foto), membuat iklan properti Anda 40 kali lebih menarik, dan cepat terjual/tersewa.'), $this->Html->tag('strong', __('Tahukah Anda?'))));
+                            echo $this->Html->tag('p', sprintf(__('%s Dengan mengunggah foto (lebih dari 1 foto), membuat iklan produk Anda 40 kali lebih menarik'), $this->Html->tag('strong', __('Tahukah Anda?'))));
                     ?>
                 </div>
                 <?php 
@@ -48,7 +48,7 @@
                     <div class="line2">
                         <?php 
                                 echo $this->Html->tag('p', __('Maksimum ukuran foto yang diunggah 10Mb.'));
-                                echo $this->Html->tag('p', __('Foto yang diunggah harus memenuhi syarat dan ketentuan dari %s.', Configure::read('__Site.site_name')));
+                                // echo $this->Html->tag('p', __('Foto yang diunggah harus memenuhi syarat dan ketentuan dari %s.', Configure::read('__Site.site_name')));
                         ?>
                     </div>
                 </div>
@@ -59,10 +59,10 @@
                     <?php 
                             echo $this->Html->tag('label', __('Keterangan:'));
 
-                            $contentLi = $this->Html->tag('li', __('Kami akan memberikan watermark pada foto yang Anda unggah untuk kepentingan perlindungan hak cipta'));
-                            $contentLi .= $this->Html->tag('li', __('Klik dan geser untuk mengubah posisi/urutan foto setelah proses unggah semua foto selesai'));
-                            $contentLi .= $this->Html->tag('li', sprintf(__('Klik tombol %s untuk menentukan foto utama yang ditampilkan sebagai thumbnail dan foto pertama di halaman pencarian properti. Hanya ada 1 foto utama untuk setiap iklan properti'), $this->Html->tag('strong', __('"Jadikan Foto Utama"'))));
-                            $contentLi .= $this->Html->tag('li', __('Berikan judul untuk setiap foto properti yang diunggah'));
+                            // $contentLi = $this->Html->tag('li', __('Kami akan memberikan watermark pada foto yang Anda unggah untuk kepentingan perlindungan hak cipta'));
+                            $contentLi = $this->Html->tag('li', __('Klik dan geser untuk mengubah posisi/urutan foto setelah proses unggah semua foto selesai'));
+                            $contentLi .= $this->Html->tag('li', sprintf(__('Klik tombol %s untuk menentukan foto utama yang ditampilkan sebagai thumbnail dan foto pertama di halaman pencarian. Hanya ada 1 foto utama untuk setiap produk'), $this->Html->tag('strong', __('"Jadikan Foto Utama"'))));
+                            $contentLi .= $this->Html->tag('li', __('Berikan judul untuk setiap foto produk yang diunggah'));
                             $contentLi .= $this->Html->tag('li', sprintf(__('Mohon hanya mengunggah file berekstensi %s'), implode(', ', Configure::read('__Site.allowed_ext'))));
 
                             echo $this->Html->tag('ul', $contentLi);

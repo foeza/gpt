@@ -209,6 +209,13 @@ class PropertiesController extends AppController {
 			$propertyTypes = $this->Property->PropertyType->getData('list', array(
 	            'cache' => __('PropertyType.List'),
 	        ));
+			$currencies = $this->Property->Currency->getData('list', array(
+				'fields' => array(
+					'Currency.id', 'Currency.alias',
+				),
+				'cache' => __('Currency.alias'),
+			));
+
 		} else if( $step == $this->assetLabel ) {
 			$property_type_id = $this->RmCommon->filterEmptyField($data, 'Property', 'property_type_id');
 			$property_action_id = $this->RmCommon->filterEmptyField($data, 'Property', 'property_action_id');
@@ -433,7 +440,7 @@ class PropertiesController extends AppController {
 	function _callSessionProperty ( $step = false ) {
 		$dataBasic = $this->RmProperty->_callDataSession( $this->basicLabel );
 		$dataAddress = $this->RmProperty->_callDataSession( $this->addressLabel );
-		$dataAsset = $this->RmProperty->_callDataSession( $this->assetLabel );
+		// $dataAsset = $this->RmProperty->_callDataSession( $this->assetLabel );
 		$dataMedias = $this->RmProperty->_callDataSession( $this->mediaLabel );
 
 		if( empty($dataBasic) && $step == $this->addressLabel ) {
@@ -442,19 +449,21 @@ class PropertiesController extends AppController {
 				'action' => 'sell',
 				'admin' => true,
 			));
-		} else if( empty($dataAddress) && $step == $this->assetLabel ) {
-			$this->RmCommon->redirectReferer(__('Mohon lengkapi info alamat properti Anda'), 'error', array(
-				'controller' => 'properties',
-				'action' => 'address',
-				'admin' => true,
-			));
-		} else if( empty($dataAsset) && $step == $this->mediaLabel ) {
-			$this->RmCommon->redirectReferer(__('Mohon lengkapi info spesifikasi properti Anda'), 'error', array(
-				'controller' => 'properties',
-				'action' => 'specification',
-				'admin' => true,
-			));
-		} else {
+		}
+		// else if( empty($dataAddress) && $step == $this->assetLabel ) {
+		// 	$this->RmCommon->redirectReferer(__('Mohon lengkapi info alamat properti Anda'), 'error', array(
+		// 		'controller' => 'properties',
+		// 		'action' => 'address',
+		// 		'admin' => true,
+		// 	));
+		// } else if( empty($dataAsset) && $step == $this->mediaLabel ) {
+		// 	$this->RmCommon->redirectReferer(__('Mohon lengkapi info spesifikasi properti Anda'), 'error', array(
+		// 		'controller' => 'properties',
+		// 		'action' => 'specification',
+		// 		'admin' => true,
+		// 	));
+		// }
+		else {
 			$session_id = Common::hashEmptyField($dataBasic, 'Property.session_id', String::uuid());
 			$property_type_id = Common::hashEmptyField($dataBasic, 'Property.property_type_id');
 			$property_action_id = Common::hashEmptyField($dataBasic, 'Property.property_action_id');
@@ -1277,21 +1286,27 @@ class PropertiesController extends AppController {
 		$dataBasic = $this->_callSessionProperty($step);
 
 		$data = $this->request->data;
+		// debug($data);
 		$data = $this->RmProperty->_callBeforeSave($data, $dataBasic, false);
+		// debug($data);die();
 		$result = $this->Property->doBasic( $data, $dataBasic, true );
 
 		if( !empty($result) ) {
 			$this->RmCommon->setProcessParams($result, array(
 				'controller' => 'properties',
-				'action' => 'address',
-				'draft' => $this->draft_id,
-				'admin' => true,
+				'action' 	 => 'medias',
+				'draft' 	 => $this->draft_id,
+				'admin' 	 => true,
 			));
 		}
 
 		$this->_callDataSupport($step);
 
-		$this->set('module_title', __('Tambah Properti'));
+		$this->RmCommon->_layout_file(array(
+			'ckeditor',
+		));
+
+		$this->set('module_title', __('Tambah Produk'));
 		$this->set(compact(
 			'step'
 		));
@@ -1384,12 +1399,12 @@ class PropertiesController extends AppController {
 		$validateBasic = $this->Property->doBasic( $dataBasic, false, $validate );
 		$property_id = !empty($validateBasic['id'])?$validateBasic['id']:false;
 
-		if( !empty($property_id) ) {
-			$dataAddress['PropertyAddress']['property_id'] = $property_id;
-			$dataAsset['PropertyAsset']['property_id'] = $property_id;
-		}
+		// if( !empty($property_id) ) {
+		// 	$dataAddress['PropertyAddress']['property_id'] = $property_id;
+		// 	$dataAsset['PropertyAsset']['property_id'] = $property_id;
+		// }
 
-		$validateAddress = $this->Property->PropertyAddress->doAddress( $dataAddress, false, $validate, $property_id );
+		// $validateAddress = $this->Property->PropertyAddress->doAddress( $dataAddress, false, $validate, $property_id );
 
 		// Just Taken Data for Asset
 		$dataAsset = $this->RmProperty->_callChangeToRequestData( $dataAsset, 'PropertyFacility', 'facility_id' );
@@ -1397,7 +1412,7 @@ class PropertiesController extends AppController {
 		$validateAsset = $this->Property->PropertyAsset->doSave( $dataAsset, false, $validate, $property_id );
 
 		$statusBasic =!empty($validateBasic['status'])?$validateBasic['status']:'error';
-		$statusAddress =!empty($validateAddress['status'])?$validateAddress['status']:'error';
+		// $statusAddress =!empty($validateAddress['status'])?$validateAddress['status']:'error';
 		$statusAsset =!empty($validateAsset['status'])?$validateAsset['status']:'error';
 
 		if( empty($session_id) || $statusBasic == 'error' ) {
@@ -1406,27 +1421,30 @@ class PropertiesController extends AppController {
 				'action' => 'sell',
 				'admin' => true,
 			));
-		} else if ( $statusAddress == 'error' ) {
-			$this->RmCommon->redirectReferer(__('Mohon lengkapi info alamat properti Anda'), 'error', array(
-				'controller' => 'properties',
-				'action' => 'address',
-				'admin' => true,
-			));
-		} else if ( $statusAsset == 'error' ) {
-			$this->RmCommon->redirectReferer(__('Mohon lengkapi info spesifikasi properti Anda'), 'error', array(
-				'controller' => 'properties',
-				'action' => 'specification',
-				'admin' => true,
-			));
-		} else if( !empty($property_id) ) {
-
+		}
+		// else if ( $statusAddress == 'error' ) {
+		// 	debug('b');die();
+		// 	$this->RmCommon->redirectReferer(__('Mohon lengkapi info alamat properti Anda'), 'error', array(
+		// 		'controller' => 'properties',
+		// 		'action' => 'address',
+		// 		'admin' => true,
+		// 	));
+		// } else if ( $statusAsset == 'error' ) {
+		// 	debug('c');die();
+		// 	$this->RmCommon->redirectReferer(__('Mohon lengkapi info spesifikasi properti Anda'), 'error', array(
+		// 		'controller' => 'properties',
+		// 		'action' => 'specification',
+		// 		'admin' => true,
+		// 	));
+		// }
+		else if( !empty($property_id) ) {
 			$this->RmProperty->_callDeleteSession();
 			$photo_id = $this->RmCommon->filterEmptyField($dataMedias, 'PropertyMedias', 'id');
 			$photo_name = $this->RmCommon->filterEmptyField($dataMedias, 'PropertyMedias', 'name');
 			$is_approval_property = $this->RmCommon->filterEmptyField($this->data_company, 'is_approval_property');
 
 			$this->Property->PropertyVideos->doChange( $property_id, $session_id );
-			$this->User->CrmProject->CrmProjectDocument->doSaveDocumentProperty($session_id, $property_id);
+			// $this->User->CrmProject->CrmProjectDocument->doSaveDocumentProperty($session_id, $property_id);
 
 			if( !empty($this->draft_id) ) {
 				$this->Property->PropertyDraft->doCompleted($this->draft_id, $property_id);
@@ -1439,24 +1457,24 @@ class PropertiesController extends AppController {
 			/* masukin ke queue sync */
 			$approval_set = ((Configure::read('User.admin') && !empty($is_approval_property)) || empty($is_approval_property)) ? true : false;
 
-			if( $approval_set ){
-				$property = $this->RmProperty->mergeArrayRecursive($dataBasic, $dataAddress);
-				$property = $this->RmProperty->mergeArrayRecursive($property, $dataAsset);
+			// if( $approval_set ){
+			// 	$property = $this->RmProperty->mergeArrayRecursive($dataBasic, $dataAddress);
+			// 	$property = $this->RmProperty->mergeArrayRecursive($property, $dataAsset);
 
-				$all_medias = $this->getAllMedias($property_id);
-				$property 	= $this->RmProperty->mergeArrayRecursive($property, $all_medias);
+			// 	$all_medias = $this->getAllMedias($property_id);
+			// 	$property 	= $this->RmProperty->mergeArrayRecursive($property, $all_medias);
 
-			//	ebrochure lama masuk "create_ebrosur" yang baru redirect ke "regenerate"
-				$companyData	= Common::config('Config.Company.data', array());
-				$isBuilder		= Common::hashEmptyField($companyData, 'UserCompanyConfig.is_ebrochure_builder');
+			// //	ebrochure lama masuk "create_ebrosur" yang baru redirect ke "regenerate"
+			// 	$companyData	= Common::config('Config.Company.data', array());
+			// 	$isBuilder		= Common::hashEmptyField($companyData, 'UserCompanyConfig.is_ebrochure_builder');
 
-				if(empty($isBuilder)){
-					$this->create_ebrosur($property_id);
-				}
+			// 	if(empty($isBuilder)){
+			// 		$this->create_ebrosur($property_id);
+			// 	}
 
-				$this->RmCoBroke = $this->Components->load('RmCoBroke');
-				$this->RmCoBroke->create_cobroke($property_id);
-			}
+			// 	$this->RmCoBroke = $this->Components->load('RmCoBroke');
+			// 	$this->RmCoBroke->create_cobroke($property_id);
+			// }
 
 			/* END masukin ke queue sync */
 
@@ -1471,7 +1489,6 @@ class PropertiesController extends AppController {
 			$step = $this->mediaLabel;
 			$dataProperty = $this->_callSessionProperty($step);
 			$session_id = Common::hashEmptyField($dataProperty, 'Property.session_id');
-			
 			$categoryMedias = $this->Property->PropertyMedias->CategoryMedias->getData('list', array(
 	            'cache' => __('Property.CategoryMedias.List'),
 	        ));
@@ -1533,7 +1550,7 @@ class PropertiesController extends AppController {
 
 			$urlBack = array(
 				'controller' => 'properties',
-				'action' => 'specification',
+				'action' => 'sell',
 				'draft' => $this->draft_id,
 				'admin' => true,
 			);

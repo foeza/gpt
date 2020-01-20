@@ -2668,12 +2668,16 @@ class RmCommonComponent extends Component {
 		return $keyword;
 	}
 
-	function convertDataAutocomplete( $data ) {
+	function convertDataAutocomplete( $data, $put_id = false ) {
 		$result = array();
 
 		if( !empty($data) ) {
 			foreach ($data as $id => $value) {
-				array_push($result, $value);
+				if ($put_id) {
+					array_push($result, $id);
+				} else {
+					array_push($result, $value);
+				}
 			}
 		}
 

@@ -27,12 +27,12 @@
                 $id,
                 'admin' => true,
             );
-            $urlDocument = array(
-                'controller' => 'properties', 
-                'action' => 'edit_documents',
-                $id,
-                'admin' => true,
-            );
+            // $urlDocument = array(
+            //     'controller' => 'properties', 
+            //     'action' => 'edit_documents',
+            //     $id,
+            //     'admin' => true,
+            // );
         } else {
             $urlPhoto = array(
                 'controller' => 'properties', 
@@ -44,31 +44,31 @@
                 'action' => 'videos',
                 'admin' => true,
             );
-            $urlDocument = array(
-                'controller' => 'properties', 
-                'action' => 'documents',
-                'admin' => true,
-            );
+            // $urlDocument = array(
+            //     'controller' => 'properties', 
+            //     'action' => 'documents',
+            //     'admin' => true,
+            // );
         }
 
         if( !empty($draft_id) ) {
             $urlPhoto['draft'] = $draft_id;
             $urlVideo['draft'] = $draft_id;
-            $urlDocument['draft'] = $draft_id;
+            // $urlDocument['draft'] = $draft_id;
         }
 ?>
 <div class="options-medias text-center">
     <ul class="tabs clear">
         <?php
-                echo $this->Html->tag('li', $this->Html->link(__('Foto'), $urlPhoto, array(
+                echo $this->Html->tag('li', $this->Html->link(__('Photos'), $urlPhoto, array(
                     'class' => $photoClass,
                 )));
-                echo $this->Html->tag('li', $this->Html->link(__('Video'), $urlVideo, array(
+                echo $this->Html->tag('li', $this->Html->link(__('Videos'), $urlVideo, array(
                     'class' => $videoClass,
                 )));
-                echo $this->Html->tag('li', $this->Html->link(__('Dokumen'), $urlDocument, array(
-                    'class' => $documentClass,
-                )));
+                // echo $this->Html->tag('li', $this->Html->link(__('Dokumen'), $urlDocument, array(
+                //     'class' => $documentClass,
+                // )));
         ?>
     </ul>
 </div>

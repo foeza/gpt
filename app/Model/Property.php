@@ -11,179 +11,159 @@ class Property extends AppModel {
 		'mls_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'ID Properti harap diisi',
+				'message' => 'ID Produk harap diisi',
 			),
 			'isUnique' => array(
 				'rule' => array('isUnique'),
 				'on' => 'create',
-				'message' => 'ID Properti telah terdaftar',
+				'message' => 'ID Produk telah terdaftar',
 			),
 		),
-		'agent_email' => array(
-			'validateAgenEmail' => array(
-				'rule' => array('validateAgenEmail'),
-				'message' => 'Mohon masukkan email agen',
-			),
-			'validateExistEmail' => array(
-				'rule' => array('validateExistEmail'),
-				'message' => 'Agen tidak terdaftar. Silahkan masukkan Agen member Perusahaan Anda',
-			),
-			'validateUnderExist' => array(
-				'rule' => array('validateUnderExist'),
-				'message' => 'Agen tidak terdaftar. Silahkan masukkan Agen divisi bawahan Anda',
-			),
-			'email' => array(
-				'rule' => array('email'),
-				'message' => 'Format email salah',
-				'allowEmpty' => true,
-			),
-		),
-		'client_email' => array(
-			'validateClientData' => array(
-				'rule' => array('validateClientData', 'client_email'),
-				'message' => 'Mohon masukkan Email',
-			),
-			'email' => array(
-				'rule' => array('email'),
-				'allowEmpty' => true,
-				'message' => 'Format Email tidak valid',
-			),
-		),
-		'client_name' => array(
-			'validateClientData' => array(
-				'rule' => array('validateClientData', 'client_name'),
-				'message' => 'Mohon masukkan Nama',
-			),
-		),
-		'client_hp' => array(
-			'validateClientData' => array(
-				'rule' => array('validateClientData', 'client_hp'),
-				'message' => 'Mohon masukkan No. HP',
-			),
-			'notMatch' => array(
-				'rule' => array('validatePhoneNumber'),
-				'allowEmpty' => true,
-				'message' => 'Format No. HP e.g. +6281234567 or 0812345678'
-			),
-			'minLength' => array(
-				'rule' => array('minLength', 6),
-				'allowEmpty' => true,
-				'message' => 'Minimal 6 digit',
-			),
-			'maxLength' => array(
-				'rule' => array('maxLength', 20),
-				'allowEmpty' => true,
-				'message' => 'Maksimal 20 digit',
-			),
-		),
+		// 'agent_email' => array(
+		// 	'validateAgenEmail' => array(
+		// 		'rule' => array('validateAgenEmail'),
+		// 		'message' => 'Mohon masukkan email agen',
+		// 	),
+		// 	'validateExistEmail' => array(
+		// 		'rule' => array('validateExistEmail'),
+		// 		'message' => 'Agen tidak terdaftar. Silahkan masukkan Agen member Perusahaan Anda',
+		// 	),
+		// 	'validateUnderExist' => array(
+		// 		'rule' => array('validateUnderExist'),
+		// 		'message' => 'Agen tidak terdaftar. Silahkan masukkan Agen divisi bawahan Anda',
+		// 	),
+		// 	'email' => array(
+		// 		'rule' => array('email'),
+		// 		'message' => 'Format email salah',
+		// 		'allowEmpty' => true,
+		// 	),
+		// ),
+		// 'client_email' => array(
+		// 	'validateClientData' => array(
+		// 		'rule' => array('validateClientData', 'client_email'),
+		// 		'message' => 'Mohon masukkan Email',
+		// 	),
+		// 	'email' => array(
+		// 		'rule' => array('email'),
+		// 		'allowEmpty' => true,
+		// 		'message' => 'Format Email tidak valid',
+		// 	),
+		// ),
+		// 'client_name' => array(
+		// 	'validateClientData' => array(
+		// 		'rule' => array('validateClientData', 'client_name'),
+		// 		'message' => 'Mohon masukkan Nama',
+		// 	),
+		// ),
+		// 'client_hp' => array(
+		// 	'validateClientData' => array(
+		// 		'rule' => array('validateClientData', 'client_hp'),
+		// 		'message' => 'Mohon masukkan No. HP',
+		// 	),
+		// 	'notMatch' => array(
+		// 		'rule' => array('validatePhoneNumber'),
+		// 		'allowEmpty' => true,
+		// 		'message' => 'Format No. HP e.g. +6281234567 or 0812345678'
+		// 	),
+		// 	'minLength' => array(
+		// 		'rule' => array('minLength', 6),
+		// 		'allowEmpty' => true,
+		// 		'message' => 'Minimal 6 digit',
+		// 	),
+		// 	'maxLength' => array(
+		// 		'rule' => array('maxLength', 20),
+		// 		'allowEmpty' => true,
+		// 		'message' => 'Maksimal 20 digit',
+		// 	),
+		// ),
 		'property_action_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Mohon pilih status properti, dijual atau disewakan',
-			),
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Mohon pilih status properti, dijual atau disewakan',
+				'message' => 'Mohon pilih status produk, eceran atau grosir',
 			),
 		),
-		'property_type_id' => array(
+		'product_category_id' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Mohon pilih jenis properti',
-			),
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Mohon pilih jenis properti',
+				'message' => 'Mohon pilih kategori produk ini',
 			),
 		),
+		// 'property_type_id' => array(
+		// 	'notempty' => array(
+		// 		'rule' => array('notempty'),
+		// 		'message' => 'Mohon pilih jenis properti',
+		// 	),
+		// 	'numeric' => array(
+		// 		'rule' => array('numeric'),
+		// 		'message' => 'Mohon pilih jenis properti',
+		// 	),
+		// ),
 		'title' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Mohon masukkan kalimat promosi properti',
+				'message' => 'Mohon masukkan kalimat promosi produk ini',
 			),
 			'maxLength' => array(
 				'rule' => array('maxLength', 60),
 				'message' => 'Mohon masukkan kalimat promosi maksimal 60 karakter',
 				'allowEmpty' => true,
 			),
-			'validateTitleProperty' => array(
-				'rule' => array('validateTitleProperty'),
-				'message' => 'kata-kata seperti "dijual, jual, disewakan, disewa, sewa, dikontrakan, kontrakan, kontrak, di , murahan, murah, harga" tidak di perkenankan untuk diisi'
-			)
 		),
 		'description' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Mohon masukkan deskripsi singkat mengenai listing Anda',
+				'message' => 'Mohon masukkan deskripsi singkat mengenai produk Anda',
 			),
 			'minLength' => array(
 				'rule' => array('minLength', 30),
-				'message' => 'Mohon masukkan deskripsi properti minimum 30 karakter',
+				'message' => 'Mohon masukkan deskripsi produk minimum 30 karakter',
 				'allowEmpty' => true,
 			),
 		),
 		'price' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				'message' => 'Mohon masukkan harga properti',
+				'message' => 'Mohon masukkan harga produk',
 			),
 			'numeric' => array(
 				'rule' => array('numeric'),
-				'message' => 'Mohon masukkan angka untuk harga properti',
+				'message' => 'Mohon masukkan angka untuk harga produk',
 			),
 			'notNumber' => array(
 				'rule' => array('isNumber'),
-				'message' => 'Mohon masukkan harga properti lebih besar dari 0',
+				'message' => 'Mohon masukkan harga produk lebih besar dari 0',
 			),
 		),
-		'certificate_id' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Mohon pilih jenis sertifikat properti Anda',
-			),
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Mohon pilih jenis sertifikat properti Anda',
-			),
-		),
-		'commission' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				'message' => 'Mohon masukkan komisi agen',
-			),
-			'numeric' => array(
-				'rule' => array('numeric'),
-				'message' => 'Mohon masukkan angka untuk komisi agen',
-			),
-			'CommisionValidate' => array(
-            	'rule' => array('CommisionValidate'),
-                'message' => 'Mohon masukkan komisi terlebih dahulu',
-            )
-		),
-		'bt' => array(
-			'numeric' => array(
-				'allowEmpty' => true,
-				'rule' => array('numeric'),
-				'message' => 'Mohon masukkan angka untuk BT properti',
-			),
-		),
+		// 'certificate_id' => array(
+		// 	'notempty' => array(
+		// 		'rule' => array('notempty'),
+		// 		'message' => 'Mohon pilih jenis sertifikat properti Anda',
+		// 	),
+		// 	'numeric' => array(
+		// 		'rule' => array('numeric'),
+		// 		'message' => 'Mohon pilih jenis sertifikat properti Anda',
+		// 	),
+		// ),
+		// 'commission' => array(
+		// 	'notempty' => array(
+		// 		'rule' => array('notempty'),
+		// 		'message' => 'Mohon masukkan komisi agen',
+		// 	),
+		// 	'numeric' => array(
+		// 		'rule' => array('numeric'),
+		// 		'message' => 'Mohon masukkan angka untuk komisi agen',
+		// 	),
+		// 	'CommisionValidate' => array(
+  //           	'rule' => array('CommisionValidate'),
+  //               'message' => 'Mohon masukkan komisi terlebih dahulu',
+  //           )
+		// ),
 		'others_certificate' => array(
 			'validCertificate' => array(
 				'rule' => array('validCertificate', 'others_certificate'),
 				'message' => 'Mohon masukkan sertifikat lainnya',
 			),
 		),
-		'co_broke_commision' => array(
-            'CoBrokeCommisionValidate' => array(
-                'rule' => array('CoBrokeCommisionValidate'),
-                'message' => 'Mohon masukkan komisi Co-Broke',
-            ),
-            'numeric' => array(
-				'allowEmpty' => true,
-				'rule' => array('numeric'),
-				'message' => 'Komisi harus berupa angka',
-			),
-        ),
 		'photo' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
@@ -217,12 +197,12 @@ class Property extends AppModel {
 			'className' => 'Period',
 			'foreignKey' => 'period_id',
 		),
-		'PropertyProductCategory' => array(
-			'className' => 'PropertyProductCategory',
-			'foreignKey' => 'property_status_id',
-		),
 		'UserCompany' => array(
 			'foreignKey' => 'company_id',
+		),
+		'PropertyProductCategory' => array(
+			'className' => 'PropertyProductCategory',
+			'foreignKey' => 'product_category_id',
 		),
 	);
 
@@ -1108,6 +1088,7 @@ class Property extends AppModel {
 		$data = Hash::remove($data, 'is_easy_mode');
 
 		if ( !empty($data) ) {
+			// debug($data);die();
 			$group_id   = Configure::read('User.group_id');
 			$is_admin   = Configure::read('User.admin');
 			$approval   = Configure::read('Config.Approval.Property');
@@ -1132,13 +1113,13 @@ class Property extends AppModel {
 			$data['Property']['change_date'] = date('Y-m-d H:i:s');
 
 			if( empty($data['Property']['user_id']) ) {
-				if( in_array($group_id, Configure::read('__Site.Admin.Company.id')) || in_array($group_id, Configure::read('__Site.Admin.List.id')) || $group_id > 20  ){
-					$agent_email = !empty($data['Property']['agent_email'])?$data['Property']['agent_email']:false;
+				if( $group_id == 3 || in_array($group_id, Configure::read('__Site.Admin.List.id')) ) {
+					$name_c = !empty($data['Property']['product_category_id'])?$data['Property']['product_category_id']:false;
 
-					if(!empty($agent_email)){
-						$user_data = $this->User->getData('first', array(
+					if(!empty($name_c)){
+						$user_data = $this->PropertyProductCategory->getData('first', array(
 							'conditions' => array(
-								'User.email' => $agent_email
+								'User.email' => $name_c
 							),
 							'fields' => array(
 								'User.id',
@@ -1157,29 +1138,8 @@ class Property extends AppModel {
 					}else if(!$is_api){
 						$data['Property']['user_id'] = Configure::read('User.id');	
 					}
-				} else if(!$is_api){
-					$data['Property']['user_id'] = Configure::read('User.id');	
-				} else if($is_api){
-					$data['Property']['user_id'] = !empty($data['Property']['user_id']) ? $data['Property']['user_id'] : false;	
 				}
-			}
 
-			if($is_api){
-				$this->validator()->remove('property_action_id')
-					->remove('property_type_id')
-					->remove('title')
-					->remove('description')
-					->remove('price')
-					->remove('certificate_id')
-					->remove('commission')
-					->remove('bt');
-
-				$this->removeValidate();
-			}
-
-			if($is_easy_mode){
-				$this->validator()->remove('title')->remove('description');
-				$this->removeValidate();
 			}
 
 			if( !empty($data['Property']['price']) ) {
@@ -1191,8 +1151,6 @@ class Property extends AppModel {
 
 			if( $this->validates() ) {
 				$flagSave = true;
-				$data = $this->User->addClient($data);
-				$client_id = !empty($data['Property']['client_id'])?$data['Property']['client_id']:false;
 
 				if( !empty($validate) ) {
 					if( !empty($save_session) ) {
@@ -1203,43 +1161,16 @@ class Property extends AppModel {
 					$flagSave = $this->save($data);
 					$id = $this->id;
 
-					if( !empty($flagSave) && $group_id == 2 ) {
-						if(empty($mls_id) && !empty($id)){
-							$data_property = $this->findById($id);
-
-							$mls_id = Common::hashEmptyField($data_property, 'Property.mls_id');
-						}
-
-						if(!empty($mls_id)){
-							$notifMsg = sprintf(__('Penambahan Properti dengan ID %s pada tanggal %s, harap lakukan peninjauan'), $mls_id, date('d M Y'));
-						}else{
-							$notifMsg = sprintf(__('Penambahan Properti pada tanggal %s, harap lakukan peninjauan'), date('d M Y'));
-						}
-						
-						$this->User->Notification->doSave(array(
-							'Notification' => array(
-								'user_id' => 'admin_company',
-								'name' => $notifMsg,
-								'link' => array(
-									'controller' => 'properties',
-									'action' => 'index',
-									'keyword' => $mls_id,
-									'admin' => true,
-								),
-							),
-						));
-					}
 				}
 
 				if( !empty($flagSave) ) {
-					$msg = __('Berhasil menyimpan informasi dasar properti Anda');
+					$msg = __('Berhasil menyimpan informasi dasar produk Anda');
 					$this->PageConfig->doSave($pageConfig, $id, 'property');
 
 					$result = array(
 						'msg' => $msg,
 						'status' => 'success',
 						'id' => $id,
-						'client_id' => $client_id,
 					);
 
 					if( empty($validate) ) {
@@ -1249,7 +1180,7 @@ class Property extends AppModel {
 						);
 					}
 				} else {
-					$msg = __('Gagal menyimpan properti Anda, mohon lengkapi semua data yang diperlukan');
+					$msg = __('Gagal menyimpan produk Anda, mohon lengkapi semua data yang diperlukan');
 					$result = array(
 						'msg' => $msg,
 						'status' => 'error',
@@ -1268,7 +1199,7 @@ class Property extends AppModel {
 				}
 
 				$result = array(
-					'msg' => __('Gagal menyimpan properti Anda, mohon lengkapi semua data yang diperlukan'),
+					'msg' => __('Gagal menyimpan produk Anda, mohon lengkapi semua data yang diperlukan'),
 					'status' => 'error',
 					'validationErrors' => $validationErrors
 				);

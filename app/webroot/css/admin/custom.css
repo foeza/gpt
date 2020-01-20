@@ -1154,8 +1154,13 @@ div#simple-info > div.quick-response > div#user-action .user-action {
 
 .wrapper-upload-medias .options-medias {
 	position: absolute;
-	left: 33%;
+	left: 50%;
 	top: -20px;
+}
+
+.wrapper-upload-medias .options-medias .tabs{
+	position: relative;
+    left: -51%;
 }
 
 .wrapper-upload-medias .info-upload-photo {

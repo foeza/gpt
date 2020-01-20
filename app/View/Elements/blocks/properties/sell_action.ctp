@@ -11,33 +11,29 @@
         $dataAsset = !empty($dataAsset)?$dataAsset:false;
         $dataMedias = !empty($dataMedias)?$dataMedias:false;
 
-        $stepBasic = 'Basic';
+        $stepBasic   = 'Basic';
         $stepAddress = 'Address';
-        $stepAsset = 'Asset';
-        $stepMedia = 'Medias';
+        $stepAsset   = 'Asset';
+        $stepMedia   = 'Medias';
 ?>
 <div class="action-group <?php echo $action_type; ?>">
-    <div class="btn-group floleft">
+<!--     <div class="btn-group floleft">
         <?php 
-                if( empty($id) ) {
-                    echo $this->AclLink->link(__('Simpan Draft'), array(
-                        'controller' => 'properties',
-                        'action' => 'add_draft',
-                        'draft' => $draft_id,
-                        'admin' => true,
-                    ), array(
-                        'escape' => false,
-                        'class' => 'btn default submit-custom-form',
-                        'data-alert' => __('Anda yakin ingin menyimpan data properti ini kedalam draft?'),
-                        'data-form' => '.sell-form form#sell-property',
-                    ));
-                }
-                // echo $this->Html->link(__('Pratinjau'), 'javascript:void(0);', array(
-                //     'escape' => false,
-                //     'class' => 'btn default',
-                // ));
+                // if( empty($id) ) {
+                //     echo $this->AclLink->link(__('Simpan Draft'), array(
+                //         'controller' => 'properties',
+                //         'action' => 'add_draft',
+                //         'draft' => $draft_id,
+                //         'admin' => true,
+                //     ), array(
+                //         'escape' => false,
+                //         'class' => 'btn default submit-custom-form',
+                //         'data-alert' => __('Anda yakin ingin menyimpan data properti ini kedalam draft?'),
+                //         'data-form' => '.sell-form form#sell-property',
+                //     ));
+                // }
         ?>
-    </div>
+    </div> -->
     <?php 
             if( $action_type == 'top' ) {
                 if( !empty($id) ) {
@@ -99,27 +95,27 @@
                         )), array(
                             'class' => $this->Rumahku->getActiveStep($step, $stepBasic, $dataBasic, $id),
                         ));
+                        // echo $this->Html->tag('li', $this->Html->link(sprintf('%s %s', $this->Html->tag('span', 2, array(
+                        //     'class' => 'step-number',
+                        //     'id' => 'step-2',
+                        // )), $this->Html->tag('label', __('Alamat'), array(
+                        //     'for' => '#step-2',
+                        // ))), $urlStepAddress, array(
+                        //     'escape' => false,
+                        // )), array(
+                        //     'class' => $this->Rumahku->getActiveStep($step, $stepAddress, $dataAddress, $id),
+                        // ));
+                        // echo $this->Html->tag('li', $this->Html->link(sprintf('%s %s', $this->Html->tag('span', 3, array(
+                        //     'class' => 'step-number',
+                        //     'id' => 'step-3',
+                        // )), $this->Html->tag('label', __('Spesifikasi'), array(
+                        //     'for' => '#step-3',
+                        // ))), $urlStepAsset, array(
+                        //     'escape' => false,
+                        // )), array(
+                        //     'class' => $this->Rumahku->getActiveStep($step, $stepAsset, $dataAsset, $id),
+                        // ));
                         echo $this->Html->tag('li', $this->Html->link(sprintf('%s %s', $this->Html->tag('span', 2, array(
-                            'class' => 'step-number',
-                            'id' => 'step-2',
-                        )), $this->Html->tag('label', __('Alamat'), array(
-                            'for' => '#step-2',
-                        ))), $urlStepAddress, array(
-                            'escape' => false,
-                        )), array(
-                            'class' => $this->Rumahku->getActiveStep($step, $stepAddress, $dataAddress, $id),
-                        ));
-                        echo $this->Html->tag('li', $this->Html->link(sprintf('%s %s', $this->Html->tag('span', 3, array(
-                            'class' => 'step-number',
-                            'id' => 'step-3',
-                        )), $this->Html->tag('label', __('Spesifikasi'), array(
-                            'for' => '#step-3',
-                        ))), $urlStepAsset, array(
-                            'escape' => false,
-                        )), array(
-                            'class' => $this->Rumahku->getActiveStep($step, $stepAsset, $dataAsset, $id),
-                        ));
-                        echo $this->Html->tag('li', $this->Html->link(sprintf('%s %s', $this->Html->tag('span', 4, array(
                             'class' => 'step-number',
                             'id' => 'step-4',
                         )), $this->Html->tag('label', __('Foto & Video'), array(

@@ -1,7 +1,7 @@
 <?php
-        $_site_name = !empty($_site_name)?$_site_name:false;
-        $full_name = $this->Rumahku->filterEmptyField($User, 'full_name');
+        $_site_name  = !empty($_site_name)?$_site_name:false;
         $action_type = !empty($action_type)?$action_type:false;
+        $full_name   = $this->Rumahku->filterEmptyField($User, 'full_name');
 ?>
 
 <div class="greeting">
@@ -10,7 +10,7 @@
             
             switch ($action_type) {
                 case 'sell':
-                    echo $this->Html->tag('p', sprintf(__('Anda berada di halaman pasang iklan properti. Lengkapi data mengenai properti Anda pada kolom di bawah ini, dan ikuti tahapannya.')));
+                    echo $this->Html->tag('p', sprintf(__('Lengkapi data mengenai produk Anda pada kolom di bawah ini, dan ikuti tahapannya.')));
                     break;
                 
                 default:
