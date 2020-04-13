@@ -460,6 +460,7 @@
                             [1183, 5]
                         ],
                         pagination: true,
+                        slideBy: 4,
                         responsiveRefreshRate : 100,
                         afterInit : function (el) {
                             el.find(".owl-item").eq(0).addClass("synced");

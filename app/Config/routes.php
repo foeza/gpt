@@ -24,44 +24,14 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	// if ( in_array($_SERVER['HTTP_HOST'], array( 'ww.v2.companyweb.com', 'www.primesystem.id', 'primesystem.id' )) ) {
-	// 	Router::connect('/', array(
-	// 		'controller' => 'memberships', 
-	// 		'action' => 'index'
-	// 	));
-
-	// 	Router::connect('/terms_and_conditions', array(
-	// 		'controller' => 'memberships', 
-	// 		'action' => 'terms_and_conditions'
-	// 	));
-	// } else {
-	// }
-	if(in_array($_SERVER['HTTP_HOST'], array('www.primesystem.id', 'primesystem.id'))){
-		Router::connect('/', array('controller' => 'memberships', 'action' => 'dashboard'));
-		// Router::connect('/login/*', array('controller' => 'users', 'action' => 'redirect_home', 'admin' => false));
-		Router::connect('/login/*', array(
-			'controller' => 'users', 
-			'action' => 'login',
-			'admin' => true,
-		));
-	} else if(in_array($_SERVER['HTTP_HOST'], array('www.agent.primesystem.id', 'agent.primesystem.id'))){
-		Router::connect('/', array('controller' => 'memberships', 'action' => 'index'));
-		Router::connect('/login/*', array('controller' => 'users', 'action' => 'redirect_home', 'admin' => false));
-	} else {
-		Router::connect('/', array(
-			'controller' => 'pages', 
-			'action' => 'home'
-		));
-		Router::connect('/login/*', array(
-			'controller' => 'users', 
-			'action' => 'login',
-			'admin' => true,
-		));
-	}
-
-	Router::connect('/apps', array(
+	Router::connect('/', array(
 		'controller' => 'pages', 
-		'action' => 'apps'
+		'action' => 'home'
+	));
+	Router::connect('/login/*', array(
+		'controller' => 'users', 
+		'action' => 'login',
+		'admin' => true,
 	));
 
 	Configure::write('Route.action', 'developers|about|contact|faq|career|developer_detail');
@@ -69,32 +39,6 @@
 		'controller' => 'pages', 
 	), array(
 		'action' => Configure::read('Route.action'),
-	));
-
-//	B:NEW ROUTEE EASY MODE ======================================================
-
-	Router::connect('/admin/properties/add/*', array(
-		'controller'	=> 'properties', 
-		'action'		=> 'easy_add',
-		'admin'			=> true, 
-	));
-
-	Router::connect('/admin/properties/modify/*', array(
-		'controller'	=> 'properties', 
-		'action'		=> 'easy_preview',
-		'admin'			=> true, 
-	), array(
-	//	'property_id'	=> '[0-9]{11}', 
-	//	'action'		=> 'modify', 
-	//	'pass'			=> array('property_id'),
-	));
-
-//	E:NEW ROUTEE EASY MODE ======================================================
-
-	Router::connect('/download/*', array(
-		'controller' => 'ebrosurs', 
-		'action' => 'download',
-		'admin' => false
 	));
 
 	Router::connect('/admin/dashboard', array(
@@ -117,8 +61,6 @@
 		'property_action' => 'dijual|disewakan',
 	));
 
-//	B:REQUEST NEW ROUTE IPA ======================================================
-
 	Router::connect('/:property_action/*', array(
 		'controller'	=> 'properties',
 		'action'		=> 'find', 
@@ -133,31 +75,12 @@
 		'property_action' => 'dijual|disewakan',
 	));
 
-//	E:REQUEST NEW ROUTE IPA ======================================================
-
-	Router::connect('/p/:mlsid/:slug/*', array(
+	Router::connect('/p/:mlsid-:slug', array(
 		'controller' => 'properties', 
 		'action' => 'detail'
 	), array(
+		'pass' => array('mlsid', 'slug'),
 		'mlsid' => '[A-Za-z-0-9]{8}',
-		'pass' => array('slug'),
-	));
-	
-	/* ROUTER FOR KALKULATOR KPR */
-
-	Router::connect('/:bank_code/apply_kpr/*', array(
-		'controller' => 'kpr', 
-		'action' => 'apply_kpr'
-	), array(
-		'bank_code' => '.+[a-zA-Z-]',
-	));
-
-	Router::connect('/:bank_code/:slug/*', array(
-		'controller' => 'kpr', 
-		'action' => 'bank_calculator'
-	), array(
-		'slug' => 'kalkulator-kpr',
-		'bank_code' => '.+[a-zA-Z-]',
 	));
 
 	Router::connect('/p/:mlsid', array(
@@ -166,41 +89,6 @@
 	), array(
 		'mlsid' => '[A-Za-z-0-9]{8}', 
 		'pass' => array('mlsid'),
-	));
-
-	// Admin Director
-	Router::connect('/admin/users/:slug/admins/add/*', array(
-		'controller' => 'users', 
-		'action' => 'add_admin',
-		'admin' => true,
-	), array(
-		'slug' => 'director', 
-	));
-	Router::connect('/admin/users/:slug/admins/edit/*', array(
-		'controller' => 'users', 
-		'action' => 'edit_admin',
-		'admin' => true,
-	), array(
-		'slug' => 'director', 
-	));
-	Router::connect('/admin/users/:slug/admins/*', array(
-		'controller' => 'users', 
-		'action' => 'admins',
-		'admin' => true,
-	), array(
-		'slug' => 'director', 
-	));
-
-	/*
-	**	BTN Term and Conditions
-	*/
-
-	Router::connect('/:project_slug/:params', array(
-		'controller' => 'pages', 
-		'action' => 'home'
-	), array(
-		'params' => 'termandconditions',
-		'project_slug' => 'btn',
 	));
 
 	/**

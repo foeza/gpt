@@ -1,21 +1,13 @@
 <?php
-        $property_path = Configure::read('__Site.property_photo_folder');
-        $dataMedias = $this->Rumahku->filterEmptyField($value, 'PropertyMedias');
-        $status = $this->Property->getShortStatus($value, 'span', true);
-        $id = $this->Rumahku->filterEmptyField($value, 'Property', 'id');
-        $parent_id = Configure::read('Principle.id');
-        $watermark = 'company';
+        $property_path  = Configure::read('__Site.property_photo_folder');
+        $data_medias    = $this->Rumahku->filterEmptyField($value, 'PropertyMedias');
 
-        $alt_image = $this->Rumahku->getALtImage($value);
+        $title_alt      = $this->Property->getALtImage($value);
 
-        if(!empty($dataMedias)) {
+        if(!empty($data_medias)) {
 ?>
 <div class="hidden-print relative">
     <?php
-			echo $this->Html->tag('span', $status, array(
-				'class' => 'status-property',
-			));
-
 		//	khusus untuk terjual dan tersewa pakai stamp
 			$actionID		= isset($value['Property']['property_action_id']) && $value['Property']['property_action_id'] ? $value['Property']['property_action_id'] : NULL;
 			$soldStatus		= isset($value['Property']['sold']) && $value['Property']['sold'] ? TRUE : FALSE;
@@ -32,37 +24,51 @@
     <div id="property-detail-large" class="owl-carousel">
         <?php
                 $i = 0;
-                foreach ($dataMedias as $key => $media) {
+                foreach ($data_medias as $key => $media) {
                     $caption = '';
                     $title = $this->Property->_callMediaTitle($media);
                     $photo = $this->Rumahku->filterEmptyField($media, 'PropertyMedias', 'name');
 
-                    $customPhoto = $this->Rumahku->photo_thumbnail(array(
+                    $optionLink = array(
+                        'escape' => false,
+                        'rel' => 'prettyPhoto[slide]',
+                    );
+
+                    $mediaPhoto = $this->Rumahku->photo_thumbnail(array(
                         'save_path' => $property_path, 
-                        'src'=> $photo, 
-                        'size' => $watermark,
+                        'src'       => $photo,
+                        'size'      => 'company',
                     ), array(
-                        'title' => $title,
-                        'alt' => $alt_image,
+                        'title' => $title_alt,
+                        'alt'   => $title_alt,
                     ));
 
-                    if(!empty($title)){
-                        $caption = $this->Html->tag('div', $title, array(
+                    $url = $this->Rumahku->photo_thumbnail(array(
+                        'save_path' => $property_path, 
+                        'src'       => $photo,
+                        'size'      => 'company',
+                        'url'       => true,
+                    ));
+
+                    $mediaPhoto = $this->Html->link($mediaPhoto, $url, $optionLink);
+
+                    if(!empty($title_alt)){
+                        $caption = $this->Html->tag('div', $title_alt, array(
                             'class' => 'owlcaption'
                         ));
                     }
 
                     if ( $i == 0 ) {
-                        $main_photo = $this->Html->tag('div', $this->Html->tag('div', $customPhoto, array(
+                        $main_photo = $this->Html->tag('div', $this->Html->tag('div', $mediaPhoto, array(
                             'class' => 'image-slider-owl'
-                        )).$caption, array(
+                        )), array(
                             'class' => 'item visible-print',
                         ));
                     }
 
-                    echo $this->Html->tag('div', $this->Html->tag('div', $customPhoto, array(
+                    echo $this->Html->tag('div', $this->Html->tag('div', $mediaPhoto, array(
                         'class' => 'image-slider-owl'
-                    )).$caption, array(
+                    )), array(
                         'class' => 'item hidden-print',
                     ));
 
@@ -79,7 +85,7 @@
     <!-- BEGIN PROPERTY DETAIL THUMBNAILS SLIDER -->
     <div id="property-detail-thumbs" class="owl-carousel hidden-print">
         <?php
-                foreach ($dataMedias as $key => $media) {
+                foreach ($data_medias as $key => $media) {
                     $title = $this->Property->_callMediaTitle($media);
                     $photo = $this->Rumahku->filterEmptyField($media, 'PropertyMedias', 'name');
 
@@ -88,8 +94,8 @@
                         'src'=> $photo, 
                         'size'=>'m',
                     ), array(
-                        'title' => $title,
-                        'alt' => $alt_image,
+                        'title' => $title_alt,
+                        'alt'   => $title_alt,
                     ));
 
                     echo $this->Html->tag('div', $customPhoto, array(

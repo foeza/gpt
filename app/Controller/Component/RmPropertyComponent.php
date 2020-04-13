@@ -590,32 +590,14 @@ class RmPropertyComponent extends Component {
         return $values;
     }
 
-    function getNameCustom( $data, $only_location = false, $toSlug = false, $divider = ',' ) {
-        $dataAddress = !empty($data['PropertyAddress'])?$data['PropertyAddress']:false;
+    function getNameCustom( $data ) {
+        $title  = Common::hashEmptyField($data, 'Property.title');
 
-        $subarea = $this->RmCommon->filterEmptyField($dataAddress, 'Subarea', 'name');
-        $city = $this->RmCommon->filterEmptyField($dataAddress, 'City', 'name');
-        $zip = $this->RmCommon->filterEmptyField($dataAddress, 'zip');
-
-        if( !empty($subarea) && !empty($city) ) {
-            $location = sprintf('%s%s %s %s', $subarea, $divider, $city, $zip);
+        if (!empty($title)) {
+            $result = trim(sprintf(__('%s'), $title));
+            $result = ucwords($result);
         } else {
-            $location = '';
-        }
-
-        if( !empty($only_location) ) {
-            $result = $location;
-        } else {
-            $type = strtolower($this->RmCommon->filterEmptyField($data, 'PropertyType', 'name'));
-            $action = strtolower($this->RmCommon->filterEmptyField($data, 'PropertyAction', 'name'));
-            
-            $result = trim(sprintf(__('%s %s %s'), $type, $action, $location));
-        }
-
-        $result = ucwords($result);
-
-        if( !empty($toSlug) ) {
-            $result = $this->RmCommon->toSlug($result);
+            $result = '';
         }
 
         return $result;
@@ -2656,8 +2638,9 @@ class RmPropertyComponent extends Component {
                     $properties[$key]['PropertySold'] = $value['PropertySold'];
                 }
 
-                $parent_id = Common::hashEmptyField($value, 'User.parent_id');
+                $parent_id = Configure::read('Principle.id');
                 $value = $this->controller->User->UserCompanyConfig->getMerge($value, $parent_id);
+
                 $properties[$key]['UserCompanyConfig'] = !empty($value['UserCompanyConfig']) ? $value['UserCompanyConfig'] : array();
             }
         }

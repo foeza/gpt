@@ -139,22 +139,19 @@ class PropertiesController extends AppController {
 
 	function beforeFilter() {
 		parent::beforeFilter();
-		$params = $this->params->params;
-		$draft = Common::hashEmptyField($params, 'named.draft');
+		$params   = $this->params->params;
+		$base_url = FULL_BASE_URL;
 
-		$dataCompany	= isset($this->data_company) ? $this->data_company : NULL;
-		$companyID		= $this->RmCommon->filterEmptyField($dataCompany, 'UserCompany', 'id', 0);
+		$dataCompany = isset($this->data_company) ? $this->data_company : NULL;
+		$companyID   = $this->RmCommon->filterEmptyField($dataCompany, 'UserCompany', 'id', 0);
 		$this->Property->companyID = $companyID;
-		$this->User->UserCompanyEbrochure->companyID = $companyID;
 
-		$isShowTrend	= $this->RmCommon->filterEmptyField($dataCompany, 'UserCompanyConfig', 'mt_is_show_trend');
+		$url_without_http = Configure::read('__Site.domain');
+		$isShowTrend	  = $this->RmCommon->filterEmptyField($dataCompany, 'UserCompanyConfig', 'mt_is_show_trend');
 		$allowedMethods	= array(
 			'find', 'search', 'detail',
 			'leads', 'admin_share',
 			'shorturl', 'contact', 'price_movement',
-		//	'admin_easy_add', 
-		//	'admin_easy_preview', 
-		//	'admin_easy_media', 
 		);
 
 		$marketTrendMethods = array(
@@ -176,14 +173,6 @@ class PropertiesController extends AppController {
 
 		$this->Auth->allow($allowedMethods);
 
-		// if($draft){
-		// 	$active_menu = 'property_draft';
-		// } else {
-		// 	$active_menu = 'property_list';
-		// }
-
-		// $this->set('active_menu', $active_menu);
-		$this->draft_id = Configure::read('__Site.PropertyDraft.id');
 	}
 
 	function admin_search ( $action = 'index', $_admin = true, $addParam = false ) {
@@ -1383,8 +1372,8 @@ class PropertiesController extends AppController {
 
 	public function processProperty( $validate = true, $dataMedias = false ) {
 		$dataBasic = $this->RmProperty->_callDataSession( $this->basicLabel );
-		$dataAddress = $this->RmProperty->_callDataSession( $this->addressLabel );
-		$dataAsset = $this->RmProperty->_callDataSession( $this->assetLabel );
+		// $dataAddress = $this->RmProperty->_callDataSession( $this->addressLabel );
+		// $dataAsset = $this->RmProperty->_callDataSession( $this->assetLabel );
 
 		$mls_id = Common::hashEmptyField($dataBasic, 'Property.mls_id');
 		$session_id = Common::hashEmptyField($dataBasic, 'Property.session_id');
@@ -1407,13 +1396,13 @@ class PropertiesController extends AppController {
 		// $validateAddress = $this->Property->PropertyAddress->doAddress( $dataAddress, false, $validate, $property_id );
 
 		// Just Taken Data for Asset
-		$dataAsset = $this->RmProperty->_callChangeToRequestData( $dataAsset, 'PropertyFacility', 'facility_id' );
-		$dataAsset = $this->RmProperty->_callChangeToRequestData( $dataAsset, 'PropertyPointPlus', 'name' );
-		$validateAsset = $this->Property->PropertyAsset->doSave( $dataAsset, false, $validate, $property_id );
+		// $dataAsset = $this->RmProperty->_callChangeToRequestData( $dataAsset, 'PropertyFacility', 'facility_id' );
+		// $dataAsset = $this->RmProperty->_callChangeToRequestData( $dataAsset, 'PropertyPointPlus', 'name' );
+		// $validateAsset = $this->Property->PropertyAsset->doSave( $dataAsset, false, $validate, $property_id );
 
 		$statusBasic =!empty($validateBasic['status'])?$validateBasic['status']:'error';
 		// $statusAddress =!empty($validateAddress['status'])?$validateAddress['status']:'error';
-		$statusAsset =!empty($validateAsset['status'])?$validateAsset['status']:'error';
+		// $statusAsset =!empty($validateAsset['status'])?$validateAsset['status']:'error';
 
 		if( empty($session_id) || $statusBasic == 'error' ) {
 			$this->RmCommon->redirectReferer(__('Mohon lengkapi info dasar properti Anda'), 'error', array(
@@ -1504,34 +1493,17 @@ class PropertiesController extends AppController {
 				if( !empty($propertyMedia) ) {
 					$property_id = $this->processProperty( false, $propertyMedia );
 
-	            	$this->RmCommon->_saveLog(__('Berhasil menambahkan properti'), $dataProperty, $property_id);
+	            	$this->RmCommon->_saveLog(__('Berhasil menambahkan produk'), $dataProperty, $property_id);
 
-				//	untuk generate ebrochure versi lama udah di handle di dalam $this->processProperty()
-				//	versi baru handle disini
-					$isAutoGenerate	= $this->RmEbroschure->isAllowGenerateEbrochure();
-
-					$companyData	= Common::config('Config.Company.data', array());
-					$isBuilder		= Common::hashEmptyField($companyData, 'UserCompanyConfig.is_ebrochure_builder');
-
-					if($isAutoGenerate && $isBuilder){
-						$this->RmCommon->redirectReferer('', 'success', array(
-							'admin'			=> true, 
-							'controller'	=> 'ebrosurs', 
-							'action'		=> 'regenerate', 
-							'property_id'	=> $property_id, 
-						));
-					}
-					else{
-						$this->RmCommon->redirectReferer(__('Properti berhasil disimpan. Properti Anda akan segera muncul pada daftar properti apabila kami telah menyetujui properti Anda'), 'success', array(
-							'controller' => 'properties',
-							'action' => 'index',
-							'admin' => true,
-						));
-					}
+					$this->RmCommon->redirectReferer(__('Produk berhasil disimpan'), 'success', array(
+						'controller' => 'properties',
+						'action' => 'index',
+						'admin' => true,
+					));
 
 				} else {
-	            	$this->RmCommon->_saveLog(__('Gagal menambahkan properti'), $dataProperty);
-					$this->RmCommon->redirectReferer(__('Mohon mengunggah foto properti'), 'error', array(
+	            	$this->RmCommon->_saveLog(__('Gagal menambahkan produk'), $dataProperty);
+					$this->RmCommon->redirectReferer(__('Mohon mengunggah foto produk'), 'error', array(
 						'controller' => 'properties',
 						'action' => 'medias',
 						'draft' => $this->draft_id,
@@ -1560,7 +1532,7 @@ class PropertiesController extends AppController {
 			));
 			$this->render('sell');
 		} else {
-			$this->RmCommon->redirectReferer(__('Properti tidak ditemukan'), 'error');
+			$this->RmCommon->redirectReferer(__('Produk tidak ditemukan'), 'error');
 		}
 	}
 
@@ -1715,9 +1687,6 @@ class PropertiesController extends AppController {
 				'other_contain' => true,
 	            'contain_data' => array(
 	                'MergeDefault',
-	                'PropertyAddress',
-	                'PropertyAsset',
-	                'PropertyProductCategory',
 	                'User',
 					), 
 				));
@@ -2876,9 +2845,8 @@ class PropertiesController extends AppController {
 	}
 
 	public function detail(){
-		$module_title = __('Detail Properti');
 		$mlsid = $this->RmCommon->filterEmptyField($this->params, 'mlsid');
-		$slug = $this->RmCommon->filterEmptyField($this->params, 'slug');
+		$slug  = $this->RmCommon->filterEmptyField($this->params, 'slug');
 
 		if( !empty($mlsid) ){
 		//	cache setting
@@ -2910,12 +2878,7 @@ class PropertiesController extends AppController {
 				$value = $this->Property->getDataList($value, array(
 					'contain' => array(
 						'MergeDefault',
-						'PropertyAddress',
-						'PropertyAsset',
-						'PropertySold',
-						'PropertyFacility',
-						'PropertyPointPlus',
-						'PropertyStatusListing',
+						'PropertyProductCategory',
 						'PropertyPrice',
 						'User',
 					),
@@ -2923,10 +2886,10 @@ class PropertiesController extends AppController {
 
 				if(!Configure::read('User.admin')){
 					$cacheData = array(
-						'named'		=> $this->request->params['named'],
-						'pass'		=> $this->request->params['pass'],
-						'query'		=> $this->request->query,
-						'result'	=> $value
+						'named'	 => $this->request->params['named'],
+						'pass'	 => $this->request->params['pass'],
+						'query'	 => $this->request->query,
+						'result' => $value
 					);
 
 					Cache::write($cacheName, $cacheData, $cacheConfig);
@@ -2934,23 +2897,21 @@ class PropertiesController extends AppController {
 			}
 
 			if( !empty($value) ) {
-				$id = $this->RmCommon->filterEmptyField($value, 'Property', 'id');
-				$user_id = $this->RmCommon->filterEmptyField($value, 'Property', 'user_id');
-				$title = $this->RmCommon->filterEmptyField($value, 'Property', 'title');
-				$photo = $this->RmCommon->filterEmptyField($value, 'Property', 'photo');
-				$description = $this->RmCommon->filterEmptyField($value, 'Property', 'description');
-				$active = $this->RmCommon->filterEmptyField($value, 'Property', 'active');
-				$period_id = $this->RmCommon->filterEmptyField($value, 'PropertySold', 'period_id');
+				$id 	 = Common::hashEmptyField($value, 'Property.id');
+				$title 	 = Common::hashEmptyField($value, 'Property.title');
+				$photo 	 = Common::hashEmptyField($value, 'Property.photo');
+				$active  = Common::hashEmptyField($value, 'Property.active');
+				$user_id = Common::hashEmptyField($value, 'Property.user_id');
+				$keyword = Common::hashEmptyField($value, 'Property.keyword');
+				$desc 	 = Common::hashEmptyField($value, 'Property.description');
 
-				$value = $this->Property->PageConfig->getMerge($value, $id);
-				$value = $this->User->UserProfile->getMerge($value, $user_id, true);
-				$value = $this->User->UserConfig->getMerge($value, $user_id);
-				$label = $this->RmProperty->getNameCustom($value);
-				$label = $this->RmCommon->toSlug($label);
+				$value 	 = $this->Property->PageConfig->getMerge($value, $id);
+				$value 	 = $this->User->UserProfile->getMerge($value, $user_id, true);
+				$value 	 = $this->User->UserConfig->getMerge($value, $user_id);
+				$label 	 = $this->RmProperty->getNameCustom($value);
+				$label 	 = $this->RmCommon->toSlug($label);
 
-				if(!empty($value['PropertySold'])){
-					$value['PropertySold'] = $this->Property->Period->getMerge($value['PropertySold'], $period_id);
-				}
+				$module_title = $title;
 
 				if( $label == $slug ) {
 					if( !empty($active) ) {
@@ -2961,11 +2922,6 @@ class PropertiesController extends AppController {
 
 					$value = $this->Property->PropertyMedias->getMerge($value, $id, 'all', $statusMedia);
 					$value = $this->Property->PropertyVideos->getMerge($value, $id, 'all', $statusMedia);
-
-					// Get Bank Exclusive
-					// $bankKpr = $this->User->Kpr->KprBank->Bank->getKpr();
-					// Get All Bank Active n Bank Only Product
-					$list_banks = $this->User->Kpr->KprBank->Bank->list_banks($value);
 					
 					// Proses Contact
 					$data = $this->request->data;
@@ -2973,8 +2929,7 @@ class PropertiesController extends AppController {
 					$data = $this->RmUser->_callMessageBeforeSave($user_id, $id);
 					$result = $this->User->Message->doSend($data, $value);
 					
-					$base_url = FULL_BASE_URL;
-					$url_detail = $base_url.$this->params->here;
+					$url_detail = $this->base_url.$this->params->here;
 
 					$this->RmCommon->setProcessParams($result, $url_detail,array(
 					//	google recaptcha
@@ -2982,11 +2937,11 @@ class PropertiesController extends AppController {
 					//	'ajaxRedirect' => true,
 					));
 
-					$dataView = $this->RmCommon->_callSaveVisitor($id, 'PropertyView');
-					$this->Property->PropertyView->doSave($dataView);
+					// $dataView = $this->RmCommon->_callSaveVisitor($id, 'PropertyView');
+					// $this->Property->PropertyView->doSave($dataView);
 
-					$neighbours = $this->Property->getNeighbours( $value );
-					$agents = $this->User->populers();
+					// $neighbours = $this->Property->getNeighbours( $value );
+					// $agents = $this->User->populers();
 
 					$this->RmCommon->_callRequestSubarea('Search');
 					$this->RmCommon->getDataRefineProperty();
@@ -2994,9 +2949,9 @@ class PropertiesController extends AppController {
 					$og_meta = array(
 						'title' => $title,
 						'image' => $photo,
-						'path' => Configure::read('__Site.property_photo_folder'),
-						'description' => $description,
-						'size' => 'company'
+						'size'  => 'company',
+						'path'  => Configure::read('__Site.property_photo_folder'),
+						'description' => $desc
 					);
 					$this->RmCommon->_layout_file(array(
 						'map',
@@ -3004,13 +2959,10 @@ class PropertiesController extends AppController {
 						'bank',
 					));
 
-					$meta_title = $this->RmCommon->filterEmptyField($value, 'PageConfig', 'meta_title');
-					$meta_keyword = $this->RmCommon->filterEmptyField($value, 'PageConfig', 'meta_keyword');
-					$meta_description = $this->RmCommon->filterEmptyField($value, 'PageConfig', 'meta_description');
+					$meta_title   = Common::hashEmptyField($value, 'PageConfig.meta_title');
+					$meta_keyword = Common::hashEmptyField($value, 'PageConfig.meta_keyword');
+					$meta_desc 	  = Common::hashEmptyField($value, 'PageConfig.meta_description');
 
-					$url_without_http = Configure::read('__Site.domain');
-
-					$property_type 	= $this->RmCommon->filterEmptyField($value, 'PropertyType', 'name');
 					$property_act 	= $this->RmCommon->filterEmptyField($value, 'PropertyAction', 'name');
 					$property_act_id= $this->RmCommon->filterEmptyField($value, 'PropertyAction', 'id');
 
@@ -3021,34 +2973,32 @@ class PropertiesController extends AppController {
 					$city_name 		= $this->RmCommon->filterEmptyField($PropertyAddress, 'City', 'name');
 
 					if(empty($meta_title)){
-						$meta_title = sprintf('%s %s %s, %s %s - %s', $property_type, $property_act, $subarea_name, $city_name, $mlsid, $url_without_http);
+						$meta_title = $title;
 					}
 
 					if(empty($meta_keyword)){
-						$meta_keyword = sprintf('%s %s %s, %s %s %s di %s', $property_type, $property_act, $subarea_name, $city_name, $zip, $mlsid, $url_without_http);
+						$meta_keyword = __('%s, %s', $title, $keyword);
 					}
 
-					if(empty($meta_description)){
+					if(empty($meta_desc)){
         				if($property_act_id == 2){
         					$price = $this->RmProperty->_callRentPrice($value, false, false, false);
         				}else{
         					$price = $this->RmProperty->getPrice($value, false, false, false);
         				}
 
-						$meta_description = sprintf(__('%s %s %s, %s %s %s %s di %s dengan harga properti terjangkau!'), $property_type, $property_act, $subarea_name, $city_name, $zip, $mlsid, $price, $url_without_http);
+						$meta_desc = sprintf(__('%s %s %s, %s %s %s %s di %s dengan harga properti terjangkau!'), $property_type, $property_act, $subarea_name, $city_name, $zip, $mlsid, $price, $url_without_http);
 					}
 
 					$this->set('title_for_layout', $meta_title);
 					$this->set('keywords_for_layout', $meta_keyword);
-					$this->set('description_for_layout', $meta_description);
+					$this->set('description_for_layout', $meta_desc);
 
 					$this->set('_canonical', true);
 					$this->set('captcha_code', $this->Captcha->generateEquation());
 					$this->set('active_menu', 'list_properties');
 					$this->set(compact(
-						'value', 'module_title',
-						'og_meta', 'neighbours', 'agents', 
-						'bankKpr', 'list_banks'
+						'value', 'module_title', 'og_meta'
 					));
 				} else {
 					$this->redirect(array(

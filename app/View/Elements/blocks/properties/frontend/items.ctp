@@ -3,7 +3,6 @@
 
         $_attributes = !empty($_attributes)?$_attributes:false;
         $_class = !empty($_class)?$_class:false;
-        $displayShow = !empty($displayShow)?$displayShow:'grid';
         $i = 0;
 
         foreach ($properties as $key => $value) {
@@ -17,15 +16,14 @@
             $status = $this->Property->getShortStatus($value, 'span', true);
 
             // custom badge
-            $name = $this->Rumahku->filterEmptyField($value, 'PropertyStatusListing', 'name');
-            $badge_color = $this->Rumahku->filterEmptyField($value, 'PropertyStatusListing', 'badge_color', '');
+            $name = $this->Rumahku->filterEmptyField($value, 'PropertyProductCategory', 'name');
+            $badge_color = $this->Rumahku->filterEmptyField($value, 'PropertyProductCategory', 'badge_color', '');
 
             $status_listing = array(
                 'name' => $name,
                 'badge_color' => $badge_color,
             );
 
-            $type = $this->Rumahku->filterEmptyField($value, 'PropertyType', 'name');
             $theme = strtolower($this->theme);
 
             $slug = $this->Rumahku->toSlug($label);
@@ -57,26 +55,20 @@
             $url = $this->Rumahku->_callUrlProperty($value, $mls_id, $slug);
             $customPhoto = $this->Rumahku->photo_thumbnail(array(
                 'save_path' => $property_path, 
-                'src'=> $photo, 
-                'size' => 'm',
+                'src'       => $photo, 
+                'size'      => 'l',
             ), array(
-                'alt' => $this->Rumahku->getALtImage($value)
+                'title' => $title,
+                'alt'   => $title,
             ));
 
-            // if( !empty($mod) ) {
-            //     if( $i%$mod == 0 ) {
-            //         echo $this->Rumahku->clearfix();
-            //     }
-            // }
-
-            echo $this->element('blocks/properties/styles/'.$displayShow, array(
+            echo $this->element('blocks/properties/styles/grid', array(
                 '_attributes' => $_attributes,
                 '_class' => $_class,
                 'title' => $title,
                 'label' => $label,
                 'url' => $url,
                 'photo' => $customPhoto,
-                'type' => $type,
                 'price' => $price,
                 'spec' => $spec,
                 'description' => $description,

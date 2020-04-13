@@ -1,9 +1,9 @@
 <?php
-        echo $this->Html->tag('h1', __('Properti Lainnya'), array(
-            'class' => 'section-title',
-        ));
-
         if(!empty($neighbours)) {
+            echo $this->Html->tag('h1', __('Produk Terkait'), array(
+                'class' => 'section-title',
+            ));
+
 ?>
             <div id="similar-properties" class="grid-style1 clearfix hidden-print">
                 <?php
@@ -16,7 +16,7 @@
 <?php
         }
 
-        if ($this->action == 'detail') {
-            echo $this->element('blocks/properties/frontend/link_other_property');
-        }
+        // if ($this->action == 'detail') {
+        //     echo $this->element('blocks/properties/frontend/link_other_property');
+        // }
 ?>

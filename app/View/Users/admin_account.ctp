@@ -70,14 +70,14 @@
 				}
 
 				if($total_listing_per_agent){
-					$template.= $this->element('blocks/users/dashboards/table', array(
-						'title' => __('5 Agen dengan properti terbanyak'),
-						'wrapperClass' => 'wrapper-dashboard-table-property-active',
-						'values' => $total_listing_per_agent,
-						'daterangeClass' => 'daterange-dasboard-table-property-active',
-						'url' => $urlPropertyActive,
-						'urlTitle' => __('Lihat semua'),
-					));
+					// $template.= $this->element('blocks/users/dashboards/table', array(
+					// 	'title' => __('5 Agen dengan properti terbanyak'),
+					// 	'wrapperClass' => 'wrapper-dashboard-table-property-active',
+					// 	'values' => $total_listing_per_agent,
+					// 	'daterangeClass' => 'daterange-dasboard-table-property-active',
+					// 	'url' => $urlPropertyActive,
+					// 	'urlTitle' => __('Lihat semua'),
+					// ));
 				}
 
 				echo(empty($template) ? $template : $this->Html->tag('div', $template, array(

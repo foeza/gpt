@@ -11,7 +11,7 @@
 			$options = $this->Rumahku->filterEmptyField($sorting, 'options');
             $url = $this->Rumahku->filterEmptyField($sorting, 'url');
 
-            $divClassFilter = $this->Rumahku->filterIssetField($sorting, 'divClassFilter', false, 'col-sm-4 no-pright');
+            $divClassFilter = $this->Rumahku->filterIssetField($sorting, 'divClassFilter', false, 'col-sm-7 no-pright');
             
             if( !empty($optionsStatus) ) {
                 $addClass = 'col-sm-7';

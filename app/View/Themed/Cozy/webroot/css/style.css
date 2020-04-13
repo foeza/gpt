@@ -102,7 +102,7 @@ iframe[src="about:blank"] {
   left: 0;
   z-index: 99;
   height: 100%;
-  background-color: #fff;
+  background-color: #f5f5f5;
   -webkit-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.3);
   box-shadow: -2px 0px 5px 0px rgba(0, 0, 0, 0.3);
@@ -398,14 +398,15 @@ iframe[src="about:blank"] {
   transition-duration: 1.5s;
 }
 .section-title, .section-highlight {
-  padding: 25px;
-  background-color: #e56b65;
+  width: 100%;
+  padding: 20px;
+  clear: both;
   color: white;
   position: relative;
   text-align: center;
-  clear: both;
   display: inline-block;
-  width: 100%;
+  border: 1px solid #ff3641;
+  background-color: #e55b65;
 }
 .section-title.search-product-about {
   background-color: transparent;
@@ -664,13 +665,15 @@ iframe[src="about:blank"] {
 }
 .carousel-style1 .item .image {
   width: 100%;
-  /*height:236px;*/
   max-height: 236px;
   overflow: hidden;
   position: relative;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: auto 100%;
+  border: 1px solid #cccccc;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   -webkit-transition: background-size 0.3s ease-out;
   -moz-transition: background-size 0.3s ease-out;
   -ms-transition: background-size 0.3s ease-out;
@@ -754,15 +757,12 @@ iframe[src="about:blank"] {
 }
 .carousel-style1 .item .price {
   position: relative;
-  /*top: 10px;
-  left: -5px;*/
   background-color: #df4a43;
   color: #fff;
-  padding: 2px 20px 2px 10px;
+  padding: 10px 15px;
   z-index: 10;
-  /*-webkit-border-radius: 0 4px 4px 0;
-  -moz-border-radius: 0 4px 4px 0;
-  border-radius: 0 4px 4px 0;*/
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 /*.carousel-style1 .item .price:before {
   content: " ";
@@ -1932,7 +1932,7 @@ iframe[src="about:blank"] {
   border-bottom: 1px solid #CCC;
   min-width: 320px;
   padding: 0;
-  background-color: #fff;
+  background-color: #f5f5f5;
   width: 100%;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -2520,8 +2520,7 @@ iframe[src="about:blank"] {
   background-position: center center;
 }
 .parallax .section-title {
-  color: #4d4f52;
-  margin-top: 0;
+  margin: 0px 7px 15px 7px;
 }
 .pattern-bg {
   position: relative;
@@ -5032,7 +5031,7 @@ a.tp-caption.btn-lg {
   margin-top: -4px;
 }
 #property-detail-large {
-  margin-bottom: 5px;
+  margin-bottom: 25px;
 }
 #property-detail-large .item {
   background: #fff;
@@ -5080,7 +5079,7 @@ a.tp-caption.btn-lg {
   margin-top: -4px;
 }
 #property-detail-thumbs {
-  margin-bottom: 80px;
+  margin-bottom: 45px;
 }
 #property-detail-thumbs .item {
   height: 128px;
@@ -5180,13 +5179,21 @@ a.tp-caption.btn-lg {
   height: 285px;
   margin-bottom: 40px;
 }
-.share-wraper {
-  border: 1px solid #e3e3e3;
+.wrapper-section-desc {
   margin-bottom: 40px;
-  padding: 0px 18px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -ms-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+#section-desc {
+  padding: 20px;
+  background-color: #fff;
+}
+.share-wraper {
+  border-top: 1px solid #e3e3e3;
+  padding: 0px 15px;
 }
 .share-wraper h5 {
   display: inline-block;
@@ -8183,7 +8190,7 @@ div.dark_square #pp_full_res .pp_inline {
   line-height: 36px;
 }
 .property-list dd {
-  border-bottom: 1px solid #EEEEEE;
+  border-bottom: 1px solid #d0d0d0;
   color: #424242;
   font-weight: 600;
   line-height: 36px;
@@ -8254,8 +8261,7 @@ div.dark_square #pp_full_res .pp_inline {
 
 body.gpt .content.colored:before, 
 body.gpt .content.gray:before,
-body.gpt .sidebar.colored, 
-body.gpt .sidebar.gray {
+body.gpt .sidebar.colored {
   background: rgba(195,28,45,1);
 }
 
@@ -8406,12 +8412,6 @@ body.gpt .navbar-nav .dropdown-menu > li > a.active {
 
 body.gpt .sidebar.gray {
   border-left: transparent;
-}
-
-body.gpt .property-list dl,
-body.gpt .property-list dt,
-body.gpt .property-list dd {
-  color: #FFFFFF;
 }
 
 body.gpt .footer-listings li small {

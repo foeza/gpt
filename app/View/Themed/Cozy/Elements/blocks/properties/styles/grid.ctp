@@ -6,14 +6,12 @@
         if( empty($price) ) {
             $price = '&nbsp;';
         }
+
 ?>
 <div class="item <?php echo $_class; ?>" <?php echo $_attributes; ?>>
     <div class="image">
         <?php
                 $content = $this->Html->tag('h3', $title, array('class' => 'title-default'));
-                $content .= $this->Html->tag('span', $label, array(
-                    'class' => 'location'
-                ));
 
                 echo $this->Html->link($this->Html->tag('div', $content, array(
                     'class' => 'header-title',
@@ -22,9 +20,6 @@
                     'escape' => false
                 )));
                 echo $photo;
-                echo $this->Html->tag('span', $status, array(
-                    'class' => 'status-property',
-                ));
 
                 if (!empty($status_listing)) {
                     $name = $status_listing['name'];
@@ -38,7 +33,6 @@
     </div>
     <div class="price">
         <?php
-                echo $this->Rumahku->icon('fa fa-home').$type;
                 echo $this->Html->tag('span', $price);
         ?>
     </div>

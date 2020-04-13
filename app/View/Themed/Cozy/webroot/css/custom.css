@@ -28,6 +28,14 @@ html {
 }
 
 /*detail property*/
+#property-detail-wrapper.style1 .price span {
+    margin: 10px 0;
+}
+
+#property-detail-large .owl-wrapper-outer, #property-detail-thumbs .owl-wrapper-outer {
+    border: 1px solid #e3e3e3;
+}
+
 #similar-properties.grid-style1 .item {
     margin-bottom: 20px !important;
 }

@@ -60,7 +60,7 @@
 	        		'Property.price_converter-asc' 	=> __('Harga rendah ke tinggi'),
 	        		'Property.price_converter-desc' => __('Harga tinggi ke rendah'),
         		),
-	        	'optionsStatus' => $statusOptions,
+	        	// 'optionsStatus' => $statusOptions,
         		'url' => $searchUrl,
         	),
 		);

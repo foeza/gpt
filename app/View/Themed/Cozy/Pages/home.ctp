@@ -5,7 +5,7 @@
         // echo $this->element('blocks/pages/sub_header');
         echo $this->element('blocks/pages/properties');
 ?>
-<div class="content gray">
+<!-- <div class="content gray">
     <div class="container">
         <div class="row">
             <div class="main col-sm-12 col-md-8">
@@ -21,7 +21,7 @@
             
         </div>
     </div>
-</div>
+</div> -->
 <?php 
         // echo $this->element('blocks/pages/partnerships');
 ?>

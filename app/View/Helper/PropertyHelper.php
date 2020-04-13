@@ -5,9 +5,9 @@ class PropertyHelper extends AppHelper {
 		'Session', 'AclLink.AclLink'
 	);
 
-	function getPropertyStatusListing( $data ) {
-		$category_name = $this->Rumahku->filterEmptyField($data, 'PropertyStatusListing', 'name');
-		$badge_color = $this->Rumahku->filterEmptyField($data, 'PropertyStatusListing', 'badge_color');
+	function getPropertyCatBadge( $data ) {
+		$category_name 	= Common::hashEmptyField($data, 'PropertyProductCategory.name');
+		$badge_color 	= Common::hashEmptyField($data, 'PropertyProductCategory.badge_color');
 
 		if( !empty($category_name) ) {
 			return $this->Html->tag('span', $category_name, array(
@@ -105,9 +105,9 @@ class PropertyHelper extends AppHelper {
 				$labelStatus = $action;
 				$addClass = '';
 
-				if ($labelStatus == 'Dijual') {
+				if ($labelStatus == 'Eceran') {
 					$addClass = 'label-sell';
-				} elseif ($labelStatus == 'Disewakan') {
+				} elseif ($labelStatus == 'Grosir') {
 					$addClass = 'label-rent';
 				}
 
@@ -127,31 +127,16 @@ class PropertyHelper extends AppHelper {
 		}
 	}
 
-	function getNameCustom( $data, $only_location = false ) {
-		$dataAddress = !empty($data['PropertyAddress'])?$data['PropertyAddress']:false;
-		$subarea = $this->Rumahku->filterEmptyField($dataAddress, 'Subarea', 'name');
-		$city = $this->Rumahku->filterEmptyField($dataAddress, 'City', 'name');
-		$zip = $this->Rumahku->filterEmptyField($dataAddress, 'zip');
+	function getNameCustom( $data ) {
+		$title 	= Common::hashEmptyField($data, 'Property.title');
 
-		if( !empty($subarea) && !empty($city) ) {
-			$location = sprintf('%s, %s %s', $subarea, $city, $zip);
-			$location = $this->Html->tag('span', $location, array('class' => 'notranslate'));
+		if (!empty($title)) {
+			$result = trim(sprintf(__('%s'), $title));
+			$result = ucwords($result);
 		} else {
-			$location = '';
+			$result = '';
 		}
 
-		if( !empty($only_location) ) {
-			$result = $location;
-		} else {
-			$type = strtolower($this->Rumahku->filterEmptyField($data, 'PropertyType', 'name'));
-			$action = strtolower($this->Rumahku->filterEmptyField($data, 'PropertyAction', 'name'));
-			
-			$result = trim(sprintf(__('%s %s %s'), $type, $action, $location));
-		}	
-		$result = ucwords($result);
-
-		// debug($result);die();
-		// return $this->Rumahku->safeTagPrint($result);
 		return $result;
 	}
 
@@ -776,6 +761,13 @@ class PropertyHelper extends AppHelper {
 			'categoryMedias' => $categoryMedias,
 			'category_id' => $category_id,
 		);
+	}
+
+	function getALtImage($data){
+		$d_name = $_SERVER['HTTP_HOST'];
+		$name = $this->Rumahku->filterEmptyField($data, 'Property', 'title');
+
+		return __('%s - %s', $name, $d_name);
 	}
 
 	function _callMediaTitle ( $value ) {

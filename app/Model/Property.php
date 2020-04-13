@@ -82,7 +82,7 @@ class Property extends AppModel {
 				'message' => 'Mohon pilih status produk, eceran atau grosir',
 			),
 		),
-		'product_category_id' => array(
+		'name_category' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
 				'message' => 'Mohon pilih kategori produk ini',
@@ -1114,30 +1114,29 @@ class Property extends AppModel {
 
 			if( empty($data['Property']['user_id']) ) {
 				if( $group_id == 3 || in_array($group_id, Configure::read('__Site.Admin.List.id')) ) {
-					$name_c = !empty($data['Property']['product_category_id'])?$data['Property']['product_category_id']:false;
+					$name_c = !empty($data['Property']['name_category'])?$data['Property']['name_category']:false;
 
 					if(!empty($name_c)){
-						$user_data = $this->PropertyProductCategory->getData('first', array(
+						$data_prdCat = $this->PropertyProductCategory->getData('first', array(
 							'conditions' => array(
-								'User.email' => $name_c
+								'PropertyProductCategory.name' => $name_c
 							),
 							'fields' => array(
-								'User.id',
+								'PropertyProductCategory.id',
 							),
-						), array(
-							'company' => true,
-							'admin' => true,
-							'role' => 'agent',
 						));
 
-						if(!empty($user_data['User']['id'])){
-							$data['Property']['user_id'] = $user_data['User']['id'];
+						if(!empty($data_prdCat['PropertyProductCategory']['id'])){
+							$prooduct_category_id = $data_prdCat['PropertyProductCategory']['id'];
 						} else {
-							$data['Property']['user_id'] = '';
+							$prooduct_category_id = 0;
 						}
-					}else if(!$is_api){
-						$data['Property']['user_id'] = Configure::read('User.id');	
+
+						$data['Property']['user_id'] = Configure::read('Principle.id');
+						$data['Property']['product_category_id'] = $prooduct_category_id;
+
 					}
+
 				}
 
 			}
@@ -1529,11 +1528,11 @@ class Property extends AppModel {
 	}
 
 	function getMergeDefault( $data ) {
+		$currency_id 	= !empty($data['Property']['currency_id'])?$data['Property']['currency_id']:false;
 		$certificate_id = !empty($data['Property']['certificate_id'])?$data['Property']['certificate_id']:false;
-		$type_id = !empty($data['Property']['property_type_id'])?$data['Property']['property_type_id']:false;
-		$action_id = !empty($data['Property']['property_action_id'])?$data['Property']['property_action_id']:false;
-		$currency_id = !empty($data['Property']['currency_id'])?$data['Property']['currency_id']:false;
-		$period_id = !empty($data['Property']['period_id'])?$data['Property']['period_id']:false;
+		$type_id 		= !empty($data['Property']['property_type_id'])?$data['Property']['property_type_id']:false;
+		$action_id 		= !empty($data['Property']['property_action_id'])?$data['Property']['property_action_id']:false;
+		$prod_ctg_id 	= !empty($data['Property']['product_category_id'])?$data['Property']['product_category_id']:false;
 
 		if( !empty($type_id) && empty($data['PropertyType']) ) {
 			$type = $this->PropertyType->getData('first', array(
@@ -1554,6 +1553,19 @@ class Property extends AppModel {
 					'PropertyAction.id' => $action_id,
 				),
                 'cache' => __('PropertyAction.%s', $action_id),
+			));
+
+			if( !empty($action) ) {
+				$data = array_merge($data, $action);
+			}
+		}
+
+		if( !empty($prod_ctg_id) && empty($data['PropertyProductCategory']) ) {
+			$action = $this->PropertyProductCategory->getData('first', array(
+				'conditions' => array(
+					'PropertyProductCategory.id' => $action_id,
+				),
+                'cache' => __('PropertyProductCategory.%s', $action_id),
 			));
 
 			if( !empty($action) ) {
@@ -1584,19 +1596,6 @@ class Property extends AppModel {
 
 			if( !empty($currency) ) {
 				$data = array_merge($data, $currency);
-			}
-		}
-
-		if( !empty($period_id) && empty($data['Period']) ) {
-			$value = $this->Period->getData('first', array(
-				'conditions' => array(
-					'Period.id' => $period_id,
-				),
-				'cache' => __('Period.%s', $period_id),
-			));
-
-			if( !empty($value) ) {
-				$data = array_merge($data, $value);
 			}
 		}
 

@@ -86,13 +86,13 @@ class PropertyProductCategory extends AppModel {
 	        if(!empty($options['group'])){
 	            $default_options['group'] = $options['group'];
 	        }
-            if(!empty($options['cache'])){
-                $default_options['cache'] = $options['cache'];
+            // if(!empty($options['cache'])){
+            //     $default_options['cache'] = $options['cache'];
                 
-                if(!empty($options['cacheConfig'])){
-                    $default_options['cacheConfig'] = $options['cacheConfig'];
-                }
-            }
+            //     if(!empty($options['cacheConfig'])){
+            //         $default_options['cacheConfig'] = $options['cacheConfig'];
+            //     }
+            // }
 	    }
 
 		if( $find == 'paginate' ) {
