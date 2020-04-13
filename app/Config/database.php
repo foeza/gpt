@@ -64,20 +64,40 @@ class DATABASE_CONFIG {
 	public $default = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'db_gpt',
+		'host' => '45.13.255.130',
+		'login' => 'u7710731_admingpt',
+		'password' => 'admingpt3555',
+		'database' => 'u7710731_db_gpt',
 		'prefix' => '',
 	);
 
 	public $master = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' => 'localhost',
-		'login' => 'root',
-		'password' => '',
-		'database' => 'db_gpt',
+		'host' => '45.13.255.130',
+		'login' => 'u7710731_admingpt',
+		'password' => 'admingpt3555',
+		'database' => 'u7710731_db_gpt',
 		'prefix' => '',
 	);
+
+	// public $default = array(
+	// 	'datasource' => 'Database/Mysql',
+	// 	'persistent' => false,
+	// 	'host' => 'localhost',
+	// 	'login' => 'root',
+	// 	'password' => '',
+	// 	'database' => 'db_gpt',
+	// 	'prefix' => '',
+	// );
+
+	// public $master = array(
+	// 	'datasource' => 'Database/Mysql',
+	// 	'persistent' => false,
+	// 	'host' => 'localhost',
+	// 	'login' => 'root',
+	// 	'password' => '',
+	// 	'database' => 'db_gpt',
+	// 	'prefix' => '',
+	// );
 }
