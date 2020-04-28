@@ -19,12 +19,12 @@ html {
 }
 
 .status-listing {
-    right: 10px;
-    left: initial;
-    color: white;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
     font-size: 12px;
-    padding: 0 5px;
     border-radius: 2px;
+    color: white;
 }
 
 /*detail property*/

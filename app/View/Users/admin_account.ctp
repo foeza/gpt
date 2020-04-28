@@ -2,9 +2,6 @@
 		$user_principle_id = Configure::read('Principle.id');
 		$dataCompany = !empty($dataCompany)?$dataCompany:false;
 
-		$total_listing_per_agent = !empty($total_listing_per_agent)?$total_listing_per_agent:false;
-		$total_ebrosur = !empty($total_ebrosur)?$total_ebrosur:false;
-
 		$total_artikel	= Common::hashEmptyField($resume, 'total_artikel', false);
 		$total_banner	= Common::hashEmptyField($resume, 'total_banner', false);
 
@@ -18,12 +15,6 @@
 				'action' => 'generate',
 				'agents',
             );
-            $urlEbrosur = array_merge($urlAgent, array(
-				'title' => 'Agen Berdasarkan eBrosur terbanyak',
-				'sort' => 'total_ebrosur',
-				'direction' => 'desc',
-				'admin' => true,
-            ));
 			$urlPropertyActive = array_merge($urlAgent, array(
 				'title' => 'Agen Berdasarkan Properti terbanyak',
 				'sort' => 'total_property',
@@ -46,39 +37,19 @@
 					'point_tooltip' => 'Total Pengunjung',
 				));
 
-				$top_ebrosurs = empty($top_ebrosurs) ? array() : $top_ebrosurs;
 				$total_listing_per_agent = empty($total_listing_per_agent) ? array() : $total_listing_per_agent;
 				$template = '';
 
-				if($top_ebrosurs){
-					$template.= $this->element('blocks/users/dashboards/table', array(
-						'title' => __('5 Agen dengan eBrosur terbanyak'),
-						'wrapperClass' => 'wrapper-dashboard-table-ebrosur',
-						'values' => $top_ebrosurs,
-						'daterangeClass' => 'daterange-dasboard-table-ebrosur',
-						'url' => $urlEbrosur,
-						'urlAjax' => array(
-							'controller' => 'ajax',
-							'action' => 'get_dashboard_ebrosurs',
-							'admin' => true,
-						),
-						'urlTitle' => __('Lihat semua'),
-						'labelName' => __('eBrosur'),
-						'modelName' => 'UserCompanyEbrochure',
-						'fieldName' => 'total',
-					));
-				}
-
-				if($total_listing_per_agent){
-					// $template.= $this->element('blocks/users/dashboards/table', array(
-					// 	'title' => __('5 Agen dengan properti terbanyak'),
-					// 	'wrapperClass' => 'wrapper-dashboard-table-property-active',
-					// 	'values' => $total_listing_per_agent,
-					// 	'daterangeClass' => 'daterange-dasboard-table-property-active',
-					// 	'url' => $urlPropertyActive,
-					// 	'urlTitle' => __('Lihat semua'),
-					// ));
-				}
+				// if($total_listing_per_agent){
+				// 	$template.= $this->element('blocks/users/dashboards/table', array(
+				// 		'title' => __('5 Agen dengan properti terbanyak'),
+				// 		'wrapperClass' => 'wrapper-dashboard-table-property-active',
+				// 		'values' => $total_listing_per_agent,
+				// 		'daterangeClass' => 'daterange-dasboard-table-property-active',
+				// 		'url' => $urlPropertyActive,
+				// 		'urlTitle' => __('Lihat semua'),
+				// 	));
+				// }
 
 				echo(empty($template) ? $template : $this->Html->tag('div', $template, array(
 					'class' => 'row', 
@@ -122,7 +93,7 @@
 							'class' => 'orangeclr',
 							'icon' => 'rv4-newspaper',
 							'value' => $total_banner,
-							'title' => __('Banner'),
+							'title' => __('Banner Tayang'),
 							'url' => array(
 								'controller' => 'pages',
 								'action' => 'slides',

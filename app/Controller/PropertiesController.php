@@ -2937,8 +2937,8 @@ class PropertiesController extends AppController {
 					//	'ajaxRedirect' => true,
 					));
 
-					// $dataView = $this->RmCommon->_callSaveVisitor($id, 'PropertyView');
-					// $this->Property->PropertyView->doSave($dataView);
+					$dataView = $this->RmCommon->_callSaveVisitor($id, 'PropertyView');
+					$this->Property->PropertyView->doSave($dataView);
 
 					// $neighbours = $this->Property->getNeighbours( $value );
 					// $agents = $this->User->populers();

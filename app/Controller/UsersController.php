@@ -418,6 +418,7 @@ class UsersController extends AppController {
 				'admin' => true,
 			));
 		} else {
+			$this->loadModel('BannerSlide');
 			$is_admin = (Configure::read('User.companyAdmin'));
 			$user_login_group_id = Configure::read('User.group_id');
 			$isPersonalPage = Configure::read('Config.Company.is_personal_page');
@@ -438,10 +439,7 @@ class UsersController extends AppController {
 					'company' => false,
 				);
 
-				if(empty($isPersonalPage)){
-					$total_kpr = 0;	
-				}
-				else{
+				if($isPersonalPage){
 					$elements = array_merge($elements, array(
 						'status' => 'active-pending', 
 					));
@@ -469,25 +467,16 @@ class UsersController extends AppController {
 					'dashboard',
 				));
 
-				$chartProperties = $this->User->Property->_callChartProperties();
-
-				$percentage = $this->RmUser->getUserPercentageCompletion($this->user_id);
-
-				$total_ebrosur = $this->User->UserCompanyEbrochure->getData('count', array(
-					'order' => false,
-				), array(
-					'mine' => true,
-				));
+				// $percentage 	 = $this->RmUser->getUserPercentageCompletion($this->user_id);
+				$chartProperties = $this->User->Property->_callChartProperties(false, 'visitors');
+				$total_artikel 	 = $this->User->Advice->getData('count');
+				$total_banner 	 = $this->BannerSlide->getData('count');
 
 				if(empty($isPersonalPage)){
 					// REPORT ON BELOW
-					$top_ebrosurs = $this->User->UserCompanyEbrochure->_callTopEbrosurs();
-
 					$total_listing_per_agent = $this->User->Property->get_total_listing_per_agent($this->parent_id, array(
 						'admin_mine' => (empty($is_admin) && $user_login_group_id > 20) ? true : false,
 					));
-
-					$list_unpaid_provision = 0;
 
 					// for commission purpose
 					$chartCommission = $this->User->Property->_callChartProperties(false, 'commissions', false, false, array(
@@ -501,21 +490,19 @@ class UsersController extends AppController {
 					));
 				}
 
-				$total_banner  = 6;
-				$total_artikel = 5;
+				$sum_artikel 	= !empty($total_artikel)?$total_artikel : 0;
+				$sum_banner 	= !empty($total_banner)?$total_banner : 0;
 				$resume = array(
-					'total_artikel' => $total_artikel,
-					'total_banner'  => $total_banner
+					'total_artikel' => $sum_artikel,
+					'total_banner'  => $sum_banner
 				);
 
 				$this->set('module_title', __('Dashboard'));
 				$this->set('active_menu', 'dashboard');
 				$this->set(compact(
-					'total_listing_per_agent', 
-					'chartProperties', 'chartCommission', 'percentage',
-					'total_ebrosur', 'user', 'total_premium_listing',
-					'total_listing', 'top_ebrosurs', 'total_kpr',
-					'list_unpaid_provision',
+					'total_listing_per_agent','total_premium_listing',
+					'total_listing', 'user', 
+					'chartProperties',
 					'resume'
 				));
 			} else {

@@ -727,7 +727,8 @@ iframe[src="about:blank"] {
 }
 .carousel-style1 .item .image .info .header-title {
   position: absolute;
-  top: 15px;
+  top: 43%;
+
 }
 .carousel-style1 .item .image .info h3 {
   color: #fff;

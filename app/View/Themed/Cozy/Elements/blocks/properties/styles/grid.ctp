@@ -23,7 +23,7 @@
 
                 if (!empty($status_listing)) {
                     $name = $status_listing['name'];
-                    $badge_color = $status_listing['badge_color'];
+                    $badge_color =  !empty($status_listing['badge_color'])?$status_listing['badge_color']:'rgb(61, 19, 90)';
                     echo $this->Html->tag('span', $name, array(
                         'class' => 'status-property status-listing',
                         'style' => 'background-color:'.$badge_color.';',

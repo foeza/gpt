@@ -4,10 +4,6 @@
         $mls_id = Common::hashEmptyField($value, 'Property.mls_id');
         $desc   = Common::hashEmptyField($value, 'Property.description');
 
-        // custom badge
-        $name        = Common::hashEmptyField($value, 'PropertyProductCategory.name');
-        $badge_color = Common::hashEmptyField($value, 'PropertyProductCategory.badge_color');
-
         $price = $this->Property->getPrice($value, false, false, false);
 
         $label = $this->Property->getNameCustom($value);
@@ -47,7 +43,7 @@
                 
                 <div class="wrapper-section-desc">
                     <?php
-                            echo $this->Html->tag('h3', __('Deskripsi Produk'), array('class' => 'section-title'));
+                            echo $this->Html->tag('h3', __('Deskripsi'), array('class' => 'section-title'));
                             echo $this->Html->tag('div', $desc, array(
                                 'id'    => 'section-desc',
                                 'class' => 'print-float-left print-mg-top-2'  
