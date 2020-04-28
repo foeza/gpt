@@ -2877,8 +2877,8 @@ class PropertiesController extends AppController {
 				));
 				$value = $this->Property->getDataList($value, array(
 					'contain' => array(
-						'MergeDefault',
 						'PropertyProductCategory',
+						'MergeDefault',
 						'PropertyPrice',
 						'User',
 					),

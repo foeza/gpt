@@ -1608,7 +1608,7 @@ class Property extends AppModel {
 		$approved_by = !empty($value['Property']['approved_by'])?$value['Property']['approved_by']:false;
 		$sold = !empty($value['Property']['sold'])?$value['Property']['sold']:false;
 		$client_id = !empty($value['Property']['client_id'])?$value['Property']['client_id']:false;
-		$category_id = !empty($value['Property']['property_status_id'])?$value['Property']['property_status_id']:false;
+		$category_id = !empty($value['Property']['product_category_id'])?$value['Property']['product_category_id']:false;
 		
 		if( !empty($contains) ) {
 			 foreach ($contains as $contain) {
