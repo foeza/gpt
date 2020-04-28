@@ -8292,7 +8292,9 @@ body.gpt .agencies-grid .item .tag,
 body.gpt .agents-list .item .tag, 
 body.gpt .agents-grid .item .tag, 
 body.gpt .blog-main-image .tag,
-body.gpt .wrapper-widget-sidebar .section-title {
+body.gpt .wrapper-widget-sidebar .section-title,
+body.gpt .wrapper-section-desc .section-title,
+body.gpt .sidebar.gray .section-title {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ac1d31+0,ea1f25+100 */
   background: rgb(57,19,91); /* Old browsers */
   /* IE9 SVG, needs conditional override of 'filter' to 'none' */

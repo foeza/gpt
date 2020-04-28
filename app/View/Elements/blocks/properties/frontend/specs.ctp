@@ -23,11 +23,11 @@
     <div class="property-list">
         <dl>
             <?php 
-                    echo $this->Html->tag('dt', __('Kategori:'));
+                    echo $this->Html->tag('dt', __('Kategori :'));
                     echo $this->Html->tag('dd', $name);
 
                     if( !empty($price) && $_action == 1 ) {
-                        echo $this->Html->tag('dt', __('Harga:'));
+                        echo $this->Html->tag('dt', __('Harga :'));
                         echo $this->Html->tag('dd', $price);
                     }
 
@@ -38,7 +38,7 @@
         ?>
         <dl>
             <?php
-                    echo $this->Html->tag('dt', __('Update Terakhir:'));
+                    echo $this->Html->tag('dt', __('Update Terakhir :'));
                     echo $this->Html->tag('dd', $customDate);
             ?>
         </dl>

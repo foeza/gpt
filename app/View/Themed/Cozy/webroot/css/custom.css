@@ -84,6 +84,12 @@ a.pp_close {
 	top: 5px;
 }
 
+.specs-sidebar .property-list {
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid #e3e3e3;
+}
+
 /*Artikel*/
 .post-content p {
     margin-bottom: 0;
