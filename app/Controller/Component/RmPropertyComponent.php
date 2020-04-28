@@ -2559,7 +2559,6 @@ class RmPropertyComponent extends Component {
                 'PropertyAsset',
                 'PropertySold',
                 'PropertyNotification',
-                'PropertyProductCategory',
                 'User',
                 'Approved',
                 'Client',

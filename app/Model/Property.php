@@ -1563,9 +1563,9 @@ class Property extends AppModel {
 		if( !empty($prod_ctg_id) && empty($data['PropertyProductCategory']) ) {
 			$action = $this->PropertyProductCategory->getData('first', array(
 				'conditions' => array(
-					'PropertyProductCategory.id' => $action_id,
+					'PropertyProductCategory.id' => $prod_ctg_id,
 				),
-                'cache' => __('PropertyProductCategory.%s', $action_id),
+                'cache' => __('PropertyProductCategory.%s', $prod_ctg_id),
 			));
 
 			if( !empty($action) ) {
