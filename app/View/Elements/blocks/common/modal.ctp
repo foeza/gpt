@@ -49,9 +49,9 @@
 	</div>
 </div>
 <?php 
-		if( $prefix == 'admin' ) {
-        	echo $this->element('blocks/common/modals/tour');
-        }
+		// if( $prefix == 'admin' ) {
+  //       	echo $this->element('blocks/common/modals/tour');
+  //       }
 
-        echo $this->element('blocks/common/modal/modal_booking');
+  //       echo $this->element('blocks/common/modal/modal_booking');
 ?>

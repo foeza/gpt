@@ -63,7 +63,7 @@
 	</head>
 	<body class="gpt">
 		<?php 
-				// echo $this->element('blocks/common/sdkscript');
+				echo $this->element('blocks/common/sdkscript');
 		?>
     	<div id="wrapper">
 			<?php
@@ -78,9 +78,9 @@
 		<?php
 				$minify_js = array(
 					'location_home.js',
-					// 'https://www.gstatic.com/charts/loader.js', // market trend
 					'jquery.library',
 					'default.library',
+					// 'https://www.gstatic.com/charts/loader.js', // market trend
 				);
 
 				if(isset($layout_js) && !empty($layout_js)) {

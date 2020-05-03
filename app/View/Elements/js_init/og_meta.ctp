@@ -5,17 +5,17 @@
 		$og_meta = empty($og_meta) ? array() : $og_meta;
 
 		if( !empty($og_meta) ) {
-			$meta_add = sprintf('<meta property="og:type" content="article" /><meta property="og:url" content="%s" />', FULL_BASE_URL.$this->here);
+			$meta_add = __('<meta property="og:type" content="article" /><meta property="og:url" content="%s" />', FULL_BASE_URL.$this->here);
 			$meta_add .= '<meta name="twitter:card" content="summary_large_image" />';
-			$meta_add .= '<meta name="twitter:site" content="@primesystemid" />';
-			$meta_add .= '<meta name="twitter:creator" content="@primesystemid" />';
+			$meta_add .= '<meta name="twitter:site" content="@gtpdotcom" />';
+			$meta_add .= '<meta name="twitter:creator" content="@gtpdotcom" />';
 
 			$metaTitle			= Hash::get($og_meta, 'title');
 			$metaDescription	= Hash::get($og_meta, 'description');
 
 			if($metaTitle){
 				$meta_add .= sprintf('<meta property="og:title" content="%s" />', htmlspecialchars($metaTitle));
-				$meta_add .= sprintf('<meta property="twitter:title" content="%s" />', htmlspecialchars($metaTitle));
+				// $meta_add .= sprintf('<meta property="twitter:title" content="%s" />', htmlspecialchars($metaTitle));
 				$metaInfo .= sprintf('<meta name="title" content="%s" />', htmlspecialchars($metaTitle));
 			}
 			
@@ -39,7 +39,7 @@
 			}
 
 			$meta_add .= sprintf('<meta property="og:image" content="%s"/>', $mainImage);
-			$meta_add .= sprintf('<meta property="twitter:image" content="%s"/>', $mainImage);
+			// $meta_add .= sprintf('<meta property="twitter:image" content="%s"/>', $mainImage);
 
 			if( $metaDescription) {
 				$metaDescription = urldecode($metaDescription);
@@ -50,16 +50,14 @@
 				)));
 
 				$meta_add .= sprintf('<meta property="og:description" content="%s" />', $metaDescription);
-				$meta_add .= sprintf('<meta property="twitter:description" content="%s" />', $metaDescription);
+				// $meta_add .= sprintf('<meta property="twitter:description" content="%s" />', $metaDescription);
 				$metaInfo .= sprintf('<meta name="description" content="%s" />', $metaDescription);
 			}
 
-			$app_id = Configure::read('Facebook.appId');
 			if(!empty($_config['UserCompanyConfig']['facebook_appid'])){
 				$app_id = $this->Rumahku->safeTagPrint($_config['UserCompanyConfig']['facebook_appid']);
+				$meta_add .= sprintf('<meta property="fb:app_id" content="%s" />', $app_id);
 			}
-
-			$meta_add .= sprintf('<meta property="fb:app_id" content="%s" />', $app_id);
 
 			echo $meta_add;
 			echo $metaInfo;
@@ -100,13 +98,6 @@
 		}
 
 		$_curr_url = $this->Html->url($curr_url, true);
-
-
-		$meta_tag = $this->Rumahku->filterEmptyField($_config, 'UserCompanyConfig', 'meta_tag', false, false);
-
-        if( !empty($meta_tag) ) {
-        	echo $meta_tag;
-        }
 		
 ?>
 <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />

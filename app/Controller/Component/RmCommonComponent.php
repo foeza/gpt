@@ -945,7 +945,6 @@ class RmCommonComponent extends Component {
 		Configure::write('__Site.config_limit_crontab', 15);
 		Configure::write('__Site.config_limit_listing_home', 12);
 		
-		Configure::write('Facebook.appId', '113858472015943');
 		Configure::write('__Site.Admin.List.id', array( 11,19,20 ));
 		Configure::write('__Site.Admin.Company.id', array( 3,4,5 ));
 		Configure::write('__Site.Role', array(

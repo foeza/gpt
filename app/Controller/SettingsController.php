@@ -575,16 +575,16 @@ class SettingsController extends AppController {
 			$this->RmCommon->_callDataForAPI($value, 'manual');
 
 		//	templates
-			$ebrochureTemplates = $this->requestAction(array(
-				'admin'			=> false, 
-				'controller'	=> 'ajax', 
-				'action'		=> 'get_ebrochure_template', 
-				'type'			=> 'company', 
-			));
+			// $ebrochureTemplates = $this->requestAction(array(
+			// 	'admin'			=> false, 
+			// 	'controller'	=> 'ajax', 
+			// 	'action'		=> 'get_ebrochure_template', 
+			// 	'type'			=> 'company', 
+			// ));
 
-			$this->set(array(
-				'ebrochureTemplates' => $ebrochureTemplates, 
-			));
+			// $this->set(array(
+			// 	'ebrochureTemplates' => $ebrochureTemplates, 
+			// ));
 		} else {
 			$this->RmCommon->redirectReferer(__('Halaman tidak ditemukan'), 'error');
 		}
