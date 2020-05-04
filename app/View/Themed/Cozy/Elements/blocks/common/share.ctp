@@ -7,7 +7,7 @@
 		$h_widget 	= !empty($title_widget)?$title_widget:__('Bagikan :');
         
         $facebook 	= sprintf('https://www.facebook.com/share.php?u=%s?title=%s', $url, $title);
-        $twitter 	= sprintf('https://twitter.com/home?status=%s+%s', $title, $url);
+        $twitter 	= sprintf('https://twitter.com/intent/tweet?text=%s&url=%s', $title, $url);
 
 		$linkwa 	= Common::_callPhoneWA(array(
 			'text' => $url,
