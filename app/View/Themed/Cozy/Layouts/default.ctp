@@ -1,15 +1,11 @@
 <?php  
-       	$general_path 	= Configure::read('__Site.general_folder');
 		$breadcrumb 	= (isset($_breadcrumb)) ? $_breadcrumb : true;
+       	$general_path 	= Configure::read('__Site.general_folder');
 		$company_name	= Common::hashEmptyField($dataCompany, 'UserCompany.name');
 
-		$meta_title		= Common::hashEmptyField($_config, 'UserCompanyConfig.meta_title', $company_name);
-		$meta_desc		= Common::hashEmptyField($_config, 'UserCompanyConfig.meta_description');
 		$favicon		= Common::hashEmptyField($_config, 'UserCompanyConfig.favicon');
 		$theme			= Common::hashEmptyField($_config, 'Theme.slug');
 		
-		$meta_title 	= !empty($title_for_layout)?$title_for_layout:$meta_title;
-
 		$opt_config 	= $this->Rumahku->webThemeConfig($_config, $_GET);
 		if (!empty($_GET)) {
 			$cssTheme   = sprintf('/css/themes/stylesheet.php?theme=%s&%s', $theme_path, $opt_config);
@@ -35,8 +31,6 @@
 <html>
 	<head>	
 		<?php 
-			echo $this->Html->charset('UTF-8') . PHP_EOL;
-			echo $this->Html->tag('title', $meta_title) . PHP_EOL;
 			echo $this->element('js_init/og_meta');
 
 			$minify_css = array(
@@ -57,7 +51,6 @@
 			echo $this->Html->meta($company_name, $customFavicon, array(
 				'type' => 'icon'
 			)) . PHP_EOL;
-			echo $this->element('js_init/meta');
 			echo $this->element('js_init/configure');
 		?>
 	</head>

@@ -79,7 +79,6 @@
                 ));
             }
             
-            echo($this->element('js_init/meta'));
     ?>
 </head>
 <body class="<?php echo $class_body; ?>" data-ajax="ready">

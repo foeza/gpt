@@ -1,26 +1,37 @@
+
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
+<meta content="follow, index" name="robots" />
+<link rel="canonical" href="<?php echo FULL_BASE_URL.$this->here; ?>" />
 <?php 
+
+		$company_name	= Common::hashEmptyField($dataCompany, 'UserCompany.name');
+		$meta_title		= Common::hashEmptyField($_config, 'UserCompanyConfig.meta_title', $company_name);
+		$meta_desc		= Common::hashEmptyField($_config, 'UserCompanyConfig.meta_description');
+
+		$meta_title 	= !empty($title_for_layout)?$title_for_layout:$meta_title;
+
 		$meta_add = '';
-		$metaInfo = '';
+		$break 	  = "\n";
 
 		$og_meta = empty($og_meta) ? array() : $og_meta;
 
+		echo $this->Html->charset('UTF-8') . PHP_EOL;
+		echo $this->Html->tag('title', $meta_title) . PHP_EOL;
+		echo $this->Html->meta('description', $meta_desc) . PHP_EOL;
+
 		if( !empty($og_meta) ) {
-			$meta_add = __('<meta property="og:type" content="article" /><meta property="og:url" content="%s" />', FULL_BASE_URL.$this->here);
-			$meta_add .= '<meta name="twitter:card" content="summary_large_image" />';
-			$meta_add .= '<meta name="twitter:site" content="@gtpdotcom" />';
-			$meta_add .= '<meta name="twitter:creator" content="@gtpdotcom" />';
+			$og_desc = Hash::get($og_meta, 'description');
+			$og_desc = urldecode($og_desc);
+			$og_desc = $this->Rumahku->safeTagPrint($og_desc);
+			$og_desc = trim($this->Text->truncate($og_desc, 320, array(
+				'ending'	=> '',
+				'exact'		=> false, 
+			)));
+			$og_title 	= Hash::get($og_meta, 'title');
+			$og_title 	= htmlspecialchars($og_title);
 
-			$metaTitle			= Hash::get($og_meta, 'title');
-			$metaDescription	= Hash::get($og_meta, 'description');
-
-			if($metaTitle){
-				$meta_add .= sprintf('<meta property="og:title" content="%s" />', htmlspecialchars($metaTitle));
-				// $meta_add .= sprintf('<meta property="twitter:title" content="%s" />', htmlspecialchars($metaTitle));
-				$metaInfo .= sprintf('<meta name="title" content="%s" />', htmlspecialchars($metaTitle));
-			}
-			
 			if( !empty($og_meta['full_path']) ) {
-				$mainImage = $og_meta['full_path'];
+				$og_image = $og_meta['full_path'];
 			} else {
 				$size = 'l';
 				if(!empty($og_meta['size'])){
@@ -35,32 +46,29 @@
 					'fullbase' => true
 				);
 
-				$mainImage = $this->Rumahku->photo_thumbnail($options, false, $og_meta); 
+				$og_image = $this->Rumahku->photo_thumbnail($options, false, $og_meta); 
 			}
 
-			$meta_add .= sprintf('<meta property="og:image" content="%s"/>', $mainImage);
-			// $meta_add .= sprintf('<meta property="twitter:image" content="%s"/>', $mainImage);
+			$meta_add = __('<meta name="twitter:card" content="summary_large_image" />%s', $break);
+			$meta_add .= __('<meta name="twitter:site" content="@gtpdotcom" />%s', $break);
+			$meta_add .= __('<meta name="twitter:creator" content="@gtpdotcom" />%s', $break);
+			$meta_add .= __('<meta name="twitter:title" content="%s" />%s', $og_title, $break);
+			$meta_add .= __('<meta name="twitter:description" content="%s" />%s', $og_desc, $break);
+			$meta_add .= __('<meta name="twitter:image" content="%s" />%s', $og_image, $break);
 
-			if( $metaDescription) {
-				$metaDescription = urldecode($metaDescription);
-				$metaDescription = $this->Rumahku->safeTagPrint($metaDescription);
-				$metaDescription = trim($this->Text->truncate($metaDescription, 320, array(
-					'ending'	=> '',
-					'exact'		=> false, 
-				)));
-
-				$meta_add .= sprintf('<meta property="og:description" content="%s" />', $metaDescription);
-				// $meta_add .= sprintf('<meta property="twitter:description" content="%s" />', $metaDescription);
-				$metaInfo .= sprintf('<meta name="description" content="%s" />', $metaDescription);
-			}
+			$meta_add .= __('<meta property="og:type" content="article" />%s', $break);
+			$meta_add .= __('<meta property="og:url" content="%s" />%s', FULL_BASE_URL.$this->here, $break);
+			$meta_add .= __('<meta property="og:title" content="%s" />%s', $og_title, $break);
+			$meta_add .= __('<meta property="og:description" content="%s" />%s', $og_desc, $break);
+			$meta_add .= __('<meta property="og:image" content="%s"/>%s', $og_image, $break);
 
 			if(!empty($_config['UserCompanyConfig']['facebook_appid'])){
 				$app_id = $this->Rumahku->safeTagPrint($_config['UserCompanyConfig']['facebook_appid']);
-				$meta_add .= sprintf('<meta property="fb:app_id" content="%s" />', $app_id);
+				$meta_add .= __('<meta property="fb:app_id" content="%s" />', $app_id);
 			}
 
 			echo $meta_add;
-			echo $metaInfo;
+
 		}
 
 		$curr_url = $arr_url = $this->params->params['named'];
@@ -98,14 +106,7 @@
 		}
 
 		$_curr_url = $this->Html->url($curr_url, true);
-		
-?>
-<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" name="viewport" />
-<meta content="grosirpasartasik.com adalah situs jual beli berbagai busana dan atau keperluan fashion. Pusat Grosir Pasar Tasik. Toko Online Termurah dan Terpercaya. Cari barang grosiran? grosirpasartasik.com" name="description" />
 
-<meta content="follow, index" name="robots" />
-<link rel="canonical" href="https://grosirpasartasik.com" />
-<?php
 		$pageCount = $this->Paginator->counter(array('format' => '%count%'));
 		
 		if(!empty($pageCount)){

@@ -14,3 +14,7 @@
 <script>
 	var intervalSlide = '<?php echo $slideshow_interval; ?>';
 </script>
+
+<?php
+		echo $this->element('js_init/google_analytic');
+?>

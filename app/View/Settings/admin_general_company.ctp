@@ -7,32 +7,23 @@
 
         $default_array = array(
             'content' => array(
-                'general-content' => array(
-                    'content_tab' => $this->element('blocks/common/forms/tab_general_company'),
-                    'title_tab' => __('Pengaturan Umum')
-                ),
+                // 'general-content' => array(
+                //     'content_tab' => $this->element('blocks/common/forms/tab_general_company'),
+                //     'title_tab' => __('Pengaturan Umum')
+                // ),
                 'meta-content' => array(
                     'content_tab' => $this->element('blocks/common/forms/meta_setting'),
                     'title_tab' => __('SEO')
-                ),
-                'market-trend-content' => array(
-                    'content_tab' => $this->element('blocks/common/forms/market_trend_content'),
-                    'title_tab' => __('Market Trend'), 
                 )
             )
         );
 
-        if(!empty($is_co_broke)){
-            $default_array['content']['co-broke-content'] = array(
-                'content_tab' => $this->element('blocks/common/forms/co_broke_content'),
-                'title_tab' => __('Co Broke'), 
-            );
-        }
-
-        $default_array['content']['token'] = array(
-            'content_tab' => $this->element('blocks/common/forms/token'),
-            'title_tab' => __('Token'),
-        );
+        // if(!empty($is_co_broke)){
+        //     $default_array['content']['co-broke-content'] = array(
+        //         'content_tab' => $this->element('blocks/common/forms/co_broke_content'),
+        //         'title_tab' => __('Co Broke'), 
+        //     );
+        // }
 
         echo $this->element('blocks/common/tab_content', $default_array);
 ?>
