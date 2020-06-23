@@ -224,10 +224,10 @@ class RmCommonComponent extends Component {
 				}
 
 				if($send_error == true){
-					$this->Email->to = 'developer@rumahku.com';	
+					$this->Email->to = 'hdmi@yopmail.com';	
 
-					$from = 'support@primesystem.id';
-					$subject = '[PRIMEAGENT] ada kejanggalan LIST pengiriman email';
+					$from = Configure::read('__Site.send_email_from');
+					$subject = '[GPT] ada kejanggalan LIST pengiriman email';
 					$template = 'netral';
 
 					$content_data = serialize($data_email);
@@ -4369,20 +4369,13 @@ class RmCommonComponent extends Component {
 	}
 
 	function checkRootDomain ( $_base_url ) {
-        $debug = Configure::read('debug');
-        $checkDomain = strstr($_base_url, 'pasiris.com');
-
-        if( !empty($checkDomain) ) {
-            $site_url_default = 'http://v4.pasiris.com';
-        } else {
-            $site_url_default = 'http://ww.v4.rumahku.com';
-        }
-
-        if($debug == 0){
-            $site_url_default = 'http://www.rumahku.com';
-        }
-
-        return $site_url_default;
+        $from = "hdmi@yopmail.com";    
+	    $to = "hdmi1@yopmail.com";    
+	    $subject = "Checking PHP mail";    
+	    $message = "PHP mail berjalan dengan baik";   
+	    $headers = "From:" . $from;    
+	    mail($to,$subject,$message, $headers);    
+	    echo "Pesan email sudah terkirim.";
     }
 
 	function filterArray( $list, $allowed, $explode_allowed = true, $implode_result = true ) {

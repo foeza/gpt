@@ -70,8 +70,9 @@ class AppController extends Controller {
 		Configure::write('__Site.nabangshop', 'https://www.instagram.com/nabangshop/');
 
 		$this->_base_url  = $_base_url = $this->RmCommon->manage_base_url();
-		$site_url_default = $this->RmCommon->checkRootDomain($_base_url);
-		Configure::write('__Site.site_default', $site_url_default);
+		// $site_url_default = $this->RmCommon->checkRootDomain($_base_url);
+		// debug($site_url_default);die();
+		Configure::write('__Site.site_default', $_base_url);
 
 		// untuk RmFileManager
 		Configure::write('__Site.file_manager_path', 'files' . DS . 'recycle_bin' . DS);

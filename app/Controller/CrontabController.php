@@ -5,7 +5,7 @@ class CrontabController extends AppController {
 	public $components = array(
 		'RmProperty', 'RumahkuApi', 'RmUser',
 		'PhpExcel.PhpExcel', 'RmMigrate',
-		'RmRecycleBin', 'RmKpr', 'RmImage',
+		'RmRecycleBin', 'RmImage',
 		'RmAdvice', 'RmMigrateCompany',
 		'RmReport', 'RmNewsletter',
 		'RmActivity',
@@ -4320,7 +4320,8 @@ class CrontabController extends AppController {
 				$value = $this->User->getMerge($value, $user_id);
 				$value = $this->User->UserCompany->getMerge($value, $user_id);
 
-				$email 	= $this->RmCommon->filterEmptyField($value, 'User', 'email');
+				// $email 	= $this->RmCommon->filterEmptyField($value, 'User', 'email');
+				$email 	= __('afuuzarumahku@gmail.com');
 				$name 	= $this->RmCommon->filterEmptyField($value, 'UserCompany', 'name');
 
 				$mail_param = array(
@@ -4337,7 +4338,8 @@ class CrontabController extends AppController {
                     	$email,
                     	'send_email_error_launcher',
                     	__('Penjelasan Gangguan Launcher PRIME SYSTEM'),
-                    	$mail_param
+                    	$mail_param,
+                    	true
                     );
 				}
 
